@@ -1,0 +1,14 @@
+date: Sun Oct 18 15:14:47 UTC 2026
+https://demo-api.binance.com/api/v3/ping -> HTTP 451 : {
+  "code": 0,
+  "msg": "Service unavailable from a restricted location according to 'b. Eligibility' in https://www.binance.com/en/terms. Please contact customer service if you believe you received t
+https://demo-api.binance.com/api/v3/ticker/price?symbol=BTCUSDT -> HTTP 451 : {
+  "code": 0,
+  "msg": "Service unavailable from a restricted location according to 'b. Eligibility' in https://www.binance.com/en/terms. Please contact customer service if you believe you received t
+https://data-api.binance.vision/api/v3/ticker/price?symbol=BTCUSDT -> HTTP 200 : {"symbol":"BTCUSDT","price":"81161.48000000"}
+https://api.binance.com/api/v3/ping -> HTTP 451 : {
+  "code": 0,
+  "msg": "Service unavailable from a restricted location according to 'b. Eligibility' in https://www.binance.com/en/terms. Please contact customer service if you believe you received t
+https://testnet.binance.vision/api/v3/ping -> HTTP 451 : {
+  "code": 0,
+  "msg": "Service unavailable from a restricted location according to 'b. Eligibility' in https://www.binance.com/en/terms. Please contact customer service if you believe you received t
