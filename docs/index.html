@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Signal IA Crypto</title>
+<meta name="description" content="Signal quotidien et hebdomadaire de l'IA crypto v4 — test en argent fictif">
+<meta name="theme-color" content="#0f1720" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f6f7f9" media="(prefers-color-scheme: light)">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Signal IA">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<style>
+:root{
+  --bg:#f6f7f9; --card:#ffffff; --ink:#111827; --muted:#6b7280; --line:#e5e7eb;
+  --accent:#2563eb; --pos:#15803d; --neg:#b91c1c; --warn:#b45309; --chip:#eef2ff; --chip-ink:#1e3a8a;
+  --pos-bg:#ecfdf3; --neg-bg:#fef2f2; --warn-bg:#fffbeb; --shadow:0 1px 2px rgba(0,0,0,.05),0 2px 8px rgba(0,0,0,.04);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0f1720; --card:#17212c; --ink:#e7ecf2; --muted:#94a3b8; --line:#263241;
+    --accent:#60a5fa; --pos:#4ade80; --neg:#f87171; --warn:#fbbf24; --chip:#1e293b; --chip-ink:#bfdbfe;
+    --pos-bg:#0f2a1c; --neg-bg:#2a1414; --warn-bg:#2a2210; --shadow:none;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0f1720; --card:#17212c; --ink:#e7ecf2; --muted:#94a3b8; --line:#263241;
+  --accent:#60a5fa; --pos:#4ade80; --neg:#f87171; --warn:#fbbf24; --chip:#1e293b; --chip-ink:#bfdbfe;
+  --pos-bg:#0f2a1c; --neg-bg:#2a1414; --warn-bg:#2a2210; --shadow:none;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;-webkit-text-size-adjust:100%}
+header{position:sticky;top:0;z-index:5;background:var(--bg);padding:calc(10px + env(safe-area-inset-top)) 16px 8px}
+.top{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.top h1{font-size:19px;margin:0;font-weight:700;letter-spacing:-.01em}
+.updated{font-size:12px;color:var(--muted)}
+.iconbtn{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:10px;width:40px;height:40px;font-size:20px;flex:none}
+.seg{display:flex;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:3px;margin-top:10px}
+.seg button{flex:1;border:0;background:transparent;color:var(--muted);padding:8px 4px;border-radius:9px;font-size:14px;font-weight:600}
+.seg button.on{background:var(--accent);color:#fff}
+main{padding:4px 16px calc(84px + env(safe-area-inset-bottom));max-width:640px;margin:0 auto}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 14px;margin:12px 0;box-shadow:var(--shadow)}
+.card h2{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:0 0 10px;font-weight:700}
+.big{font-size:30px;font-weight:800;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.row{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:7px 0;border-top:1px solid var(--line)}
+.row:first-of-type{border-top:0}
+.muted{color:var(--muted)} .small{font-size:13px}
+.pos{color:var(--pos)} .neg{color:var(--neg)}
+.pill{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:4px 10px;font-size:13px;font-weight:700}
+.pill.ok{background:var(--pos-bg);color:var(--pos)} .pill.ko{background:var(--neg-bg);color:var(--neg)} .pill.wait{background:var(--warn-bg);color:var(--warn)}
+.coins{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:12px 0 4px}
+.coin{background:var(--chip);color:var(--chip-ink);border-radius:12px;padding:12px 6px;text-align:center}
+.coin b{display:block;font-size:20px} .coin span{font-size:12px;opacity:.85}
+.cash{background:var(--warn-bg);color:var(--warn);border-radius:12px;padding:16px;text-align:center;font-weight:800;font-size:20px;margin:12px 0 4px}
+.act{display:flex;justify-content:space-between;padding:8px 0;border-top:1px solid var(--line);font-size:14px}
+.tag{font-size:11px;font-weight:800;border-radius:6px;padding:2px 6px;margin-right:6px}
+.tag.buy{background:var(--pos-bg);color:var(--pos)} .tag.sell{background:var(--neg-bg);color:var(--neg)}
+.done{width:100%;margin-top:12px;border:0;border-radius:12px;padding:14px;font-size:16px;font-weight:800;background:var(--accent);color:#fff}
+.done.is{background:var(--pos-bg);color:var(--pos);border:1px solid var(--pos)}
+details summary{cursor:pointer;color:var(--muted);font-size:13px;margin-top:8px}
+.kpis{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.kpi{background:var(--bg);border-radius:12px;padding:10px}
+.kpi .l{font-size:12px;color:var(--muted)} .kpi .v{font-size:17px;font-weight:700;font-variant-numeric:tabular-nums}
+.bar{height:8px;background:var(--line);border-radius:99px;overflow:hidden;margin:8px 0}
+.bar i{display:block;height:100%;background:var(--accent);border-radius:99px}
+.rank{display:grid;grid-template-columns:28px 60px 1fr;align-items:center;gap:8px;padding:5px 0;font-size:14px}
+.rank .b{height:8px;border-radius:99px;background:var(--accent);opacity:.75}
+.rank .b.n{background:var(--neg);opacity:.55}
+svg text{fill:var(--muted);font-size:11px}
+.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:12px;color:var(--muted);margin-top:6px}
+.legend i{display:inline-block;width:12px;height:3px;border-radius:2px;margin-right:5px;vertical-align:middle}
+.week{border-top:1px solid var(--line);padding:10px 0}
+.week:first-of-type{border-top:0}
+.wgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:6px;text-align:center}
+.wgrid div{background:var(--bg);border-radius:10px;padding:6px 2px;font-size:12px}
+.wgrid b{display:block;font-size:15px}
+.crit{display:flex;gap:10px;align-items:flex-start;padding:8px 0;border-top:1px solid var(--line)}
+.crit:first-of-type{border-top:0}
+.notice{font-size:12px;color:var(--muted);text-align:center;margin:18px 6px}
+nav{position:fixed;bottom:0;left:0;right:0;background:var(--card);border-top:1px solid var(--line);display:flex;padding:6px 6px calc(6px + env(safe-area-inset-bottom));z-index:6}
+nav button{flex:1;border:0;background:transparent;color:var(--muted);font-size:11px;font-weight:600;padding:6px 2px;display:flex;flex-direction:column;align-items:center;gap:3px}
+nav button svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:2}
+nav button.on{color:var(--accent)}
+.err{background:var(--neg-bg);color:var(--neg);border-radius:12px;padding:12px;margin:12px 0}
+table{width:100%;border-collapse:collapse;font-size:14px} td,th{padding:7px 4px;border-top:1px solid var(--line);text-align:right} td:first-child,th:first-child{text-align:left}
+th{font-size:12px;color:var(--muted);font-weight:600;border-top:0}
+</style>
+</head>
+<body>
+<header>
+  <div class="top">
+    <div><h1>Signal IA Crypto</h1><div class="updated" id="updated">Chargement…</div></div>
+    <button class="iconbtn" id="refresh" aria-label="Actualiser">↻</button>
+  </div>
+  <div class="seg" id="seg">
+    <button data-p="quotidien" class="on">Quotidien</button>
+    <button data-p="hebdomadaire">Hebdomadaire</button>
+  </div>
+</header>
+<main id="main"></main>
+<nav id="nav">
+  <button data-t="jour" class="on"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Aujourd'hui</button>
+  <button data-t="pf"><svg viewBox="0 0 24 24"><path d="M3 17l5-5 4 3 8-8"/><path d="M15 7h5v5"/></svg>Portefeuille</button>
+  <button data-t="sem"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Semaines</button>
+  <button data-t="ver"><svg viewBox="0 0 24 24"><path d="M5 12l4 4 10-10"/></svg>Verdict</button>
+</nav>
+<script>
+(function(){
+  "use strict";
+  var DATA = null, P = "quotidien", TAB = "jour";
+  var store = {
+    get: function(k){ try { return localStorage.getItem(k); } catch(e){ return null; } },
+    set: function(k,v){ try { localStorage.setItem(k,v); } catch(e){} },
+    del: function(k){ try { localStorage.removeItem(k); } catch(e){} }
+  };
+  P = store.get("pf") || "quotidien"; TAB = store.get("tab") || "jour";
+
+  var nf = function(x, d){ return x == null ? "—" : Number(x).toLocaleString("fr-FR", {minimumFractionDigits:d==null?2:d, maximumFractionDigits:d==null?2:d}); };
+  var pct = function(x){ return x == null ? "—" : (x > 0 ? "+" : "") + nf(x) + " %"; };
+  var cls = function(x){ return x == null ? "" : (x > 0 ? "pos" : (x < 0 ? "neg" : "")); };
+  var esc = function(s){ return String(s == null ? "" : s).replace(/[&<>"']/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]; }); };
+  var dfr = function(s, opt){ if(!s) return "—"; var d = new Date(s + "T12:00:00Z"); return d.toLocaleDateString("fr-FR", opt || {weekday:"long", day:"numeric", month:"long"}); };
+  var dshort = function(s){ return dfr(s, {day:"numeric", month:"short"}); };
+
+  function load(){
+    document.getElementById("updated").textContent = "Chargement…";
+    fetch("data/app.json?t=" + Date.now(), {cache:"no-store"})
+      .then(function(r){ if(!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
+      .then(function(j){ DATA = j; render(); })
+      .catch(function(e){
+        document.getElementById("updated").textContent = "Hors ligne";
+        if(!DATA) document.getElementById("main").innerHTML = '<div class="err">Impossible de charger les données (' + esc(e.message) + '). Vérifiez votre connexion puis touchez « Actualiser ».</div>';
+      });
+  }
+
+  function lineChart(series, opts){
+    // series: [{pts:[[date,val],...], color, dash}]
+    var W = 600, H = 220, L = 46, R = 8, T = 10, B = 24;
+    var all = []; series.forEach(function(s){ s.pts.forEach(function(p){ if(p[1] != null) all.push(p[1]); }); });
+    if(!all.length) return "";
+    var min = Math.min.apply(null, all), max = Math.max.apply(null, all);
+    if(opts && opts.base != null){ min = Math.min(min, opts.base); max = Math.max(max, opts.base); }
+    var pad = (max - min) * 0.08 || 10; min -= pad; max += pad;
+    var n = Math.max.apply(null, series.map(function(s){ return s.pts.length; }));
+    var x = function(i){ return L + (n <= 1 ? 0 : i * (W - L - R) / (n - 1)); };
+    var y = function(v){ return T + (max - v) * (H - T - B) / (max - min); };
+    var g = '<svg viewBox="0 0 ' + W + ' ' + H + '" width="100%" role="img" aria-label="Évolution du capital">';
+    for(var k = 0; k <= 4; k++){
+      var v = min + (max - min) * k / 4, yy = y(v);
+      g += '<line x1="' + L + '" x2="' + (W - R) + '" y1="' + yy + '" y2="' + yy + '" stroke="var(--line)"/>';
+      g += '<text x="' + (L - 6) + '" y="' + (yy + 4) + '" text-anchor="end">' + nf(v, 0) + '</text>';
+    }
+    if(opts && opts.base != null){ g += '<line x1="' + L + '" x2="' + (W - R) + '" y1="' + y(opts.base) + '" y2="' + y(opts.base) + '" stroke="var(--muted)" stroke-dasharray="4 4"/>'; }
+    var ref = series[0].pts;
+    [0, Math.floor((ref.length - 1) / 2), ref.length - 1].forEach(function(i, idx){
+      if(ref[i]) g += '<text x="' + x(i) + '" y="' + (H - 6) + '" text-anchor="' + (idx === 0 ? "start" : idx === 2 ? "end" : "middle") + '">' + dshort(ref[i][0]) + '</text>';
+    });
+    series.forEach(function(s){
+      var d = ""; s.pts.forEach(function(p, i){ if(p[1] != null) d += (d ? "L" : "M") + x(i).toFixed(1) + " " + y(p[1]).toFixed(1); });
+      g += '<path d="' + d + '" fill="none" stroke="' + s.color + '" stroke-width="' + (s.w || 2.2) + '" stroke-linejoin="round"' + (s.dash ? ' stroke-dasharray="' + s.dash + '"' : '') + '/>';
+    });
+    return g + '</svg>';
+  }
+
+  function doneKey(sig){ return "fait:" + P + ":" + sig.date_calcul; }
+
+  function viewJour(pf){
+    var h = "";
+    var t = DATA.test;
+    if(!pf.commence){
+      h += '<div class="card"><h2>Le test n\'a pas encore commencé</h2><p>Le premier signal sera calculé à la clôture du <b>' + esc(dfr(t.debut)) + '</b> et apparaîtra ici le lendemain matin.</p>';
+      if(DATA.apercu){
+        var a = DATA.apercu;
+        h += '<p class="small muted">Aperçu indicatif (non enregistré) avec les données du ' + esc(dfr(a.date)) + ' : filtre Bitcoin ' + (a.filtre ? "positif" : "négatif (cash)") + ', classement IA : <b>' + a.classement.map(esc).join(", ") + '</b>.</p>';
+      }
+      return h + '</div>';
+    }
+    var s = pf.signal;
+    var head = P === "quotidien" ? "Signal pour " + dfr(s.applicable_le) : "Signal de la semaine (dimanche " + dshort(s.date_calcul) + ")";
+    h += '<div class="card"><h2>' + esc(head) + '</h2>';
+    h += s.filtre ? '<span class="pill ok">● Filtre Bitcoin positif</span>' : '<span class="pill ko">● Filtre Bitcoin négatif</span>';
+    h += '<div class="small muted" style="margin-top:6px">BTC ' + pct(s.btc_vs_moy100) + ' par rapport à sa moyenne ' + t.filtre_jours + ' jours</div>';
+    if(s.top.length){
+      h += '<div class="coins">' + s.top.map(function(c){ return '<div class="coin"><b>' + esc(c) + '</b><span>' + nf(100 / s.top.length, 0) + ' %</span></div>'; }).join("") + '</div>';
+    } else {
+      h += '<div class="cash">Rester en USDT</div><div class="small muted" style="text-align:center">Aucune crypto tant que le filtre est négatif.</div>';
+    }
+    var major = s.actions.filter(function(a){ return a.majeur; }), minor = s.actions.filter(function(a){ return !a.majeur; });
+    h += '<div style="margin-top:12px"><b>À faire</b></div>';
+    if(!major.length) h += '<div class="act"><span class="muted">Aucun changement important</span></div>';
+    major.forEach(function(a){
+      h += '<div class="act"><span><span class="tag ' + (a.action === "ACHETER" ? "buy" : "sell") + '">' + a.action + '</span><b>' + esc(a.crypto) + '</b> <span class="muted small">' + esc(a.type) + '</span></span><span>' + nf(a.usdt) + ' USDT</span></div>';
+    });
+    if(minor.length){
+      h += '<details><summary>' + minor.length + ' petit(s) ajustement(s) facultatif(s)</summary>';
+      minor.forEach(function(a){ h += '<div class="act small"><span>' + a.action.toLowerCase() + ' ' + esc(a.crypto) + '</span><span>' + nf(a.usdt) + ' USDT</span></div>'; });
+      h += '</details>';
+    }
+    var k = doneKey(s), d = store.get(k);
+    h += '<button class="done' + (d ? " is" : "") + '" id="donebtn">' + (d ? "✓ Fait le " + esc(d) + " (toucher pour annuler)" : (major.length ? "✅ C'est fait" : "✅ Vu, rien à faire")) + '</button>';
+    if(s.prochain) h += '<div class="small muted" style="margin-top:8px;text-align:center">Prochain signal : ' + esc(dfr(s.prochain)) + ' (disponible le lendemain matin)</div>';
+    h += '</div>';
+
+    var j = pf.jour;
+    if(j && j.date){
+      h += '<div class="card"><h2>Résultat du ' + esc(dfr(j.date)) + '</h2>';
+      h += '<div class="big ' + cls(j.variation_pct) + '">' + pct(j.variation_pct) + '</div>';
+      h += '<div class="' + cls(j.variation_usdt) + '">' + (j.variation_usdt > 0 ? "+" : "") + nf(j.variation_usdt) + ' USDT</div>';
+      h += '<div class="small muted" style="margin:4px 0 6px">Bitcoin le même jour : <span class="' + cls(j.btc_pct) + '">' + pct(j.btc_pct) + '</span></div>';
+      if(j.details && j.details.length){ j.details.forEach(function(c){ h += '<div class="row small"><span><b>' + esc(c.crypto) + '</b></span><span class="' + cls(c.variation) + '">' + pct(c.variation) + ' · ' + nf(c.gain) + ' USDT</span></div>'; }); }
+      else h += '<div class="small muted">Portefeuille en USDT ce jour-là (aucune variation).</div>';
+      h += '</div>';
+    }
+    h += '<div class="card"><h2>Portefeuille fictif</h2><div class="kpis">' +
+      '<div class="kpi"><div class="l">Valeur</div><div class="v">' + nf(pf.valeur) + ' $</div></div>' +
+      '<div class="kpi"><div class="l">Depuis le début</div><div class="v ' + cls(pf.rendement_pct) + '">' + pct(pf.rendement_pct) + '</div></div>' +
+      '<div class="kpi"><div class="l">Bitcoin (même capital)</div><div class="v ' + cls(pf.btc_rendement_pct) + '">' + pct(pf.btc_rendement_pct) + '</div></div>' +
+      '<div class="kpi"><div class="l">Frais payés</div><div class="v">' + nf(pf.frais_total) + ' $</div></div></div></div>';
+    if(DATA.classement){
+      var sc = DATA.classement.scores, keys = Object.keys(sc), mx = Math.max.apply(null, keys.map(function(k){ return Math.abs(sc[k]); })) || 1;
+      h += '<div class="card"><h2>Classement IA du ' + esc(dshort(DATA.classement.date)) + '</h2>';
+      keys.forEach(function(c, i){ var v = sc[c]; h += '<div class="rank"><span class="muted">' + (i + 1) + '</span><b>' + esc(c) + '</b><div class="b' + (v < 0 ? " n" : "") + '" style="width:' + Math.max(4, Math.abs(v) / mx * 100) + '%"></div></div>'; });
+      h += '<div class="small muted">Bleu = cryptos que l\'IA préfère pour les 7 prochains jours, rouge = celles qu\'elle évite. Le portefeuille prend les 3 premières si le filtre est positif.</div></div>';
+    }
+    return h;
+  }
+
+  function viewPf(pf){
+    if(!pf.commence) return '<div class="card">Le portefeuille démarre le ' + esc(dfr(DATA.test.debut)) + '.</div>';
+    var h = '<div class="card"><h2>' + esc(pf.nom) + '</h2><div class="big">' + nf(pf.valeur) + ' USDT</div>';
+    h += '<div class="' + cls(pf.rendement_pct) + '">' + pct(pf.rendement_pct) + ' depuis le ' + esc(dshort(DATA.test.debut)) + '</div>';
+    h += lineChart([{pts: pf.courbe, color: "var(--accent)", w: 2.6}, {pts: DATA.btc_courbe.slice(0, pf.courbe.length), color: "#f59e0b"}], {base: DATA.test.capital});
+    h += '<div class="legend"><span><i style="background:var(--accent)"></i>IA (fictif)</span><span><i style="background:#f59e0b"></i>Bitcoin</span><span><i style="background:var(--muted)"></i>Départ ' + nf(DATA.test.capital, 0) + ' $</span></div></div>';
+    h += '<div class="card"><h2>Positions actuelles</h2>';
+    if(!pf.positions.length) h += '<div class="row"><span>USDT</span><span>' + nf(pf.cash) + ' $ · 100 %</span></div>';
+    pf.positions.forEach(function(p){ h += '<div class="row"><span><b>' + esc(p.crypto) + '</b> <span class="small muted">' + nf(p.quantite, 4) + '</span></span><span>' + nf(p.valeur) + ' $ · ' + nf(p.poids, 1) + ' %</span></div>'; });
+    if(pf.positions.length && pf.cash > 1) h += '<div class="row"><span>USDT</span><span>' + nf(pf.cash) + ' $</span></div>';
+    h += '</div>';
+    var withAct = pf.historique.filter(function(x){ return x.actions.length; });
+    var followed = withAct.filter(function(x){ return store.get("fait:" + P + ":" + x.date); }).length;
+    h += '<div class="card"><h2>Statistiques</h2><div class="kpis">' +
+      '<div class="kpi"><div class="l">Pire baisse IA</div><div class="v neg">' + pct(pf.pire_baisse_pct) + '</div></div>' +
+      '<div class="kpi"><div class="l">Pire baisse Bitcoin</div><div class="v neg">' + pct(pf.btc_pire_baisse_pct) + '</div></div>' +
+      '<div class="kpi"><div class="l">Transactions</div><div class="v">' + pf.transactions + '</div></div>' +
+      '<div class="kpi"><div class="l">Frais payés</div><div class="v">' + nf(pf.frais_total) + ' $</div></div>' +
+      '<div class="kpi"><div class="l">Décisions en cash</div><div class="v">' + pf.decisions_cash + ' / ' + pf.decisions + '</div></div>' +
+      '<div class="kpi"><div class="l">Signaux suivis (« C\'est fait »)</div><div class="v">' + followed + ' / ' + withAct.length + '</div></div></div></div>';
+    h += '<div class="card"><h2>Derniers signaux</h2>';
+    pf.historique.slice().reverse().slice(0, 30).forEach(function(x){
+      var f = store.get("fait:" + P + ":" + x.date);
+      h += '<div class="row small"><span>' + esc(dshort(x.date)) + ' ' + (f ? "✓" : "") + '</span><span>' + (x.top.length ? x.top.map(esc).join(", ") : '<span class="muted">USDT</span>') + '</span><span>' + nf(x.valeur) + ' $</span></div>';
+    });
+    return h + '</div>';
+  }
+
+  function viewSem(){
+    var w = DATA.semaines.slice().reverse();
+    var h = '<div class="card"><h2>Bilan de chaque semaine</h2>';
+    if(!w.length) h += '<div class="muted">Le premier bilan apparaîtra une semaine après le début du test.</div>';
+    w.forEach(function(s){
+      var ic = s.ic == null ? '<span class="muted">—</span>' : (s.ic > 0 ? '<span class="pill ok">IA a bien classé</span>' : '<span class="pill ko">IA s\'est trompée</span>');
+      h += '<div class="week"><div style="display:flex;justify-content:space-between;align-items:center"><b>Semaine ' + s.semaine + '</b>' + ic + '</div>';
+      h += '<div class="small muted">' + esc(dshort(s.du)) + ' → ' + esc(dshort(s.au)) + ' · hebdo : ' + (s.top_hebdo.length ? s.top_hebdo.map(esc).join(", ") : "USDT") + ' · quotidien : ' + s.jours_cash_quotidien + ' j en cash</div>';
+      h += '<div class="wgrid"><div>Quotidien<b class="' + cls(s.quotidien) + '">' + pct(s.quotidien) + '</b></div><div>Hebdo<b class="' + cls(s.hebdomadaire) + '">' + pct(s.hebdomadaire) + '</b></div><div>Bitcoin<b class="' + cls(s.btc) + '">' + pct(s.btc) + '</b></div></div></div>';
+    });
+    return h + '</div>';
+  }
+
+  function viewVer(){
+    var t = DATA.test, h = "";
+    ["quotidien", "hebdomadaire"].forEach(function(p){
+      var pf = DATA.portefeuilles[p], v = pf.verdict || {semaines:0, criteres:[], texte:"—", statut:"pas commencé"};
+      var pc = v.statut === "validé" ? "ok" : (v.statut === "non validé" ? "ko" : "wait");
+      h += '<div class="card"><h2>' + esc(pf.nom) + '</h2><span class="pill ' + pc + '">' + esc(v.statut.toUpperCase()) + '</span>';
+      h += '<div class="bar"><i style="width:' + Math.min(100, v.semaines / t.semaines * 100) + '%"></i></div><div class="small muted">' + v.semaines + ' / ' + t.semaines + ' semaines</div>';
+      v.criteres.forEach(function(c){ h += '<div class="crit"><span>' + (c.ok ? "✅" : "❌") + '</span><span>' + esc(c.nom) + '</span></div>'; });
+      h += '<p class="small">' + esc(v.texte) + '</p></div>';
+    });
+    var q = DATA.portefeuilles.quotidien, w = DATA.portefeuilles.hebdomadaire;
+    if(q.commence){
+      h += '<div class="card"><h2>Comparaison</h2><table><tr><th></th><th>Quotidien</th><th>Hebdo</th><th>Bitcoin</th></tr>' +
+        '<tr><td>Rendement</td><td class="' + cls(q.rendement_pct) + '">' + pct(q.rendement_pct) + '</td><td class="' + cls(w.rendement_pct) + '">' + pct(w.rendement_pct) + '</td><td class="' + cls(q.btc_rendement_pct) + '">' + pct(q.btc_rendement_pct) + '</td></tr>' +
+        '<tr><td>Pire baisse</td><td>' + pct(q.pire_baisse_pct) + '</td><td>' + pct(w.pire_baisse_pct) + '</td><td>' + pct(q.btc_pire_baisse_pct) + '</td></tr>' +
+        '<tr><td>Frais</td><td>' + nf(q.frais_total) + ' $</td><td>' + nf(w.frais_total) + ' $</td><td>—</td></tr>' +
+        '<tr><td>Transactions</td><td>' + q.transactions + '</td><td>' + w.transactions + '</td><td>1</td></tr></table>';
+      h += '<div class="small muted" style="margin-top:8px">IC moyen (qualité des classements) : ' + (DATA.ic.moyen == null ? "pas encore mesurable" : nf(DATA.ic.moyen, 3)) + '</div></div>';
+    }
+    h += '<div class="card small"><h2>Les règles du test</h2>Début ' + esc(dfr(t.debut)) + ', fin ' + esc(dfr(t.fin)) + ' · ' + nf(t.capital, 0) + ' USDT fictifs par portefeuille · top ' + t.top_k + ' cryptos · filtre Bitcoin &gt; moyenne ' + t.filtre_jours + ' jours · frais ' + nf(t.frais_pct) + ' % + glissement ' + nf(t.slippage_pct) + ' %.<br><br>' +
+      '3 critères sur 3 = VALIDÉ · 2 sur 3 = À PROLONGER · 0 ou 1 = NON VALIDÉ.</div>';
+    return h;
+  }
+
+  function render(){
+    if(!DATA) return;
+    document.getElementById("updated").textContent = "Données du " + dshort(DATA.donnees_jusqu_au) + " · mis à jour " + DATA.genere_le;
+    document.querySelectorAll("#seg button").forEach(function(b){ b.classList.toggle("on", b.dataset.p === P); });
+    document.querySelectorAll("#nav button").forEach(function(b){ b.classList.toggle("on", b.dataset.t === TAB); });
+    document.getElementById("seg").style.display = (TAB === "sem" || TAB === "ver") ? "none" : "flex";
+    var pf = DATA.portefeuilles[P], h;
+    if(TAB === "jour") h = viewJour(pf); else if(TAB === "pf") h = viewPf(pf); else if(TAB === "sem") h = viewSem(); else h = viewVer();
+    h += '<div class="notice">Argent fictif — aucun ordre réel n\'est passé. Outil de recherche, pas un conseil financier.</div>';
+    document.getElementById("main").innerHTML = h;
+    var b = document.getElementById("donebtn");
+    if(b){ b.onclick = function(){
+      var k = doneKey(pf.signal);
+      if(store.get(k)) store.del(k); else store.set(k, new Date().toLocaleString("fr-FR", {day:"numeric", month:"short", hour:"2-digit", minute:"2-digit"}));
+      render();
+    }; }
+  }
+
+  document.getElementById("seg").addEventListener("click", function(e){ var b = e.target.closest("button"); if(b){ P = b.dataset.p; store.set("pf", P); render(); window.scrollTo(0,0); } });
+  document.getElementById("nav").addEventListener("click", function(e){ var b = e.target.closest("button"); if(b){ TAB = b.dataset.t; store.set("tab", TAB); render(); window.scrollTo(0,0); } });
+  document.getElementById("refresh").addEventListener("click", load);
+  document.addEventListener("visibilitychange", function(){ if(document.visibilityState === "visible") load(); });
+  if("serviceWorker" in navigator){ navigator.serviceWorker.register("sw.js").catch(function(){}); }
+  load();
+})();
+</script>
+</body>
+</html>
