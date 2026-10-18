@@ -1,0 +1,27 @@
+name: Diagnostic connexion Binance
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  diag:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Tester l'accès aux serveurs Binance depuis GitHub
+        run: |
+          mkdir -p data
+          {
+            echo "date: $(date -u)"
+            for u in https://demo-api.binance.com/api/v3/ping https://demo-api.binance.com/api/v3/ticker/price?symbol=BTCUSDT https://data-api.binance.vision/api/v3/ticker/price?symbol=BTCUSDT https://api.binance.com/api/v3/ping https://testnet.binance.vision/api/v3/ping; do
+              code=$(curl -s -o /tmp/r.txt -w "%{http_code}" --max-time 20 "$u")
+              echo "$u -> HTTP $code : $(head -c 200 /tmp/r.txt)"
+            done
+          } > data/diagnostic.txt
+          cat data/diagnostic.txt
+          git config user.name "signal-ia-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/diagnostic.txt && git commit -m "Diagnostic Binance" && git push
