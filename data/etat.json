@@ -1,0 +1,14 @@
+{
+ "classements": {},
+ "quotidien": {
+  "cash": 1000.0,
+  "qty": {},
+  "history": []
+ },
+ "hebdomadaire": {
+  "cash": 1000.0,
+  "qty": {},
+  "history": []
+ },
+ "btc_qty": null
+}
