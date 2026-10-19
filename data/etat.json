@@ -1,14 +1,136 @@
 {
- "classements": {},
+ "classements": {
+  "2026-10-18": {
+   "BNB": 0.10917,
+   "TRX": 0.08561,
+   "BTC": 0.06962,
+   "ETH": 0.0571,
+   "SOL": 0.05417,
+   "LINK": 0.03593,
+   "ATOM": 0.02674,
+   "XRP": 0.02428,
+   "DOT": 0.01948,
+   "XLM": 0.01906,
+   "ADA": 0.01849,
+   "DOGE": 0.00961,
+   "LTC": 0.00853,
+   "AVAX": -0.00485,
+   "BCH": -0.01805
+  }
+ },
  "quotidien": {
-  "cash": 1000.0,
-  "qty": {},
-  "history": []
+  "cash": 0.0,
+  "qty": {
+   "BNBUSDT": 0.4601212858512128,
+   "BTCUSDT": 0.00405320928117947,
+   "TRXUSDT": 1000.4007614467488
+  },
+  "history": [
+   {
+    "date": "2026-10-18",
+    "filtre": true,
+    "btc_vs_moy100": 10.61,
+    "top": [
+     "BNB",
+     "TRX",
+     "BTC"
+    ],
+    "valeur": 1000.0,
+    "frais": 1.5,
+    "cash_apres": 0.0,
+    "positions": {
+     "BNBUSDT": 0.4601212858512128,
+     "BTCUSDT": 0.00405320928117947,
+     "TRXUSDT": 1000.4007614467488
+    },
+    "actions": [
+     {
+      "crypto": "BNB",
+      "action": "ACHETER",
+      "usdt": 332.83,
+      "prix": 723.36,
+      "frais": 0.4992,
+      "type": "entr\u00e9e",
+      "majeur": true
+     },
+     {
+      "crypto": "BTC",
+      "action": "ACHETER",
+      "usdt": 332.83,
+      "prix": 82116.0,
+      "frais": 0.4992,
+      "type": "entr\u00e9e",
+      "majeur": true
+     },
+     {
+      "crypto": "TRX",
+      "action": "ACHETER",
+      "usdt": 332.83,
+      "prix": 0.3327,
+      "frais": 0.4992,
+      "type": "entr\u00e9e",
+      "majeur": true
+     }
+    ]
+   }
+  ]
  },
  "hebdomadaire": {
-  "cash": 1000.0,
-  "qty": {},
-  "history": []
+  "cash": 0.0,
+  "qty": {
+   "BNBUSDT": 0.4601212858512128,
+   "BTCUSDT": 0.00405320928117947,
+   "TRXUSDT": 1000.4007614467488
+  },
+  "history": [
+   {
+    "date": "2026-10-18",
+    "filtre": true,
+    "btc_vs_moy100": 10.61,
+    "top": [
+     "BNB",
+     "TRX",
+     "BTC"
+    ],
+    "valeur": 1000.0,
+    "frais": 1.5,
+    "cash_apres": 0.0,
+    "positions": {
+     "BNBUSDT": 0.4601212858512128,
+     "BTCUSDT": 0.00405320928117947,
+     "TRXUSDT": 1000.4007614467488
+    },
+    "actions": [
+     {
+      "crypto": "BNB",
+      "action": "ACHETER",
+      "usdt": 332.83,
+      "prix": 723.36,
+      "frais": 0.4992,
+      "type": "entr\u00e9e",
+      "majeur": true
+     },
+     {
+      "crypto": "BTC",
+      "action": "ACHETER",
+      "usdt": 332.83,
+      "prix": 82116.0,
+      "frais": 0.4992,
+      "type": "entr\u00e9e",
+      "majeur": true
+     },
+     {
+      "crypto": "TRX",
+      "action": "ACHETER",
+      "usdt": 332.83,
+      "prix": 0.3327,
+      "frais": 0.4992,
+      "type": "entr\u00e9e",
+      "majeur": true
+     }
+    ]
+   }
+  ]
  },
- "btc_qty": null
+ "btc_qty": 0.012159627843538409
 }
