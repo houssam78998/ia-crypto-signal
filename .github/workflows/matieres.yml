@@ -1,0 +1,45 @@
+name: Signal matières premières
+
+on:
+  schedule:
+    - cron: "30 22 * * 1-5"   # chaque soir de semaine à 22:30 UTC (23:30 au Maroc), après la clôture des métaux
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: matieres
+  cancel-in-progress: false
+
+jobs:
+  matieres:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: matieres/requirements.txt
+
+      - name: Installer les bibliothèques
+        run: |
+          pip install --index-url https://download.pytorch.org/whl/cpu torch
+          pip install -r matieres/requirements.txt
+
+      - name: Faire voter les robots et mettre à jour les portefeuilles fictifs
+        env:
+          DATABENTO_API_KEY: ${{ secrets.DATABENTO_API_KEY }}
+        run: python matieres/run.py
+
+      - name: Enregistrer les résultats
+        run: |
+          git config user.name "signal-ia-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add matieres docs/data/matieres.json
+          git commit -m "Matières premières du $(date -u +%Y-%m-%d)" || echo "Rien de nouveau"
+          git pull --rebase
+          git push

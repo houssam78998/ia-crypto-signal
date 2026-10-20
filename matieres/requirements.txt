@@ -1,0 +1,5 @@
+stable-baselines3==2.9.0
+gymnasium==1.4.0
+databento==0.87.0
+pandas>=2.2,<3
+numpy>=1.26,<3

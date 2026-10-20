@@ -1,4 +1,4 @@
-# Signal IA Crypto
+# Signal IA (crypto + matières premières)
 
 Application mobile (Android et iPhone) qui affiche chaque jour le signal de l'IA crypto v4. Elle suit deux portefeuilles **fictifs** de 1 000 USDT pendant 26 semaines : un avec un signal quotidien, l'autre avec un signal hebdomadaire.
 
@@ -27,3 +27,10 @@ Application mobile (Android et iPhone) qui affiche chaque jour le signal de l'IA
 - Le bouton « C'est fait » est enregistré seulement sur le téléphone où vous l'avez touché.
 - Si GitHub désactive la tâche automatique, faute d'activité sur le dépôt, il envoie un e-mail. Il suffit alors de cliquer sur « Enable workflow » dans l'onglet Actions.
 - Ne modifiez pas les réglages de `engine/run.py` pendant les 26 semaines.
+
+## Matières premières (ajouté le 20 octobre 2026)
+- Onglet **« Matières premières »** en haut de l'application : argent, bovins et cuivre, **1 000 $ fictifs chacun**.
+- Robots v11 (apprentissage par renforcement + autoencodeur), 3 par marché, décision à la majorité : **ACHETER** ou **DEHORS** (jamais de vente à découvert).
+- Chaque soir de semaine à 22:30 UTC, `.github/workflows/matieres.yml` lance `matieres/run.py` (données CME Databento, secret `DATABENTO_API_KEY`) et écrit `docs/data/matieres.json`.
+- Test du 20 octobre 2026 au 20 avril 2027. Verdict : VALIDÉ (3 critères sur 3), À PROLONGER (2), NON VALIDÉ (0 ou 1).
+- Le moteur crypto (`engine/run.py`) et son test ne sont pas modifiés.

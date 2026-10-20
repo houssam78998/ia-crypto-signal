@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Signal IA Crypto</title>
-<meta name="description" content="Signal quotidien et hebdomadaire de l'IA crypto v4 — test en argent fictif">
+<title>Signal IA</title>
+<meta name="description" content="Signaux des IA crypto et matières premières — tests en argent fictif">
 <meta name="theme-color" content="#0f1720" media="(prefers-color-scheme: dark)">
 <meta name="theme-color" content="#f6f7f9" media="(prefers-color-scheme: light)">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -41,6 +41,13 @@ header{position:sticky;top:0;z-index:5;background:var(--bg);padding:calc(10px + 
 .seg{display:flex;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:3px;margin-top:10px}
 .seg button{flex:1;border:0;background:transparent;color:var(--muted);padding:8px 4px;border-radius:9px;font-size:14px;font-weight:600}
 .seg button.on{background:var(--accent);color:#fff}
+.dom{margin-top:8px} .dom button.on{background:var(--ink);color:var(--bg)}
+.sig{font-size:28px;font-weight:800;border-radius:14px;padding:14px;text-align:center;margin:10px 0 6px}
+.sig.buy{background:var(--pos-bg);color:var(--pos)} .sig.out{background:var(--warn-bg);color:var(--warn)}
+.votes{display:flex;gap:6px;justify-content:center;margin:6px 0}
+.votes span{width:30px;height:30px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:13px;font-weight:800}
+.votes .v1{background:var(--pos-bg);color:var(--pos)} .votes .v0{background:var(--bg);color:var(--muted);border:1px solid var(--line)}
+.todo{background:var(--bg);border-radius:12px;padding:12px;margin-top:10px}
 main{padding:4px 16px calc(84px + env(safe-area-inset-bottom));max-width:640px;margin:0 auto}
 .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 14px;margin:12px 0;box-shadow:var(--shadow)}
 .card h2{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:0 0 10px;font-weight:700}
@@ -92,8 +99,17 @@ th{font-size:12px;color:var(--muted);font-weight:600;border-top:0}
 <body>
 <header>
   <div class="top">
-    <div><h1>Signal IA Crypto</h1><div class="updated" id="updated">Chargement…</div></div>
+    <div><h1 id="title">Signal IA</h1><div class="updated" id="updated">Chargement…</div></div>
     <button class="iconbtn" id="refresh" aria-label="Actualiser">↻</button>
+  </div>
+  <div class="seg dom" id="dom">
+    <button data-d="crypto" class="on">Crypto</button>
+    <button data-d="matieres">Matières premières</button>
+  </div>
+  <div class="seg" id="mseg" style="display:none">
+    <button data-m="SI" class="on">Argent</button>
+    <button data-m="LE">Bovins</button>
+    <button data-m="HG">Cuivre</button>
   </div>
   <div class="seg" id="seg">
     <button data-p="quotidien" class="on">Quotidien</button>
@@ -104,19 +120,19 @@ th{font-size:12px;color:var(--muted);font-weight:600;border-top:0}
 <nav id="nav">
   <button data-t="jour" class="on"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Aujourd'hui</button>
   <button data-t="pf"><svg viewBox="0 0 24 24"><path d="M3 17l5-5 4 3 8-8"/><path d="M15 7h5v5"/></svg>Portefeuille</button>
-  <button data-t="sem"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Semaines</button>
+  <button data-t="sem" id="navsem"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Semaines</button>
   <button data-t="ver"><svg viewBox="0 0 24 24"><path d="M5 12l4 4 10-10"/></svg>Verdict</button>
 </nav>
 <script>
 (function(){
   "use strict";
-  var DATA = null, P = "quotidien", TAB = "jour";
+  var DATA = null, P = "quotidien", TAB = "jour", MDATA = null, DOM = "crypto", MK = "SI";
   var store = {
     get: function(k){ try { return localStorage.getItem(k); } catch(e){ return null; } },
     set: function(k,v){ try { localStorage.setItem(k,v); } catch(e){} },
     del: function(k){ try { localStorage.removeItem(k); } catch(e){} }
   };
-  P = store.get("pf") || "quotidien"; TAB = store.get("tab") || "jour";
+  P = store.get("pf") || "quotidien"; TAB = store.get("tab") || "jour"; DOM = store.get("dom") || "crypto"; MK = store.get("mk") || "SI";
 
   var nf = function(x, d){ return x == null ? "—" : Number(x).toLocaleString("fr-FR", {minimumFractionDigits:d==null?2:d, maximumFractionDigits:d==null?2:d}); };
   var pct = function(x){ return x == null ? "—" : (x > 0 ? "+" : "") + nf(x) + " %"; };
@@ -132,8 +148,107 @@ th{font-size:12px;color:var(--muted);font-weight:600;border-top:0}
       .then(function(j){ DATA = j; render(); })
       .catch(function(e){
         document.getElementById("updated").textContent = "Hors ligne";
-        if(!DATA) document.getElementById("main").innerHTML = '<div class="err">Impossible de charger les données (' + esc(e.message) + '). Vérifiez votre connexion puis touchez « Actualiser ».</div>';
+        if(!DATA && DOM === "crypto") document.getElementById("main").innerHTML = '<div class="err">Impossible de charger les données (' + esc(e.message) + '). Vérifiez votre connexion puis touchez « Actualiser ».</div>';
       });
+  }
+
+  function loadMat(){
+    fetch("data/matieres.json?t=" + Date.now(), {cache:"no-store"})
+      .then(function(r){ if(!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
+      .then(function(j){ MDATA = j; render(); })
+      .catch(function(e){ if(DOM === "matieres" && !MDATA){ document.getElementById("updated").textContent = "Pas encore de données";
+        document.getElementById("main").innerHTML = '<div class="card">Les premiers signaux des matières premières apparaîtront après le premier calcul (chaque soir de semaine vers 23 h 30, heure du Maroc).</div>'; } });
+  }
+
+  // ------------------------------------------------------------- matières premières
+  var dtime = function(s){ if(!s) return "—"; var d = new Date(s.replace(" ", "T") + "Z"); return d.toLocaleDateString("fr-FR", {weekday:"short", day:"numeric", month:"short"}) + " " + d.toLocaleTimeString("fr-FR", {hour:"2-digit", minute:"2-digit"}); };
+  function mkt(){ var ms = MDATA.marches; for(var i = 0; i < ms.length; i++){ if(ms[i].code === MK) return ms[i]; } return ms[0]; }
+  function mDoneKey(m){ return "mfait:" + m.code + ":" + (m.dernier_changement ? m.dernier_changement.date : ""); }
+  function votesHtml(v){ if(!v) return ""; return '<div class="votes">' + v.map(function(x, i){ return '<span class="v' + x + '" title="Robot ' + (i + 1) + '">' + (x ? "A" : "D") + '</span>'; }).join("") + '</div><div class="small muted" style="text-align:center">' + v.filter(function(x){ return x; }).length + ' robot(s) sur 3 votent ACHETER</div>'; }
+
+  function matJour(m){
+    var t = MDATA.test, h = "";
+    if(!m.commence){
+      h += '<div class="card"><h2>' + esc(m.nom) + ' — le test commence le ' + esc(dfr(t.debut)) + '</h2>';
+      if(m.apercu) h += '<p class="small muted">Aperçu indicatif (non enregistré) :</p><div class="sig ' + (m.apercu.signal === "ACHETER" ? "buy" : "out") + '">' + esc(m.apercu.signal) + '</div>' + votesHtml(m.apercu.votes);
+      return h + '</div>';
+    }
+    var buy = m.signal === "ACHETER", ch = m.dernier_changement;
+    h += '<div class="card"><h2>' + esc(m.nom) + ' — signal actuel</h2><div class="sig ' + (buy ? "buy" : "out") + '">' + (buy ? "ACHETER / GARDER" : "DEHORS") + '</div>' + votesHtml(m.votes);
+    h += '<div class="todo"><b>Que faire ?</b><br>';
+    var fresh = ch && ch.change && ch.date === m.signal_depuis;
+    if(fresh && buy) h += '<span class="tag buy">ACHETER</span> ' + esc(m.nom) + ' au prix du marché. Prix de référence : <b>' + nf(ch.prix, 3) + '</b> ' + esc(m.unite) + '.';
+    else if(fresh && !buy) h += '<span class="tag sell">VENDRE</span> ta position ' + esc(m.nom) + ' au prix du marché (si tu en as). Prix de référence : <b>' + nf(ch.prix, 3) + '</b> ' + esc(m.unite) + '.';
+    else if(buy) h += 'Rien à faire : <b>garder</b> la position achetée le ' + esc(dtime(m.signal_depuis_fin)) + '.';
+    else h += 'Rien à faire : <b>rester dehors</b>.';
+    h += '<div class="small muted" style="margin-top:6px">Signal décidé le ' + esc(dtime(m.signal_depuis_fin)) + ' (heure du Maroc). Petit écart de prix (0,1 à 0,5 %) avec ton courtier = normal.</div></div>';
+    var k = mDoneKey(m), d = store.get(k);
+    if(fresh) h += '<button class="done' + (d ? " is" : "") + '" id="mdone">' + (d ? "✓ Fait le " + esc(d) + " (toucher pour annuler)" : "✅ C'est fait") + '</button>';
+    h += '<div class="small muted" style="margin-top:8px;text-align:center">Prix actuel : ' + nf(m.prix_actuel, 3) + ' ' + esc(m.unite) + ' · prochaine décision dans environ ' + nf(m.prochaine_decision_jours, 1) + ' jour(s)</div></div>';
+    h += '<div class="card"><h2>Portefeuille fictif ' + esc(m.nom) + '</h2><div class="kpis">' +
+      '<div class="kpi"><div class="l">Valeur (robots)</div><div class="v">' + nf(m.valeur) + ' $</div></div>' +
+      '<div class="kpi"><div class="l">Depuis le début</div><div class="v ' + cls(m.rendement_pct) + '">' + pct(m.rendement_pct) + '</div></div>' +
+      '<div class="kpi"><div class="l">« Acheter et garder »</div><div class="v ' + cls(m.garder_rendement_pct) + '">' + pct(m.garder_rendement_pct) + '</div></div>' +
+      '<div class="kpi"><div class="l">Frais payés</div><div class="v">' + nf(m.frais) + ' $</div></div></div></div>';
+    h += '<div class="card"><h2>Ce que ces robots ont appris</h2><p class="small">' + esc(m.appris) + '</p><p class="small muted">Test historique 2021–2026 : robots ' + pct(m.backtest.robot) + '/an, « garder » ' + pct(m.backtest.garder) + '/an.</p></div>';
+    return h;
+  }
+
+  function matPf(m){
+    if(!m.commence) return '<div class="card">Le portefeuille ' + esc(m.nom) + ' démarre le ' + esc(dfr(MDATA.test.debut)) + '.</div>';
+    var h = '<div class="card"><h2>' + esc(m.nom) + ' — 1 000 $ fictifs</h2><div class="big">' + nf(m.valeur) + ' $</div>';
+    h += '<div class="' + cls(m.rendement_pct) + '">' + pct(m.rendement_pct) + ' depuis le ' + esc(dshort(MDATA.test.debut)) + '</div>';
+    var c = m.courbe;
+    if(c.length > 1){
+      h += lineChart([{pts: c.map(function(p){ return [p.d, p.robot]; }), color: "var(--accent)", w: 2.6}, {pts: c.map(function(p){ return [p.d, p.garder]; }), color: "#f59e0b"}], {base: MDATA.test.capital});
+      h += '<div class="legend"><span><i style="background:var(--accent)"></i>Robots (fictif)</span><span><i style="background:#f59e0b"></i>Acheter et garder</span><span><i style="background:var(--muted)"></i>Départ 1 000 $</span></div>';
+    } else h += '<div class="small muted" style="margin-top:8px">La courbe apparaîtra après quelques jours.</div>';
+    h += '</div><div class="card"><h2>Statistiques</h2><div class="kpis">' +
+      '<div class="kpi"><div class="l">Pire baisse robots</div><div class="v neg">' + pct(m.pire_baisse_pct) + '</div></div>' +
+      '<div class="kpi"><div class="l">Pire baisse « garder »</div><div class="v neg">' + pct(m.garder_pire_baisse_pct) + '</div></div>' +
+      '<div class="kpi"><div class="l">Changements de position</div><div class="v">' + m.changements + '</div></div>' +
+      '<div class="kpi"><div class="l">Frais payés</div><div class="v">' + nf(m.frais) + ' $</div></div></div></div>';
+    h += '<div class="card"><h2>Historique des signaux</h2>';
+    var ds = m.decisions.filter(function(x){ return x.change; }).slice().reverse();
+    if(!ds.length) h += '<div class="muted small">Aucun signal pour l\'instant.</div>';
+    ds.slice(0, 40).forEach(function(x){
+      var f = store.get("mfait:" + m.code + ":" + x.date);
+      var lab = x.signal === "ACHETER" ? "ACHETER" : (x.initial ? "DÉPART : DEHORS" : "SORTIR");
+      h += '<div class="row small"><span>' + esc(dtime(x.fin || x.date)) + ' ' + (f ? "✓" : "") + '</span><span><span class="tag ' + (x.signal === "ACHETER" ? "buy" : "sell") + '">' + lab + '</span></span><span>' + nf(x.prix, 3) + '</span></div>';
+    });
+    return h + '</div>';
+  }
+
+  function matVer(){
+    var t = MDATA.test, v = MDATA.verdict, h = "";
+    var pc = v.statut === "validé" ? "ok" : (v.statut === "non validé" ? "ko" : "wait");
+    h += '<div class="card"><h2>Verdict matières premières</h2><span class="pill ' + pc + '">' + esc(v.statut.toUpperCase()) + '</span>';
+    h += '<div class="bar"><i style="width:' + Math.min(100, t.jours_ecoules / t.jours_total * 100) + '%"></i></div><div class="small muted">' + t.jours_ecoules + ' / ' + t.jours_total + ' jours · fin le ' + esc(dfr(t.fin)) + '</div>';
+    (v.criteres || []).forEach(function(c){ h += '<div class="crit"><span>' + (c.ok ? "✅" : "❌") + '</span><span>' + esc(c.nom) + '</span></div>'; });
+    h += '<p class="small">' + esc(v.texte) + '</p></div>';
+    var ms = MDATA.marches.filter(function(x){ return x.commence; });
+    if(ms.length){
+      h += '<div class="card"><h2>Comparaison</h2><table><tr><th></th><th>Robots</th><th>Garder</th><th>Signal</th></tr>';
+      ms.forEach(function(x){ h += '<tr><td>' + esc(x.nom) + '</td><td class="' + cls(x.rendement_pct) + '">' + pct(x.rendement_pct) + '</td><td class="' + cls(x.garder_rendement_pct) + '">' + pct(x.garder_rendement_pct) + '</td><td>' + (x.signal === "ACHETER" ? "Acheté" : "Dehors") + '</td></tr>'; });
+      var T = MDATA.total;
+      h += '<tr><td><b>Total</b></td><td><b>' + nf(T.valeur) + ' $</b></td><td><b>' + nf(T.garder_valeur) + ' $</b></td><td></td></tr></table></div>';
+    }
+    h += '<div class="card small"><h2>Les règles du test</h2>Du ' + esc(dfr(t.debut)) + ' au ' + esc(dfr(t.fin)) + ' · 1 000 $ fictifs par marché (argent, bovins, cuivre) · 3 robots par marché (renforcement + autoencodeur v11), décision à la majorité · ACHETER ou rester DEHORS, jamais de vente à découvert · frais ' + nf(t.frais_aller_retour_pct) + ' % par aller-retour.<br><br>3 critères sur 3 = VALIDÉ · 2 sur 3 = À PROLONGER · 0 ou 1 = NON VALIDÉ.</div>';
+    return h;
+  }
+
+  function renderMat(){
+    document.getElementById("title").textContent = "Matières premières";
+    if(!MDATA){ document.getElementById("updated").textContent = "Chargement…"; return; }
+    document.getElementById("updated").textContent = "Bougies jusqu'au " + dtime(MDATA.donnees_jusqu_au) + " · mis à jour " + MDATA.genere_le;
+    document.querySelectorAll("#mseg button").forEach(function(b){ b.classList.toggle("on", b.dataset.m === MK); });
+    document.getElementById("mseg").style.display = TAB === "ver" ? "none" : "flex";
+    var m = mkt(), h;
+    if(TAB === "pf") h = matPf(m); else if(TAB === "ver") h = matVer(); else h = matJour(m);
+    h += '<div class="notice">Argent fictif — aucun ordre réel n\'est passé. Outil de recherche, pas un conseil financier.</div>';
+    document.getElementById("main").innerHTML = h;
+    var b = document.getElementById("mdone");
+    if(b){ b.onclick = function(){ var k = mDoneKey(m); if(store.get(k)) store.del(k); else store.set(k, new Date().toLocaleString("fr-FR", {day:"numeric", month:"short", hour:"2-digit", minute:"2-digit"})); renderMat(); }; }
   }
 
   function lineChart(series, opts){
@@ -294,6 +409,16 @@ th{font-size:12px;color:var(--muted);font-weight:600;border-top:0}
   }
 
   function render(){
+    document.querySelectorAll("#dom button").forEach(function(b){ b.classList.toggle("on", b.dataset.d === DOM); });
+    document.getElementById("navsem").style.display = DOM === "matieres" ? "none" : "";
+    if(DOM === "matieres"){
+      if(TAB === "sem") TAB = "jour";
+      document.getElementById("seg").style.display = "none";
+      document.querySelectorAll("#nav button").forEach(function(b){ b.classList.toggle("on", b.dataset.t === TAB); });
+      return renderMat();
+    }
+    document.getElementById("mseg").style.display = "none";
+    document.getElementById("title").textContent = "Signal IA Crypto";
     if(!DATA) return;
     document.getElementById("updated").textContent = "Données du " + dshort(DATA.donnees_jusqu_au) + " · mis à jour " + DATA.genere_le;
     document.querySelectorAll("#seg button").forEach(function(b){ b.classList.toggle("on", b.dataset.p === P); });
@@ -313,10 +438,12 @@ th{font-size:12px;color:var(--muted);font-weight:600;border-top:0}
 
   document.getElementById("seg").addEventListener("click", function(e){ var b = e.target.closest("button"); if(b){ P = b.dataset.p; store.set("pf", P); render(); window.scrollTo(0,0); } });
   document.getElementById("nav").addEventListener("click", function(e){ var b = e.target.closest("button"); if(b){ TAB = b.dataset.t; store.set("tab", TAB); render(); window.scrollTo(0,0); } });
-  document.getElementById("refresh").addEventListener("click", load);
-  document.addEventListener("visibilitychange", function(){ if(document.visibilityState === "visible") load(); });
+  document.getElementById("dom").addEventListener("click", function(e){ var b = e.target.closest("button"); if(b){ DOM = b.dataset.d; store.set("dom", DOM); render(); window.scrollTo(0,0); } });
+  document.getElementById("mseg").addEventListener("click", function(e){ var b = e.target.closest("button"); if(b){ MK = b.dataset.m; store.set("mk", MK); render(); window.scrollTo(0,0); } });
+  document.getElementById("refresh").addEventListener("click", function(){ load(); loadMat(); });
+  document.addEventListener("visibilitychange", function(){ if(document.visibilityState === "visible"){ load(); loadMat(); } });
   if("serviceWorker" in navigator){ navigator.serviceWorker.register("sw.js").catch(function(){}); }
-  load();
+  load(); loadMat(); render();
 })();
 </script>
 </body>
