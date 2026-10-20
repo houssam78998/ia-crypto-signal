@@ -33,9 +33,13 @@ jobs:
       - name: Faire voter les robots et mettre à jour les portefeuilles fictifs
         env:
           DATABENTO_API_KEY: ${{ secrets.DATABENTO_API_KEY }}
-        run: python matieres/run.py
+        shell: bash
+        run: |
+          set -o pipefail
+          python matieres/run.py 2>&1 | grep -v -i "api_key\|db-" | tee matieres/dernier_journal.txt
 
       - name: Enregistrer les résultats
+        if: always()
         run: |
           git config user.name "signal-ia-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
