@@ -36,7 +36,7 @@ jobs:
         shell: bash
         run: |
           set -o pipefail
-          python matieres/run.py 2>&1 | grep -v -i "api_key\|db-" | tee matieres/dernier_journal.txt
+          python matieres/run.py 2>&1 | grep -v "db-[A-Za-z0-9]" | tee matieres/dernier_journal.txt
 
       - name: Enregistrer les résultats
         if: always()
