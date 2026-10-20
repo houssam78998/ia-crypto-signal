@@ -1,0 +1,111 @@
+/home/runner/work/ia-crypto-signal/ia-crypto-signal/crypto_v2/run.py:97: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  parts = [("monthly", m.strftime("%Y-%m")) for m in pd.date_range(DATA_START, cur - pd.Timedelta(days=1), freq="MS")]
+/home/runner/work/ia-crypto-signal/ia-crypto-signal/crypto_v2/run.py:98: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  parts += [("daily", d.strftime("%Y-%m-%d")) for d in pd.date_range(cur, end.normalize() - pd.Timedelta(days=1), freq="D")]
+/home/runner/work/ia-crypto-signal/ia-crypto-signal/crypto_v2/run.py:146: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  keep = h[h["ts"] >= h["ts"].max() - pd.Timedelta(days=KEEP_DAYS)]
+/home/runner/work/ia-crypto-signal/ia-crypto-signal/crypto_v2/run.py:171: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  b = b[b.index + pd.Timedelta(hours=4) <= h["ts"].max() + pd.Timedelta(hours=1)]     # seulement les bougies terminées
+/home/runner/work/ia-crypto-signal/ia-crypto-signal/crypto_v2/run.py:97: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  parts = [("monthly", m.strftime("%Y-%m")) for m in pd.date_range(DATA_START, cur - pd.Timedelta(days=1), freq="MS")]
+/home/runner/work/ia-crypto-signal/ia-crypto-signal/crypto_v2/run.py:98: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  parts += [("daily", d.strftime("%Y-%m-%d")) for d in pd.date_range(cur, end.normalize() - pd.Timedelta(days=1), freq="D")]
+/home/runner/work/ia-crypto-signal/ia-crypto-signal/crypto_v2/run.py:146: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  keep = h[h["ts"] >= h["ts"].max() - pd.Timedelta(days=KEEP_DAYS)]
+/home/runner/work/ia-crypto-signal/ia-crypto-signal/crypto_v2/run.py:171: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  b = b[b.index + pd.Timedelta(hours=4) <= h["ts"].max() + pd.Timedelta(hours=1)]     # seulement les bougies terminées
+/home/runner/work/ia-crypto-signal/ia-crypto-signal/crypto_v2/run.py:97: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  parts = [("monthly", m.strftime("%Y-%m")) for m in pd.date_range(DATA_START, cur - pd.Timedelta(days=1), freq="MS")]
+/home/runner/work/ia-crypto-signal/ia-crypto-signal/crypto_v2/run.py:98: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  parts += [("daily", d.strftime("%Y-%m-%d")) for d in pd.date_range(cur, end.normalize() - pd.Timedelta(days=1), freq="D")]
+/home/runner/work/ia-crypto-signal/ia-crypto-signal/crypto_v2/run.py:146: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  keep = h[h["ts"] >= h["ts"].max() - pd.Timedelta(days=KEEP_DAYS)]
+/home/runner/work/ia-crypto-signal/ia-crypto-signal/crypto_v2/run.py:171: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  b = b[b.index + pd.Timedelta(hours=4) <= h["ts"].max() + pd.Timedelta(hours=1)]     # seulement les bougies terminées
+/home/runner/work/ia-crypto-signal/ia-crypto-signal/crypto_v2/run.py:97: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  parts = [("monthly", m.strftime("%Y-%m")) for m in pd.date_range(DATA_START, cur - pd.Timedelta(days=1), freq="MS")]
+/home/runner/work/ia-crypto-signal/ia-crypto-signal/crypto_v2/run.py:98: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  parts += [("daily", d.strftime("%Y-%m-%d")) for d in pd.date_range(cur, end.normalize() - pd.Timedelta(days=1), freq="D")]
+/home/runner/work/ia-crypto-signal/ia-crypto-signal/crypto_v2/run.py:146: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  keep = h[h["ts"] >= h["ts"].max() - pd.Timedelta(days=KEEP_DAYS)]
+/home/runner/work/ia-crypto-signal/ia-crypto-signal/crypto_v2/run.py:171: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  b = b[b.index + pd.Timedelta(hours=4) <= h["ts"].max() + pd.Timedelta(hours=1)]     # seulement les bougies terminées
+/home/runner/work/ia-crypto-signal/ia-crypto-signal/crypto_v2/run.py:97: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  parts = [("monthly", m.strftime("%Y-%m")) for m in pd.date_range(DATA_START, cur - pd.Timedelta(days=1), freq="MS")]
+/home/runner/work/ia-crypto-signal/ia-crypto-signal/crypto_v2/run.py:98: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  parts += [("daily", d.strftime("%Y-%m-%d")) for d in pd.date_range(cur, end.normalize() - pd.Timedelta(days=1), freq="D")]
+/home/runner/work/ia-crypto-signal/ia-crypto-signal/crypto_v2/run.py:146: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  keep = h[h["ts"] >= h["ts"].max() - pd.Timedelta(days=KEEP_DAYS)]
+/home/runner/work/ia-crypto-signal/ia-crypto-signal/crypto_v2/run.py:171: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  b = b[b.index + pd.Timedelta(hours=4) <= h["ts"].max() + pd.Timedelta(hours=1)]     # seulement les bougies terminées
+/home/runner/work/ia-crypto-signal/ia-crypto-signal/crypto_v2/run.py:97: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  parts = [("monthly", m.strftime("%Y-%m")) for m in pd.date_range(DATA_START, cur - pd.Timedelta(days=1), freq="MS")]
+/home/runner/work/ia-crypto-signal/ia-crypto-signal/crypto_v2/run.py:98: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  parts += [("daily", d.strftime("%Y-%m-%d")) for d in pd.date_range(cur, end.normalize() - pd.Timedelta(days=1), freq="D")]
+/home/runner/work/ia-crypto-signal/ia-crypto-signal/crypto_v2/run.py:146: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  keep = h[h["ts"] >= h["ts"].max() - pd.Timedelta(days=KEEP_DAYS)]
+/home/runner/work/ia-crypto-signal/ia-crypto-signal/crypto_v2/run.py:171: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  b = b[b.index + pd.Timedelta(hours=4) <= h["ts"].max() + pd.Timedelta(hours=1)]     # seulement les bougies terminées
+/home/runner/work/ia-crypto-signal/ia-crypto-signal/crypto_v2/run.py:97: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  parts = [("monthly", m.strftime("%Y-%m")) for m in pd.date_range(DATA_START, cur - pd.Timedelta(days=1), freq="MS")]
+/home/runner/work/ia-crypto-signal/ia-crypto-signal/crypto_v2/run.py:98: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  parts += [("daily", d.strftime("%Y-%m-%d")) for d in pd.date_range(cur, end.normalize() - pd.Timedelta(days=1), freq="D")]
+/home/runner/work/ia-crypto-signal/ia-crypto-signal/crypto_v2/run.py:146: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  keep = h[h["ts"] >= h["ts"].max() - pd.Timedelta(days=KEEP_DAYS)]
+/home/runner/work/ia-crypto-signal/ia-crypto-signal/crypto_v2/run.py:171: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  b = b[b.index + pd.Timedelta(hours=4) <= h["ts"].max() + pd.Timedelta(hours=1)]     # seulement les bougies terminées
+/home/runner/work/ia-crypto-signal/ia-crypto-signal/crypto_v2/run.py:97: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  parts = [("monthly", m.strftime("%Y-%m")) for m in pd.date_range(DATA_START, cur - pd.Timedelta(days=1), freq="MS")]
+/home/runner/work/ia-crypto-signal/ia-crypto-signal/crypto_v2/run.py:98: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  parts += [("daily", d.strftime("%Y-%m-%d")) for d in pd.date_range(cur, end.normalize() - pd.Timedelta(days=1), freq="D")]
+/home/runner/work/ia-crypto-signal/ia-crypto-signal/crypto_v2/run.py:146: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  keep = h[h["ts"] >= h["ts"].max() - pd.Timedelta(days=KEEP_DAYS)]
+/home/runner/work/ia-crypto-signal/ia-crypto-signal/crypto_v2/run.py:171: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  b = b[b.index + pd.Timedelta(hours=4) <= h["ts"].max() + pd.Timedelta(hours=1)]     # seulement les bougies terminées
+/home/runner/work/ia-crypto-signal/ia-crypto-signal/crypto_v2/run.py:97: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  parts = [("monthly", m.strftime("%Y-%m")) for m in pd.date_range(DATA_START, cur - pd.Timedelta(days=1), freq="MS")]
+/home/runner/work/ia-crypto-signal/ia-crypto-signal/crypto_v2/run.py:98: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  parts += [("daily", d.strftime("%Y-%m-%d")) for d in pd.date_range(cur, end.normalize() - pd.Timedelta(days=1), freq="D")]
+/home/runner/work/ia-crypto-signal/ia-crypto-signal/crypto_v2/run.py:146: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  keep = h[h["ts"] >= h["ts"].max() - pd.Timedelta(days=KEEP_DAYS)]
+/home/runner/work/ia-crypto-signal/ia-crypto-signal/crypto_v2/run.py:171: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  b = b[b.index + pd.Timedelta(hours=4) <= h["ts"].max() + pd.Timedelta(hours=1)]     # seulement les bougies terminées
+/home/runner/work/ia-crypto-signal/ia-crypto-signal/crypto_v2/run.py:367: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  nxt = (now.normalize() + pd.Timedelta(hours=4, minutes=30))
+/home/runner/work/ia-crypto-signal/ia-crypto-signal/crypto_v2/run.py:369: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  nxt += pd.Timedelta(days=1)
+/home/runner/work/ia-crypto-signal/ia-crypto-signal/crypto_v2/run.py:371: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  out = {"genere_le": now.strftime("%Y-%m-%d %H:%M UTC"), "donnees_jusqu_au": str(last_bar + pd.Timedelta(hours=4)),
+ADA : premier lancement, téléchargement de l'historique depuis 2018-01-01…
+ADA : dernière bougie 2026-10-20 16:00:00 (terminée à +4 h), prix 0.2219
+AVAX : premier lancement, téléchargement de l'historique depuis 2018-01-01…
+AVAX : dernière bougie 2026-10-20 16:00:00 (terminée à +4 h), prix 9.646
+DOGE : premier lancement, téléchargement de l'historique depuis 2018-01-01…
+DOGE : dernière bougie 2026-10-20 16:00:00 (terminée à +4 h), prix 0.08158
+DOT : premier lancement, téléchargement de l'historique depuis 2018-01-01…
+DOT : dernière bougie 2026-10-20 16:00:00 (terminée à +4 h), prix 1.157
+ETH : premier lancement, téléchargement de l'historique depuis 2018-01-01…
+ETH : dernière bougie 2026-10-20 16:00:00 (terminée à +4 h), prix 2437.92
+LTC : premier lancement, téléchargement de l'historique depuis 2018-01-01…
+LTC : dernière bougie 2026-10-20 16:00:00 (terminée à +4 h), prix 60.66
+SOL : premier lancement, téléchargement de l'historique depuis 2018-01-01…
+SOL : dernière bougie 2026-10-20 16:00:00 (terminée à +4 h), prix 106.1
+XLM : premier lancement, téléchargement de l'historique depuis 2018-01-01…
+XLM : dernière bougie 2026-10-20 16:00:00 (terminée à +4 h), prix 0.1799
+XRP : premier lancement, téléchargement de l'historique depuis 2018-01-01…
+XRP : dernière bougie 2026-10-20 16:00:00 (terminée à +4 h), prix 1.3291
+  Vérification achat_seul XRP : Sharpe recalculé 0.82 (Colab : 0.82)
+  Vérification achat_seul XLM : Sharpe recalculé 0.71 (Colab : 0.71)
+  Vérification achat_seul SOL : Sharpe recalculé 0.15 (Colab : 0.15)
+  Vérification achat_seul DOT : Sharpe recalculé -0.11 (Colab : -0.11)
+  Vérification achat_seul AVAX : Sharpe recalculé 0.12 (Colab : 0.12)
+  Vérification achat_vente ETH : Sharpe recalculé 0.21 (Colab : 0.21)
+  Vérification achat_vente XRP : Sharpe recalculé 0.81 (Colab : 0.80)
+  Vérification achat_vente ADA : Sharpe recalculé 0.42 (Colab : 0.41)
+  Vérification achat_vente DOGE : Sharpe recalculé 0.66 (Colab : 0.66)
+  Vérification achat_vente SOL : Sharpe recalculé 0.44 (Colab : 0.44)
+  Vérification achat_vente LTC : Sharpe recalculé 1.18 (Colab : 1.19)
+  Vérification achat_vente DOT : Sharpe recalculé 1.34 (Colab : 1.35)
+  Vérification achat_vente AVAX : Sharpe recalculé 0.91 (Colab : 0.90)
+Achat seulement : 1000.0 $ (garder 1000.0 $) | XRP aperçu DEHORS, XLM aperçu DEHORS, SOL aperçu DEHORS, DOT aperçu DEHORS, AVAX aperçu DEHORS
+Achat et vente : 1000.0 $ (garder 1000.0 $) | ETH aperçu VENDRE, XRP aperçu VENDRE, ADA aperçu VENDRE, DOGE aperçu VENDRE, SOL aperçu VENDRE, LTC aperçu VENDRE, DOT aperçu VENDRE, AVAX aperçu VENDRE

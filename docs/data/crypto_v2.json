@@ -1,0 +1,547 @@
+{
+ "genere_le": "2026-10-20 20:40 UTC",
+ "donnees_jusqu_au": "2026-10-20 20:00:00",
+ "prochaine_mise_a_jour": "2026-10-21 04:30:00",
+ "test": {
+  "debut": "2026-10-21",
+  "fin": "2027-04-21",
+  "capital": 1000.0,
+  "jours_ecoules": 0,
+  "jours_total": 182,
+  "frais_pct": 0.15,
+  "termine": false
+ },
+ "portefeuilles": [
+  {
+   "code": "achat_seul",
+   "nom": "Achat seulement",
+   "long_only": true,
+   "commence": false,
+   "capital": 1000.0,
+   "valeur": 1000.0,
+   "rendement_pct": 0.0,
+   "garder_valeur": 1000.0,
+   "garder_rendement_pct": 0.0,
+   "sharpe": null,
+   "garder_sharpe": null,
+   "pire_baisse_pct": 0.0,
+   "garder_pire_baisse_pct": 0.0,
+   "frais": 0.0,
+   "changements": 0,
+   "courbe": [],
+   "marches": [
+    {
+     "code": "XRPUSDT",
+     "nom": "XRP",
+     "commence": false,
+     "signal": null,
+     "apercu": {
+      "signal": "DEHORS",
+      "votes": [
+       0,
+       0,
+       0
+      ]
+     },
+     "votes": null,
+     "signal_depuis": null,
+     "signal_depuis_fin": null,
+     "prix_reference": null,
+     "dernier_changement": null,
+     "derniere_decision": null,
+     "prix_actuel": 1.3291,
+     "part": 200.0,
+     "valeur": 200.0,
+     "rendement_pct": 0.0,
+     "garder_valeur": 200.0,
+     "garder_rendement_pct": 0.0,
+     "frais": 0.0,
+     "changements": 0,
+     "backtest": {
+      "robot": 60.3,
+      "garder": 31.2,
+      "sharpe_robot": 0.82,
+      "sharpe_garder": 0.34,
+      "sharpe_recalcule": 0.82
+     },
+     "appris": "Achète 78 % du temps quand la tendance monte, seulement 25 à 27 % sinon.",
+     "decisions": []
+    },
+    {
+     "code": "XLMUSDT",
+     "nom": "XLM",
+     "commence": false,
+     "signal": null,
+     "apercu": {
+      "signal": "DEHORS",
+      "votes": [
+       0,
+       0,
+       1
+      ]
+     },
+     "votes": null,
+     "signal_depuis": null,
+     "signal_depuis_fin": null,
+     "prix_reference": null,
+     "dernier_changement": null,
+     "derniere_decision": null,
+     "prix_actuel": 0.1799,
+     "part": 200.0,
+     "valeur": 200.0,
+     "rendement_pct": 0.0,
+     "garder_valeur": 200.0,
+     "garder_rendement_pct": 0.0,
+     "frais": 0.0,
+     "changements": 0,
+     "backtest": {
+      "robot": 66.2,
+      "garder": 12.6,
+      "sharpe_robot": 0.71,
+      "sharpe_garder": 0.13,
+      "sharpe_recalcule": 0.71
+     },
+     "appris": "Achète 71 % du temps quand la tendance monte, 20 % quand elle baisse.",
+     "decisions": []
+    },
+    {
+     "code": "SOLUSDT",
+     "nom": "SOL",
+     "commence": false,
+     "signal": null,
+     "apercu": {
+      "signal": "DEHORS",
+      "votes": [
+       0,
+       0,
+       1
+      ]
+     },
+     "votes": null,
+     "signal_depuis": null,
+     "signal_depuis_fin": null,
+     "prix_reference": null,
+     "dernier_changement": null,
+     "derniere_decision": null,
+     "prix_actuel": 106.1,
+     "part": 200.0,
+     "valeur": 200.0,
+     "rendement_pct": 0.0,
+     "garder_valeur": 200.0,
+     "garder_rendement_pct": 0.0,
+     "frais": 0.0,
+     "changements": 0,
+     "backtest": {
+      "robot": 9.5,
+      "garder": 0.7,
+      "sharpe_robot": 0.15,
+      "sharpe_garder": 0.01,
+      "sharpe_recalcule": 0.15
+     },
+     "appris": "Achète presque toujours (98 %) quand la tendance monte, 14 % quand elle baisse.",
+     "decisions": []
+    },
+    {
+     "code": "DOTUSDT",
+     "nom": "DOT",
+     "commence": false,
+     "signal": null,
+     "apercu": {
+      "signal": "DEHORS",
+      "votes": [
+       1,
+       0,
+       0
+      ]
+     },
+     "votes": null,
+     "signal_depuis": null,
+     "signal_depuis_fin": null,
+     "prix_reference": null,
+     "dernier_changement": null,
+     "derniere_decision": null,
+     "prix_actuel": 1.157,
+     "part": 200.0,
+     "valeur": 200.0,
+     "rendement_pct": 0.0,
+     "garder_valeur": 200.0,
+     "garder_rendement_pct": 0.0,
+     "frais": 0.0,
+     "changements": 0,
+     "backtest": {
+      "robot": -4.5,
+      "garder": -50.9,
+      "sharpe_robot": -0.11,
+      "sharpe_garder": -0.83,
+      "sharpe_recalcule": -0.11
+     },
+     "appris": "Très prudent : 45 % du temps acheté en tendance haussière, presque jamais en baisse (8 %).",
+     "decisions": []
+    },
+    {
+     "code": "AVAXUSDT",
+     "nom": "AVAX",
+     "commence": false,
+     "signal": null,
+     "apercu": {
+      "signal": "DEHORS",
+      "votes": [
+       0,
+       0,
+       0
+      ]
+     },
+     "votes": null,
+     "signal_depuis": null,
+     "signal_depuis_fin": null,
+     "prix_reference": null,
+     "dernier_changement": null,
+     "derniere_decision": null,
+     "prix_actuel": 9.646,
+     "part": 200.0,
+     "valeur": 200.0,
+     "rendement_pct": 0.0,
+     "garder_valeur": 200.0,
+     "garder_rendement_pct": 0.0,
+     "frais": 0.0,
+     "changements": 0,
+     "backtest": {
+      "robot": 6.6,
+      "garder": -38.8,
+      "sharpe_robot": 0.12,
+      "sharpe_garder": -0.54,
+      "sharpe_recalcule": 0.12
+     },
+     "appris": "Achète 66 % du temps en tendance haussière, presque jamais en baisse (5 %).",
+     "decisions": []
+    }
+   ],
+   "verdict": {
+    "statut": "pas commencé",
+    "criteres": [],
+    "texte": "Le test commence le 21/10/2026 à 04:00 UTC."
+   }
+  },
+  {
+   "code": "achat_vente",
+   "nom": "Achat et vente",
+   "long_only": false,
+   "commence": false,
+   "capital": 1000.0,
+   "valeur": 1000.0,
+   "rendement_pct": 0.0,
+   "garder_valeur": 1000.0,
+   "garder_rendement_pct": 0.0,
+   "sharpe": null,
+   "garder_sharpe": null,
+   "pire_baisse_pct": 0.0,
+   "garder_pire_baisse_pct": 0.0,
+   "frais": 0.0,
+   "changements": 0,
+   "courbe": [],
+   "marches": [
+    {
+     "code": "ETHUSDT",
+     "nom": "ETH",
+     "commence": false,
+     "signal": null,
+     "apercu": {
+      "signal": "VENDRE",
+      "votes": [
+       -1,
+       -1,
+       1
+      ]
+     },
+     "votes": null,
+     "signal_depuis": null,
+     "signal_depuis_fin": null,
+     "prix_reference": null,
+     "dernier_changement": null,
+     "derniere_decision": null,
+     "prix_actuel": 2437.92,
+     "part": 125.0,
+     "valeur": 125.0,
+     "rendement_pct": 0.0,
+     "garder_valeur": 125.0,
+     "garder_rendement_pct": 0.0,
+     "frais": 0.0,
+     "changements": 0,
+     "backtest": {
+      "robot": 15.0,
+      "garder": 2.3,
+      "sharpe_robot": 0.21,
+      "sharpe_garder": 0.03,
+      "sharpe_recalcule": 0.21
+     },
+     "appris": "Surtout acheteur : 100 % en hausse, 87 % sans tendance ; vend à moitié en baisse.",
+     "decisions": []
+    },
+    {
+     "code": "XRPUSDT",
+     "nom": "XRP",
+     "commence": false,
+     "signal": null,
+     "apercu": {
+      "signal": "VENDRE",
+      "votes": [
+       -1,
+       -1,
+       -1
+      ]
+     },
+     "votes": null,
+     "signal_depuis": null,
+     "signal_depuis_fin": null,
+     "prix_reference": null,
+     "dernier_changement": null,
+     "derniere_decision": null,
+     "prix_actuel": 1.3291,
+     "part": 125.0,
+     "valeur": 125.0,
+     "rendement_pct": 0.0,
+     "garder_valeur": 125.0,
+     "garder_rendement_pct": 0.0,
+     "frais": 0.0,
+     "changements": 0,
+     "backtest": {
+      "robot": 86.5,
+      "garder": 31.2,
+      "sharpe_robot": 0.8,
+      "sharpe_garder": 0.34,
+      "sharpe_recalcule": 0.81
+     },
+     "appris": "Achète en hausse (76 %), vend 77 % du temps sinon.",
+     "decisions": []
+    },
+    {
+     "code": "ADAUSDT",
+     "nom": "ADA",
+     "commence": false,
+     "signal": null,
+     "apercu": {
+      "signal": "VENDRE",
+      "votes": [
+       -1,
+       -1,
+       -1
+      ]
+     },
+     "votes": null,
+     "signal_depuis": null,
+     "signal_depuis_fin": null,
+     "prix_reference": null,
+     "dernier_changement": null,
+     "derniere_decision": null,
+     "prix_actuel": 0.2219,
+     "part": 125.0,
+     "valeur": 125.0,
+     "rendement_pct": 0.0,
+     "garder_valeur": 125.0,
+     "garder_rendement_pct": 0.0,
+     "frais": 0.0,
+     "changements": 0,
+     "backtest": {
+      "robot": 46.1,
+      "garder": -29.9,
+      "sharpe_robot": 0.41,
+      "sharpe_garder": -0.38,
+      "sharpe_recalcule": 0.42
+     },
+     "appris": "Suit la tendance : achète 94 % en hausse, vend 87 % en baisse.",
+     "decisions": []
+    },
+    {
+     "code": "DOGEUSDT",
+     "nom": "DOGE",
+     "commence": false,
+     "signal": null,
+     "apercu": {
+      "signal": "VENDRE",
+      "votes": [
+       0,
+       -1,
+       -1
+      ]
+     },
+     "votes": null,
+     "signal_depuis": null,
+     "signal_depuis_fin": null,
+     "prix_reference": null,
+     "dernier_changement": null,
+     "derniere_decision": null,
+     "prix_actuel": 0.08158,
+     "part": 125.0,
+     "valeur": 125.0,
+     "rendement_pct": 0.0,
+     "garder_valeur": 125.0,
+     "garder_rendement_pct": 0.0,
+     "frais": 0.0,
+     "changements": 0,
+     "backtest": {
+      "robot": 83.4,
+      "garder": -4.0,
+      "sharpe_robot": 0.66,
+      "sharpe_garder": -0.04,
+      "sharpe_recalcule": 0.66
+     },
+     "appris": "Suit la tendance : achète 94 % en hausse, vend 89 % en baisse.",
+     "decisions": []
+    },
+    {
+     "code": "SOLUSDT",
+     "nom": "SOL",
+     "commence": false,
+     "signal": null,
+     "apercu": {
+      "signal": "VENDRE",
+      "votes": [
+       -1,
+       -1,
+       -1
+      ]
+     },
+     "votes": null,
+     "signal_depuis": null,
+     "signal_depuis_fin": null,
+     "prix_reference": null,
+     "dernier_changement": null,
+     "derniere_decision": null,
+     "prix_actuel": 106.1,
+     "part": 125.0,
+     "valeur": 125.0,
+     "rendement_pct": 0.0,
+     "garder_valeur": 125.0,
+     "garder_rendement_pct": 0.0,
+     "frais": 0.0,
+     "changements": 0,
+     "backtest": {
+      "robot": 42.8,
+      "garder": 0.7,
+      "sharpe_robot": 0.44,
+      "sharpe_garder": 0.01,
+      "sharpe_recalcule": 0.44
+     },
+     "appris": "Suit la tendance : achète 92 % en hausse, vend 91 % en baisse.",
+     "decisions": []
+    },
+    {
+     "code": "LTCUSDT",
+     "nom": "LTC",
+     "commence": false,
+     "signal": null,
+     "apercu": {
+      "signal": "VENDRE",
+      "votes": [
+       -1,
+       -1,
+       -1
+      ]
+     },
+     "votes": null,
+     "signal_depuis": null,
+     "signal_depuis_fin": null,
+     "prix_reference": null,
+     "dernier_changement": null,
+     "derniere_decision": null,
+     "prix_actuel": 60.66,
+     "part": 125.0,
+     "valeur": 125.0,
+     "rendement_pct": 0.0,
+     "garder_valeur": 125.0,
+     "garder_rendement_pct": 0.0,
+     "frais": 0.0,
+     "changements": 0,
+     "backtest": {
+      "robot": 135.4,
+      "garder": -7.0,
+      "sharpe_robot": 1.19,
+      "sharpe_garder": -0.1,
+      "sharpe_recalcule": 1.18
+     },
+     "appris": "Surtout vendeur : vend 97 % en baisse, 89 % sans tendance, et encore 43 % en hausse.",
+     "decisions": []
+    },
+    {
+     "code": "DOTUSDT",
+     "nom": "DOT",
+     "commence": false,
+     "signal": null,
+     "apercu": {
+      "signal": "VENDRE",
+      "votes": [
+       -1,
+       -1,
+       -1
+      ]
+     },
+     "votes": null,
+     "signal_depuis": null,
+     "signal_depuis_fin": null,
+     "prix_reference": null,
+     "dernier_changement": null,
+     "derniere_decision": null,
+     "prix_actuel": 1.157,
+     "part": 125.0,
+     "valeur": 125.0,
+     "rendement_pct": 0.0,
+     "garder_valeur": 125.0,
+     "garder_rendement_pct": 0.0,
+     "frais": 0.0,
+     "changements": 0,
+     "backtest": {
+      "robot": 215.4,
+      "garder": -50.9,
+      "sharpe_robot": 1.35,
+      "sharpe_garder": -0.83,
+      "sharpe_recalcule": 1.34
+     },
+     "appris": "Surtout vendeur : vend 93 % en baisse, 78 % sans tendance ; achète 62 % en hausse.",
+     "decisions": []
+    },
+    {
+     "code": "AVAXUSDT",
+     "nom": "AVAX",
+     "commence": false,
+     "signal": null,
+     "apercu": {
+      "signal": "VENDRE",
+      "votes": [
+       -1,
+       -1,
+       -1
+      ]
+     },
+     "votes": null,
+     "signal_depuis": null,
+     "signal_depuis_fin": null,
+     "prix_reference": null,
+     "dernier_changement": null,
+     "derniere_decision": null,
+     "prix_actuel": 9.646,
+     "part": 125.0,
+     "valeur": 125.0,
+     "rendement_pct": 0.0,
+     "garder_valeur": 125.0,
+     "garder_rendement_pct": 0.0,
+     "frais": 0.0,
+     "changements": 0,
+     "backtest": {
+      "robot": 125.3,
+      "garder": -38.8,
+      "sharpe_robot": 0.9,
+      "sharpe_garder": -0.54,
+      "sharpe_recalcule": 0.91
+     },
+     "appris": "Surtout vendeur : vend 99 % en baisse, 89 % sans tendance ; achète 68 % en hausse.",
+     "decisions": []
+    }
+   ],
+   "verdict": {
+    "statut": "pas commencé",
+    "criteres": [],
+    "texte": "Le test commence le 21/10/2026 à 04:00 UTC."
+   }
+  }
+ ]
+}
