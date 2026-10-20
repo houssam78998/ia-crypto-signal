@@ -1,0 +1,2 @@
+Nouveau modèle entraîné : modele_cutoff_2026-10-17.pt
+v5 : investi | valeur 1000.0 | poids [{'crypto': 'BTC', 'pct': 18.8}, {'crypto': 'DOT', 'pct': 14.0}, {'crypto': 'BNB', 'pct': 10.6}, {'crypto': 'TRX', 'pct': 8.4}]

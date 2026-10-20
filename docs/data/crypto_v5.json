@@ -1,0 +1,217 @@
+{
+ "genere_le": "2026-10-20 10:30 UTC",
+ "donnees_jusqu_au": "2026-10-19",
+ "test": {
+  "debut": "2026-10-20",
+  "fin": "2027-04-20",
+  "capital": 1000.0,
+  "frais_pct": 0.1,
+  "slippage_pct": 0.05,
+  "filtre_jours": 100,
+  "modele_cutoff": "2026-10-17",
+  "jours_ecoules": 0,
+  "jours_total": 182
+ },
+ "commence": false,
+ "signal": {
+  "date_calcul": "2026-10-19",
+  "applicable_le": "2026-10-20",
+  "filtre": true,
+  "btc_vs_moy100": 10.1,
+  "poids": [
+   {
+    "crypto": "BTC",
+    "pct": 18.8
+   },
+   {
+    "crypto": "DOT",
+    "pct": 14.0
+   },
+   {
+    "crypto": "BNB",
+    "pct": 10.6
+   },
+   {
+    "crypto": "TRX",
+    "pct": 8.4
+   },
+   {
+    "crypto": "SOL",
+    "pct": 7.8
+   },
+   {
+    "crypto": "BCH",
+    "pct": 7.8
+   },
+   {
+    "crypto": "LTC",
+    "pct": 6.1
+   },
+   {
+    "crypto": "ATOM",
+    "pct": 5.8
+   },
+   {
+    "crypto": "ETH",
+    "pct": 4.4
+   },
+   {
+    "crypto": "LINK",
+    "pct": 3.2
+   },
+   {
+    "crypto": "XRP",
+    "pct": 3.2
+   },
+   {
+    "crypto": "AVAX",
+    "pct": 3.0
+   },
+   {
+    "crypto": "DOGE",
+    "pct": 2.4
+   },
+   {
+    "crypto": "ADA",
+    "pct": 2.3
+   },
+   {
+    "crypto": "XLM",
+    "pct": 2.2
+   }
+  ],
+  "actions": [
+   {
+    "crypto": "BTC",
+    "action": "ACHETER",
+    "usdt": 188.19,
+    "prix": 81938.4,
+    "majeur": true
+   },
+   {
+    "crypto": "DOT",
+    "action": "ACHETER",
+    "usdt": 139.62,
+    "prix": 1.153,
+    "majeur": true
+   },
+   {
+    "crypto": "BNB",
+    "action": "ACHETER",
+    "usdt": 106.32,
+    "prix": 732.13,
+    "majeur": true
+   },
+   {
+    "crypto": "TRX",
+    "action": "ACHETER",
+    "usdt": 84.07,
+    "prix": 0.3322,
+    "majeur": true
+   },
+   {
+    "crypto": "SOL",
+    "action": "ACHETER",
+    "usdt": 78.3,
+    "prix": 105.08,
+    "majeur": true
+   },
+   {
+    "crypto": "BCH",
+    "action": "ACHETER",
+    "usdt": 77.68,
+    "prix": 280.7,
+    "majeur": true
+   },
+   {
+    "crypto": "LTC",
+    "action": "ACHETER",
+    "usdt": 61.42,
+    "prix": 59.73,
+    "majeur": true
+   },
+   {
+    "crypto": "ATOM",
+    "action": "ACHETER",
+    "usdt": 58.33,
+    "prix": 1.747,
+    "majeur": true
+   },
+   {
+    "crypto": "ETH",
+    "action": "ACHETER",
+    "usdt": 43.66,
+    "prix": 2408.01,
+    "majeur": false
+   },
+   {
+    "crypto": "LINK",
+    "action": "ACHETER",
+    "usdt": 31.82,
+    "prix": 12.06,
+    "majeur": false
+   },
+   {
+    "crypto": "XRP",
+    "action": "ACHETER",
+    "usdt": 31.54,
+    "prix": 1.3041,
+    "majeur": false
+   },
+   {
+    "crypto": "AVAX",
+    "action": "ACHETER",
+    "usdt": 29.63,
+    "prix": 9.609,
+    "majeur": false
+   },
+   {
+    "crypto": "DOGE",
+    "action": "ACHETER",
+    "usdt": 24.3,
+    "prix": 0.07975,
+    "majeur": false
+   },
+   {
+    "crypto": "ADA",
+    "action": "ACHETER",
+    "usdt": 23.39,
+    "prix": 0.2181,
+    "majeur": false
+   },
+   {
+    "crypto": "XLM",
+    "action": "ACHETER",
+    "usdt": 21.73,
+    "prix": 0.1777,
+    "majeur": false
+   }
+  ]
+ },
+ "valeur": 1000.0,
+ "rendement_pct": 0.0,
+ "cash": 1000.0,
+ "positions": [],
+ "frais_total": 0.0,
+ "transactions": 0,
+ "pire_baisse_pct": 0.0,
+ "v4_pire_baisse_pct": 0.0,
+ "btc_pire_baisse_pct": 0.0,
+ "v4_rendement_pct": null,
+ "btc_rendement_pct": null,
+ "courbe": [],
+ "v4_courbe": [],
+ "btc_courbe": [],
+ "historique": [],
+ "verdict": {
+  "statut": "pas commencé",
+  "criteres": [],
+  "texte": "Verdict définitif le 2027-04-20. 3 critères sur 3 = VALIDÉ, 2 = À PROLONGER, 0 ou 1 = NON VALIDÉ."
+ },
+ "backtest": {
+  "v5": 83.7,
+  "v4": 54.9,
+  "btc": 17.6,
+  "periode": "2021–2026"
+ }
+}
