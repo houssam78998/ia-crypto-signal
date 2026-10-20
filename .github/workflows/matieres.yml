@@ -43,7 +43,7 @@ jobs:
         run: |
           git config user.name "signal-ia-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add matieres docs/data/matieres.json
+          git add -A matieres docs/data
           git commit -m "Matières premières du $(date -u +%Y-%m-%d)" || echo "Rien de nouveau"
           git pull --rebase
           git push
