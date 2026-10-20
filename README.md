@@ -34,3 +34,9 @@ Application mobile (Android et iPhone) qui affiche chaque jour le signal de l'IA
 - Chaque soir de semaine à 22:30 UTC, `.github/workflows/matieres.yml` lance `matieres/run.py` (données CME Databento, secret `DATABENTO_API_KEY`) et écrit `docs/data/matieres.json`.
 - Test du 20 octobre 2026 au 20 avril 2027. Verdict : VALIDÉ (3 critères sur 3), À PROLONGER (2), NON VALIDÉ (0 ou 1).
 - Le moteur crypto (`engine/run.py`) et son test ne sont pas modifiés.
+
+## Crypto v5 — répartition choisie par l'IA (ajouté le 20 octobre 2026)
+- Bouton **« v5 Répartition »** dans la partie Crypto. Portefeuille fictif séparé de 1 000 USDT, du 20 octobre 2026 au 20 avril 2027.
+- Le filtre Bitcoin décide investi / cash (comme la v4) ; 5 réseaux de neurones donnent directement les poids des 16 cryptos (entraînés pour maximiser le rapport gain / risque après frais).
+- `.github/workflows/crypto_v5.yml` lance `crypto_v5/run.py` chaque jour à 01:20 UTC. Il lit `data/panel.csv.gz` (mis à jour par la v4) sans le modifier. Réentraînement tous les 3 mois.
+- Verdict : la v5 doit battre la v4 quotidienne (rendement et Sharpe) et le Bitcoin. Le test v4 n'est pas modifié.

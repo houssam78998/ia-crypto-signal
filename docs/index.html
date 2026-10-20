@@ -114,6 +114,7 @@ th{font-size:12px;color:var(--muted);font-weight:600;border-top:0}
   <div class="seg" id="seg">
     <button data-p="quotidien" class="on">Quotidien</button>
     <button data-p="hebdomadaire">Hebdomadaire</button>
+    <button data-p="v5">v5 Répartition</button>
   </div>
 </header>
 <main id="main"></main>
@@ -126,7 +127,7 @@ th{font-size:12px;color:var(--muted);font-weight:600;border-top:0}
 <script>
 (function(){
   "use strict";
-  var DATA = null, P = "quotidien", TAB = "jour", MDATA = null, DOM = "crypto", MK = "SI";
+  var DATA = null, P = "quotidien", TAB = "jour", MDATA = null, DOM = "crypto", MK = "SI", V5 = null;
   var store = {
     get: function(k){ try { return localStorage.getItem(k); } catch(e){ return null; } },
     set: function(k,v){ try { localStorage.setItem(k,v); } catch(e){} },
@@ -158,6 +159,84 @@ th{font-size:12px;color:var(--muted);font-weight:600;border-top:0}
       .then(function(j){ MDATA = j; render(); })
       .catch(function(e){ if(DOM === "matieres" && !MDATA){ document.getElementById("updated").textContent = "Pas encore de données";
         document.getElementById("main").innerHTML = '<div class="card">Les premiers signaux des matières premières apparaîtront après le premier calcul (chaque soir de semaine vers 23 h 30, heure du Maroc).</div>'; } });
+  }
+
+  function loadV5(){
+    fetch("data/crypto_v5.json?t=" + Date.now(), {cache:"no-store"})
+      .then(function(r){ if(!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
+      .then(function(j){ V5 = j; render(); }).catch(function(){});
+  }
+
+  // ------------------------------------------------------------- crypto v5 (répartition choisie par l'IA)
+  function v5Jour(){
+    var d = V5, s = d.signal, h = "";
+    h += '<div class="card"><h2>v5 — signal pour ' + esc(dfr(s.applicable_le)) + '</h2>';
+    h += s.filtre ? '<span class="pill ok">● Filtre Bitcoin positif : investi</span>' : '<span class="pill ko">● Filtre Bitcoin négatif : tout en USDT</span>';
+    h += '<div class="small muted" style="margin-top:6px">BTC ' + pct(s.btc_vs_moy100) + ' par rapport à sa moyenne ' + d.test.filtre_jours + ' jours</div>';
+    if(s.filtre && s.poids.length){
+      var mx = s.poids[0].pct || 1;
+      h += '<div style="margin-top:10px"><b>Répartition choisie par l\'IA</b></div>';
+      s.poids.forEach(function(p){ h += '<div class="rank" style="grid-template-columns:60px 1fr 52px"><b>' + esc(p.crypto) + '</b><div class="b" style="width:' + Math.max(3, p.pct / mx * 100) + '%"></div><span style="text-align:right">' + nf(p.pct, 1) + ' %</span></div>'; });
+    } else h += '<div class="cash">Rester en USDT</div>';
+    var major = s.actions.filter(function(a){ return a.majeur; }), minor = s.actions.filter(function(a){ return !a.majeur; });
+    h += '<div style="margin-top:12px"><b>À faire</b> <span class="small muted">(portefeuille de ' + nf(d.valeur) + ' $)</span></div>';
+    if(!major.length) h += '<div class="act"><span class="muted">Aucun changement important</span></div>';
+    major.forEach(function(a){ h += '<div class="act"><span><span class="tag ' + (a.action === "ACHETER" ? "buy" : "sell") + '">' + a.action + '</span><b>' + esc(a.crypto) + '</b></span><span>' + nf(a.usdt) + ' USDT</span></div>'; });
+    if(minor.length){ h += '<details><summary>' + minor.length + ' petit(s) ajustement(s) facultatif(s)</summary>'; minor.forEach(function(a){ h += '<div class="act small"><span>' + a.action.toLowerCase() + ' ' + esc(a.crypto) + '</span><span>' + nf(a.usdt) + ' USDT</span></div>'; }); h += '</details>'; }
+    var k = "fait:v5:" + s.date_calcul, dn = store.get(k);
+    h += '<button class="done' + (dn ? " is" : "") + '" id="v5done">' + (dn ? "✓ Fait le " + esc(dn) + " (toucher pour annuler)" : (major.length ? "✅ C'est fait" : "✅ Vu, rien à faire")) + '</button></div>';
+    h += '<div class="card"><h2>Portefeuille fictif v5</h2><div class="kpis">' +
+      '<div class="kpi"><div class="l">Valeur</div><div class="v">' + nf(d.valeur) + ' $</div></div>' +
+      '<div class="kpi"><div class="l">Depuis le début</div><div class="v ' + cls(d.rendement_pct) + '">' + pct(d.rendement_pct) + '</div></div>' +
+      '<div class="kpi"><div class="l">v4 quotidien (même période)</div><div class="v ' + cls(d.v4_rendement_pct) + '">' + pct(d.v4_rendement_pct) + '</div></div>' +
+      '<div class="kpi"><div class="l">Bitcoin (même période)</div><div class="v ' + cls(d.btc_rendement_pct) + '">' + pct(d.btc_rendement_pct) + '</div></div></div>';
+    h += '<p class="small muted">Différence avec la v4 : la v4 classe les cryptos et en prend 3 à parts égales ; la v5 a appris directement combien mettre sur chacune. Test historique ' + esc(d.backtest.periode) + ' : v5 ' + pct(d.backtest.v5) + '/an, v4 ' + pct(d.backtest.v4) + '/an, Bitcoin ' + pct(d.backtest.btc) + '/an.</p></div>';
+    return h;
+  }
+  function v5Pf(){
+    var d = V5;
+    if(!d.commence) return '<div class="card">Le portefeuille v5 démarre avec la clôture du ' + esc(dfr(d.test.debut)) + ' (premier achat à l\'ouverture du lendemain).</div>';
+    var h = '<div class="card"><h2>v5 — 1 000 $ fictifs</h2><div class="big">' + nf(d.valeur) + ' USDT</div><div class="' + cls(d.rendement_pct) + '">' + pct(d.rendement_pct) + ' depuis le ' + esc(dshort(d.test.debut)) + '</div>';
+    if(d.courbe.length > 1){
+      h += lineChart([{pts: d.courbe, color: "var(--accent)", w: 2.6}, {pts: d.v4_courbe, color: "#8b5cf6"}, {pts: d.btc_courbe, color: "#f59e0b"}], {base: d.test.capital});
+      h += '<div class="legend"><span><i style="background:var(--accent)"></i>v5</span><span><i style="background:#8b5cf6"></i>v4 quotidien</span><span><i style="background:#f59e0b"></i>Bitcoin</span></div>';
+    } else h += '<div class="small muted" style="margin-top:8px">La courbe apparaîtra après quelques jours.</div>';
+    h += '</div><div class="card"><h2>Positions actuelles</h2>';
+    if(!d.positions.length) h += '<div class="row"><span>USDT</span><span>' + nf(d.cash) + ' $ · 100 %</span></div>';
+    d.positions.slice().sort(function(a, b){ return b.valeur - a.valeur; }).forEach(function(p){ h += '<div class="row"><span><b>' + esc(p.crypto) + '</b></span><span>' + nf(p.valeur) + ' $ · ' + nf(p.poids, 1) + ' %</span></div>'; });
+    h += '</div><div class="card"><h2>Statistiques</h2><div class="kpis">' +
+      '<div class="kpi"><div class="l">Pire baisse v5</div><div class="v neg">' + pct(d.pire_baisse_pct) + '</div></div>' +
+      '<div class="kpi"><div class="l">Pire baisse v4</div><div class="v neg">' + pct(d.v4_pire_baisse_pct) + '</div></div>' +
+      '<div class="kpi"><div class="l">Ajustements (plus de 1 %)</div><div class="v">' + d.transactions + '</div></div>' +
+      '<div class="kpi"><div class="l">Frais payés</div><div class="v">' + nf(d.frais_total) + ' $</div></div></div></div>';
+    h += '<div class="card"><h2>Derniers jours</h2>';
+    d.historique.slice().reverse().slice(0, 30).forEach(function(x){
+      var top = Object.keys(x.poids).slice(0, 3).map(function(c){ return c + " " + nf(x.poids[c], 0) + "%"; }).join(", ");
+      h += '<div class="row small"><span>' + esc(dshort(x.date)) + (store.get("fait:v5:" + x.date) ? " ✓" : "") + '</span><span>' + (x.filtre ? esc(top) : '<span class="muted">USDT</span>') + '</span><span>' + nf(x.valeur) + ' $</span></div>';
+    });
+    return h + '</div>';
+  }
+  function v5Ver(){
+    var d = V5, v = d.verdict, t = d.test;
+    var pc = v.statut === "validé" ? "ok" : (v.statut === "non validé" ? "ko" : "wait");
+    var h = '<div class="card"><h2>Verdict v5</h2><span class="pill ' + pc + '">' + esc(v.statut.toUpperCase()) + '</span>';
+    h += '<div class="bar"><i style="width:' + Math.min(100, t.jours_ecoules / t.jours_total * 100) + '%"></i></div><div class="small muted">' + t.jours_ecoules + ' / ' + t.jours_total + ' jours · fin le ' + esc(dfr(t.fin)) + '</div>';
+    v.criteres.forEach(function(c){ h += '<div class="crit"><span>' + (c.ok ? "✅" : "❌") + '</span><span>' + esc(c.nom) + '</span></div>'; });
+    h += '<p class="small">' + esc(v.texte) + '</p></div>';
+    h += '<div class="card small"><h2>Les règles du test v5</h2>Du ' + esc(dfr(t.debut)) + ' au ' + esc(dfr(t.fin)) + ' · ' + nf(t.capital, 0) + ' USDT fictifs · filtre Bitcoin &gt; moyenne ' + t.filtre_jours + ' jours (sinon tout en USDT) · répartition entre les 16 cryptos choisie par 5 réseaux de neurones · rééquilibrage chaque jour · frais ' + nf(t.frais_pct) + ' % + glissement ' + nf(t.slippage_pct) + ' % · modèle entraîné jusqu\'au ' + esc(dshort(t.modele_cutoff)) + ', réentraîné tous les 3 mois. Le test v4 n\'est pas modifié.</div>';
+    return h;
+  }
+  function renderV5(){
+    document.getElementById("title").textContent = "Signal IA Crypto";
+    if(!V5){ document.getElementById("updated").textContent = "Chargement…"; document.getElementById("main").innerHTML = '<div class="card">Les premiers signaux v5 apparaîtront après le premier calcul de la nuit.</div>'; return; }
+    document.getElementById("updated").textContent = "Données du " + dshort(V5.donnees_jusqu_au) + " · mis à jour " + V5.genere_le;
+    if(TAB === "sem") TAB = "jour";
+    document.querySelectorAll("#nav button").forEach(function(b){ b.classList.toggle("on", b.dataset.t === TAB); });
+    var h = TAB === "pf" ? v5Pf() : (TAB === "ver" ? v5Ver() : v5Jour());
+    h += '<div class="notice">Argent fictif — aucun ordre réel n\'est passé. Outil de recherche, pas un conseil financier.</div>';
+    document.getElementById("main").innerHTML = h;
+    var b = document.getElementById("v5done");
+    if(b){ b.onclick = function(){ var k = "fait:v5:" + V5.signal.date_calcul; if(store.get(k)) store.del(k); else store.set(k, new Date().toLocaleString("fr-FR", {day:"numeric", month:"short", hour:"2-digit", minute:"2-digit"})); renderV5(); }; }
   }
 
   // ------------------------------------------------------------- matières premières
@@ -419,11 +498,17 @@ th{font-size:12px;color:var(--muted);font-weight:600;border-top:0}
     }
     document.getElementById("mseg").style.display = "none";
     document.getElementById("title").textContent = "Signal IA Crypto";
+    document.getElementById("navsem").style.display = P === "v5" ? "none" : "";
+    if(P === "v5"){
+      document.getElementById("seg").style.display = TAB === "ver" ? "none" : "flex";
+      document.querySelectorAll("#seg button").forEach(function(b){ b.classList.toggle("on", b.dataset.p === P); });
+      return renderV5();
+    }
     if(!DATA) return;
     document.getElementById("updated").textContent = "Données du " + dshort(DATA.donnees_jusqu_au) + " · mis à jour " + DATA.genere_le;
     document.querySelectorAll("#seg button").forEach(function(b){ b.classList.toggle("on", b.dataset.p === P); });
     document.querySelectorAll("#nav button").forEach(function(b){ b.classList.toggle("on", b.dataset.t === TAB); });
-    document.getElementById("seg").style.display = (TAB === "sem" || TAB === "ver") ? "none" : "flex";
+    document.getElementById("seg").style.display = TAB === "sem" ? "none" : "flex";
     var pf = DATA.portefeuilles[P], h;
     if(TAB === "jour") h = viewJour(pf); else if(TAB === "pf") h = viewPf(pf); else if(TAB === "sem") h = viewSem(); else h = viewVer();
     h += '<div class="notice">Argent fictif — aucun ordre réel n\'est passé. Outil de recherche, pas un conseil financier.</div>';
@@ -440,10 +525,10 @@ th{font-size:12px;color:var(--muted);font-weight:600;border-top:0}
   document.getElementById("nav").addEventListener("click", function(e){ var b = e.target.closest("button"); if(b){ TAB = b.dataset.t; store.set("tab", TAB); render(); window.scrollTo(0,0); } });
   document.getElementById("dom").addEventListener("click", function(e){ var b = e.target.closest("button"); if(b){ DOM = b.dataset.d; store.set("dom", DOM); render(); window.scrollTo(0,0); } });
   document.getElementById("mseg").addEventListener("click", function(e){ var b = e.target.closest("button"); if(b){ MK = b.dataset.m; store.set("mk", MK); render(); window.scrollTo(0,0); } });
-  document.getElementById("refresh").addEventListener("click", function(){ load(); loadMat(); });
-  document.addEventListener("visibilitychange", function(){ if(document.visibilityState === "visible"){ load(); loadMat(); } });
+  document.getElementById("refresh").addEventListener("click", function(){ load(); loadMat(); loadV5(); });
+  document.addEventListener("visibilitychange", function(){ if(document.visibilityState === "visible"){ load(); loadMat(); loadV5(); } });
   if("serviceWorker" in navigator){ navigator.serviceWorker.register("sw.js").catch(function(){}); }
-  load(); loadMat(); render();
+  load(); loadMat(); loadV5(); render();
 })();
 </script>
 </body>
