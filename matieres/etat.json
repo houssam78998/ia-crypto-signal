@@ -1,0 +1,44 @@
+{
+ "SI": {
+  "dernier_traite": null,
+  "derniere_decision": null,
+  "position": 0,
+  "robot": 1.0,
+  "garder": 1.0,
+  "frais": 0.0,
+  "changements": 0,
+  "decisions": [],
+  "courbe": [],
+  "votes": null,
+  "prix_reference": null,
+  "signal_depuis": null
+ },
+ "LE": {
+  "dernier_traite": null,
+  "derniere_decision": null,
+  "position": 0,
+  "robot": 1.0,
+  "garder": 1.0,
+  "frais": 0.0,
+  "changements": 0,
+  "decisions": [],
+  "courbe": [],
+  "votes": null,
+  "prix_reference": null,
+  "signal_depuis": null
+ },
+ "HG": {
+  "dernier_traite": null,
+  "derniere_decision": null,
+  "position": 0,
+  "robot": 1.0,
+  "garder": 1.0,
+  "frais": 0.0,
+  "changements": 0,
+  "decisions": [],
+  "courbe": [],
+  "votes": null,
+  "prix_reference": null,
+  "signal_depuis": null
+ }
+}

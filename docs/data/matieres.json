@@ -1,0 +1,145 @@
+{
+ "genere_le": "2026-10-20 07:43 UTC",
+ "donnees_jusqu_au": "2026-10-19 20:00:00",
+ "test": {
+  "debut": "2026-10-20",
+  "fin": "2027-04-20",
+  "capital": 1000.0,
+  "jours_ecoules": 0,
+  "jours_total": 182,
+  "frais_aller_retour_pct": 0.05,
+  "termine": false
+ },
+ "marches": [
+  {
+   "code": "SI",
+   "nom": "Argent",
+   "unite": "$ / once",
+   "appris": "Il achète surtout quand le marché est agité (60 à 70 % du temps) et moins quand il est calme (34 à 53 %).",
+   "backtest": {
+    "robot": 25.5,
+    "garder": 9.6
+   },
+   "commence": false,
+   "signal": null,
+   "apercu": {
+    "signal": "DEHORS",
+    "votes": [
+     0,
+     0,
+     0
+    ]
+   },
+   "votes": null,
+   "signal_depuis": null,
+   "signal_depuis_fin": null,
+   "prix_reference": null,
+   "dernier_changement": null,
+   "prix_actuel": 57.235,
+   "bougie": "2026-10-19 20:00:00",
+   "prochaine_decision_jours": 1.0,
+   "valeur": 1000.0,
+   "rendement_pct": 0.0,
+   "garder_valeur": 1000.0,
+   "garder_rendement_pct": 0.0,
+   "frais": 0.0,
+   "changements": 0,
+   "pire_baisse_pct": 0.0,
+   "garder_pire_baisse_pct": 0.0,
+   "sharpe": null,
+   "garder_sharpe": null,
+   "courbe": [],
+   "decisions": []
+  },
+  {
+   "code": "LE",
+   "nom": "Bovins",
+   "unite": "cents / livre",
+   "appris": "Il achète les baisses : 86 à 100 % du temps quand la tendance du mois baisse, seulement 17 à 32 % quand elle monte.",
+   "backtest": {
+    "robot": 7.7,
+    "garder": 8.2
+   },
+   "commence": false,
+   "signal": null,
+   "apercu": {
+    "signal": "DEHORS",
+    "votes": [
+     1,
+     0,
+     0
+    ]
+   },
+   "votes": null,
+   "signal_depuis": null,
+   "signal_depuis_fin": null,
+   "prix_reference": null,
+   "dernier_changement": null,
+   "prix_actuel": 228.525,
+   "bougie": "2026-10-19 16:00:00",
+   "prochaine_decision_jours": 2.9,
+   "valeur": 1000.0,
+   "rendement_pct": 0.0,
+   "garder_valeur": 1000.0,
+   "garder_rendement_pct": 0.0,
+   "frais": 0.0,
+   "changements": 0,
+   "pire_baisse_pct": 0.0,
+   "garder_pire_baisse_pct": 0.0,
+   "sharpe": null,
+   "garder_sharpe": null,
+   "courbe": [],
+   "decisions": []
+  },
+  {
+   "code": "HG",
+   "nom": "Cuivre",
+   "unite": "$ / livre",
+   "appris": "Il achète les baisses : 65 à 71 % du temps quand la tendance du mois baisse, presque jamais (6 à 12 %) quand elle monte.",
+   "backtest": {
+    "robot": 6.7,
+    "garder": 7.8
+   },
+   "commence": false,
+   "signal": null,
+   "apercu": {
+    "signal": "DEHORS",
+    "votes": [
+     0,
+     0,
+     0
+    ]
+   },
+   "votes": null,
+   "signal_depuis": null,
+   "signal_depuis_fin": null,
+   "prix_reference": null,
+   "dernier_changement": null,
+   "prix_actuel": 6.582,
+   "bougie": "2026-10-19 20:00:00",
+   "prochaine_decision_jours": 1.0,
+   "valeur": 1000.0,
+   "rendement_pct": 0.0,
+   "garder_valeur": 1000.0,
+   "garder_rendement_pct": 0.0,
+   "frais": 0.0,
+   "changements": 0,
+   "pire_baisse_pct": 0.0,
+   "garder_pire_baisse_pct": 0.0,
+   "sharpe": null,
+   "garder_sharpe": null,
+   "courbe": [],
+   "decisions": []
+  }
+ ],
+ "total": {
+  "valeur": 0,
+  "garder_valeur": 0,
+  "capital": 3000.0
+ },
+ "verdict": {
+  "statut": "en cours",
+  "criteres": [],
+  "texte": ""
+ }
+}
