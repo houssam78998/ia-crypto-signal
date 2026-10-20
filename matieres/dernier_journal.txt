@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/home/runner/work/ia-crypto-signal/ia-crypto-signal/matieres/run.py", line 275, in <module>
+    main()
+  File "/home/runner/work/ia-crypto-signal/ia-crypto-signal/matieres/run.py", line 199, in main
+    hourly = load_hourly(now)
+             ^^^^^^^^^^^^^^^^
+  File "/home/runner/work/ia-crypto-signal/ia-crypto-signal/matieres/run.py", line 74, in load_hourly
+    base = fetch(DATA_START, PAPER_START.floor("D"))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/ia-crypto-signal/ia-crypto-signal/matieres/run.py", line 51, in fetch
