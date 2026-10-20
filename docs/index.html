@@ -47,6 +47,14 @@ header{position:sticky;top:0;z-index:5;background:var(--bg);padding:calc(10px + 
 .votes{display:flex;gap:6px;justify-content:center;margin:6px 0}
 .votes span{width:30px;height:30px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:13px;font-weight:800}
 .votes .v1{background:var(--pos-bg);color:var(--pos)} .votes .v0{background:var(--bg);color:var(--muted);border:1px solid var(--line)}
+.votes .vm1{background:var(--neg-bg);color:var(--neg)}
+.sig.sell{background:var(--neg-bg);color:var(--neg)}
+.calc input{width:100%;font-size:20px;font-weight:700;padding:10px 12px;border:1px solid var(--line);border-radius:12px;background:var(--bg);color:var(--ink);margin:6px 0 4px}
+.how p{margin:8px 0;font-size:14px} .how b{color:var(--ink)}
+.c2{display:grid;grid-template-columns:52px 1fr auto;gap:8px;align-items:center;padding:9px 0;border-top:1px solid var(--line)}
+.c2:first-of-type{border-top:0}
+.c2 .s{font-size:12px;font-weight:800;border-radius:8px;padding:5px 8px;text-align:center}
+.s.buy{background:var(--pos-bg);color:var(--pos)} .s.out{background:var(--warn-bg);color:var(--warn)} .s.sell{background:var(--neg-bg);color:var(--neg)}
 .todo{background:var(--bg);border-radius:12px;padding:12px;margin-top:10px}
 main{padding:4px 16px calc(84px + env(safe-area-inset-bottom));max-width:640px;margin:0 auto}
 .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 14px;margin:12px 0;box-shadow:var(--shadow)}
@@ -104,7 +112,12 @@ th{font-size:12px;color:var(--muted);font-weight:600;border-top:0}
   </div>
   <div class="seg dom" id="dom">
     <button data-d="crypto" class="on">Crypto</button>
-    <button data-d="matieres">Matières premières</button>
+    <button data-d="v2">Crypto v2</button>
+    <button data-d="matieres">Matières</button>
+  </div>
+  <div class="seg" id="v2seg" style="display:none">
+    <button data-k="achat_seul" class="on">Achat seulement (5)</button>
+    <button data-k="achat_vente">Achat et vente (8)</button>
   </div>
   <div class="seg" id="mseg" style="display:none">
     <button data-m="SI" class="on">Argent</button>
@@ -127,13 +140,14 @@ th{font-size:12px;color:var(--muted);font-weight:600;border-top:0}
 <script>
 (function(){
   "use strict";
-  var DATA = null, P = "quotidien", TAB = "jour", MDATA = null, DOM = "crypto", MK = "SI", V5 = null;
+  var DATA = null, P = "quotidien", TAB = "jour", MDATA = null, DOM = "crypto", MK = "SI", V5 = null, V2 = null, K2 = "achat_seul";
   var store = {
     get: function(k){ try { return localStorage.getItem(k); } catch(e){ return null; } },
     set: function(k,v){ try { localStorage.setItem(k,v); } catch(e){} },
     del: function(k){ try { localStorage.removeItem(k); } catch(e){} }
   };
-  P = store.get("pf") || "quotidien"; TAB = store.get("tab") || "jour"; DOM = store.get("dom") || "crypto"; MK = store.get("mk") || "SI";
+  P = store.get("pf") || "quotidien"; TAB = store.get("tab") || "jour"; DOM = store.get("dom") || "crypto"; MK = store.get("mk") || "SI"; K2 = store.get("k2") || "achat_seul";
+  var montant = function(){ var v = parseFloat(store.get("montant")); return v > 0 ? v : 1000; };
 
   var nf = function(x, d){ return x == null ? "—" : Number(x).toLocaleString("fr-FR", {minimumFractionDigits:d==null?2:d, maximumFractionDigits:d==null?2:d}); };
   var pct = function(x){ return x == null ? "—" : (x > 0 ? "+" : "") + nf(x) + " %"; };
@@ -167,6 +181,153 @@ th{font-size:12px;color:var(--muted);font-weight:600;border-top:0}
       .then(function(j){ V5 = j; render(); }).catch(function(){});
   }
 
+  function loadV2(){
+    fetch("data/crypto_v2.json?t=" + Date.now(), {cache:"no-store"})
+      .then(function(r){ if(!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
+      .then(function(j){ V2 = j; render(); }).catch(function(){ if(DOM === "v2" && !V2) render(); });
+  }
+
+  // ------------------------------------------------------------- calculatrice « mon montant » (affichage seulement)
+  // lines : [{nom, pct, note}] ; gains : [{label, pct}]. Le test reste calculé sur 1 000 $ fictifs.
+  function calcCard(lines, gains){
+    var M = montant(), h = '<div class="card calc"><h2>Calculatrice — mon montant</h2>';
+    h += '<label class="small muted" for="montant">Combien veux-tu mettre ? (en $ ou USDT)</label><input id="montant" type="number" inputmode="decimal" min="1" step="any" value="' + M + '">';
+    h += '<div style="margin-top:8px"><b>Répartition de ' + nf(M) + ' $ aujourd\'hui</b></div>';
+    lines.forEach(function(l){ h += '<div class="row"><span><b>' + esc(l.nom) + '</b>' + (l.note ? ' <span class="small muted">' + esc(l.note) + '</span>' : '') + '</span><span>' + nf(M * l.pct / 100) + ' $ · ' + nf(l.pct, Math.abs(l.pct - Math.round(l.pct)) > 0.05 ? 1 : 0) + ' %</span></div>'; });
+    gains.forEach(function(g){ if(g.pct == null) return; var v = M * g.pct / 100; h += '<div class="row small"><span>' + esc(g.label) + '</span><span class="' + cls(v) + '">' + (v > 0 ? "+" : "") + nf(v) + ' $ (' + pct(g.pct) + ')</span></div>'; });
+    h += '<div class="small muted" style="margin-top:6px">Ce que tu aurais gagné ou perdu avec ton montant si tu avais suivi le test depuis le début. Gain « sur le papier » : il devient réel seulement quand tu vends.</div></div>';
+    return h;
+  }
+  document.addEventListener("change", function(e){
+    if(e.target && e.target.id === "montant"){ var v = parseFloat(String(e.target.value).replace(",", ".")); if(v > 0){ store.set("montant", String(v)); render(); } }
+  });
+
+  // ------------------------------------------------------------- « comment fonctionne le signal »
+  var HOW = {
+    v4: '<p><b>Chaque nuit</b> (vers 01 h UTC), l\'IA donne une note à 16 cryptos : celles qui devraient monter le plus dans les 7 prochains jours.</p>' +
+        '<p><b>Filtre Bitcoin :</b> si Bitcoin est au-dessus de sa moyenne des 100 derniers jours, le portefeuille achète les <b>3 premières</b> (33 % chacune). Sinon tout reste en <b>USDT</b> (pas de risque).</p>' +
+        '<p><b>Quotidien</b> = refait chaque jour. <b>Hebdomadaire</b> = seulement le dimanche.</p>' +
+        '<p><b>Le pourcentage (ex. +0,28 %)</b> = combien le portefeuille fictif a gagné. C\'est un gain « sur le papier » : il devient réel seulement quand tu vends.</p>' +
+        '<p><b>Comment sortir le gain ?</b> Tu vends une crypto quand l\'application dit <b>VENDRE</b> (elle sort du top 3, ou le filtre devient négatif). Ne vends pas pour un petit +0,3 % : les frais Binance (≈ 0,1 % à l\'achat et 0,1 % à la vente) mangeraient le gain.</p>',
+    v5: '<p><b>Chaque nuit</b>, 5 réseaux de neurones choisissent <b>combien mettre</b> sur chacune des 16 cryptos (ex. 40 % BTC, 25 % SOL…), au lieu de prendre 3 cryptos à parts égales comme la v4.</p>' +
+        '<p>Même filtre Bitcoin que la v4 : s\'il est négatif, tout en USDT.</p>' +
+        '<p>Tu ajustes ton portefeuille pour coller aux pourcentages. Seuls les gros changements sont importants ; les petits ajustements sont facultatifs. Le gain devient réel quand tu vends.</p>',
+    mat: '<p>Pour chaque marché (argent, bovins, cuivre), <b>3 robots</b> regardent les 10 derniers jours de prix (bougies de 4 h), la tendance et l\'agitation du marché.</p>' +
+         '<p>Environ <b>une fois par jour de bourse</b>, ils votent : <b>ACHETER</b> ou rester <b>DEHORS</b>. La majorité (2 sur 3) décide.</p>' +
+         '<p>Signal passe à ACHETER → tu achètes. Signal passe à DEHORS → tu vends : c\'est là que le gain (ou la perte) devient réel. Entre les deux, rien à faire.</p>',
+    v2: '<p>Pour chaque crypto, <b>3 robots</b> (apprentissage par renforcement) regardent les 10 derniers jours de prix, résumés par un autoencodeur, avec la tendance et l\'agitation du marché.</p>' +
+        '<p><b>Chaque jour à 04:00 UTC</b>, ils votent. La majorité décide. Le calcul est publié vers 04:30 UTC.</p>' +
+        '<p><b>Achat seulement</b> (5 cryptos) : <b>ACHETER</b> ou <b>DEHORS</b> (en USDT). Faisable sur Binance normal.</p>' +
+        '<p><b>Achat et vente</b> (8 cryptos) : en plus, <b>VENDRE</b> = parier à la baisse (vente à découvert). <b>Impossible sur Binance normal</b> : il faut les contrats à terme (futures), très risqués. Ici c\'est seulement fictif, pour voir si ça marche.</p>' +
+        '<p>Chaque crypto a une <b>part fixe</b> du portefeuille (1 000 $ ÷ 5 = 200 $, ou ÷ 8 = 125 $). Tu agis seulement quand un signal <b>change</b>. Le gain devient réel quand tu sors de la position.</p>'
+  };
+  function howCard(k){ return '<div class="card how"><details><summary style="font-size:15px;color:var(--ink);font-weight:700">ℹ️ Comment fonctionne le signal ?</summary>' + HOW[k] + '</details></div>'; }
+
+  // ------------------------------------------------------------- crypto v2 (robots v11 crypto)
+  var SIG = {ACHETER: "buy", DEHORS: "out", VENDRE: "sell"};
+  function v2pf(){ var ps = V2.portefeuilles; for(var i = 0; i < ps.length; i++){ if(ps[i].code === K2) return ps[i]; } return ps[0]; }
+  function votes2(v){ if(!v) return ""; return '<span class="votes" style="justify-content:flex-start;margin:2px 0 0">' + v.map(function(x){ return '<span class="v' + (x > 0 ? "1" : (x < 0 ? "m1" : "0")) + '" style="width:22px;height:22px;font-size:11px">' + (x > 0 ? "A" : (x < 0 ? "V" : "D")) + '</span>'; }).join("") + '</span>'; }
+  function v2Fresh(m){ var c = m.dernier_changement; return !!(c && m.derniere_decision && c.date === m.derniere_decision); }
+  function v2DoneKey(p){ var d = ""; p.marches.forEach(function(m){ if(m.derniere_decision && m.derniere_decision > d) d = m.derniere_decision; }); return "v2fait:" + p.code + ":" + d; }
+
+  function v2Jour(){
+    var p = v2pf(), t = V2.test, h = "";
+    if(!p.commence){
+      h += '<div class="card"><h2>' + esc(p.nom) + ' — le test commence le ' + esc(dfr(t.debut)) + '</h2><p class="small muted">Premier vote à 04:00 UTC. Aperçu indicatif (non enregistré) :</p>';
+      p.marches.forEach(function(m){ var a = m.apercu || {}; h += '<div class="c2"><b>' + esc(m.nom) + '</b><span>' + votes2(a.votes) + '</span><span class="s ' + (SIG[a.signal] || "out") + '">' + esc(a.signal || "—") + '</span></div>'; });
+      h += '</div>';
+      h += calcCard(p.marches.map(function(m){ return {nom: m.nom, pct: 100 / p.marches.length, note: "part fixe"}; }), []);
+      return h + howCard("v2");
+    }
+    var fresh = p.marches.filter(v2Fresh);
+    h += '<div class="card"><h2>' + esc(p.nom) + ' — à faire</h2>';
+    if(!fresh.length) h += '<div class="act"><span class="muted">Aucun changement : garder les positions actuelles.</span></div>';
+    fresh.forEach(function(m){
+      var c = m.dernier_changement, txt;
+      if(c.signal === "ACHETER") txt = (c.ancien === "VENDRE" ? "Fermer le pari à la baisse puis ACHETER " : "ACHETER ") + m.nom;
+      else if(c.signal === "VENDRE") txt = (c.ancien === "ACHETER" ? "Vendre ton " + m.nom + " puis parier à la baisse" : "Parier à la baisse sur " + m.nom);
+      else txt = c.ancien === "VENDRE" ? "Fermer le pari à la baisse sur " + m.nom + " (rester en USDT)" : "VENDRE ton " + m.nom + " (rester en USDT)";
+      if(c.initial && c.signal === "DEHORS") txt = m.nom + " : rester en USDT (départ)";
+      var lab = c.initial && c.signal === "DEHORS" ? "DÉPART" : (c.signal === "DEHORS" ? (c.ancien === "VENDRE" ? "FERMER" : "VENDRE") : c.signal);
+      h += '<div class="act"><span><span class="tag ' + (c.signal === "ACHETER" ? "buy" : "sell") + '">' + esc(lab) + '</span>' + esc(txt) + '</span><span>' + nf(c.prix, c.prix < 10 ? 4 : 2) + ' $</span></div>';
+    });
+    if(fresh.length){ var k = v2DoneKey(p), dn = store.get(k); h += '<button class="done' + (dn ? " is" : "") + '" id="v2done">' + (dn ? "✓ Fait le " + esc(dn) + " (toucher pour annuler)" : "✅ C'est fait") + '</button>'; }
+    var lastDec = ""; p.marches.forEach(function(m){ if(m.derniere_decision && m.derniere_decision > lastDec) lastDec = m.derniere_decision; });
+    var lastFin = lastDec ? new Date(new Date(lastDec.replace(" ", "T") + "Z").getTime() + 4 * 3600e3).toISOString().slice(0, 19).replace("T", " ") : null;
+    h += '<div class="small muted" style="margin-top:8px">Vote du ' + esc(dtime(lastFin)) + ' · prochaine mise à jour ' + esc(dtime(V2.prochaine_mise_a_jour)) + '. Prix = prix de référence au moment du vote.</div></div>';
+    h += '<div class="card"><h2>Signal de chaque crypto</h2>';
+    p.marches.forEach(function(m){
+      h += '<div class="c2"><b>' + esc(m.nom) + '</b><span class="small muted">depuis le ' + esc(dtime(m.signal_depuis_fin)) + votes2(m.votes) + '</span><span class="s ' + SIG[m.signal] + '">' + esc(m.signal) + '</span></div>';
+    });
+    h += '<div class="small muted" style="margin-top:6px">A = robot vote acheter · D = dehors · V = vendre (pari à la baisse).</div></div>';
+    h += '<div class="card"><h2>Portefeuille fictif</h2><div class="kpis">' +
+      '<div class="kpi"><div class="l">Valeur (robots)</div><div class="v">' + nf(p.valeur) + ' $</div></div>' +
+      '<div class="kpi"><div class="l">Depuis le début</div><div class="v ' + cls(p.rendement_pct) + '">' + pct(p.rendement_pct) + '</div></div>' +
+      '<div class="kpi"><div class="l">« Acheter et garder »</div><div class="v ' + cls(p.garder_rendement_pct) + '">' + pct(p.garder_rendement_pct) + '</div></div>' +
+      '<div class="kpi"><div class="l">Frais payés</div><div class="v">' + nf(p.frais) + ' $</div></div></div></div>';
+    var n = p.marches.length;
+    var lines = p.marches.map(function(m){ return {nom: m.nom, pct: m.signal === "DEHORS" ? 0 : 100 / n, note: m.signal === "ACHETER" ? "acheter" : (m.signal === "VENDRE" ? "pari à la baisse" : "")}; }).filter(function(l){ return l.pct > 0; });
+    var cash = p.marches.filter(function(m){ return m.signal === "DEHORS"; }).length;
+    if(cash) lines.push({nom: "USDT", pct: cash * 100 / n, note: cash + " crypto(s) dehors"});
+    h += calcCard(lines, [{label: "Gain depuis le début du test", pct: p.rendement_pct}]);
+    return h + howCard("v2");
+  }
+
+  function v2Pf(){
+    var p = v2pf(), t = V2.test;
+    if(!p.commence) return '<div class="card">Le portefeuille « ' + esc(p.nom) + ' » démarre le ' + esc(dfr(t.debut)) + ' à 04:00 UTC.</div>';
+    var h = '<div class="card"><h2>' + esc(p.nom) + ' — 1 000 $ fictifs</h2><div class="big">' + nf(p.valeur) + ' $</div><div class="' + cls(p.rendement_pct) + '">' + pct(p.rendement_pct) + ' depuis le ' + esc(dshort(t.debut)) + '</div>';
+    if(p.courbe.length > 1){
+      h += lineChart([{pts: p.courbe.map(function(x){ return [x.d, x.robot]; }), color: "var(--accent)", w: 2.6}, {pts: p.courbe.map(function(x){ return [x.d, x.garder]; }), color: "#f59e0b"}], {base: t.capital});
+      h += '<div class="legend"><span><i style="background:var(--accent)"></i>Robots (fictif)</span><span><i style="background:#f59e0b"></i>Acheter et garder</span></div>';
+    } else h += '<div class="small muted" style="margin-top:8px">La courbe apparaîtra après quelques jours.</div>';
+    h += '</div><div class="card"><h2>Chaque crypto (part de ' + nf(p.marches[0].part) + ' $)</h2><table><tr><th></th><th>Robots</th><th>Garder</th><th>Signal</th></tr>';
+    p.marches.forEach(function(m){ h += '<tr><td><b>' + esc(m.nom) + '</b></td><td class="' + cls(m.rendement_pct) + '">' + pct(m.rendement_pct) + '</td><td class="' + cls(m.garder_rendement_pct) + '">' + pct(m.garder_rendement_pct) + '</td><td><span class="s ' + SIG[m.signal] + '" style="font-size:11px;padding:3px 6px;border-radius:6px">' + esc(m.signal) + '</span></td></tr>'; });
+    h += '</table></div><div class="card"><h2>Statistiques</h2><div class="kpis">' +
+      '<div class="kpi"><div class="l">Pire baisse robots</div><div class="v neg">' + pct(p.pire_baisse_pct) + '</div></div>' +
+      '<div class="kpi"><div class="l">Pire baisse « garder »</div><div class="v neg">' + pct(p.garder_pire_baisse_pct) + '</div></div>' +
+      '<div class="kpi"><div class="l">Changements de signal</div><div class="v">' + p.changements + '</div></div>' +
+      '<div class="kpi"><div class="l">Frais payés</div><div class="v">' + nf(p.frais) + ' $</div></div></div></div>';
+    h += '<div class="card"><h2>Historique des changements</h2>';
+    var all = [];
+    p.marches.forEach(function(m){ m.decisions.forEach(function(d){ if(d.change) all.push({m: m.nom, d: d}); }); });
+    all.sort(function(a, b){ return a.d.date < b.d.date ? 1 : -1; });
+    if(!all.length) h += '<div class="muted small">Aucun changement pour l\'instant.</div>';
+    all.slice(0, 40).forEach(function(x){ h += '<div class="row small"><span>' + esc(dtime(x.d.fin)) + '</span><span><b>' + esc(x.m) + '</b> <span class="tag ' + (x.d.signal === "ACHETER" ? "buy" : "sell") + '">' + (x.d.initial ? "DÉPART " : "") + esc(x.d.signal) + '</span></span><span>' + nf(x.d.prix, x.d.prix < 10 ? 4 : 2) + '</span></div>'; });
+    return h + '</div>';
+  }
+
+  function v2Ver(){
+    var t = V2.test, h = "";
+    V2.portefeuilles.forEach(function(p){
+      var v = p.verdict, pc = v.statut === "validé" ? "ok" : (v.statut === "non validé" ? "ko" : "wait");
+      h += '<div class="card"><h2>Verdict — ' + esc(p.nom) + '</h2><span class="pill ' + pc + '">' + esc(v.statut.toUpperCase()) + '</span>';
+      h += '<div class="bar"><i style="width:' + Math.min(100, t.jours_ecoules / t.jours_total * 100) + '%"></i></div><div class="small muted">' + t.jours_ecoules + ' / ' + t.jours_total + ' jours · fin le ' + esc(dfr(t.fin)) + '</div>';
+      (v.criteres || []).forEach(function(c){ h += '<div class="crit"><span>' + (c.ok ? "✅" : "❌") + '</span><span>' + esc(c.nom) + '</span></div>'; });
+      h += '<p class="small">' + esc(v.texte) + '</p></div>';
+    });
+    var p = v2pf();
+    h += '<div class="card"><h2>Test historique 2024–2026 (' + esc(p.nom) + ')</h2><table><tr><th></th><th>Robots /an</th><th>Garder /an</th></tr>';
+    p.marches.forEach(function(m){ h += '<tr><td><b>' + esc(m.nom) + '</b></td><td class="' + cls(m.backtest.robot) + '">' + pct(m.backtest.robot) + '</td><td class="' + cls(m.backtest.garder) + '">' + pct(m.backtest.garder) + '</td></tr>'; });
+    h += '</table><div class="small muted" style="margin-top:8px">Ce que chaque robot a appris :</div>';
+    p.marches.forEach(function(m){ h += '<div class="row small" style="display:block"><b>' + esc(m.nom) + '</b> — ' + esc(m.appris) + '</div>'; });
+    h += '</div><div class="card small"><h2>Les règles du test</h2>Du ' + esc(dfr(t.debut)) + ' au ' + esc(dfr(t.fin)) + ' · 1 000 $ fictifs par portefeuille, part égale par crypto · 3 robots par crypto, vote chaque jour à 04:00 UTC, majorité · frais ' + nf(t.frais_pct) + ' % par changement · comparé à « acheter et garder » les mêmes cryptos.<br><br>3 critères sur 3 = VALIDÉ · 2 sur 3 = À PROLONGER · 0 ou 1 = NON VALIDÉ.<br><br>⚠️ Les robots ont été choisis parce qu\'ils ont bien marché sur 2024–2026 : une part de chance est possible. Ce test sur 6 mois de données nouvelles sert justement à le vérifier.</div>';
+    return h;
+  }
+
+  function renderV2(){
+    document.getElementById("title").textContent = "Crypto v2 — robots";
+    document.querySelectorAll("#v2seg button").forEach(function(b){ b.classList.toggle("on", b.dataset.k === K2); });
+    document.getElementById("v2seg").style.display = TAB === "ver" ? "none" : "flex";
+    if(!V2){ document.getElementById("updated").textContent = "Pas encore de données"; document.getElementById("main").innerHTML = '<div class="card">Les premiers signaux Crypto v2 apparaîtront après le premier calcul (chaque jour vers 04:30 UTC).</div>' + howCard("v2"); return; }
+    document.getElementById("updated").textContent = "Bougies jusqu'au " + dtime(V2.donnees_jusqu_au) + " · mis à jour " + V2.genere_le;
+    var h = TAB === "pf" ? v2Pf() : (TAB === "ver" ? v2Ver() : v2Jour());
+    h += '<div class="notice">Argent fictif — aucun ordre réel n\'est passé. Outil de recherche, pas un conseil financier.</div>';
+    document.getElementById("main").innerHTML = h;
+    var b = document.getElementById("v2done");
+    if(b){ b.onclick = function(){ var k = v2DoneKey(v2pf()); if(store.get(k)) store.del(k); else store.set(k, new Date().toLocaleString("fr-FR", {day:"numeric", month:"short", hour:"2-digit", minute:"2-digit"})); renderV2(); }; }
+  }
+
   // ------------------------------------------------------------- crypto v5 (répartition choisie par l'IA)
   function v5Jour(){
     var d = V5, s = d.signal, h = "";
@@ -185,13 +346,15 @@ th{font-size:12px;color:var(--muted);font-weight:600;border-top:0}
     if(minor.length){ h += '<details><summary>' + minor.length + ' petit(s) ajustement(s) facultatif(s)</summary>'; minor.forEach(function(a){ h += '<div class="act small"><span>' + a.action.toLowerCase() + ' ' + esc(a.crypto) + '</span><span>' + nf(a.usdt) + ' USDT</span></div>'; }); h += '</details>'; }
     var k = "fait:v5:" + s.date_calcul, dn = store.get(k);
     h += '<button class="done' + (dn ? " is" : "") + '" id="v5done">' + (dn ? "✓ Fait le " + esc(dn) + " (toucher pour annuler)" : (major.length ? "✅ C'est fait" : "✅ Vu, rien à faire")) + '</button></div>';
+    h += calcCard(s.filtre && s.poids.length ? s.poids.map(function(p){ return {nom: p.crypto, pct: p.pct}; }) : [{nom: "USDT", pct: 100, note: "filtre négatif"}],
+      [{label: "Gain depuis le début du test", pct: d.rendement_pct}]);
     h += '<div class="card"><h2>Portefeuille fictif v5</h2><div class="kpis">' +
       '<div class="kpi"><div class="l">Valeur</div><div class="v">' + nf(d.valeur) + ' $</div></div>' +
       '<div class="kpi"><div class="l">Depuis le début</div><div class="v ' + cls(d.rendement_pct) + '">' + pct(d.rendement_pct) + '</div></div>' +
       '<div class="kpi"><div class="l">v4 quotidien (même période)</div><div class="v ' + cls(d.v4_rendement_pct) + '">' + pct(d.v4_rendement_pct) + '</div></div>' +
       '<div class="kpi"><div class="l">Bitcoin (même période)</div><div class="v ' + cls(d.btc_rendement_pct) + '">' + pct(d.btc_rendement_pct) + '</div></div></div>';
     h += '<p class="small muted">Différence avec la v4 : la v4 classe les cryptos et en prend 3 à parts égales ; la v5 a appris directement combien mettre sur chacune. Test historique ' + esc(d.backtest.periode) + ' : v5 ' + pct(d.backtest.v5) + '/an, v4 ' + pct(d.backtest.v4) + '/an, Bitcoin ' + pct(d.backtest.btc) + '/an.</p></div>';
-    return h;
+    return h + howCard("v5");
   }
   function v5Pf(){
     var d = V5;
@@ -270,7 +433,8 @@ th{font-size:12px;color:var(--muted);font-weight:600;border-top:0}
       '<div class="kpi"><div class="l">« Acheter et garder »</div><div class="v ' + cls(m.garder_rendement_pct) + '">' + pct(m.garder_rendement_pct) + '</div></div>' +
       '<div class="kpi"><div class="l">Frais payés</div><div class="v">' + nf(m.frais) + ' $</div></div></div></div>';
     h += '<div class="card"><h2>Ce que ces robots ont appris</h2><p class="small">' + esc(m.appris) + '</p><p class="small muted">Test historique 2021–2026 : robots ' + pct(m.backtest.robot) + '/an, « garder » ' + pct(m.backtest.garder) + '/an.</p></div>';
-    return h;
+    h += calcCard(buy ? [{nom: m.nom, pct: 100, note: "acheté"}] : [{nom: "Cash", pct: 100, note: "dehors"}], [{label: "Gain depuis le début du test", pct: m.rendement_pct}]);
+    return h + howCard("mat");
   }
 
   function matPf(m){
@@ -408,6 +572,8 @@ th{font-size:12px;color:var(--muted);font-weight:600;border-top:0}
       else h += '<div class="small muted">Portefeuille en USDT ce jour-là (aucune variation).</div>';
       h += '</div>';
     }
+    h += calcCard(s.top.length ? s.top.map(function(c){ return {nom: c, pct: 100 / s.top.length}; }) : [{nom: "USDT", pct: 100, note: "filtre négatif"}],
+      [{label: "Gain depuis le début du test", pct: pf.rendement_pct}, {label: j && j.date ? "Résultat du " + dshort(j.date) : "Dernier jour", pct: j ? j.variation_pct : null}]);
     h += '<div class="card"><h2>Portefeuille fictif</h2><div class="kpis">' +
       '<div class="kpi"><div class="l">Valeur</div><div class="v">' + nf(pf.valeur) + ' $</div></div>' +
       '<div class="kpi"><div class="l">Depuis le début</div><div class="v ' + cls(pf.rendement_pct) + '">' + pct(pf.rendement_pct) + '</div></div>' +
@@ -419,7 +585,7 @@ th{font-size:12px;color:var(--muted);font-weight:600;border-top:0}
       keys.forEach(function(c, i){ var v = sc[c]; h += '<div class="rank"><span class="muted">' + (i + 1) + '</span><b>' + esc(c) + '</b><div class="b' + (v < 0 ? " n" : "") + '" style="width:' + Math.max(4, Math.abs(v) / mx * 100) + '%"></div></div>'; });
       h += '<div class="small muted">Bleu = cryptos que l\'IA préfère pour les 7 prochains jours, rouge = celles qu\'elle évite. Le portefeuille prend les 3 premières si le filtre est positif.</div></div>';
     }
-    return h;
+    return h + howCard("v4");
   }
 
   function viewPf(pf){
@@ -489,7 +655,14 @@ th{font-size:12px;color:var(--muted);font-weight:600;border-top:0}
 
   function render(){
     document.querySelectorAll("#dom button").forEach(function(b){ b.classList.toggle("on", b.dataset.d === DOM); });
-    document.getElementById("navsem").style.display = DOM === "matieres" ? "none" : "";
+    document.getElementById("navsem").style.display = DOM === "matieres" || DOM === "v2" ? "none" : "";
+    if(DOM !== "v2") document.getElementById("v2seg").style.display = "none";
+    if(DOM === "v2"){
+      if(TAB === "sem") TAB = "jour";
+      document.getElementById("seg").style.display = "none"; document.getElementById("mseg").style.display = "none";
+      document.querySelectorAll("#nav button").forEach(function(b){ b.classList.toggle("on", b.dataset.t === TAB); });
+      return renderV2();
+    }
     if(DOM === "matieres"){
       if(TAB === "sem") TAB = "jour";
       document.getElementById("seg").style.display = "none";
@@ -525,10 +698,11 @@ th{font-size:12px;color:var(--muted);font-weight:600;border-top:0}
   document.getElementById("nav").addEventListener("click", function(e){ var b = e.target.closest("button"); if(b){ TAB = b.dataset.t; store.set("tab", TAB); render(); window.scrollTo(0,0); } });
   document.getElementById("dom").addEventListener("click", function(e){ var b = e.target.closest("button"); if(b){ DOM = b.dataset.d; store.set("dom", DOM); render(); window.scrollTo(0,0); } });
   document.getElementById("mseg").addEventListener("click", function(e){ var b = e.target.closest("button"); if(b){ MK = b.dataset.m; store.set("mk", MK); render(); window.scrollTo(0,0); } });
-  document.getElementById("refresh").addEventListener("click", function(){ load(); loadMat(); loadV5(); });
-  document.addEventListener("visibilitychange", function(){ if(document.visibilityState === "visible"){ load(); loadMat(); loadV5(); } });
+  document.getElementById("v2seg").addEventListener("click", function(e){ var b = e.target.closest("button"); if(b){ K2 = b.dataset.k; store.set("k2", K2); render(); window.scrollTo(0,0); } });
+  document.getElementById("refresh").addEventListener("click", function(){ load(); loadMat(); loadV5(); loadV2(); });
+  document.addEventListener("visibilitychange", function(){ if(document.visibilityState === "visible"){ load(); loadMat(); loadV5(); loadV2(); } });
   if("serviceWorker" in navigator){ navigator.serviceWorker.register("sw.js").catch(function(){}); }
-  load(); loadMat(); loadV5(); render();
+  load(); loadMat(); loadV5(); loadV2(); render();
 })();
 </script>
 </body>

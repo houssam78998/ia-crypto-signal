@@ -40,3 +40,14 @@ Application mobile (Android et iPhone) qui affiche chaque jour le signal de l'IA
 - Le filtre Bitcoin décide investi / cash (comme la v4) ; 5 réseaux de neurones donnent directement les poids des 16 cryptos (entraînés pour maximiser le rapport gain / risque après frais).
 - `.github/workflows/crypto_v5.yml` lance `crypto_v5/run.py` chaque jour à 01:20 UTC. Il lit `data/panel.csv.gz` (mis à jour par la v4) sans le modifier. Réentraînement tous les 3 mois.
 - Verdict : la v5 doit battre la v4 quotidienne (rendement et Sharpe) et le Bitcoin. Le test v4 n'est pas modifié.
+
+## Crypto v2 — robots v11 crypto (ajouté le 20 octobre 2026)
+- Bouton **« Crypto v2 »** en haut. Deux portefeuilles fictifs de 1 000 $ chacun, du 21 octobre 2026 (04:00 UTC) au 21 avril 2027 :
+  - **Achat seulement** : XRP, XLM, SOL, DOT, AVAX (les 5 validés en version « acheter ou rester dehors ») ;
+  - **Achat et vente** : ETH, XRP, ADA, DOGE, SOL, LTC, DOT, AVAX (les 8 validés en version « acheter, dehors ou vendre » ; la vente à découvert est fictive).
+- `.github/workflows/crypto_v2.yml` lance `crypto_v2/run.py` chaque jour à 04:25 UTC. Les robots (3 par crypto) et autoencodeurs viennent du Drive `IA_CRYPTO_v11` (entraînés dans Colab) ; aucun entraînement sur GitHub.
+- Premier lancement : téléchargement de l'historique Binance depuis 2018 pour normaliser l'autoencodeur comme dans Colab (`modeles/*/normalisation.json`) et vérification du Sharpe du test 2024–2026 (voir `crypto_v2/dernier_journal.txt`).
+- Verdict : chaque portefeuille doit battre « acheter et garder » les mêmes cryptos (rendement, Sharpe, majorité des cryptos).
+
+## Calculatrice « mon montant »
+- Sur chaque écran « Aujourd'hui », tu entres ton montant (1 000 par défaut) : l'application montre combien mettre dans chaque crypto ou marché, et le gain ou la perte avec ce montant. C'est seulement un affichage : les tests restent calculés sur 1 000 $ fictifs.
