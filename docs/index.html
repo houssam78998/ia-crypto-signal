@@ -302,7 +302,7 @@ th{font-size:12px;color:var(--muted);font-weight:600;border-top:0}
     V2.portefeuilles.forEach(function(p){
       var v = p.verdict, pc = v.statut === "validé" ? "ok" : (v.statut === "non validé" ? "ko" : "wait");
       h += '<div class="card"><h2>Verdict — ' + esc(p.nom) + '</h2><span class="pill ' + pc + '">' + esc(v.statut.toUpperCase()) + '</span>';
-      h += '<div class="bar"><i style="width:' + Math.min(100, t.jours_ecoules / t.jours_total * 100) + '%"></i></div><div class="small muted">' + t.jours_ecoules + ' / ' + t.jours_total + ' jours · fin le ' + esc(dfr(t.fin)) + '</div>';
+      h += '<div class="bar"><i style="width:' + Math.min(100, t.jours_ecoules / t.jours_total * 100) + '%"></i></div><div class="small muted">' + 'Jour ' + t.jours_ecoules + ' / ' + t.jours_total + ' · mis à jour ' + esc(V2.genere_le) + ' · fin le ' + esc(dfr(t.fin)) + '</div>';
       (v.criteres || []).forEach(function(c){ h += '<div class="crit"><span>' + (c.ok ? "✅" : "❌") + '</span><span>' + esc(c.nom) + '</span></div>'; });
       h += '<p class="small">' + esc(v.texte) + '</p></div>';
     });
@@ -383,7 +383,7 @@ th{font-size:12px;color:var(--muted);font-weight:600;border-top:0}
     var d = V5, v = d.verdict, t = d.test;
     var pc = v.statut === "validé" ? "ok" : (v.statut === "non validé" ? "ko" : "wait");
     var h = '<div class="card"><h2>Verdict v5</h2><span class="pill ' + pc + '">' + esc(v.statut.toUpperCase()) + '</span>';
-    h += '<div class="bar"><i style="width:' + Math.min(100, t.jours_ecoules / t.jours_total * 100) + '%"></i></div><div class="small muted">' + t.jours_ecoules + ' / ' + t.jours_total + ' jours · fin le ' + esc(dfr(t.fin)) + '</div>';
+    h += '<div class="bar"><i style="width:' + Math.min(100, t.jours_ecoules / t.jours_total * 100) + '%"></i></div><div class="small muted">' + 'Jour ' + t.jours_ecoules + ' / ' + t.jours_total + ' · mis à jour ' + esc(V5.genere_le) + ' · fin le ' + esc(dfr(t.fin)) + '</div>';
     v.criteres.forEach(function(c){ h += '<div class="crit"><span>' + (c.ok ? "✅" : "❌") + '</span><span>' + esc(c.nom) + '</span></div>'; });
     h += '<p class="small">' + esc(v.texte) + '</p></div>';
     h += '<div class="card small"><h2>Les règles du test v5</h2>Du ' + esc(dfr(t.debut)) + ' au ' + esc(dfr(t.fin)) + ' · ' + nf(t.capital, 0) + ' USDT fictifs · filtre Bitcoin &gt; moyenne ' + t.filtre_jours + ' jours (sinon tout en USDT) · répartition entre les 16 cryptos choisie par 5 réseaux de neurones · rééquilibrage chaque jour · frais ' + nf(t.frais_pct) + ' % + glissement ' + nf(t.slippage_pct) + ' % · modèle entraîné jusqu\'au ' + esc(dshort(t.modele_cutoff)) + ', réentraîné tous les 3 mois. Le test v4 n\'est pas modifié.</div>';
@@ -466,7 +466,7 @@ th{font-size:12px;color:var(--muted);font-weight:600;border-top:0}
     var t = MDATA.test, v = MDATA.verdict, h = "";
     var pc = v.statut === "validé" ? "ok" : (v.statut === "non validé" ? "ko" : "wait");
     h += '<div class="card"><h2>Verdict matières premières</h2><span class="pill ' + pc + '">' + esc(v.statut.toUpperCase()) + '</span>';
-    h += '<div class="bar"><i style="width:' + Math.min(100, t.jours_ecoules / t.jours_total * 100) + '%"></i></div><div class="small muted">' + t.jours_ecoules + ' / ' + t.jours_total + ' jours · fin le ' + esc(dfr(t.fin)) + '</div>';
+    h += '<div class="bar"><i style="width:' + Math.min(100, t.jours_ecoules / t.jours_total * 100) + '%"></i></div><div class="small muted">' + 'Jour ' + t.jours_ecoules + ' / ' + t.jours_total + ' · mis à jour ' + esc(MDATA.genere_le) + ' · fin le ' + esc(dfr(t.fin)) + '</div>';
     (v.criteres || []).forEach(function(c){ h += '<div class="crit"><span>' + (c.ok ? "✅" : "❌") + '</span><span>' + esc(c.nom) + '</span></div>'; });
     h += '<p class="small">' + esc(v.texte) + '</p></div>';
     var ms = MDATA.marches.filter(function(x){ return x.commence; });
@@ -631,13 +631,30 @@ th{font-size:12px;color:var(--muted);font-weight:600;border-top:0}
 
   function viewVer(){
     var t = DATA.test, h = "";
+    var dd = function(a, b){ return Math.round((new Date(b + "T00:00:00Z") - new Date(a + "T00:00:00Z")) / 864e5); };
+    var totalJ = dd(t.debut, t.fin), jours = Math.max(0, Math.min(totalJ, dd(t.debut, DATA.donnees_jusqu_au)));
+    var majLe = dfr(String(DATA.genere_le).slice(0, 10), {day:"numeric", month:"short"}) + " à " + String(DATA.genere_le).slice(11);
     ["quotidien", "hebdomadaire"].forEach(function(p){
       var pf = DATA.portefeuilles[p], v = pf.verdict || {semaines:0, criteres:[], texte:"—", statut:"pas commencé"};
       var pc = v.statut === "validé" ? "ok" : (v.statut === "non validé" ? "ko" : "wait");
       h += '<div class="card"><h2>' + esc(pf.nom) + '</h2><span class="pill ' + pc + '">' + esc(v.statut.toUpperCase()) + '</span>';
-      h += '<div class="bar"><i style="width:' + Math.min(100, v.semaines / t.semaines * 100) + '%"></i></div><div class="small muted">' + v.semaines + ' / ' + t.semaines + ' semaines</div>';
-      v.criteres.forEach(function(c){ h += '<div class="crit"><span>' + (c.ok ? "✅" : "❌") + '</span><span>' + esc(c.nom) + '</span></div>'; });
-      h += '<p class="small">' + esc(v.texte) + '</p></div>';
+      if(p === "quotidien" && v.statut === "en cours" && pf.commence){
+        // Suivi jour par jour (affichage seulement, le moteur v4 n'est pas modifié)
+        var ic = (v.criteres[1] || {ok: false}).ok;
+        var cr = [{nom: "Rendement meilleur que le Bitcoin (" + pct(pf.rendement_pct) + " contre " + pct(pf.btc_rendement_pct) + ")", ok: pf.rendement_pct > pf.btc_rendement_pct},
+                  {nom: "Classements de l'IA utiles (IC moyen > 0) — mesuré chaque semaine, il faut 7 jours pour juger un classement", ok: ic},
+                  {nom: "Pire baisse plus faible que le Bitcoin (" + pct(pf.pire_baisse_pct) + " contre " + pct(pf.btc_pire_baisse_pct) + ")", ok: pf.pire_baisse_pct >= pf.btc_pire_baisse_pct}];
+        var n = cr.filter(function(c){ return c.ok; }).length;
+        h += '<div class="bar"><i style="width:' + Math.min(100, jours / totalJ * 100) + '%"></i></div><div class="small muted">Jour ' + jours + ' / ' + totalJ + ' · mis à jour le ' + esc(majLe) + ' · fin le ' + esc(dfr(t.fin)) + '</div>';
+        cr.forEach(function(c){ h += '<div class="crit"><span>' + (c.ok ? "✅" : "❌") + '</span><span>' + esc(c.nom) + '</span></div>'; });
+        h += '<p class="small">En cours : jour ' + jours + ' sur ' + totalJ + '. Critères remplis aujourd\'hui : ' + n + '/3. Le verdict officiel sera donné le ' + esc(dfr(t.fin)) + '.</p></div>';
+      } else {
+        var nextSun = new Date(DATA.donnees_jusqu_au + "T00:00:00Z"); nextSun.setUTCDate(nextSun.getUTCDate() + ((7 - nextSun.getUTCDay()) % 7 || 7));
+        var ns = nextSun.toISOString().slice(0, 10);
+        h += '<div class="bar"><i style="width:' + Math.min(100, v.semaines / t.semaines * 100) + '%"></i></div><div class="small muted">Semaine ' + v.semaines + ' / ' + t.semaines + (v.statut === "en cours" ? ' · prochaine mise à jour : ' + esc(dfr(ns)) + ' (bilan de la semaine)' : '') + '</div>';
+        v.criteres.forEach(function(c){ h += '<div class="crit"><span>' + (c.ok ? "✅" : "❌") + '</span><span>' + esc(c.nom) + '</span></div>'; });
+        h += '<p class="small">' + esc(v.texte) + (v.statut === "en cours" ? ' Ce verdict change seulement une fois par semaine, le dimanche.' : '') + '</p></div>';
+      }
     });
     var q = DATA.portefeuilles.quotidien, w = DATA.portefeuilles.hebdomadaire;
     if(q.commence){
