@@ -1,6 +1,6 @@
 {
- "genere_le": "2026-10-20 07:43 UTC",
- "donnees_jusqu_au": "2026-10-19 20:00:00",
+ "genere_le": "2026-10-21 07:19 UTC",
+ "donnees_jusqu_au": "2026-10-20 20:00:00",
  "test": {
   "debut": "2026-10-20",
   "fin": "2027-04-20",
@@ -25,7 +25,7 @@
    "apercu": {
     "signal": "DEHORS",
     "votes": [
-     0,
+     1,
      0,
      0
     ]
@@ -35,8 +35,8 @@
    "signal_depuis_fin": null,
    "prix_reference": null,
    "dernier_changement": null,
-   "prix_actuel": 57.235,
-   "bougie": "2026-10-19 20:00:00",
+   "prix_actuel": 57.885,
+   "bougie": "2026-10-20 20:00:00",
    "prochaine_decision_jours": 1.0,
    "valeur": 1000.0,
    "rendement_pct": 0.0,
@@ -63,11 +63,11 @@
    "commence": false,
    "signal": null,
    "apercu": {
-    "signal": "DEHORS",
+    "signal": "ACHETER",
     "votes": [
      1,
      0,
-     0
+     1
     ]
    },
    "votes": null,
@@ -75,8 +75,8 @@
    "signal_depuis_fin": null,
    "prix_reference": null,
    "dernier_changement": null,
-   "prix_actuel": 228.525,
-   "bougie": "2026-10-19 16:00:00",
+   "prix_actuel": 229.525,
+   "bougie": "2026-10-20 16:00:00",
    "prochaine_decision_jours": 2.9,
    "valeur": 1000.0,
    "rendement_pct": 0.0,
@@ -115,8 +115,8 @@
    "signal_depuis_fin": null,
    "prix_reference": null,
    "dernier_changement": null,
-   "prix_actuel": 6.582,
-   "bougie": "2026-10-19 20:00:00",
+   "prix_actuel": 6.6105,
+   "bougie": "2026-10-20 20:00:00",
    "prochaine_decision_jours": 1.0,
    "valeur": 1000.0,
    "rendement_pct": 0.0,

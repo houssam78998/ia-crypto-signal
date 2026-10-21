@@ -1,29 +1,32 @@
-/home/runner/work/ia-crypto-signal/ia-crypto-signal/matieres/run.py:78: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
-  allh = pd.concat([base, recent], ignore_index=True)
 /home/runner/work/ia-crypto-signal/ia-crypto-signal/matieres/run.py:80: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
   new = fetch(last - pd.Timedelta(days=2), now)             # 2 jours de recouvrement en cas de correction
-/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/pandas/core/internals/concat.py:510: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
-  return dtype.type("NaT")
-/home/runner/work/ia-crypto-signal/ia-crypto-signal/matieres/run.py:82: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
-  recent = pd.concat([recent, new], ignore_index=True)
 /home/runner/work/ia-crypto-signal/ia-crypto-signal/matieres/run.py:83: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
   recent = recent[recent["ts"] >= base["ts"].max() + pd.Timedelta(hours=1)]
-/home/runner/work/ia-crypto-signal/ia-crypto-signal/matieres/run.py:113: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+/home/runner/work/ia-crypto-signal/ia-crypto-signal/matieres/run.py:116: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
   b = b[b.index + pd.Timedelta(hours=4) <= h["ts"].max() + pd.Timedelta(hours=1)]     # seulement les bougies terminées
-/home/runner/work/ia-crypto-signal/ia-crypto-signal/matieres/run.py:113: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+/home/runner/work/ia-crypto-signal/ia-crypto-signal/matieres/run.py:116: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
   b = b[b.index + pd.Timedelta(hours=4) <= h["ts"].max() + pd.Timedelta(hours=1)]     # seulement les bougies terminées
-Databento : 2026-10-17T22:00:00 → 2026-10-20T16:00:00, coût estimé 0.0009 $
-AttributeError: 'int' object has no attribute 'log1p'
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "/home/runner/work/ia-crypto-signal/ia-crypto-signal/matieres/run.py", line 275, in <module>
-    main()
-  File "/home/runner/work/ia-crypto-signal/ia-crypto-signal/matieres/run.py", line 205, in main
-    info, OBS = features(bars, m)
-                ^^^^^^^^^^^^^^^^^
-  File "/home/runner/work/ia-crypto-signal/ia-crypto-signal/matieres/run.py", line 119, in features
-    v = bars["vol_30"].values; lv = np.log1p(bars["vol"].values)
-                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-TypeError: loop of ufunc does not support argument 0 of type int which has no callable log1p method
+/home/runner/work/ia-crypto-signal/ia-crypto-signal/matieres/run.py:220: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  bars_per_day = len(info[info["t"] >= info["t"].iloc[-1] - pd.Timedelta(days=28)]) / 20.0
+/home/runner/work/ia-crypto-signal/ia-crypto-signal/matieres/run.py:233: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  "dernier_changement": last, "prix_actuel": float(info["prix"].iloc[-1]), "bougie": str(info["t"].iloc[-1] + pd.Timedelta(hours=4)),
+/home/runner/work/ia-crypto-signal/ia-crypto-signal/matieres/run.py:116: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  b = b[b.index + pd.Timedelta(hours=4) <= h["ts"].max() + pd.Timedelta(hours=1)]     # seulement les bougies terminées
+/home/runner/work/ia-crypto-signal/ia-crypto-signal/matieres/run.py:116: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  b = b[b.index + pd.Timedelta(hours=4) <= h["ts"].max() + pd.Timedelta(hours=1)]     # seulement les bougies terminées
+/home/runner/work/ia-crypto-signal/ia-crypto-signal/matieres/run.py:220: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  bars_per_day = len(info[info["t"] >= info["t"].iloc[-1] - pd.Timedelta(days=28)]) / 20.0
+/home/runner/work/ia-crypto-signal/ia-crypto-signal/matieres/run.py:233: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  "dernier_changement": last, "prix_actuel": float(info["prix"].iloc[-1]), "bougie": str(info["t"].iloc[-1] + pd.Timedelta(hours=4)),
+/home/runner/work/ia-crypto-signal/ia-crypto-signal/matieres/run.py:116: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  b = b[b.index + pd.Timedelta(hours=4) <= h["ts"].max() + pd.Timedelta(hours=1)]     # seulement les bougies terminées
+/home/runner/work/ia-crypto-signal/ia-crypto-signal/matieres/run.py:116: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  b = b[b.index + pd.Timedelta(hours=4) <= h["ts"].max() + pd.Timedelta(hours=1)]     # seulement les bougies terminées
+/home/runner/work/ia-crypto-signal/ia-crypto-signal/matieres/run.py:220: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  bars_per_day = len(info[info["t"] >= info["t"].iloc[-1] - pd.Timedelta(days=28)]) / 20.0
+/home/runner/work/ia-crypto-signal/ia-crypto-signal/matieres/run.py:233: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  "dernier_changement": last, "prix_actuel": float(info["prix"].iloc[-1]), "bougie": str(info["t"].iloc[-1] + pd.Timedelta(hours=4)),
+Databento : 2026-10-18T15:00:00 → 2026-10-20T23:00:00, coût estimé 0.0011 $
+Argent: aperçu DEHORS | robot 1000.0 $ | garder 1000.0 $
+Bovins: aperçu ACHETER | robot 1000.0 $ | garder 1000.0 $
+Cuivre: aperçu DEHORS | robot 1000.0 $ | garder 1000.0 $
