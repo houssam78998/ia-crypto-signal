@@ -1,7 +1,7 @@
 {
- "genere_le": "2026-10-20 20:40 UTC",
- "donnees_jusqu_au": "2026-10-20 20:00:00",
- "prochaine_mise_a_jour": "2026-10-21 04:30:00",
+ "genere_le": "2026-10-21 07:19 UTC",
+ "donnees_jusqu_au": "2026-10-21 04:00:00",
+ "prochaine_mise_a_jour": "2026-10-22 04:30:00",
  "test": {
   "debut": "2026-10-21",
   "fin": "2027-04-21",
@@ -16,45 +16,61 @@
    "code": "achat_seul",
    "nom": "Achat seulement",
    "long_only": true,
-   "commence": false,
+   "commence": true,
    "capital": 1000.0,
    "valeur": 1000.0,
    "rendement_pct": 0.0,
-   "garder_valeur": 1000.0,
-   "garder_rendement_pct": 0.0,
+   "garder_valeur": 998.5,
+   "garder_rendement_pct": -0.15,
    "sharpe": null,
    "garder_sharpe": null,
    "pire_baisse_pct": 0.0,
    "garder_pire_baisse_pct": 0.0,
    "frais": 0.0,
    "changements": 0,
-   "courbe": [],
+   "courbe": [
+    {
+     "d": "2026-10-21",
+     "robot": 1000.0,
+     "garder": 998.5
+    }
+   ],
    "marches": [
     {
      "code": "XRPUSDT",
      "nom": "XRP",
-     "commence": false,
-     "signal": null,
-     "apercu": {
+     "commence": true,
+     "signal": "DEHORS",
+     "apercu": null,
+     "votes": [
+      0,
+      0,
+      0
+     ],
+     "signal_depuis": "2026-10-21 00:00:00",
+     "signal_depuis_fin": "2026-10-21 04:00:00",
+     "prix_reference": 1.3324,
+     "dernier_changement": {
+      "date": "2026-10-21 00:00:00",
+      "fin": "2026-10-21 04:00:00",
+      "initial": true,
       "signal": "DEHORS",
+      "ancien": "DEHORS",
+      "prix": 1.3324,
       "votes": [
        0,
        0,
        0
-      ]
+      ],
+      "change": true
      },
-     "votes": null,
-     "signal_depuis": null,
-     "signal_depuis_fin": null,
-     "prix_reference": null,
-     "dernier_changement": null,
-     "derniere_decision": null,
-     "prix_actuel": 1.3291,
+     "derniere_decision": "2026-10-21 00:00:00",
+     "prix_actuel": 1.3324,
      "part": 200.0,
      "valeur": 200.0,
      "rendement_pct": 0.0,
-     "garder_valeur": 200.0,
-     "garder_rendement_pct": 0.0,
+     "garder_valeur": 199.7,
+     "garder_rendement_pct": -0.15,
      "frais": 0.0,
      "changements": 0,
      "backtest": {
@@ -65,33 +81,58 @@
       "sharpe_recalcule": 0.82
      },
      "appris": "Achète 78 % du temps quand la tendance monte, seulement 25 à 27 % sinon.",
-     "decisions": []
+     "decisions": [
+      {
+       "date": "2026-10-21 00:00:00",
+       "fin": "2026-10-21 04:00:00",
+       "initial": true,
+       "signal": "DEHORS",
+       "ancien": "DEHORS",
+       "prix": 1.3324,
+       "votes": [
+        0,
+        0,
+        0
+       ],
+       "change": true
+      }
+     ]
     },
     {
      "code": "XLMUSDT",
      "nom": "XLM",
-     "commence": false,
-     "signal": null,
-     "apercu": {
+     "commence": true,
+     "signal": "DEHORS",
+     "apercu": null,
+     "votes": [
+      0,
+      0,
+      1
+     ],
+     "signal_depuis": "2026-10-21 00:00:00",
+     "signal_depuis_fin": "2026-10-21 04:00:00",
+     "prix_reference": 0.1815,
+     "dernier_changement": {
+      "date": "2026-10-21 00:00:00",
+      "fin": "2026-10-21 04:00:00",
+      "initial": true,
       "signal": "DEHORS",
+      "ancien": "DEHORS",
+      "prix": 0.1815,
       "votes": [
        0,
        0,
        1
-      ]
+      ],
+      "change": true
      },
-     "votes": null,
-     "signal_depuis": null,
-     "signal_depuis_fin": null,
-     "prix_reference": null,
-     "dernier_changement": null,
-     "derniere_decision": null,
-     "prix_actuel": 0.1799,
+     "derniere_decision": "2026-10-21 00:00:00",
+     "prix_actuel": 0.1815,
      "part": 200.0,
      "valeur": 200.0,
      "rendement_pct": 0.0,
-     "garder_valeur": 200.0,
-     "garder_rendement_pct": 0.0,
+     "garder_valeur": 199.7,
+     "garder_rendement_pct": -0.15,
      "frais": 0.0,
      "changements": 0,
      "backtest": {
@@ -102,33 +143,58 @@
       "sharpe_recalcule": 0.71
      },
      "appris": "Achète 71 % du temps quand la tendance monte, 20 % quand elle baisse.",
-     "decisions": []
+     "decisions": [
+      {
+       "date": "2026-10-21 00:00:00",
+       "fin": "2026-10-21 04:00:00",
+       "initial": true,
+       "signal": "DEHORS",
+       "ancien": "DEHORS",
+       "prix": 0.1815,
+       "votes": [
+        0,
+        0,
+        1
+       ],
+       "change": true
+      }
+     ]
     },
     {
      "code": "SOLUSDT",
      "nom": "SOL",
-     "commence": false,
-     "signal": null,
-     "apercu": {
+     "commence": true,
+     "signal": "DEHORS",
+     "apercu": null,
+     "votes": [
+      0,
+      0,
+      0
+     ],
+     "signal_depuis": "2026-10-21 00:00:00",
+     "signal_depuis_fin": "2026-10-21 04:00:00",
+     "prix_reference": 105.86,
+     "dernier_changement": {
+      "date": "2026-10-21 00:00:00",
+      "fin": "2026-10-21 04:00:00",
+      "initial": true,
       "signal": "DEHORS",
+      "ancien": "DEHORS",
+      "prix": 105.86,
       "votes": [
        0,
        0,
-       1
-      ]
+       0
+      ],
+      "change": true
      },
-     "votes": null,
-     "signal_depuis": null,
-     "signal_depuis_fin": null,
-     "prix_reference": null,
-     "dernier_changement": null,
-     "derniere_decision": null,
-     "prix_actuel": 106.1,
+     "derniere_decision": "2026-10-21 00:00:00",
+     "prix_actuel": 105.86,
      "part": 200.0,
      "valeur": 200.0,
      "rendement_pct": 0.0,
-     "garder_valeur": 200.0,
-     "garder_rendement_pct": 0.0,
+     "garder_valeur": 199.7,
+     "garder_rendement_pct": -0.15,
      "frais": 0.0,
      "changements": 0,
      "backtest": {
@@ -139,33 +205,58 @@
       "sharpe_recalcule": 0.15
      },
      "appris": "Achète presque toujours (98 %) quand la tendance monte, 14 % quand elle baisse.",
-     "decisions": []
+     "decisions": [
+      {
+       "date": "2026-10-21 00:00:00",
+       "fin": "2026-10-21 04:00:00",
+       "initial": true,
+       "signal": "DEHORS",
+       "ancien": "DEHORS",
+       "prix": 105.86,
+       "votes": [
+        0,
+        0,
+        0
+       ],
+       "change": true
+      }
+     ]
     },
     {
      "code": "DOTUSDT",
      "nom": "DOT",
-     "commence": false,
-     "signal": null,
-     "apercu": {
+     "commence": true,
+     "signal": "DEHORS",
+     "apercu": null,
+     "votes": [
+      0,
+      0,
+      0
+     ],
+     "signal_depuis": "2026-10-21 00:00:00",
+     "signal_depuis_fin": "2026-10-21 04:00:00",
+     "prix_reference": 1.163,
+     "dernier_changement": {
+      "date": "2026-10-21 00:00:00",
+      "fin": "2026-10-21 04:00:00",
+      "initial": true,
       "signal": "DEHORS",
+      "ancien": "DEHORS",
+      "prix": 1.163,
       "votes": [
-       1,
+       0,
        0,
        0
-      ]
+      ],
+      "change": true
      },
-     "votes": null,
-     "signal_depuis": null,
-     "signal_depuis_fin": null,
-     "prix_reference": null,
-     "dernier_changement": null,
-     "derniere_decision": null,
-     "prix_actuel": 1.157,
+     "derniere_decision": "2026-10-21 00:00:00",
+     "prix_actuel": 1.163,
      "part": 200.0,
      "valeur": 200.0,
      "rendement_pct": 0.0,
-     "garder_valeur": 200.0,
-     "garder_rendement_pct": 0.0,
+     "garder_valeur": 199.7,
+     "garder_rendement_pct": -0.15,
      "frais": 0.0,
      "changements": 0,
      "backtest": {
@@ -176,33 +267,58 @@
       "sharpe_recalcule": -0.11
      },
      "appris": "Très prudent : 45 % du temps acheté en tendance haussière, presque jamais en baisse (8 %).",
-     "decisions": []
+     "decisions": [
+      {
+       "date": "2026-10-21 00:00:00",
+       "fin": "2026-10-21 04:00:00",
+       "initial": true,
+       "signal": "DEHORS",
+       "ancien": "DEHORS",
+       "prix": 1.163,
+       "votes": [
+        0,
+        0,
+        0
+       ],
+       "change": true
+      }
+     ]
     },
     {
      "code": "AVAXUSDT",
      "nom": "AVAX",
-     "commence": false,
-     "signal": null,
-     "apercu": {
+     "commence": true,
+     "signal": "DEHORS",
+     "apercu": null,
+     "votes": [
+      0,
+      0,
+      0
+     ],
+     "signal_depuis": "2026-10-21 00:00:00",
+     "signal_depuis_fin": "2026-10-21 04:00:00",
+     "prix_reference": 9.702,
+     "dernier_changement": {
+      "date": "2026-10-21 00:00:00",
+      "fin": "2026-10-21 04:00:00",
+      "initial": true,
       "signal": "DEHORS",
+      "ancien": "DEHORS",
+      "prix": 9.702,
       "votes": [
        0,
        0,
        0
-      ]
+      ],
+      "change": true
      },
-     "votes": null,
-     "signal_depuis": null,
-     "signal_depuis_fin": null,
-     "prix_reference": null,
-     "dernier_changement": null,
-     "derniere_decision": null,
-     "prix_actuel": 9.646,
+     "derniere_decision": "2026-10-21 00:00:00",
+     "prix_actuel": 9.702,
      "part": 200.0,
      "valeur": 200.0,
      "rendement_pct": 0.0,
-     "garder_valeur": 200.0,
-     "garder_rendement_pct": 0.0,
+     "garder_valeur": 199.7,
+     "garder_rendement_pct": -0.15,
      "frais": 0.0,
      "changements": 0,
      "backtest": {
@@ -213,60 +329,104 @@
       "sharpe_recalcule": 0.12
      },
      "appris": "Achète 66 % du temps en tendance haussière, presque jamais en baisse (5 %).",
-     "decisions": []
+     "decisions": [
+      {
+       "date": "2026-10-21 00:00:00",
+       "fin": "2026-10-21 04:00:00",
+       "initial": true,
+       "signal": "DEHORS",
+       "ancien": "DEHORS",
+       "prix": 9.702,
+       "votes": [
+        0,
+        0,
+        0
+       ],
+       "change": true
+      }
+     ]
     }
    ],
    "verdict": {
-    "statut": "pas commencé",
-    "criteres": [],
-    "texte": "Le test commence le 21/10/2026 à 04:00 UTC."
+    "statut": "en cours",
+    "criteres": [
+     {
+      "nom": "Le portefeuille des robots finit au-dessus de « acheter et garder » les mêmes cryptos",
+      "ok": true
+     },
+     {
+      "nom": "Meilleur rapport gain / risque (Sharpe) que « garder »",
+      "ok": false
+     },
+     {
+      "nom": "Au moins 3 cryptos sur 5 battent leur « garder » (5/5)",
+      "ok": true
+     }
+    ],
+    "texte": "Verdict définitif le 21/04/2027. Les critères changent chaque jour."
    }
   },
   {
    "code": "achat_vente",
    "nom": "Achat et vente",
    "long_only": false,
-   "commence": false,
+   "commence": true,
    "capital": 1000.0,
-   "valeur": 1000.0,
-   "rendement_pct": 0.0,
-   "garder_valeur": 1000.0,
-   "garder_rendement_pct": 0.0,
+   "valeur": 998.48,
+   "rendement_pct": -0.15,
+   "garder_valeur": 998.48,
+   "garder_rendement_pct": -0.15,
    "sharpe": null,
    "garder_sharpe": null,
    "pire_baisse_pct": 0.0,
    "garder_pire_baisse_pct": 0.0,
-   "frais": 0.0,
-   "changements": 0,
-   "courbe": [],
+   "frais": 1.52,
+   "changements": 8,
+   "courbe": [
+    {
+     "d": "2026-10-21",
+     "robot": 998.48,
+     "garder": 998.48
+    }
+   ],
    "marches": [
     {
      "code": "ETHUSDT",
      "nom": "ETH",
-     "commence": false,
-     "signal": null,
-     "apercu": {
-      "signal": "VENDRE",
+     "commence": true,
+     "signal": "ACHETER",
+     "apercu": null,
+     "votes": [
+      -1,
+      1,
+      1
+     ],
+     "signal_depuis": "2026-10-21 00:00:00",
+     "signal_depuis_fin": "2026-10-21 04:00:00",
+     "prix_reference": 2444.3,
+     "dernier_changement": {
+      "date": "2026-10-21 00:00:00",
+      "fin": "2026-10-21 04:00:00",
+      "initial": true,
+      "signal": "ACHETER",
+      "ancien": "DEHORS",
+      "prix": 2444.3,
       "votes": [
        -1,
-       -1,
+       1,
        1
-      ]
+      ],
+      "change": true
      },
-     "votes": null,
-     "signal_depuis": null,
-     "signal_depuis_fin": null,
-     "prix_reference": null,
-     "dernier_changement": null,
-     "derniere_decision": null,
-     "prix_actuel": 2437.92,
+     "derniere_decision": "2026-10-21 00:00:00",
+     "prix_actuel": 2444.3,
      "part": 125.0,
-     "valeur": 125.0,
-     "rendement_pct": 0.0,
-     "garder_valeur": 125.0,
-     "garder_rendement_pct": 0.0,
-     "frais": 0.0,
-     "changements": 0,
+     "valeur": 124.81,
+     "rendement_pct": -0.15,
+     "garder_valeur": 124.81,
+     "garder_rendement_pct": -0.15,
+     "frais": 0.19,
+     "changements": 1,
      "backtest": {
       "robot": 15.0,
       "garder": 2.3,
@@ -275,35 +435,60 @@
       "sharpe_recalcule": 0.21
      },
      "appris": "Surtout acheteur : 100 % en hausse, 87 % sans tendance ; vend à moitié en baisse.",
-     "decisions": []
+     "decisions": [
+      {
+       "date": "2026-10-21 00:00:00",
+       "fin": "2026-10-21 04:00:00",
+       "initial": true,
+       "signal": "ACHETER",
+       "ancien": "DEHORS",
+       "prix": 2444.3,
+       "votes": [
+        -1,
+        1,
+        1
+       ],
+       "change": true
+      }
+     ]
     },
     {
      "code": "XRPUSDT",
      "nom": "XRP",
-     "commence": false,
-     "signal": null,
-     "apercu": {
+     "commence": true,
+     "signal": "VENDRE",
+     "apercu": null,
+     "votes": [
+      -1,
+      -1,
+      -1
+     ],
+     "signal_depuis": "2026-10-21 00:00:00",
+     "signal_depuis_fin": "2026-10-21 04:00:00",
+     "prix_reference": 1.3324,
+     "dernier_changement": {
+      "date": "2026-10-21 00:00:00",
+      "fin": "2026-10-21 04:00:00",
+      "initial": true,
       "signal": "VENDRE",
+      "ancien": "DEHORS",
+      "prix": 1.3324,
       "votes": [
        -1,
        -1,
        -1
-      ]
+      ],
+      "change": true
      },
-     "votes": null,
-     "signal_depuis": null,
-     "signal_depuis_fin": null,
-     "prix_reference": null,
-     "dernier_changement": null,
-     "derniere_decision": null,
-     "prix_actuel": 1.3291,
+     "derniere_decision": "2026-10-21 00:00:00",
+     "prix_actuel": 1.3324,
      "part": 125.0,
-     "valeur": 125.0,
-     "rendement_pct": 0.0,
-     "garder_valeur": 125.0,
-     "garder_rendement_pct": 0.0,
-     "frais": 0.0,
-     "changements": 0,
+     "valeur": 124.81,
+     "rendement_pct": -0.15,
+     "garder_valeur": 124.81,
+     "garder_rendement_pct": -0.15,
+     "frais": 0.19,
+     "changements": 1,
      "backtest": {
       "robot": 86.5,
       "garder": 31.2,
@@ -312,35 +497,60 @@
       "sharpe_recalcule": 0.81
      },
      "appris": "Achète en hausse (76 %), vend 77 % du temps sinon.",
-     "decisions": []
+     "decisions": [
+      {
+       "date": "2026-10-21 00:00:00",
+       "fin": "2026-10-21 04:00:00",
+       "initial": true,
+       "signal": "VENDRE",
+       "ancien": "DEHORS",
+       "prix": 1.3324,
+       "votes": [
+        -1,
+        -1,
+        -1
+       ],
+       "change": true
+      }
+     ]
     },
     {
      "code": "ADAUSDT",
      "nom": "ADA",
-     "commence": false,
-     "signal": null,
-     "apercu": {
+     "commence": true,
+     "signal": "VENDRE",
+     "apercu": null,
+     "votes": [
+      -1,
+      -1,
+      -1
+     ],
+     "signal_depuis": "2026-10-21 00:00:00",
+     "signal_depuis_fin": "2026-10-21 04:00:00",
+     "prix_reference": 0.2231,
+     "dernier_changement": {
+      "date": "2026-10-21 00:00:00",
+      "fin": "2026-10-21 04:00:00",
+      "initial": true,
       "signal": "VENDRE",
+      "ancien": "DEHORS",
+      "prix": 0.2231,
       "votes": [
        -1,
        -1,
        -1
-      ]
+      ],
+      "change": true
      },
-     "votes": null,
-     "signal_depuis": null,
-     "signal_depuis_fin": null,
-     "prix_reference": null,
-     "dernier_changement": null,
-     "derniere_decision": null,
-     "prix_actuel": 0.2219,
+     "derniere_decision": "2026-10-21 00:00:00",
+     "prix_actuel": 0.2231,
      "part": 125.0,
-     "valeur": 125.0,
-     "rendement_pct": 0.0,
-     "garder_valeur": 125.0,
-     "garder_rendement_pct": 0.0,
-     "frais": 0.0,
-     "changements": 0,
+     "valeur": 124.81,
+     "rendement_pct": -0.15,
+     "garder_valeur": 124.81,
+     "garder_rendement_pct": -0.15,
+     "frais": 0.19,
+     "changements": 1,
      "backtest": {
       "robot": 46.1,
       "garder": -29.9,
@@ -349,35 +559,60 @@
       "sharpe_recalcule": 0.42
      },
      "appris": "Suit la tendance : achète 94 % en hausse, vend 87 % en baisse.",
-     "decisions": []
+     "decisions": [
+      {
+       "date": "2026-10-21 00:00:00",
+       "fin": "2026-10-21 04:00:00",
+       "initial": true,
+       "signal": "VENDRE",
+       "ancien": "DEHORS",
+       "prix": 0.2231,
+       "votes": [
+        -1,
+        -1,
+        -1
+       ],
+       "change": true
+      }
+     ]
     },
     {
      "code": "DOGEUSDT",
      "nom": "DOGE",
-     "commence": false,
-     "signal": null,
-     "apercu": {
+     "commence": true,
+     "signal": "VENDRE",
+     "apercu": null,
+     "votes": [
+      0,
+      -1,
+      -1
+     ],
+     "signal_depuis": "2026-10-21 00:00:00",
+     "signal_depuis_fin": "2026-10-21 04:00:00",
+     "prix_reference": 0.08149,
+     "dernier_changement": {
+      "date": "2026-10-21 00:00:00",
+      "fin": "2026-10-21 04:00:00",
+      "initial": true,
       "signal": "VENDRE",
+      "ancien": "DEHORS",
+      "prix": 0.08149,
       "votes": [
        0,
        -1,
        -1
-      ]
+      ],
+      "change": true
      },
-     "votes": null,
-     "signal_depuis": null,
-     "signal_depuis_fin": null,
-     "prix_reference": null,
-     "dernier_changement": null,
-     "derniere_decision": null,
-     "prix_actuel": 0.08158,
+     "derniere_decision": "2026-10-21 00:00:00",
+     "prix_actuel": 0.08149,
      "part": 125.0,
-     "valeur": 125.0,
-     "rendement_pct": 0.0,
-     "garder_valeur": 125.0,
-     "garder_rendement_pct": 0.0,
-     "frais": 0.0,
-     "changements": 0,
+     "valeur": 124.81,
+     "rendement_pct": -0.15,
+     "garder_valeur": 124.81,
+     "garder_rendement_pct": -0.15,
+     "frais": 0.19,
+     "changements": 1,
      "backtest": {
       "robot": 83.4,
       "garder": -4.0,
@@ -386,35 +621,60 @@
       "sharpe_recalcule": 0.66
      },
      "appris": "Suit la tendance : achète 94 % en hausse, vend 89 % en baisse.",
-     "decisions": []
+     "decisions": [
+      {
+       "date": "2026-10-21 00:00:00",
+       "fin": "2026-10-21 04:00:00",
+       "initial": true,
+       "signal": "VENDRE",
+       "ancien": "DEHORS",
+       "prix": 0.08149,
+       "votes": [
+        0,
+        -1,
+        -1
+       ],
+       "change": true
+      }
+     ]
     },
     {
      "code": "SOLUSDT",
      "nom": "SOL",
-     "commence": false,
-     "signal": null,
-     "apercu": {
+     "commence": true,
+     "signal": "VENDRE",
+     "apercu": null,
+     "votes": [
+      -1,
+      -1,
+      -1
+     ],
+     "signal_depuis": "2026-10-21 00:00:00",
+     "signal_depuis_fin": "2026-10-21 04:00:00",
+     "prix_reference": 105.86,
+     "dernier_changement": {
+      "date": "2026-10-21 00:00:00",
+      "fin": "2026-10-21 04:00:00",
+      "initial": true,
       "signal": "VENDRE",
+      "ancien": "DEHORS",
+      "prix": 105.86,
       "votes": [
        -1,
        -1,
        -1
-      ]
+      ],
+      "change": true
      },
-     "votes": null,
-     "signal_depuis": null,
-     "signal_depuis_fin": null,
-     "prix_reference": null,
-     "dernier_changement": null,
-     "derniere_decision": null,
-     "prix_actuel": 106.1,
+     "derniere_decision": "2026-10-21 00:00:00",
+     "prix_actuel": 105.86,
      "part": 125.0,
-     "valeur": 125.0,
-     "rendement_pct": 0.0,
-     "garder_valeur": 125.0,
-     "garder_rendement_pct": 0.0,
-     "frais": 0.0,
-     "changements": 0,
+     "valeur": 124.81,
+     "rendement_pct": -0.15,
+     "garder_valeur": 124.81,
+     "garder_rendement_pct": -0.15,
+     "frais": 0.19,
+     "changements": 1,
      "backtest": {
       "robot": 42.8,
       "garder": 0.7,
@@ -423,35 +683,60 @@
       "sharpe_recalcule": 0.44
      },
      "appris": "Suit la tendance : achète 92 % en hausse, vend 91 % en baisse.",
-     "decisions": []
+     "decisions": [
+      {
+       "date": "2026-10-21 00:00:00",
+       "fin": "2026-10-21 04:00:00",
+       "initial": true,
+       "signal": "VENDRE",
+       "ancien": "DEHORS",
+       "prix": 105.86,
+       "votes": [
+        -1,
+        -1,
+        -1
+       ],
+       "change": true
+      }
+     ]
     },
     {
      "code": "LTCUSDT",
      "nom": "LTC",
-     "commence": false,
-     "signal": null,
-     "apercu": {
+     "commence": true,
+     "signal": "VENDRE",
+     "apercu": null,
+     "votes": [
+      -1,
+      -1,
+      -1
+     ],
+     "signal_depuis": "2026-10-21 00:00:00",
+     "signal_depuis_fin": "2026-10-21 04:00:00",
+     "prix_reference": 61.48,
+     "dernier_changement": {
+      "date": "2026-10-21 00:00:00",
+      "fin": "2026-10-21 04:00:00",
+      "initial": true,
       "signal": "VENDRE",
+      "ancien": "DEHORS",
+      "prix": 61.48,
       "votes": [
        -1,
        -1,
        -1
-      ]
+      ],
+      "change": true
      },
-     "votes": null,
-     "signal_depuis": null,
-     "signal_depuis_fin": null,
-     "prix_reference": null,
-     "dernier_changement": null,
-     "derniere_decision": null,
-     "prix_actuel": 60.66,
+     "derniere_decision": "2026-10-21 00:00:00",
+     "prix_actuel": 61.48,
      "part": 125.0,
-     "valeur": 125.0,
-     "rendement_pct": 0.0,
-     "garder_valeur": 125.0,
-     "garder_rendement_pct": 0.0,
-     "frais": 0.0,
-     "changements": 0,
+     "valeur": 124.81,
+     "rendement_pct": -0.15,
+     "garder_valeur": 124.81,
+     "garder_rendement_pct": -0.15,
+     "frais": 0.19,
+     "changements": 1,
      "backtest": {
       "robot": 135.4,
       "garder": -7.0,
@@ -460,35 +745,60 @@
       "sharpe_recalcule": 1.18
      },
      "appris": "Surtout vendeur : vend 97 % en baisse, 89 % sans tendance, et encore 43 % en hausse.",
-     "decisions": []
+     "decisions": [
+      {
+       "date": "2026-10-21 00:00:00",
+       "fin": "2026-10-21 04:00:00",
+       "initial": true,
+       "signal": "VENDRE",
+       "ancien": "DEHORS",
+       "prix": 61.48,
+       "votes": [
+        -1,
+        -1,
+        -1
+       ],
+       "change": true
+      }
+     ]
     },
     {
      "code": "DOTUSDT",
      "nom": "DOT",
-     "commence": false,
-     "signal": null,
-     "apercu": {
+     "commence": true,
+     "signal": "VENDRE",
+     "apercu": null,
+     "votes": [
+      -1,
+      -1,
+      -1
+     ],
+     "signal_depuis": "2026-10-21 00:00:00",
+     "signal_depuis_fin": "2026-10-21 04:00:00",
+     "prix_reference": 1.163,
+     "dernier_changement": {
+      "date": "2026-10-21 00:00:00",
+      "fin": "2026-10-21 04:00:00",
+      "initial": true,
       "signal": "VENDRE",
+      "ancien": "DEHORS",
+      "prix": 1.163,
       "votes": [
        -1,
        -1,
        -1
-      ]
+      ],
+      "change": true
      },
-     "votes": null,
-     "signal_depuis": null,
-     "signal_depuis_fin": null,
-     "prix_reference": null,
-     "dernier_changement": null,
-     "derniere_decision": null,
-     "prix_actuel": 1.157,
+     "derniere_decision": "2026-10-21 00:00:00",
+     "prix_actuel": 1.163,
      "part": 125.0,
-     "valeur": 125.0,
-     "rendement_pct": 0.0,
-     "garder_valeur": 125.0,
-     "garder_rendement_pct": 0.0,
-     "frais": 0.0,
-     "changements": 0,
+     "valeur": 124.81,
+     "rendement_pct": -0.15,
+     "garder_valeur": 124.81,
+     "garder_rendement_pct": -0.15,
+     "frais": 0.19,
+     "changements": 1,
      "backtest": {
       "robot": 215.4,
       "garder": -50.9,
@@ -497,35 +807,60 @@
       "sharpe_recalcule": 1.34
      },
      "appris": "Surtout vendeur : vend 93 % en baisse, 78 % sans tendance ; achète 62 % en hausse.",
-     "decisions": []
+     "decisions": [
+      {
+       "date": "2026-10-21 00:00:00",
+       "fin": "2026-10-21 04:00:00",
+       "initial": true,
+       "signal": "VENDRE",
+       "ancien": "DEHORS",
+       "prix": 1.163,
+       "votes": [
+        -1,
+        -1,
+        -1
+       ],
+       "change": true
+      }
+     ]
     },
     {
      "code": "AVAXUSDT",
      "nom": "AVAX",
-     "commence": false,
-     "signal": null,
-     "apercu": {
+     "commence": true,
+     "signal": "VENDRE",
+     "apercu": null,
+     "votes": [
+      -1,
+      -1,
+      -1
+     ],
+     "signal_depuis": "2026-10-21 00:00:00",
+     "signal_depuis_fin": "2026-10-21 04:00:00",
+     "prix_reference": 9.702,
+     "dernier_changement": {
+      "date": "2026-10-21 00:00:00",
+      "fin": "2026-10-21 04:00:00",
+      "initial": true,
       "signal": "VENDRE",
+      "ancien": "DEHORS",
+      "prix": 9.702,
       "votes": [
        -1,
        -1,
        -1
-      ]
+      ],
+      "change": true
      },
-     "votes": null,
-     "signal_depuis": null,
-     "signal_depuis_fin": null,
-     "prix_reference": null,
-     "dernier_changement": null,
-     "derniere_decision": null,
-     "prix_actuel": 9.646,
+     "derniere_decision": "2026-10-21 00:00:00",
+     "prix_actuel": 9.702,
      "part": 125.0,
-     "valeur": 125.0,
-     "rendement_pct": 0.0,
-     "garder_valeur": 125.0,
-     "garder_rendement_pct": 0.0,
-     "frais": 0.0,
-     "changements": 0,
+     "valeur": 124.81,
+     "rendement_pct": -0.15,
+     "garder_valeur": 124.81,
+     "garder_rendement_pct": -0.15,
+     "frais": 0.19,
+     "changements": 1,
      "backtest": {
       "robot": 125.3,
       "garder": -38.8,
@@ -534,13 +869,41 @@
       "sharpe_recalcule": 0.91
      },
      "appris": "Surtout vendeur : vend 99 % en baisse, 89 % sans tendance ; achète 68 % en hausse.",
-     "decisions": []
+     "decisions": [
+      {
+       "date": "2026-10-21 00:00:00",
+       "fin": "2026-10-21 04:00:00",
+       "initial": true,
+       "signal": "VENDRE",
+       "ancien": "DEHORS",
+       "prix": 9.702,
+       "votes": [
+        -1,
+        -1,
+        -1
+       ],
+       "change": true
+      }
+     ]
     }
    ],
    "verdict": {
-    "statut": "pas commencé",
-    "criteres": [],
-    "texte": "Le test commence le 21/10/2026 à 04:00 UTC."
+    "statut": "en cours",
+    "criteres": [
+     {
+      "nom": "Le portefeuille des robots finit au-dessus de « acheter et garder » les mêmes cryptos",
+      "ok": false
+     },
+     {
+      "nom": "Meilleur rapport gain / risque (Sharpe) que « garder »",
+      "ok": false
+     },
+     {
+      "nom": "Au moins 5 cryptos sur 8 battent leur « garder » (0/8)",
+      "ok": false
+     }
+    ],
+    "texte": "Verdict définitif le 21/04/2027. Les critères changent chaque jour."
    }
   }
  ]
