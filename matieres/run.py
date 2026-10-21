@@ -85,6 +85,9 @@ def load_hourly(now):
         recent.to_csv(RECENT_PATH, index=False)
         allh = pd.concat([base, recent], ignore_index=True)
     allh["ts"] = pd.to_datetime(allh["ts"]).astype("datetime64[ns]")
+    for c in ["open", "high", "low", "close", "volume"]:
+        allh[c] = pd.to_numeric(allh[c], errors="coerce").astype("float64")     # évite les colonnes « object » après fusion
+    allh = allh.dropna(subset=["open", "high", "low", "close"])
     return allh.drop_duplicates(["ts", "root"], keep="last")
 
 
