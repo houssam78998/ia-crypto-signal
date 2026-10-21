@@ -1,6 +1,6 @@
 {
- "genere_le": "2026-10-20 10:30 UTC",
- "donnees_jusqu_au": "2026-10-19",
+ "genere_le": "2026-10-21 06:07 UTC",
+ "donnees_jusqu_au": "2026-10-20",
  "test": {
   "debut": "2026-10-20",
   "fin": "2027-04-20",
@@ -14,62 +14,62 @@
  },
  "commence": false,
  "signal": {
-  "date_calcul": "2026-10-19",
-  "applicable_le": "2026-10-20",
+  "date_calcul": "2026-10-20",
+  "applicable_le": "2026-10-21",
   "filtre": true,
-  "btc_vs_moy100": 10.1,
+  "btc_vs_moy100": 11.3,
   "poids": [
    {
-    "crypto": "BTC",
-    "pct": 18.8
-   },
-   {
     "crypto": "DOT",
-    "pct": 14.0
+    "pct": 20.0
    },
    {
-    "crypto": "BNB",
-    "pct": 10.6
-   },
-   {
-    "crypto": "TRX",
-    "pct": 8.4
-   },
-   {
-    "crypto": "SOL",
-    "pct": 7.8
-   },
-   {
-    "crypto": "BCH",
-    "pct": 7.8
+    "crypto": "BTC",
+    "pct": 14.3
    },
    {
     "crypto": "LTC",
+    "pct": 13.4
+   },
+   {
+    "crypto": "BNB",
+    "pct": 11.0
+   },
+   {
+    "crypto": "SOL",
     "pct": 6.1
    },
    {
+    "crypto": "TRX",
+    "pct": 6.1
+   },
+   {
+    "crypto": "BCH",
+    "pct": 5.2
+   },
+   {
     "crypto": "ATOM",
-    "pct": 5.8
+    "pct": 4.2
    },
    {
     "crypto": "ETH",
-    "pct": 4.4
+    "pct": 3.9
    },
    {
     "crypto": "LINK",
-    "pct": 3.2
+    "pct": 3.3
    },
    {
     "crypto": "XRP",
-    "pct": 3.2
-   },
-   {
-    "crypto": "AVAX",
-    "pct": 3.0
+    "pct": 3.1
    },
    {
     "crypto": "DOGE",
-    "pct": 2.4
+    "pct": 2.5
+   },
+   {
+    "crypto": "AVAX",
+    "pct": 2.5
    },
    {
     "crypto": "ADA",
@@ -77,113 +77,113 @@
    },
    {
     "crypto": "XLM",
-    "pct": 2.2
+    "pct": 2.0
    }
   ],
   "actions": [
    {
-    "crypto": "BTC",
-    "action": "ACHETER",
-    "usdt": 188.19,
-    "prix": 81938.4,
-    "majeur": true
-   },
-   {
     "crypto": "DOT",
     "action": "ACHETER",
-    "usdt": 139.62,
-    "prix": 1.153,
+    "usdt": 199.52,
+    "prix": 1.152,
     "majeur": true
    },
    {
-    "crypto": "BNB",
+    "crypto": "BTC",
     "action": "ACHETER",
-    "usdt": 106.32,
-    "prix": 732.13,
-    "majeur": true
-   },
-   {
-    "crypto": "TRX",
-    "action": "ACHETER",
-    "usdt": 84.07,
-    "prix": 0.3322,
-    "majeur": true
-   },
-   {
-    "crypto": "SOL",
-    "action": "ACHETER",
-    "usdt": 78.3,
-    "prix": 105.08,
-    "majeur": true
-   },
-   {
-    "crypto": "BCH",
-    "action": "ACHETER",
-    "usdt": 77.68,
-    "prix": 280.7,
+    "usdt": 143.44,
+    "prix": 83028.15,
     "majeur": true
    },
    {
     "crypto": "LTC",
     "action": "ACHETER",
-    "usdt": 61.42,
-    "prix": 59.73,
+    "usdt": 134.49,
+    "prix": 61.62,
+    "majeur": true
+   },
+   {
+    "crypto": "BNB",
+    "action": "ACHETER",
+    "usdt": 110.02,
+    "prix": 741.69,
+    "majeur": true
+   },
+   {
+    "crypto": "SOL",
+    "action": "ACHETER",
+    "usdt": 61.47,
+    "prix": 106.54,
+    "majeur": true
+   },
+   {
+    "crypto": "TRX",
+    "action": "ACHETER",
+    "usdt": 60.81,
+    "prix": 0.3314,
+    "majeur": true
+   },
+   {
+    "crypto": "BCH",
+    "action": "ACHETER",
+    "usdt": 52.15,
+    "prix": 283.4,
     "majeur": true
    },
    {
     "crypto": "ATOM",
     "action": "ACHETER",
-    "usdt": 58.33,
-    "prix": 1.747,
-    "majeur": true
+    "usdt": 42.36,
+    "prix": 1.749,
+    "majeur": false
    },
    {
     "crypto": "ETH",
     "action": "ACHETER",
-    "usdt": 43.66,
-    "prix": 2408.01,
+    "usdt": 38.55,
+    "prix": 2449.2,
     "majeur": false
    },
    {
     "crypto": "LINK",
     "action": "ACHETER",
-    "usdt": 31.82,
-    "prix": 12.06,
+    "usdt": 32.73,
+    "prix": 12.332,
     "majeur": false
    },
    {
     "crypto": "XRP",
     "action": "ACHETER",
-    "usdt": 31.54,
-    "prix": 1.3041,
-    "majeur": false
-   },
-   {
-    "crypto": "AVAX",
-    "action": "ACHETER",
-    "usdt": 29.63,
-    "prix": 9.609,
+    "usdt": 31.33,
+    "prix": 1.3358,
     "majeur": false
    },
    {
     "crypto": "DOGE",
     "action": "ACHETER",
-    "usdt": 24.3,
-    "prix": 0.07975,
+    "usdt": 25.36,
+    "prix": 0.08187,
+    "majeur": false
+   },
+   {
+    "crypto": "AVAX",
+    "action": "ACHETER",
+    "usdt": 24.68,
+    "prix": 9.755,
     "majeur": false
    },
    {
     "crypto": "ADA",
     "action": "ACHETER",
-    "usdt": 23.39,
-    "prix": 0.2181,
+    "usdt": 22.67,
+    "prix": 0.224,
     "majeur": false
    },
    {
     "crypto": "XLM",
     "action": "ACHETER",
-    "usdt": 21.73,
-    "prix": 0.1777,
+    "usdt": 20.4,
+    "prix": 0.1821,
     "majeur": false
    }
   ]
