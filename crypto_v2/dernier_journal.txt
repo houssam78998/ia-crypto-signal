@@ -36,6 +36,8 @@
   b = b[b.index + pd.Timedelta(hours=4) <= h["ts"].max() + pd.Timedelta(hours=1)]     # seulement les bougies terminées
 /home/runner/work/ia-crypto-signal/ia-crypto-signal/crypto_v2/run.py:238: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
   return last_dec is not None and ts - pd.Timestamp(last_dec) >= pd.Timedelta(hours=28)   # rattrapage si une bougie manque
+/home/runner/work/ia-crypto-signal/ia-crypto-signal/crypto_v2/run.py:264: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  S["decisions"].append({"date": str(ts), "fin": str(ts + pd.Timedelta(hours=4)), "initial": first,
 /home/runner/work/ia-crypto-signal/ia-crypto-signal/crypto_v2/run.py:321: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
   "signal_depuis_fin": str(pd.Timestamp(S["signal_depuis"]) + pd.Timedelta(hours=4)) if S["signal_depuis"] else None,
 /home/runner/work/ia-crypto-signal/ia-crypto-signal/crypto_v2/run.py:367: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
@@ -44,14 +46,14 @@
   nxt += pd.Timedelta(days=1)
 /home/runner/work/ia-crypto-signal/ia-crypto-signal/crypto_v2/run.py:371: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
   out = {"genere_le": now.strftime("%Y-%m-%d %H:%M UTC"), "donnees_jusqu_au": str(last_bar + pd.Timedelta(hours=4)),
-ADA : dernière bougie 2026-10-21 04:00:00 (terminée à +4 h), prix 0.2255
-AVAX : dernière bougie 2026-10-21 04:00:00 (terminée à +4 h), prix 9.761
-DOGE : dernière bougie 2026-10-21 04:00:00 (terminée à +4 h), prix 0.08209
-DOT : dernière bougie 2026-10-21 04:00:00 (terminée à +4 h), prix 1.167
-ETH : dernière bougie 2026-10-21 04:00:00 (terminée à +4 h), prix 2456.24
-LTC : dernière bougie 2026-10-21 04:00:00 (terminée à +4 h), prix 61.57
-SOL : dernière bougie 2026-10-21 04:00:00 (terminée à +4 h), prix 106.83
-XLM : dernière bougie 2026-10-21 04:00:00 (terminée à +4 h), prix 0.1838
-XRP : dernière bougie 2026-10-21 04:00:00 (terminée à +4 h), prix 1.3465
-Achat seulement : 1000.0 $ (garder 1006.87 $) | XRP DEHORS, XLM DEHORS, SOL DEHORS, DOT DEHORS, AVAX DEHORS
-Achat et vente : 993.06 $ (garder 1005.21 $) | ETH ACHETER, XRP VENDRE, ADA VENDRE, DOGE VENDRE, SOL VENDRE, LTC VENDRE, DOT VENDRE, AVAX VENDRE
+ADA : dernière bougie 2026-10-22 04:00:00 (terminée à +4 h), prix 0.2174
+AVAX : dernière bougie 2026-10-22 04:00:00 (terminée à +4 h), prix 9.313
+DOGE : dernière bougie 2026-10-22 04:00:00 (terminée à +4 h), prix 0.07963
+DOT : dernière bougie 2026-10-22 04:00:00 (terminée à +4 h), prix 1.111
+ETH : dernière bougie 2026-10-22 04:00:00 (terminée à +4 h), prix 2430.27
+LTC : dernière bougie 2026-10-22 04:00:00 (terminée à +4 h), prix 59.83
+SOL : dernière bougie 2026-10-22 04:00:00 (terminée à +4 h), prix 104.44
+XLM : dernière bougie 2026-10-22 04:00:00 (terminée à +4 h), prix 0.1792
+XRP : dernière bougie 2026-10-22 04:00:00 (terminée à +4 h), prix 1.34
+Achat seulement : 1000.0 $ (garder 977.49 $) | XRP DEHORS, XLM DEHORS, SOL DEHORS, DOT DEHORS, AVAX DEHORS
+Achat et vente : 1019.45 $ (garder 976.84 $) | ETH ACHETER, XRP VENDRE, ADA VENDRE, DOGE VENDRE, SOL VENDRE, LTC VENDRE, DOT VENDRE, AVAX VENDRE
