@@ -1,44 +1,116 @@
 {
  "SI": {
-  "dernier_traite": null,
-  "derniere_decision": null,
+  "dernier_traite": "2026-10-21 12:00:00",
+  "derniere_decision": "2026-10-20 20:00:00",
   "position": 0,
   "robot": 1.0,
-  "garder": 1.0,
+  "garder": 0.9957803409581353,
   "frais": 0.0,
   "changements": 0,
-  "decisions": [],
-  "courbe": [],
-  "votes": null,
-  "prix_reference": null,
-  "signal_depuis": null
+  "decisions": [
+   {
+    "date": "2026-10-20 20:00:00",
+    "fin": "2026-10-21 00:00:00",
+    "initial": true,
+    "signal": "DEHORS",
+    "prix": 57.925,
+    "votes": [
+     0,
+     0,
+     0
+    ],
+    "change": true
+   }
+  ],
+  "courbe": [
+   {
+    "d": "2026-10-22",
+    "robot": 1000.0,
+    "garder": 995.78
+   }
+  ],
+  "votes": [
+   0,
+   0,
+   0
+  ],
+  "prix_reference": 57.925,
+  "signal_depuis": "2026-10-20 20:00:00"
  },
  "LE": {
-  "dernier_traite": null,
-  "derniere_decision": null,
+  "dernier_traite": "2026-10-21 12:00:00",
+  "derniere_decision": "2026-10-21 12:00:00",
   "position": 0,
   "robot": 1.0,
-  "garder": 1.0,
+  "garder": 0.99975,
   "frais": 0.0,
   "changements": 0,
-  "decisions": [],
-  "courbe": [],
-  "votes": null,
-  "prix_reference": null,
-  "signal_depuis": null
+  "decisions": [
+   {
+    "date": "2026-10-21 12:00:00",
+    "fin": "2026-10-21 16:00:00",
+    "initial": true,
+    "signal": "DEHORS",
+    "prix": 231.85,
+    "votes": [
+     1,
+     0,
+     0
+    ],
+    "change": true
+   }
+  ],
+  "courbe": [
+   {
+    "d": "2026-10-22",
+    "robot": 1000.0,
+    "garder": 999.75
+   }
+  ],
+  "votes": [
+   1,
+   0,
+   0
+  ],
+  "prix_reference": 231.85,
+  "signal_depuis": "2026-10-21 12:00:00"
  },
  "HG": {
-  "dernier_traite": null,
-  "derniere_decision": null,
+  "dernier_traite": "2026-10-21 12:00:00",
+  "derniere_decision": "2026-10-20 20:00:00",
   "position": 0,
   "robot": 1.0,
-  "garder": 1.0,
+  "garder": 0.9932468232357613,
   "frais": 0.0,
   "changements": 0,
-  "decisions": [],
-  "courbe": [],
-  "votes": null,
-  "prix_reference": null,
-  "signal_depuis": null
+  "decisions": [
+   {
+    "date": "2026-10-20 20:00:00",
+    "fin": "2026-10-21 00:00:00",
+    "initial": true,
+    "signal": "DEHORS",
+    "prix": 6.6105,
+    "votes": [
+     0,
+     0,
+     0
+    ],
+    "change": true
+   }
+  ],
+  "courbe": [
+   {
+    "d": "2026-10-22",
+    "robot": 1000.0,
+    "garder": 993.25
+   }
+  ],
+  "votes": [
+   0,
+   0,
+   0
+  ],
+  "prix_reference": 6.6105,
+  "signal_depuis": "2026-10-20 20:00:00"
  }
 }
