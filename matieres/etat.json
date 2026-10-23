@@ -1,10 +1,10 @@
 {
  "SI": {
-  "dernier_traite": "2026-10-21 12:00:00",
-  "derniere_decision": "2026-10-20 20:00:00",
+  "dernier_traite": "2026-10-22 12:00:00",
+  "derniere_decision": "2026-10-21 20:00:00",
   "position": 0,
   "robot": 1.0,
-  "garder": 0.9957803409581353,
+  "garder": 0.9528907639188603,
   "frais": 0.0,
   "changements": 0,
   "decisions": [
@@ -27,6 +27,11 @@
     "d": "2026-10-22",
     "robot": 1000.0,
     "garder": 995.78
+   },
+   {
+    "d": "2026-10-23",
+    "robot": 1000.0,
+    "garder": 952.89
    }
   ],
   "votes": [
@@ -38,11 +43,11 @@
   "signal_depuis": "2026-10-20 20:00:00"
  },
  "LE": {
-  "dernier_traite": "2026-10-21 12:00:00",
+  "dernier_traite": "2026-10-22 12:00:00",
   "derniere_decision": "2026-10-21 12:00:00",
   "position": 0,
   "robot": 1.0,
-  "garder": 0.99975,
+  "garder": 0.9933897185680397,
   "frais": 0.0,
   "changements": 0,
   "decisions": [
@@ -65,6 +70,11 @@
     "d": "2026-10-22",
     "robot": 1000.0,
     "garder": 999.75
+   },
+   {
+    "d": "2026-10-23",
+    "robot": 1000.0,
+    "garder": 993.39
    }
   ],
   "votes": [
@@ -76,13 +86,13 @@
   "signal_depuis": "2026-10-21 12:00:00"
  },
  "HG": {
-  "dernier_traite": "2026-10-21 12:00:00",
-  "derniere_decision": "2026-10-20 20:00:00",
-  "position": 0,
-  "robot": 1.0,
-  "garder": 0.9932468232357613,
-  "frais": 0.0,
-  "changements": 0,
+  "dernier_traite": "2026-10-22 12:00:00",
+  "derniere_decision": "2026-10-21 20:00:00",
+  "position": 1,
+  "robot": 0.9779914089347082,
+  "garder": 0.9686708645336967,
+  "frais": 0.2499375,
+  "changements": 1,
   "decisions": [
    {
     "date": "2026-10-20 20:00:00",
@@ -96,6 +106,19 @@
      0
     ],
     "change": true
+   },
+   {
+    "date": "2026-10-21 20:00:00",
+    "fin": "2026-10-22 00:00:00",
+    "initial": false,
+    "signal": "ACHETER",
+    "prix": 6.5475,
+    "votes": [
+     1,
+     1,
+     1
+    ],
+    "change": true
    }
   ],
   "courbe": [
@@ -103,14 +126,19 @@
     "d": "2026-10-22",
     "robot": 1000.0,
     "garder": 993.25
+   },
+   {
+    "d": "2026-10-23",
+    "robot": 977.99,
+    "garder": 968.67
    }
   ],
   "votes": [
-   0,
-   0,
-   0
+   1,
+   1,
+   1
   ],
-  "prix_reference": 6.6105,
-  "signal_depuis": "2026-10-20 20:00:00"
+  "prix_reference": 6.5475,
+  "signal_depuis": "2026-10-21 20:00:00"
  }
 }

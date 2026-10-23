@@ -1,11 +1,11 @@
 {
- "genere_le": "2026-10-22 00:46 UTC",
- "donnees_jusqu_au": "2026-10-21 16:00:00",
+ "genere_le": "2026-10-23 00:46 UTC",
+ "donnees_jusqu_au": "2026-10-22 16:00:00",
  "test": {
   "debut": "2026-10-20",
   "fin": "2027-04-20",
   "capital": 1000.0,
-  "jours_ecoules": 1,
+  "jours_ecoules": 2,
   "jours_total": 182,
   "frais_aller_retour_pct": 0.05,
   "termine": false
@@ -44,17 +44,17 @@
     ],
     "change": true
    },
-   "prix_actuel": 57.695,
-   "bougie": "2026-10-21 16:00:00",
+   "prix_actuel": 55.21,
+   "bougie": "2026-10-22 16:00:00",
    "prochaine_decision_jours": 0.3,
    "valeur": 1000.0,
    "rendement_pct": 0.0,
-   "garder_valeur": 995.78,
-   "garder_rendement_pct": -0.42,
+   "garder_valeur": 952.89,
+   "garder_rendement_pct": -4.71,
    "frais": 0.0,
    "changements": 0,
    "pire_baisse_pct": 0.0,
-   "garder_pire_baisse_pct": 0.0,
+   "garder_pire_baisse_pct": -4.31,
    "sharpe": null,
    "garder_sharpe": null,
    "courbe": [
@@ -62,6 +62,11 @@
      "d": "2026-10-22",
      "robot": 1000.0,
      "garder": 995.78
+    },
+    {
+     "d": "2026-10-23",
+     "robot": 1000.0,
+     "garder": 952.89
     }
    ],
    "decisions": [
@@ -113,17 +118,17 @@
     ],
     "change": true
    },
-   "prix_actuel": 231.85,
-   "bougie": "2026-10-21 16:00:00",
-   "prochaine_decision_jours": 2.9,
+   "prix_actuel": 230.375,
+   "bougie": "2026-10-22 16:00:00",
+   "prochaine_decision_jours": 2.0,
    "valeur": 1000.0,
    "rendement_pct": 0.0,
-   "garder_valeur": 999.75,
-   "garder_rendement_pct": -0.02,
+   "garder_valeur": 993.39,
+   "garder_rendement_pct": -0.66,
    "frais": 0.0,
    "changements": 0,
    "pire_baisse_pct": 0.0,
-   "garder_pire_baisse_pct": 0.0,
+   "garder_pire_baisse_pct": -0.64,
    "sharpe": null,
    "garder_sharpe": null,
    "courbe": [
@@ -131,6 +136,11 @@
      "d": "2026-10-22",
      "robot": 1000.0,
      "garder": 999.75
+    },
+    {
+     "d": "2026-10-23",
+     "robot": 1000.0,
+     "garder": 993.39
     }
    ],
    "decisions": [
@@ -159,40 +169,40 @@
     "garder": 7.8
    },
    "commence": true,
-   "signal": "DEHORS",
+   "signal": "ACHETER",
    "apercu": null,
    "votes": [
-    0,
-    0,
-    0
+    1,
+    1,
+    1
    ],
-   "signal_depuis": "2026-10-20 20:00:00",
-   "signal_depuis_fin": "2026-10-21 00:00:00",
-   "prix_reference": 6.6105,
+   "signal_depuis": "2026-10-21 20:00:00",
+   "signal_depuis_fin": "2026-10-22 00:00:00",
+   "prix_reference": 6.5475,
    "dernier_changement": {
-    "date": "2026-10-20 20:00:00",
-    "fin": "2026-10-21 00:00:00",
-    "initial": true,
-    "signal": "DEHORS",
-    "prix": 6.6105,
+    "date": "2026-10-21 20:00:00",
+    "fin": "2026-10-22 00:00:00",
+    "initial": false,
+    "signal": "ACHETER",
+    "prix": 6.5475,
     "votes": [
-     0,
-     0,
-     0
+     1,
+     1,
+     1
     ],
     "change": true
    },
-   "prix_actuel": 6.5675,
-   "bougie": "2026-10-21 16:00:00",
+   "prix_actuel": 6.405,
+   "bougie": "2026-10-22 16:00:00",
    "prochaine_decision_jours": 0.3,
-   "valeur": 1000.0,
-   "rendement_pct": 0.0,
-   "garder_valeur": 993.25,
-   "garder_rendement_pct": -0.68,
-   "frais": 0.0,
-   "changements": 0,
-   "pire_baisse_pct": 0.0,
-   "garder_pire_baisse_pct": 0.0,
+   "valeur": 977.99,
+   "rendement_pct": -2.2,
+   "garder_valeur": 968.67,
+   "garder_rendement_pct": -3.13,
+   "frais": 0.25,
+   "changements": 1,
+   "pire_baisse_pct": -2.2,
+   "garder_pire_baisse_pct": -2.47,
    "sharpe": null,
    "garder_sharpe": null,
    "courbe": [
@@ -200,6 +210,11 @@
      "d": "2026-10-22",
      "robot": 1000.0,
      "garder": 993.25
+    },
+    {
+     "d": "2026-10-23",
+     "robot": 977.99,
+     "garder": 968.67
     }
    ],
    "decisions": [
@@ -215,13 +230,26 @@
       0
      ],
      "change": true
+    },
+    {
+     "date": "2026-10-21 20:00:00",
+     "fin": "2026-10-22 00:00:00",
+     "initial": false,
+     "signal": "ACHETER",
+     "prix": 6.5475,
+     "votes": [
+      1,
+      1,
+      1
+     ],
+     "change": true
     }
    ]
   }
  ],
  "total": {
-  "valeur": 3000.0,
-  "garder_valeur": 2988.78,
+  "valeur": 2977.99,
+  "garder_valeur": 2914.95,
   "capital": 3000.0
  },
  "verdict": {
