@@ -1,1 +1,1 @@
-v5 : investi | valeur 1002.08 | poids [{'crypto': 'BTC', 'pct': 20.0}, {'crypto': 'LTC', 'pct': 13.7}, {'crypto': 'BNB', 'pct': 10.3}, {'crypto': 'DOT', 'pct': 8.7}]
+v5 : investi | valeur 968.63 | poids [{'crypto': 'BTC', 'pct': 28.0}, {'crypto': 'BNB', 'pct': 17.2}, {'crypto': 'TRX', 'pct': 8.6}, {'crypto': 'DOT', 'pct': 7.3}]
