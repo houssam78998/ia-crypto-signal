@@ -67,14 +67,31 @@
    "XRP": -0.00178,
    "XLM": -0.01545,
    "LTC": -0.01728
+  },
+  "2026-10-22": {
+   "TRX": 0.10678,
+   "BNB": 0.08534,
+   "SOL": 0.07176,
+   "ETH": 0.06268,
+   "BTC": 0.05639,
+   "LINK": 0.04846,
+   "ADA": 0.03143,
+   "AVAX": 0.01928,
+   "LTC": 0.01756,
+   "XLM": 0.01373,
+   "BCH": 0.01341,
+   "DOT": 0.00942,
+   "DOGE": -0.00396,
+   "ATOM": -0.00451,
+   "XRP": -0.02538
   }
  },
  "quotidien": {
-  "cash": 1.1368683772161603e-13,
+  "cash": 0.0,
   "qty": {
-   "BNBUSDT": 0.4534246709793322,
-   "BTCUSDT": 0.00402404095586296,
-   "TRXUSDT": 1022.6514542115001
+   "BNBUSDT": 0.4532005945603706,
+   "SOLUSDT": 3.197458087700027,
+   "TRXUSDT": 1008.571304899902
   },
   "history": [
    {
@@ -260,6 +277,62 @@
       "usdt": 2.47,
       "prix": 0.3309,
       "frais": 0.0037,
+      "type": "ajustement",
+      "majeur": false
+     }
+    ]
+   },
+   {
+    "date": "2026-10-22",
+    "filtre": true,
+    "btc_vs_moy100": 8.56,
+    "top": [
+     "TRX",
+     "BNB",
+     "SOL"
+    ],
+    "valeur": 995.2453,
+    "frais": 0.9957,
+    "cash_apres": 0.0,
+    "positions": {
+     "BNBUSDT": 0.4532005945603706,
+     "SOLUSDT": 3.197458087700027,
+     "TRXUSDT": 1008.571304899902
+    },
+    "actions": [
+     {
+      "crypto": "BNB",
+      "action": "VENDRE",
+      "usdt": 0.16,
+      "prix": 731.28,
+      "frais": 0.0002,
+      "type": "ajustement",
+      "majeur": false
+     },
+     {
+      "crypto": "BTC",
+      "action": "VENDRE",
+      "usdt": 327.62,
+      "prix": 81416.09,
+      "frais": 0.4914,
+      "type": "sortie",
+      "majeur": true
+     },
+     {
+      "crypto": "SOL",
+      "action": "ACHETER",
+      "usdt": 331.42,
+      "prix": 103.65,
+      "frais": 0.4971,
+      "type": "entr\u00e9e",
+      "majeur": true
+     },
+     {
+      "crypto": "TRX",
+      "action": "VENDRE",
+      "usdt": 4.63,
+      "prix": 0.3286,
+      "frais": 0.0069,
       "type": "ajustement",
       "majeur": false
      }
