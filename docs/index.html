@@ -187,19 +187,70 @@ th{font-size:12px;color:var(--muted);font-weight:600;border-top:0}
       .then(function(j){ V2 = j; render(); }).catch(function(){ if(DOM === "v2" && !V2) render(); });
   }
 
+  // ------------------------------------------------------------- retrait d'une part des gains (calcul à côté des tests)
+  // Règle : chaque nouveau gain (au-dessus du plus haut déjà atteint) met X % de côté. La somme due reste investie
+  // jusqu'à atteindre le seuil, puis elle est retirée (frais de vente 0,15 %). Les jours de perte, rien n'est retiré,
+  // et la perte doit être regagnée avant un nouveau retrait. Les décisions de l'IA ne changent pas (elle raisonne en %).
+  var retraitPct = function(){ var v = parseFloat(store.get("retrait_pct")); return v >= 0 && v <= 100 ? v : 0; };
+  var retraitSeuil = function(){ var v = parseFloat(store.get("retrait_seuil")); return v > 0 ? v : 10; };
+  function curvePts(c){ return (c || []).map(function(p){ return Array.isArray(p) ? [p[0], p[1]] : [p.d, p.robot]; }).filter(function(p){ return p[1] > 0; }); }
+  function retraitSim(curve, M, pctR, seuil, cap){
+    var I = M, HW = M, due = 0, out = 0, prev = cap || 1000, ev = [], tot = [], inv = [], cost = 0.0015;
+    curvePts(curve).forEach(function(p){
+      I *= p[1] / prev; prev = p[1];
+      if(I > HW){ due += pctR / 100 * (I - HW); HW = I; }
+      if(pctR > 0 && due >= seuil){ I -= due; HW -= due; out += due * (1 - cost); ev.push({d: p[0], v: due}); due = 0; }
+      tot.push([p[0], I + out]); inv.push([p[0], I]);
+    });
+    var last = tot.length ? tot[tot.length - 1][0] : null;
+    return {investi: I, retire: out, attente: due, total: I + out, events: ev, total_courbe: tot, investi_courbe: inv,
+            aujourdhui: ev.length && ev[ev.length - 1].d === last ? ev[ev.length - 1].v : 0};
+  }
+  function retraitCard(curve, cap){
+    var pts = curvePts(curve);
+    if(pts.length < 1) return "";
+    var R = retraitSim(curve, cap, 10, 10, cap), full = pts[pts.length - 1][1];
+    var h = '<div class="card"><h2>Portefeuille fictif « avec retrait 10 % »</h2>';
+    h += '<p class="small muted" style="margin-top:0">Mêmes signaux que ci-dessus. À chaque nouveau gain, 10 % sont mis de côté et retirés dès qu\'ils atteignent 10 $ ; le reste est réinvesti. Rien n\'est retiré les jours de perte.</p><div class="kpis">' +
+      '<div class="kpi"><div class="l">Encore investi</div><div class="v">' + nf(R.investi) + ' $</div></div>' +
+      '<div class="kpi"><div class="l">Déjà retiré (net de frais)</div><div class="v pos">' + nf(R.retire) + ' $</div></div>' +
+      '<div class="kpi"><div class="l">Total (investi + retiré)</div><div class="v ' + cls(R.total - cap) + '">' + nf(R.total) + ' $</div></div>' +
+      '<div class="kpi"><div class="l">Tout réinvesti</div><div class="v ' + cls(full - cap) + '">' + nf(full) + ' $</div></div></div>';
+    if(pts.length > 1){
+      h += lineChart([{pts: pts, color: "var(--accent)", w: 2.4}, {pts: R.total_courbe, color: "#10b981"}, {pts: R.investi_courbe, color: "#94a3b8", dash: "4 3"}], {base: cap});
+      h += '<div class="legend"><span><i style="background:var(--accent)"></i>Tout réinvesti</span><span><i style="background:#10b981"></i>Avec retrait (total)</span><span><i style="background:#94a3b8"></i>Partie encore investie</span></div>';
+    }
+    h += '<div class="small muted" style="margin-top:6px">' + R.events.length + ' retrait(s) depuis le début' + (R.attente > 0 ? ' · ' + nf(R.attente) + ' $ en attente (retirés à partir de 10 $)' : '') + '. Règle ton propre pourcentage dans la calculatrice de l\'écran « Aujourd\'hui ».</div></div>';
+    return h;
+  }
+
   // ------------------------------------------------------------- calculatrice « mon montant » (affichage seulement)
-  // lines : [{nom, pct, note}] ; gains : [{label, pct}]. Le test reste calculé sur 1 000 $ fictifs.
-  function calcCard(lines, gains){
-    var M = montant(), h = '<div class="card calc"><h2>Calculatrice — mon montant</h2>';
-    h += '<label class="small muted" for="montant">Combien veux-tu mettre ? (en $ ou USDT)</label><input id="montant" type="number" inputmode="decimal" min="1" step="any" value="' + M + '">';
-    h += '<div style="margin-top:8px"><b>Répartition de ' + nf(M) + ' $ aujourd\'hui</b></div>';
-    lines.forEach(function(l){ h += '<div class="row"><span><b>' + esc(l.nom) + '</b>' + (l.note ? ' <span class="small muted">' + esc(l.note) + '</span>' : '') + '</span><span>' + nf(M * l.pct / 100) + ' $ · ' + nf(l.pct, Math.abs(l.pct - Math.round(l.pct)) > 0.05 ? 1 : 0) + ' %</span></div>'; });
-    gains.forEach(function(g){ if(g.pct == null) return; var v = M * g.pct / 100; h += '<div class="row small"><span>' + esc(g.label) + '</span><span class="' + cls(v) + '">' + (v > 0 ? "+" : "") + nf(v) + ' $ (' + pct(g.pct) + ')</span></div>'; });
-    h += '<div class="small muted" style="margin-top:6px">Ce que tu aurais gagné ou perdu avec ton montant si tu avais suivi le test depuis le début. Gain « sur le papier » : il devient réel seulement quand tu vends.</div></div>';
+  // lines : [{nom, pct, note}] ; gains : [{label, pct}] ; curve : courbe du portefeuille fictif (pour le retrait).
+  function calcCard(lines, gains, curve, cap){
+    var M = montant(), pr = retraitPct(), sl = retraitSeuil(), h = '<div class="card calc"><h2>Calculatrice — mon montant</h2>';
+    h += '<label class="small muted" for="montant">Montant de départ (en $ ou USDT)</label><input id="montant" type="number" inputmode="decimal" min="1" step="any" value="' + M + '">';
+    h += '<div class="kpis" style="margin-top:4px"><div><label class="small muted" for="rpct">% du gain à retirer</label><input id="rpct" type="number" inputmode="decimal" min="0" max="100" step="any" value="' + pr + '" style="font-size:17px;padding:8px 10px"></div>' +
+         '<div><label class="small muted" for="rseuil">Retirer à partir de ($)</label><input id="rseuil" type="number" inputmode="decimal" min="1" step="any" value="' + sl + '" style="font-size:17px;padding:8px 10px"></div></div>';
+    var R = pr > 0 && curve && curvePts(curve).length ? retraitSim(curve, M, pr, sl, cap || 1000) : null;
+    var base = R ? R.investi : M;
+    if(R){
+      h += '<div style="margin-top:8px">' + (R.aujourdhui > 0 ? '<div class="todo" style="margin:0 0 8px"><span class="tag buy">RETIRER</span> <b>' + nf(R.aujourdhui) + ' $</b> aujourd\'hui : vends cette somme en parts égales sur tes positions et garde-la en USDT (ou retire-la).</div>' : '') +
+        '<div class="row small"><span>Montant encore investi</span><span><b>' + nf(R.investi) + ' $</b></span></div>' +
+        '<div class="row small"><span>Déjà retiré (net de frais)</span><span class="pos">' + nf(R.retire) + ' $</span></div>' +
+        '<div class="row small"><span>En attente (retiré dès ' + nf(sl, 0) + ' $)</span><span>' + nf(R.attente) + ' $</span></div>' +
+        '<div class="row small"><span>Total (investi + retiré)</span><span class="' + cls(R.total - M) + '">' + nf(R.total) + ' $ (' + pct((R.total / M - 1) * 100) + ')</span></div></div>';
+    }
+    h += '<div style="margin-top:8px"><b>Répartition de ' + nf(base) + ' $ aujourd\'hui</b></div>';
+    lines.forEach(function(l){ h += '<div class="row"><span><b>' + esc(l.nom) + '</b>' + (l.note ? ' <span class="small muted">' + esc(l.note) + '</span>' : '') + '</span><span>' + nf(base * l.pct / 100) + ' $ · ' + nf(l.pct, Math.abs(l.pct - Math.round(l.pct)) > 0.05 ? 1 : 0) + ' %</span></div>'; });
+    if(!R) gains.forEach(function(g){ if(g.pct == null) return; var v = M * g.pct / 100; h += '<div class="row small"><span>' + esc(g.label) + '</span><span class="' + cls(v) + '">' + (v > 0 ? "+" : "") + nf(v) + ' $ (' + pct(g.pct) + ')</span></div>'; });
+    h += '<div class="small muted" style="margin-top:6px">Calculé avec les vrais résultats du test depuis le début. ' + (pr > 0 ? 'Chaque nouveau gain met ' + nf(pr, 0) + ' % de côté ; rien n\'est retiré les jours de perte (la perte doit d\'abord être regagnée). ' : 'Mets un % de retrait pour garder une part des gains. ') + 'Gain « sur le papier » : il devient réel seulement quand tu vends.</div></div>';
     return h;
   }
   document.addEventListener("change", function(e){
-    if(e.target && e.target.id === "montant"){ var v = parseFloat(String(e.target.value).replace(",", ".")); if(v > 0){ store.set("montant", String(v)); render(); } }
+    var id = e.target && e.target.id, v = e.target ? parseFloat(String(e.target.value).replace(",", ".")) : NaN;
+    if(id === "montant" && v > 0){ store.set("montant", String(v)); render(); }
+    if(id === "rpct" && v >= 0 && v <= 100){ store.set("retrait_pct", String(v)); render(); }
+    if(id === "rseuil" && v > 0){ store.set("retrait_seuil", String(v)); render(); }
   });
 
   // ------------------------------------------------------------- « comment fonctionne le signal »
@@ -269,7 +320,7 @@ th{font-size:12px;color:var(--muted);font-weight:600;border-top:0}
     var lines = p.marches.map(function(m){ return {nom: m.nom, pct: m.signal === "DEHORS" ? 0 : 100 / n, note: m.signal === "ACHETER" ? "acheter" : (m.signal === "VENDRE" ? "pari à la baisse" : "")}; }).filter(function(l){ return l.pct > 0; });
     var cash = p.marches.filter(function(m){ return m.signal === "DEHORS"; }).length;
     if(cash) lines.push({nom: "USDT", pct: cash * 100 / n, note: cash + " crypto(s) dehors"});
-    h += calcCard(lines, [{label: "Gain depuis le début du test", pct: p.rendement_pct}]);
+    h += calcCard(lines, [{label: "Gain depuis le début du test", pct: p.rendement_pct}], p.courbe, t.capital);
     return h + howCard("v2");
   }
 
@@ -283,7 +334,7 @@ th{font-size:12px;color:var(--muted);font-weight:600;border-top:0}
     } else h += '<div class="small muted" style="margin-top:8px">La courbe apparaîtra après quelques jours.</div>';
     h += '</div><div class="card"><h2>Chaque crypto (part de ' + nf(p.marches[0].part) + ' $)</h2><table><tr><th></th><th>Robots</th><th>Garder</th><th>Signal</th></tr>';
     p.marches.forEach(function(m){ h += '<tr><td><b>' + esc(m.nom) + '</b></td><td class="' + cls(m.rendement_pct) + '">' + pct(m.rendement_pct) + '</td><td class="' + cls(m.garder_rendement_pct) + '">' + pct(m.garder_rendement_pct) + '</td><td><span class="s ' + SIG[m.signal] + '" style="font-size:11px;padding:3px 6px;border-radius:6px">' + esc(m.signal) + '</span></td></tr>'; });
-    h += '</table></div><div class="card"><h2>Statistiques</h2><div class="kpis">' +
+    h += '</table></div>' + retraitCard(p.courbe, t.capital) + '<div class="card"><h2>Statistiques</h2><div class="kpis">' +
       '<div class="kpi"><div class="l">Pire baisse robots</div><div class="v neg">' + pct(p.pire_baisse_pct) + '</div></div>' +
       '<div class="kpi"><div class="l">Pire baisse « garder »</div><div class="v neg">' + pct(p.garder_pire_baisse_pct) + '</div></div>' +
       '<div class="kpi"><div class="l">Changements de signal</div><div class="v">' + p.changements + '</div></div>' +
@@ -347,7 +398,7 @@ th{font-size:12px;color:var(--muted);font-weight:600;border-top:0}
     var k = "fait:v5:" + s.date_calcul, dn = store.get(k);
     h += '<button class="done' + (dn ? " is" : "") + '" id="v5done">' + (dn ? "✓ Fait le " + esc(dn) + " (toucher pour annuler)" : (major.length ? "✅ C'est fait" : "✅ Vu, rien à faire")) + '</button></div>';
     h += calcCard(s.filtre && s.poids.length ? s.poids.map(function(p){ return {nom: p.crypto, pct: p.pct}; }) : [{nom: "USDT", pct: 100, note: "filtre négatif"}],
-      [{label: "Gain depuis le début du test", pct: d.rendement_pct}]);
+      [{label: "Gain depuis le début du test", pct: d.rendement_pct}], d.commence ? d.courbe : null, d.test.capital);
     h += '<div class="card"><h2>Portefeuille fictif v5</h2><div class="kpis">' +
       '<div class="kpi"><div class="l">Valeur</div><div class="v">' + nf(d.valeur) + ' $</div></div>' +
       '<div class="kpi"><div class="l">Depuis le début</div><div class="v ' + cls(d.rendement_pct) + '">' + pct(d.rendement_pct) + '</div></div>' +
@@ -367,7 +418,7 @@ th{font-size:12px;color:var(--muted);font-weight:600;border-top:0}
     h += '</div><div class="card"><h2>Positions actuelles</h2>';
     if(!d.positions.length) h += '<div class="row"><span>USDT</span><span>' + nf(d.cash) + ' $ · 100 %</span></div>';
     d.positions.slice().sort(function(a, b){ return b.valeur - a.valeur; }).forEach(function(p){ h += '<div class="row"><span><b>' + esc(p.crypto) + '</b></span><span>' + nf(p.valeur) + ' $ · ' + nf(p.poids, 1) + ' %</span></div>'; });
-    h += '</div><div class="card"><h2>Statistiques</h2><div class="kpis">' +
+    h += '</div>' + retraitCard(d.courbe, d.test.capital) + '<div class="card"><h2>Statistiques</h2><div class="kpis">' +
       '<div class="kpi"><div class="l">Pire baisse v5</div><div class="v neg">' + pct(d.pire_baisse_pct) + '</div></div>' +
       '<div class="kpi"><div class="l">Pire baisse v4</div><div class="v neg">' + pct(d.v4_pire_baisse_pct) + '</div></div>' +
       '<div class="kpi"><div class="l">Ajustements (plus de 1 %)</div><div class="v">' + d.transactions + '</div></div>' +
@@ -433,7 +484,7 @@ th{font-size:12px;color:var(--muted);font-weight:600;border-top:0}
       '<div class="kpi"><div class="l">« Acheter et garder »</div><div class="v ' + cls(m.garder_rendement_pct) + '">' + pct(m.garder_rendement_pct) + '</div></div>' +
       '<div class="kpi"><div class="l">Frais payés</div><div class="v">' + nf(m.frais) + ' $</div></div></div></div>';
     h += '<div class="card"><h2>Ce que ces robots ont appris</h2><p class="small">' + esc(m.appris) + '</p><p class="small muted">Test historique 2021–2026 : robots ' + pct(m.backtest.robot) + '/an, « garder » ' + pct(m.backtest.garder) + '/an.</p></div>';
-    h += calcCard(buy ? [{nom: m.nom, pct: 100, note: "acheté"}] : [{nom: "Cash", pct: 100, note: "dehors"}], [{label: "Gain depuis le début du test", pct: m.rendement_pct}]);
+    h += calcCard(buy ? [{nom: m.nom, pct: 100, note: "acheté"}] : [{nom: "Cash", pct: 100, note: "dehors"}], [{label: "Gain depuis le début du test", pct: m.rendement_pct}], m.courbe, MDATA.test.capital);
     return h + howCard("mat");
   }
 
@@ -446,7 +497,7 @@ th{font-size:12px;color:var(--muted);font-weight:600;border-top:0}
       h += lineChart([{pts: c.map(function(p){ return [p.d, p.robot]; }), color: "var(--accent)", w: 2.6}, {pts: c.map(function(p){ return [p.d, p.garder]; }), color: "#f59e0b"}], {base: MDATA.test.capital});
       h += '<div class="legend"><span><i style="background:var(--accent)"></i>Robots (fictif)</span><span><i style="background:#f59e0b"></i>Acheter et garder</span><span><i style="background:var(--muted)"></i>Départ 1 000 $</span></div>';
     } else h += '<div class="small muted" style="margin-top:8px">La courbe apparaîtra après quelques jours.</div>';
-    h += '</div><div class="card"><h2>Statistiques</h2><div class="kpis">' +
+    h += '</div>' + retraitCard(m.courbe, MDATA.test.capital) + '<div class="card"><h2>Statistiques</h2><div class="kpis">' +
       '<div class="kpi"><div class="l">Pire baisse robots</div><div class="v neg">' + pct(m.pire_baisse_pct) + '</div></div>' +
       '<div class="kpi"><div class="l">Pire baisse « garder »</div><div class="v neg">' + pct(m.garder_pire_baisse_pct) + '</div></div>' +
       '<div class="kpi"><div class="l">Changements de position</div><div class="v">' + m.changements + '</div></div>' +
@@ -573,7 +624,7 @@ th{font-size:12px;color:var(--muted);font-weight:600;border-top:0}
       h += '</div>';
     }
     h += calcCard(s.top.length ? s.top.map(function(c){ return {nom: c, pct: 100 / s.top.length}; }) : [{nom: "USDT", pct: 100, note: "filtre négatif"}],
-      [{label: "Gain depuis le début du test", pct: pf.rendement_pct}, {label: j && j.date ? "Résultat du " + dshort(j.date) : "Dernier jour", pct: j ? j.variation_pct : null}]);
+      [{label: "Gain depuis le début du test", pct: pf.rendement_pct}, {label: j && j.date ? "Résultat du " + dshort(j.date) : "Dernier jour", pct: j ? j.variation_pct : null}], pf.courbe, DATA.test.capital);
     h += '<div class="card"><h2>Portefeuille fictif</h2><div class="kpis">' +
       '<div class="kpi"><div class="l">Valeur</div><div class="v">' + nf(pf.valeur) + ' $</div></div>' +
       '<div class="kpi"><div class="l">Depuis le début</div><div class="v ' + cls(pf.rendement_pct) + '">' + pct(pf.rendement_pct) + '</div></div>' +
@@ -601,6 +652,7 @@ th{font-size:12px;color:var(--muted);font-weight:600;border-top:0}
     h += '</div>';
     var withAct = pf.historique.filter(function(x){ return x.actions.length; });
     var followed = withAct.filter(function(x){ return store.get("fait:" + P + ":" + x.date); }).length;
+    h += retraitCard(pf.courbe, DATA.test.capital);
     h += '<div class="card"><h2>Statistiques</h2><div class="kpis">' +
       '<div class="kpi"><div class="l">Pire baisse IA</div><div class="v neg">' + pct(pf.pire_baisse_pct) + '</div></div>' +
       '<div class="kpi"><div class="l">Pire baisse Bitcoin</div><div class="v neg">' + pct(pf.btc_pire_baisse_pct) + '</div></div>' +
