@@ -188,18 +188,17 @@ th{font-size:12px;color:var(--muted);font-weight:600;border-top:0}
   }
 
   // ------------------------------------------------------------- retrait d'une part des gains (calcul à côté des tests)
-  // Règle : chaque nouveau gain (au-dessus du plus haut déjà atteint) met X % de côté. La somme due reste investie
-  // jusqu'à atteindre le seuil, puis elle est retirée (frais de vente 0,15 %). Les jours de perte, rien n'est retiré,
-  // et la perte doit être regagnée avant un nouveau retrait. Les décisions de l'IA ne changent pas (elle raisonne en %).
+  // Règle : chaque jour, X % du nouveau gain (au-dessus du plus haut déjà atteint) est retiré tout de suite
+  // (frais de vente 0,15 %) et le jour suivant est calculé seulement sur ce qui reste investi. Les jours de perte,
+  // rien n'est retiré, et la perte doit être regagnée avant un nouveau retrait. Les décisions de l'IA ne changent pas.
   var retraitPct = function(){ var v = parseFloat(store.get("retrait_pct")); return v >= 0 && v <= 100 ? v : 0; };
-  var retraitSeuil = function(){ var v = parseFloat(store.get("retrait_seuil")); return v > 0 ? v : 10; };
   function curvePts(c){ return (c || []).map(function(p){ return Array.isArray(p) ? [p[0], p[1]] : [p.d, p.robot]; }).filter(function(p){ return p[1] > 0; }); }
-  function retraitSim(curve, M, pctR, seuil, cap){
+  function retraitSim(curve, M, pctR, cap){
     var I = M, HW = M, due = 0, out = 0, prev = cap || 1000, ev = [], tot = [], inv = [], cost = 0.0015;
     curvePts(curve).forEach(function(p){
       I *= p[1] / prev; prev = p[1];
       if(I > HW){ due += pctR / 100 * (I - HW); HW = I; }
-      if(pctR > 0 && due >= seuil){ I -= due; HW -= due; out += due * (1 - cost); ev.push({d: p[0], v: due}); due = 0; }
+      if(pctR > 0 && due > 0){ I -= due; HW -= due; out += due * (1 - cost); ev.push({d: p[0], v: due}); due = 0; }
       tot.push([p[0], I + out]); inv.push([p[0], I]);
     });
     var last = tot.length ? tot[tot.length - 1][0] : null;
@@ -209,9 +208,9 @@ th{font-size:12px;color:var(--muted);font-weight:600;border-top:0}
   function retraitCard(curve, cap){
     var pts = curvePts(curve);
     if(pts.length < 1) return "";
-    var R = retraitSim(curve, cap, 10, 10, cap), full = pts[pts.length - 1][1];
+    var R = retraitSim(curve, cap, 10, cap), full = pts[pts.length - 1][1];
     var h = '<div class="card"><h2>Portefeuille fictif « avec retrait 10 % »</h2>';
-    h += '<p class="small muted" style="margin-top:0">Mêmes signaux que ci-dessus. À chaque nouveau gain, 10 % sont mis de côté et retirés dès qu\'ils atteignent 10 $ ; le reste est réinvesti. Rien n\'est retiré les jours de perte.</p><div class="kpis">' +
+    h += '<p class="small muted" style="margin-top:0">Mêmes signaux que ci-dessus. Chaque jour de nouveau gain, 10 % du gain sont retirés ; le jour suivant est calculé seulement sur ce qui reste investi. Rien n\'est retiré les jours de perte.</p><div class="kpis">' +
       '<div class="kpi"><div class="l">Encore investi</div><div class="v">' + nf(R.investi) + ' $</div></div>' +
       '<div class="kpi"><div class="l">Déjà retiré (net de frais)</div><div class="v pos">' + nf(R.retire) + ' $</div></div>' +
       '<div class="kpi"><div class="l">Total (investi + retiré)</div><div class="v ' + cls(R.total - cap) + '">' + nf(R.total) + ' $</div></div>' +
@@ -220,24 +219,22 @@ th{font-size:12px;color:var(--muted);font-weight:600;border-top:0}
       h += lineChart([{pts: pts, color: "var(--accent)", w: 2.4}, {pts: R.total_courbe, color: "#10b981"}, {pts: R.investi_courbe, color: "#94a3b8", dash: "4 3"}], {base: cap});
       h += '<div class="legend"><span><i style="background:var(--accent)"></i>Tout réinvesti</span><span><i style="background:#10b981"></i>Avec retrait (total)</span><span><i style="background:#94a3b8"></i>Partie encore investie</span></div>';
     }
-    h += '<div class="small muted" style="margin-top:6px">' + R.events.length + ' retrait(s) depuis le début' + (R.attente > 0 ? ' · ' + nf(R.attente) + ' $ en attente (retirés à partir de 10 $)' : '') + '. Règle ton propre pourcentage dans la calculatrice de l\'écran « Aujourd\'hui ».</div></div>';
+    h += '<div class="small muted" style="margin-top:6px">' + R.events.length + ' retrait(s) depuis le début' + (R.aujourdhui > 0 ? ' · dernier retrait : ' + nf(R.aujourdhui) + ' $' : '') + '. Règle ton propre pourcentage dans la calculatrice de l\'écran « Aujourd\'hui ».</div></div>';
     return h;
   }
 
   // ------------------------------------------------------------- calculatrice « mon montant » (affichage seulement)
   // lines : [{nom, pct, note}] ; gains : [{label, pct}] ; curve : courbe du portefeuille fictif (pour le retrait).
   function calcCard(lines, gains, curve, cap){
-    var M = montant(), pr = retraitPct(), sl = retraitSeuil(), h = '<div class="card calc"><h2>Calculatrice — mon montant</h2>';
+    var M = montant(), pr = retraitPct(), h = '<div class="card calc"><h2>Calculatrice — mon montant</h2>';
     h += '<label class="small muted" for="montant">Montant de départ (en $ ou USDT)</label><input id="montant" type="number" inputmode="decimal" min="1" step="any" value="' + M + '">';
-    h += '<div class="kpis" style="margin-top:4px"><div><label class="small muted" for="rpct">% du gain à retirer</label><input id="rpct" type="number" inputmode="decimal" min="0" max="100" step="any" value="' + pr + '" style="font-size:17px;padding:8px 10px"></div>' +
-         '<div><label class="small muted" for="rseuil">Retirer à partir de ($)</label><input id="rseuil" type="number" inputmode="decimal" min="1" step="any" value="' + sl + '" style="font-size:17px;padding:8px 10px"></div></div>';
-    var R = pr > 0 && curve && curvePts(curve).length ? retraitSim(curve, M, pr, sl, cap || 1000) : null;
+    h += '<label class="small muted" for="rpct">% du gain à retirer chaque jour de gain (0 = tout réinvestir)</label><input id="rpct" type="number" inputmode="decimal" min="0" max="100" step="any" value="' + pr + '" style="font-size:17px;padding:8px 10px">';
+    var R = pr > 0 && curve && curvePts(curve).length ? retraitSim(curve, M, pr, cap || 1000) : null;
     var base = R ? R.investi : M;
     if(R){
-      h += '<div style="margin-top:8px">' + (R.aujourdhui > 0 ? '<div class="todo" style="margin:0 0 8px"><span class="tag buy">RETIRER</span> <b>' + nf(R.aujourdhui) + ' $</b> aujourd\'hui : vends cette somme en parts égales sur tes positions et garde-la en USDT (ou retire-la).</div>' : '') +
+      h += '<div style="margin-top:8px">' + (R.aujourdhui > 0 ? '<div class="todo" style="margin:0 0 8px"><span class="tag buy">RETIRER</span> <b>' + nf(R.aujourdhui) + ' $</b> (' + nf(pr, 0) + ' % du gain du dernier jour) : vends cette somme en parts égales sur tes positions et garde-la en USDT. Sur Binance, les ordres de moins de 5 $ sont refusés : additionne les petits retraits et fais-les en une fois.</div>' : '<div class="small muted" style="margin-bottom:6px">Pas de nouveau gain au dernier jour : rien à retirer.</div>') +
         '<div class="row small"><span>Montant encore investi</span><span><b>' + nf(R.investi) + ' $</b></span></div>' +
         '<div class="row small"><span>Déjà retiré (net de frais)</span><span class="pos">' + nf(R.retire) + ' $</span></div>' +
-        '<div class="row small"><span>En attente (retiré dès ' + nf(sl, 0) + ' $)</span><span>' + nf(R.attente) + ' $</span></div>' +
         '<div class="row small"><span>Total (investi + retiré)</span><span class="' + cls(R.total - M) + '">' + nf(R.total) + ' $ (' + pct((R.total / M - 1) * 100) + ')</span></div></div>';
     }
     h += '<div style="margin-top:8px"><b>Répartition de ' + nf(base) + ' $ aujourd\'hui</b></div>';
@@ -250,7 +247,6 @@ th{font-size:12px;color:var(--muted);font-weight:600;border-top:0}
     var id = e.target && e.target.id, v = e.target ? parseFloat(String(e.target.value).replace(",", ".")) : NaN;
     if(id === "montant" && v > 0){ store.set("montant", String(v)); render(); }
     if(id === "rpct" && v >= 0 && v <= 100){ store.set("retrait_pct", String(v)); render(); }
-    if(id === "rseuil" && v > 0){ store.set("retrait_seuil", String(v)); render(); }
   });
 
   // ------------------------------------------------------------- « comment fonctionne le signal »
