@@ -238,7 +238,7 @@ th{font-size:12px;color:var(--muted);font-weight:600;border-top:0}
       '<div class="kpi"><div class="l">Capital + sorti</div><div class="v ' + cls(tp) + '">' + nf(R.total) + ' $ <span class="small">(' + pct(tp) + ')</span></div></div>' +
       '<div class="kpi"><div class="l">' + esc(compLabel) + '</div><div class="v ' + cls(compPct) + '">' + pct(compPct) + '</div></div></div>' +
       '<div class="small muted" style="margin-top:6px">' + (R.aujourdhui ? (R.aujourdhui.retire > 0 ? '<b class="pos">Bilan de la semaine aujourd\'hui : sortir ' + nf(R.aujourdhui.retire) + ' $.</b> ' : '<b>Bilan de la semaine aujourd\'hui : pas de gain au-dessus du capital, rien à sortir.</b> ') : '') +
-      'Chaque semaine, ' + RET + ' % du gain sont sortis et le robot repart avec le reste. Prochain bilan : ' + esc(dfr(R.prochain)) + (R.capital < R.reference - 0.005 ? ' · le robot doit d\'abord revenir à ' + nf(R.reference) + ' $' : '') + '.</div>' + semainesHisto(R, false);
+      'Chaque semaine, ' + RET + ' % du gain sont sortis et le robot repart avec le reste. Prochain bilan : ' + esc(dfr(R.prochain)) + (R.capital < R.reference - 0.005 ? ' · le robot doit d\'abord revenir à ' + nf(R.reference) + ' $' : '') + '.</div>' + semainesHisto(R, true);
   }
   function wkFactor(R, full){ return R && full > 0 ? R.capital / full : 1; }
   function bigWk(R, cap, debutTxt){
