@@ -200,28 +200,33 @@ th{font-size:12px;color:var(--muted);font-weight:600;border-top:0}
   function retraitSim(curve, M, pctR, cap, debut){
     var pts = curvePts(curve), I = M, HW = M, out = 0, prev = cap || 1000, wk = 0, startW = M, sem = [], tot = [], inv = [], cost = 0.0015;
     debut = debut || (pts.length ? pts[0][0] : null);
+    var lastD = null;
     pts.forEach(function(p){
-      I *= p[1] / prev; prev = p[1];
       var w = Math.floor(ddays(debut, p[0]) / 7);
       if(w > wk){
+        // bilan de la semaine terminée, avec la valeur du dernier jour de cette semaine (avant le jour qui commence)
         var fin = I, wd = 0;
         if(pctR > 0 && I > HW){ wd = pctR / 100 * (I - HW); I -= wd; out += wd * (1 - cost); HW = I; }
-        sem.push({n: w, d: p[0], depart: startW, fin: fin, gain: fin - startW, retire: wd, capital: I, reference: HW});
+        sem.push({n: wk + 1, du: addDays(debut, 7 * wk), au: lastD || addDays(debut, 7 * wk + 6), d: p[0], depart: startW, fin: fin, gain: fin - startW, retire: wd, capital: I, reference: HW});
         startW = I; wk = w;
       }
+      I *= p[1] / prev; prev = p[1]; lastD = p[0];
       tot.push([p[0], I + out]); inv.push([p[0], I]);
     });
     var last = pts.length ? pts[pts.length - 1][0] : null, lastS = sem.length ? sem[sem.length - 1] : null;
     var prochain = debut ? addDays(debut, 7 * (wk + 1)) : null;
     return {capital: I, retire: out, total: I + out, reference: HW, semaines: sem, total_courbe: tot, capital_courbe: inv, depart: M,
             nb: sem.filter(function(x){ return x.retire > 0; }).length, prochain: prochain, jours_avant: last && prochain ? Math.max(0, ddays(last, prochain)) : null,
-            aujourdhui: lastS && lastS.d === last ? lastS : null, semaine_en_cours: I - startW, dernier: last};
+            aujourdhui: lastS && lastS.d === last ? lastS : null, semaine_en_cours: I - startW, dernier: last,
+            en_cours: {n: wk + 1, du: debut ? addDays(debut, 7 * wk) : null, depart: startW, actuel: I, gain: I - startW, prevu: pctR > 0 && I > HW ? pctR / 100 * (I - HW) : 0}};
   }
-  function semainesHisto(R){
-    if(!R.semaines.length) return '<div class="small muted" style="margin-top:6px">Premier bilan le ' + esc(dfr(R.prochain)) + '.</div>';
-    var h = '<details><summary>📅 Bilan semaine par semaine</summary><table style="font-size:13px"><tr><th>Semaine</th><th>Gain</th><th>Sorti</th><th>Nouveau capital</th></tr>';
-    R.semaines.slice().reverse().forEach(function(x){ h += '<tr><td>' + x.n + ' · ' + esc(dshort(x.d)) + '</td><td class="' + cls(x.gain) + '">' + (x.gain > 0 ? "+" : "") + nf(x.gain) + ' $</td><td>' + (x.retire > 0 ? '<span class="pos">' + nf(x.retire) + ' $</span>' : '—') + '</td><td>' + nf(x.capital) + ' $</td></tr>'; });
-    return h + '</table></details>';
+  function semainesHisto(R, ouvert){
+    var h = '<details' + (ouvert ? ' open' : '') + '><summary>📅 Bilan semaine par semaine</summary><table style="font-size:13px"><tr><th>Semaine</th><th>Départ</th><th>Fin</th><th>Sorti</th></tr>';
+    var E = R.en_cours;
+    if(E && E.du) h += '<tr><td><b>' + E.n + '</b> <span class="muted">en cours</span><br><span class="small muted">depuis le ' + esc(dshort(E.du)) + '</span></td><td>' + nf(E.depart) + ' $</td><td>' + nf(E.actuel) + ' $<br><span class="small ' + cls(E.gain) + '">' + (E.gain > 0 ? "+" : "") + nf(E.gain) + ' $</span></td><td class="muted">' + (E.prevu > 0 ? '≈ ' + nf(E.prevu) + ' $<br><span class="small">le ' + esc(dshort(R.prochain)) + '</span>' : '—') + '</td></tr>';
+    R.semaines.slice().reverse().forEach(function(x){ h += '<tr><td><b>' + x.n + '</b><br><span class="small muted">' + esc(dshort(x.du)) + ' → ' + esc(dshort(x.au)) + '</span></td><td>' + nf(x.depart) + ' $</td><td>' + nf(x.fin) + ' $<br><span class="small ' + cls(x.gain) + '">' + (x.gain > 0 ? "+" : "") + nf(x.gain) + ' $</span></td><td>' + (x.retire > 0 ? '<span class="pos">' + nf(x.retire) + ' $</span>' : '—') + '</td></tr>'; });
+    h += '<tr><td><b>Total</b></td><td>' + nf(R.depart) + ' $</td><td>' + nf(R.capital) + ' $</td><td class="pos"><b>' + nf(R.retire) + ' $</b></td></tr>';
+    return h + '</table><div class="small muted">Départ = capital du robot au début de la semaine. Sorti = 10 % du gain au-dessus du capital, retiré au bilan ; le robot repart avec le reste.</div></details>';
   }
   // Carte principale « portefeuille fictif avec retrait chaque semaine » (utilisée en haut des écrans)
   function wk(curve, cap, debut){ return curvePts(curve).length ? retraitSim(curve, cap, RET, cap, debut) : null; }
@@ -233,7 +238,7 @@ th{font-size:12px;color:var(--muted);font-weight:600;border-top:0}
       '<div class="kpi"><div class="l">Capital + sorti</div><div class="v ' + cls(tp) + '">' + nf(R.total) + ' $ <span class="small">(' + pct(tp) + ')</span></div></div>' +
       '<div class="kpi"><div class="l">' + esc(compLabel) + '</div><div class="v ' + cls(compPct) + '">' + pct(compPct) + '</div></div></div>' +
       '<div class="small muted" style="margin-top:6px">' + (R.aujourdhui ? (R.aujourdhui.retire > 0 ? '<b class="pos">Bilan de la semaine aujourd\'hui : sortir ' + nf(R.aujourdhui.retire) + ' $.</b> ' : '<b>Bilan de la semaine aujourd\'hui : pas de gain au-dessus du capital, rien à sortir.</b> ') : '') +
-      'Chaque semaine, ' + RET + ' % du gain sont sortis et le robot repart avec le reste. Prochain bilan : ' + esc(dfr(R.prochain)) + (R.capital < R.reference - 0.005 ? ' · le robot doit d\'abord revenir à ' + nf(R.reference) + ' $' : '') + '.</div>';
+      'Chaque semaine, ' + RET + ' % du gain sont sortis et le robot repart avec le reste. Prochain bilan : ' + esc(dfr(R.prochain)) + (R.capital < R.reference - 0.005 ? ' · le robot doit d\'abord revenir à ' + nf(R.reference) + ' $' : '') + '.</div>' + semainesHisto(R, false);
   }
   function wkFactor(R, full){ return R && full > 0 ? R.capital / full : 1; }
   function bigWk(R, cap, debutTxt){
@@ -254,7 +259,7 @@ th{font-size:12px;color:var(--muted);font-weight:600;border-top:0}
       h += lineChart([{pts: R.total_courbe, color: "#10b981", w: 2.4}, {pts: R.capital_courbe, color: "var(--accent)"}], {base: cap});
       h += '<div class="legend"><span><i style="background:#10b981"></i>Capital + sorti</span><span><i style="background:var(--accent)"></i>Capital du robot</span></div>';
     }
-    return h + semainesHisto(R) + '</div>';
+    return h + semainesHisto(R, true) + '</div>';
   }
 
   // ------------------------------------------------------------- calculatrice « mon montant » (affichage seulement)
@@ -272,7 +277,7 @@ th{font-size:12px;color:var(--muted);font-weight:600;border-top:0}
         '<div class="row small"><span>Total sorti depuis le début (' + R.nb + ' retrait' + (R.nb > 1 ? 's' : '') + ')</span><span class="pos"><b>' + nf(R.retire) + ' $</b></span></div>' +
         '<div class="row small"><span>Capital du robot aujourd\'hui</span><span><b>' + nf(R.capital) + ' $</b></span></div>' +
         (R.capital < R.reference - 0.005 ? '<div class="row small"><span>Capital à retrouver avant un nouveau retrait</span><span>' + nf(R.reference) + ' $</span></div>' : '') +
-        semainesHisto(R) + '</div>';
+        semainesHisto(R, true) + '</div>';
     }
     h += '<div style="margin-top:8px"><b>Répartition de ' + nf(base) + ' $ aujourd\'hui</b></div>';
     lines.forEach(function(l){ h += '<div class="row"><span><b>' + esc(l.nom) + '</b>' + (l.note ? ' <span class="small muted">' + esc(l.note) + '</span>' : '') + '</span><span>' + nf(base * l.pct / 100) + ' $ · ' + nf(l.pct, Math.abs(l.pct - Math.round(l.pct)) > 0.05 ? 1 : 0) + ' %</span></div>'; });
