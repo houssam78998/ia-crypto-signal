@@ -194,16 +194,24 @@ th{font-size:12px;color:var(--muted);font-weight:600;border-top:0}
   var retraitPct = function(){ var v = parseFloat(store.get("retrait_pct")); return v >= 0 && v <= 100 ? v : 0; };
   function curvePts(c){ return (c || []).map(function(p){ return Array.isArray(p) ? [p[0], p[1]] : [p.d, p.robot]; }).filter(function(p){ return p[1] > 0; }); }
   function retraitSim(curve, M, pctR, cap){
-    var I = M, HW = M, due = 0, out = 0, prev = cap || 1000, ev = [], tot = [], inv = [], cost = 0.0015;
+    var I = M, HW = M, due = 0, out = 0, prev = cap || 1000, ev = [], tot = [], inv = [], jours = [], cost = 0.0015;
     curvePts(curve).forEach(function(p){
-      I *= p[1] / prev; prev = p[1];
+      var avant = I; I *= p[1] / prev; prev = p[1];
+      var gain = I - avant, w = 0;
       if(I > HW){ due += pctR / 100 * (I - HW); HW = I; }
-      if(pctR > 0 && due > 0){ I -= due; HW -= due; out += due * (1 - cost); ev.push({d: p[0], v: due}); due = 0; }
+      if(pctR > 0 && due > 0){ w = due; I -= due; HW -= due; out += due * (1 - cost); ev.push({d: p[0], v: due}); due = 0; }
       tot.push([p[0], I + out]); inv.push([p[0], I]);
+      jours.push({d: p[0], gain: gain, retire: w, investi: I, cumul: out});
     });
     var last = tot.length ? tot[tot.length - 1][0] : null;
-    return {investi: I, retire: out, attente: due, total: I + out, events: ev, total_courbe: tot, investi_courbe: inv,
+    return {investi: I, retire: out, attente: due, total: I + out, events: ev, total_courbe: tot, investi_courbe: inv, jours: jours,
             aujourdhui: ev.length && ev[ev.length - 1].d === last ? ev[ev.length - 1].v : 0};
+  }
+  function retraitHisto(R){
+    if(!R.jours.length) return "";
+    var h = '<details><summary>📅 Détail jour par jour depuis le début</summary><table style="font-size:13px"><tr><th>Jour</th><th>Gain du jour</th><th>Retiré</th><th>Investi</th></tr>';
+    R.jours.slice().reverse().forEach(function(j){ h += '<tr><td>' + esc(dshort(j.d)) + '</td><td class="' + cls(j.gain) + '">' + (j.gain > 0 ? "+" : "") + nf(j.gain) + ' $</td><td>' + (j.retire > 0 ? '<span class="pos">' + nf(j.retire) + ' $</span>' : '—') + '</td><td>' + nf(j.investi) + ' $</td></tr>'; });
+    return h + '</table></details>';
   }
   function retraitCard(curve, cap){
     var pts = curvePts(curve);
@@ -212,14 +220,14 @@ th{font-size:12px;color:var(--muted);font-weight:600;border-top:0}
     var h = '<div class="card"><h2>Portefeuille fictif « avec retrait 10 % »</h2>';
     h += '<p class="small muted" style="margin-top:0">Mêmes signaux que ci-dessus. Chaque jour de nouveau gain, 10 % du gain sont retirés ; le jour suivant est calculé seulement sur ce qui reste investi. Rien n\'est retiré les jours de perte.</p><div class="kpis">' +
       '<div class="kpi"><div class="l">Encore investi</div><div class="v">' + nf(R.investi) + ' $</div></div>' +
-      '<div class="kpi"><div class="l">Déjà retiré (net de frais)</div><div class="v pos">' + nf(R.retire) + ' $</div></div>' +
+      '<div class="kpi"><div class="l">Total sorti depuis le début</div><div class="v pos">' + nf(R.retire) + ' $</div></div>' +
       '<div class="kpi"><div class="l">Total (investi + retiré)</div><div class="v ' + cls(R.total - cap) + '">' + nf(R.total) + ' $</div></div>' +
       '<div class="kpi"><div class="l">Tout réinvesti</div><div class="v ' + cls(full - cap) + '">' + nf(full) + ' $</div></div></div>';
     if(pts.length > 1){
       h += lineChart([{pts: pts, color: "var(--accent)", w: 2.4}, {pts: R.total_courbe, color: "#10b981"}, {pts: R.investi_courbe, color: "#94a3b8", dash: "4 3"}], {base: cap});
       h += '<div class="legend"><span><i style="background:var(--accent)"></i>Tout réinvesti</span><span><i style="background:#10b981"></i>Avec retrait (total)</span><span><i style="background:#94a3b8"></i>Partie encore investie</span></div>';
     }
-    h += '<div class="small muted" style="margin-top:6px">' + R.events.length + ' retrait(s) depuis le début' + (R.aujourdhui > 0 ? ' · dernier retrait : ' + nf(R.aujourdhui) + ' $' : '') + '. Règle ton propre pourcentage dans la calculatrice de l\'écran « Aujourd\'hui ».</div></div>';
+    h += '<div class="small muted" style="margin-top:6px">' + R.events.length + ' retrait(s) depuis le début' + (R.aujourdhui > 0 ? ' · dernier retrait : ' + nf(R.aujourdhui) + ' $' : '') + '. Règle ton propre pourcentage dans la calculatrice de l\'écran « Aujourd\'hui ».</div>' + retraitHisto(R) + '</div>';
     return h;
   }
 
@@ -233,9 +241,10 @@ th{font-size:12px;color:var(--muted);font-weight:600;border-top:0}
     var base = R ? R.investi : M;
     if(R){
       h += '<div style="margin-top:8px">' + (R.aujourdhui > 0 ? '<div class="todo" style="margin:0 0 8px"><span class="tag buy">RETIRER</span> <b>' + nf(R.aujourdhui) + ' $</b> (' + nf(pr, 0) + ' % du gain du dernier jour) : vends cette somme en parts égales sur tes positions et garde-la en USDT. Sur Binance, les ordres de moins de 5 $ sont refusés : additionne les petits retraits et fais-les en une fois.</div>' : '<div class="small muted" style="margin-bottom:6px">Pas de nouveau gain au dernier jour : rien à retirer.</div>') +
+        '<div class="row small"><span>Gain total depuis le début (' + esc(dshort(R.jours[0].d)) + ')</span><span class="' + cls(R.total - M) + '"><b>' + (R.total - M > 0 ? "+" : "") + nf(R.total - M) + ' $</b></span></div>' +
+        '<div class="row small"><span>Total sorti depuis le début (' + R.events.length + ' retraits)</span><span class="pos"><b>' + nf(R.retire) + ' $</b></span></div>' +
         '<div class="row small"><span>Montant encore investi</span><span><b>' + nf(R.investi) + ' $</b></span></div>' +
-        '<div class="row small"><span>Déjà retiré (net de frais)</span><span class="pos">' + nf(R.retire) + ' $</span></div>' +
-        '<div class="row small"><span>Total (investi + retiré)</span><span class="' + cls(R.total - M) + '">' + nf(R.total) + ' $ (' + pct((R.total / M - 1) * 100) + ')</span></div></div>';
+        '<div class="row small"><span>Total (investi + retiré)</span><span class="' + cls(R.total - M) + '">' + nf(R.total) + ' $ (' + pct((R.total / M - 1) * 100) + ')</span></div>' + retraitHisto(R) + '</div>';
     }
     h += '<div style="margin-top:8px"><b>Répartition de ' + nf(base) + ' $ aujourd\'hui</b></div>';
     lines.forEach(function(l){ h += '<div class="row"><span><b>' + esc(l.nom) + '</b>' + (l.note ? ' <span class="small muted">' + esc(l.note) + '</span>' : '') + '</span><span>' + nf(base * l.pct / 100) + ' $ · ' + nf(l.pct, Math.abs(l.pct - Math.round(l.pct)) > 0.05 ? 1 : 0) + ' %</span></div>'; });
