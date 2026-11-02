@@ -1,6 +1,6 @@
 {
- "genere_le": "2026-11-01 07:39 UTC",
- "donnees_jusqu_au": "2026-10-31",
+ "genere_le": "2026-11-02 07:46 UTC",
+ "donnees_jusqu_au": "2026-11-01",
  "test": {
   "debut": "2026-10-20",
   "fin": "2027-04-20",
@@ -9,63 +9,67 @@
   "slippage_pct": 0.05,
   "filtre_jours": 100,
   "modele_cutoff": "2026-10-17",
-  "jours_ecoules": 11,
+  "jours_ecoules": 12,
   "jours_total": 182
  },
  "commence": true,
  "signal": {
-  "date_calcul": "2026-10-31",
-  "applicable_le": "2026-11-01",
+  "date_calcul": "2026-11-01",
+  "applicable_le": "2026-11-02",
   "filtre": true,
-  "btc_vs_moy100": 1.7,
+  "btc_vs_moy100": 2.5,
   "poids": [
    {
     "crypto": "BCH",
-    "pct": 34.6
-   },
-   {
-    "crypto": "LINK",
-    "pct": 14.3
-   },
-   {
-    "crypto": "BTC",
-    "pct": 11.7
+    "pct": 29.6
    },
    {
     "crypto": "BNB",
-    "pct": 10.8
+    "pct": 17.8
    },
    {
-    "crypto": "LTC",
-    "pct": 4.5
+    "crypto": "BTC",
+    "pct": 14.2
+   },
+   {
+    "crypto": "LINK",
+    "pct": 8.3
+   },
+   {
+    "crypto": "ETH",
+    "pct": 4.4
+   },
+   {
+    "crypto": "TRX",
+    "pct": 3.9
    },
    {
     "crypto": "XRP",
     "pct": 3.4
    },
    {
-    "crypto": "ETH",
-    "pct": 3.4
-   },
-   {
-    "crypto": "TRX",
-    "pct": 3.1
-   },
-   {
-    "crypto": "SOL",
-    "pct": 2.6
-   },
-   {
-    "crypto": "XLM",
-    "pct": 2.5
-   },
-   {
-    "crypto": "DOGE",
-    "pct": 2.4
+    "crypto": "LTC",
+    "pct": 3.3
    },
    {
     "crypto": "AVAX",
-    "pct": 2.0
+    "pct": 2.8
+   },
+   {
+    "crypto": "DOGE",
+    "pct": 2.5
+   },
+   {
+    "crypto": "XLM",
+    "pct": 2.4
+   },
+   {
+    "crypto": "SOL",
+    "pct": 2.4
+   },
+   {
+    "crypto": "DOT",
+    "pct": 1.7
    },
    {
     "crypto": "ADA",
@@ -74,215 +78,197 @@
    {
     "crypto": "ATOM",
     "pct": 1.6
-   },
-   {
-    "crypto": "DOT",
-    "pct": 1.5
    }
   ],
   "actions": [
    {
-    "crypto": "TRX",
-    "action": "VENDRE",
-    "usdt": 104.34,
-    "prix": 0.3038,
+    "crypto": "BNB",
+    "action": "ACHETER",
+    "usdt": 60.93,
+    "prix": 712.69,
     "majeur": true
    },
    {
     "crypto": "LINK",
-    "action": "ACHETER",
-    "usdt": 83.06,
-    "prix": 11.67,
+    "action": "VENDRE",
+    "usdt": 50.46,
+    "prix": 11.392,
     "majeur": true
    },
    {
     "crypto": "BCH",
-    "action": "ACHETER",
-    "usdt": 25.59,
-    "prix": 285.3,
-    "majeur": false
-   },
-   {
-    "crypto": "LTC",
     "action": "VENDRE",
-    "usdt": 12.71,
-    "prix": 55.78,
+    "usdt": 43.64,
+    "prix": 284.4,
     "majeur": false
    },
    {
     "crypto": "BTC",
     "action": "ACHETER",
-    "usdt": 11.88,
-    "prix": 77582.02,
+    "usdt": 20.31,
+    "prix": 78354.0,
     "majeur": false
    },
    {
-    "crypto": "ATOM",
+    "crypto": "LTC",
     "action": "VENDRE",
-    "usdt": 2.98,
-    "prix": 1.497,
+    "usdt": 10.49,
+    "prix": 55.63,
     "majeur": false
    },
    {
     "crypto": "ETH",
     "action": "ACHETER",
-    "usdt": 2.77,
-    "prix": 2255.66,
-    "majeur": false
-   },
-   {
-    "crypto": "SOL",
-    "action": "VENDRE",
-    "usdt": 2.43,
-    "prix": 95.54,
-    "majeur": false
-   },
-   {
-    "crypto": "BNB",
-    "action": "VENDRE",
-    "usdt": 2.21,
-    "prix": 703.95,
-    "majeur": false
-   },
-   {
-    "crypto": "DOT",
-    "action": "VENDRE",
-    "usdt": 1.76,
-    "prix": 0.947,
+    "usdt": 8.78,
+    "prix": 2275.31,
     "majeur": false
    },
    {
     "crypto": "AVAX",
     "action": "ACHETER",
-    "usdt": 1.37,
-    "prix": 8.579,
+    "usdt": 7.47,
+    "prix": 8.697,
     "majeur": false
    },
    {
-    "crypto": "XRP",
+    "crypto": "TRX",
     "action": "ACHETER",
-    "usdt": 1.35,
-    "prix": 1.2519,
+    "usdt": 6.66,
+    "prix": 0.3132,
     "majeur": false
    },
    {
-    "crypto": "XLM",
+    "crypto": "DOT",
     "action": "ACHETER",
-    "usdt": 1.26,
-    "prix": 0.1695,
+    "usdt": 2.18,
+    "prix": 0.953,
+    "majeur": false
+   },
+   {
+    "crypto": "SOL",
+    "action": "VENDRE",
+    "usdt": 1.99,
+    "prix": 94.53,
     "majeur": false
    },
    {
     "crypto": "DOGE",
+    "action": "ACHETER",
+    "usdt": 0.9,
+    "prix": 0.07552,
+    "majeur": false
+   },
+   {
+    "crypto": "XLM",
     "action": "VENDRE",
-    "usdt": 0.95,
-    "prix": 0.07563,
+    "usdt": 0.59,
+    "prix": 0.1683,
     "majeur": false
    }
   ]
  },
- "valeur": 887.04,
- "rendement_pct": -11.3,
+ "valeur": 885.43,
+ "rendement_pct": -11.46,
  "cash": 0.0,
  "positions": [
   {
    "crypto": "ADA",
-   "quantite": 77.57440784692385,
-   "valeur": 14.97,
+   "quantite": 78.07552999971584,
+   "valeur": 15.08,
    "poids": 1.7
   },
   {
    "crypto": "ATOM",
-   "quantite": 11.4037967473216,
-   "valeur": 17.07,
-   "poids": 1.9
+   "quantite": 9.415534217831361,
+   "valeur": 13.79,
+   "poids": 1.6
   },
   {
    "crypto": "AVAX",
-   "quantite": 1.8815025106983936,
-   "valeur": 16.14,
-   "poids": 1.8
+   "quantite": 2.040678955461419,
+   "valeur": 17.75,
+   "poids": 2.0
   },
   {
    "crypto": "BCH",
-   "quantite": 0.9856725349352621,
-   "valeur": 281.21,
-   "poids": 31.7
+   "quantite": 1.075061409090731,
+   "valeur": 305.75,
+   "poids": 34.5
   },
   {
    "crypto": "BNB",
-   "quantite": 0.1387017238376398,
-   "valeur": 97.64,
-   "poids": 11.0
+   "quantite": 0.13547834000033415,
+   "valeur": 96.55,
+   "poids": 10.9
   },
   {
    "crypto": "BTC",
-   "quantite": 0.0011878765308104412,
-   "valeur": 92.16,
-   "poids": 10.4
+   "quantite": 0.0013401134662655906,
+   "valeur": 105.0,
+   "poids": 11.9
   },
   {
    "crypto": "DOGE",
-   "quantite": 290.73028984060784,
-   "valeur": 21.99,
-   "poids": 2.5
+   "quantite": 278.0365825385924,
+   "valeur": 21.0,
+   "poids": 2.4
   },
   {
    "crypto": "DOT",
-   "quantite": 15.696401133178577,
-   "valeur": 14.86,
-   "poids": 1.7
+   "quantite": 13.8337163884357,
+   "valeur": 13.18,
+   "poids": 1.5
   },
   {
    "crypto": "ETH",
-   "quantite": 0.012118178673122482,
-   "valeur": 27.33,
-   "poids": 3.1
+   "quantite": 0.013336507919267389,
+   "valeur": 30.34,
+   "poids": 3.4
   },
   {
    "crypto": "LINK",
-   "quantite": 3.757888658209486,
-   "valeur": 43.85,
-   "poids": 4.9
+   "quantite": 10.869693159208168,
+   "valeur": 123.83,
+   "poids": 14.0
   },
   {
    "crypto": "LTC",
-   "quantite": 0.944056215075562,
-   "valeur": 52.66,
-   "poids": 5.9
+   "quantite": 0.7157637044909977,
+   "valeur": 39.82,
+   "poids": 4.5
   },
   {
    "crypto": "SOL",
-   "quantite": 0.2668006656997575,
-   "valeur": 25.49,
-   "poids": 2.9
+   "quantite": 0.24123162247094926,
+   "valeur": 22.8,
+   "poids": 2.6
   },
   {
    "crypto": "TRX",
-   "quantite": 433.3994647732341,
-   "valeur": 131.67,
-   "poids": 14.8
+   "quantite": 89.91917861534255,
+   "valeur": 28.16,
+   "poids": 3.2
   },
   {
    "crypto": "XLM",
-   "quantite": 122.79241594490503,
-   "valeur": 20.81,
-   "poids": 2.3
+   "quantite": 130.15232054330374,
+   "valeur": 21.9,
+   "poids": 2.5
   },
   {
    "crypto": "XRP",
-   "quantite": 23.3010404680453,
-   "valeur": 29.17,
-   "poids": 3.3
+   "quantite": 24.3613351280621,
+   "valeur": 30.47,
+   "poids": 3.4
   }
  ],
- "frais_total": 5.36,
- "transactions": 66,
- "pire_baisse_pct": -11.48,
+ "frais_total": 5.74,
+ "transactions": 71,
+ "pire_baisse_pct": -11.64,
  "v4_pire_baisse_pct": -3.47,
  "btc_pire_baisse_pct": -8.0,
- "v4_rendement_pct": -3.26,
- "btc_rendement_pct": -7.74,
+ "v4_rendement_pct": -2.25,
+ "btc_rendement_pct": -6.82,
  "courbe": [
   [
    "2026-10-21",
@@ -327,6 +313,10 @@
   [
    "2026-10-31",
    887.04
+  ],
+  [
+   "2026-11-01",
+   885.43
   ]
  ],
  "v4_courbe": [
@@ -373,6 +363,10 @@
   [
    "2026-10-31",
    967.44
+  ],
+  [
+   "2026-11-01",
+   977.46
   ]
  ],
  "btc_courbe": [
@@ -419,6 +413,10 @@
   [
    "2026-10-31",
    922.58
+  ],
+  [
+   "2026-11-01",
+   931.76
   ]
  ],
  "historique": [
@@ -663,6 +661,28 @@
     "ADA": 1.7
    },
    "valeur": 906.72
+  },
+  {
+   "date": "2026-10-31",
+   "filtre": true,
+   "poids": {
+    "BCH": 34.6,
+    "LINK": 14.3,
+    "BTC": 11.7,
+    "BNB": 10.8,
+    "LTC": 4.5,
+    "XRP": 3.4,
+    "ETH": 3.4,
+    "TRX": 3.1,
+    "SOL": 2.6,
+    "XLM": 2.5,
+    "DOGE": 2.4,
+    "AVAX": 2.0,
+    "ADA": 1.7,
+    "ATOM": 1.6,
+    "DOT": 1.5
+   },
+   "valeur": 886.48
   }
  ],
  "verdict": {

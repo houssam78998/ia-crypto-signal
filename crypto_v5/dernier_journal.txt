@@ -1,1 +1,1 @@
-v5 : investi | valeur 887.04 | poids [{'crypto': 'BCH', 'pct': 34.6}, {'crypto': 'LINK', 'pct': 14.3}, {'crypto': 'BTC', 'pct': 11.7}, {'crypto': 'BNB', 'pct': 10.8}]
+v5 : investi | valeur 885.43 | poids [{'crypto': 'BCH', 'pct': 29.6}, {'crypto': 'BNB', 'pct': 17.8}, {'crypto': 'BTC', 'pct': 14.2}, {'crypto': 'LINK', 'pct': 8.3}]
