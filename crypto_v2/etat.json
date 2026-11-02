@@ -60,6 +60,11 @@
     "d": "2026-11-01",
     "robot": 990.79,
     "garder": 900.64
+   },
+   {
+    "d": "2026-11-02",
+    "robot": 990.79,
+    "garder": 886.92
    }
   ],
   "achat_vente": [
@@ -122,6 +127,11 @@
     "d": "2026-11-01",
     "robot": 1087.55,
     "garder": 901.3
+   },
+   {
+    "d": "2026-11-02",
+    "robot": 1102.21,
+    "garder": 889.69
    }
   ]
  },
@@ -141,11 +151,11 @@
   "achat_vente:AVAXUSDT": 0.91
  },
  "achat_seul:XRPUSDT": {
-  "dernier_traite": "2026-11-01 04:00:00",
-  "derniere_decision": "2026-11-01 00:00:00",
+  "dernier_traite": "2026-11-02 08:00:00",
+  "derniere_decision": "2026-11-02 00:00:00",
   "position": 0,
   "robot": 1.0,
-  "garder": 0.9399718928249771,
+  "garder": 0.9373489942960062,
   "frais": 0.0,
   "changements": 0,
   "decisions": [
@@ -316,6 +326,20 @@
      0
     ],
     "change": false
+   },
+   {
+    "date": "2026-11-02 00:00:00",
+    "fin": "2026-11-02 04:00:00",
+    "initial": false,
+    "signal": "DEHORS",
+    "ancien": "DEHORS",
+    "prix": 1.2616,
+    "votes": [
+     0,
+     0,
+     0
+    ],
+    "change": false
    }
   ],
   "votes": [
@@ -327,11 +351,11 @@
   "signal_depuis": "2026-10-21 00:00:00"
  },
  "achat_seul:XLMUSDT": {
-  "dernier_traite": "2026-11-01 04:00:00",
-  "derniere_decision": "2026-11-01 00:00:00",
+  "dernier_traite": "2026-11-02 08:00:00",
+  "derniere_decision": "2026-11-02 00:00:00",
   "position": 0,
   "robot": 1.0,
-  "garder": 0.9308330578512403,
+  "garder": 0.9203804407713496,
   "frais": 0.0,
   "changements": 0,
   "decisions": [
@@ -502,22 +526,36 @@
      1
     ],
     "change": false
+   },
+   {
+    "date": "2026-11-02 00:00:00",
+    "fin": "2026-11-02 04:00:00",
+    "initial": false,
+    "signal": "DEHORS",
+    "ancien": "DEHORS",
+    "prix": 0.1694,
+    "votes": [
+     0,
+     0,
+     0
+    ],
+    "change": false
    }
   ],
   "votes": [
    0,
    0,
-   1
+   0
   ],
   "prix_reference": 0.1815,
   "signal_depuis": "2026-10-21 00:00:00"
  },
  "achat_seul:SOLUSDT": {
-  "dernier_traite": "2026-11-01 04:00:00",
-  "derniere_decision": "2026-11-01 00:00:00",
+  "dernier_traite": "2026-11-02 08:00:00",
+  "derniere_decision": "2026-11-02 00:00:00",
   "position": 0,
   "robot": 1.0,
-  "garder": 0.9017249197052712,
+  "garder": 0.8874821934630649,
   "frais": 0.0,
   "changements": 0,
   "decisions": [
@@ -688,6 +726,20 @@
      0
     ],
     "change": false
+   },
+   {
+    "date": "2026-11-02 00:00:00",
+    "fin": "2026-11-02 04:00:00",
+    "initial": false,
+    "signal": "DEHORS",
+    "ancien": "DEHORS",
+    "prix": 95.59,
+    "votes": [
+     0,
+     0,
+     0
+    ],
+    "change": false
    }
   ],
   "votes": [
@@ -699,11 +751,11 @@
   "signal_depuis": "2026-10-21 00:00:00"
  },
  "achat_seul:DOTUSDT": {
-  "dernier_traite": "2026-11-01 04:00:00",
-  "derniere_decision": "2026-11-01 00:00:00",
+  "dernier_traite": "2026-11-02 08:00:00",
+  "derniere_decision": "2026-11-02 00:00:00",
   "position": 0,
   "robot": 0.9539332189797795,
-  "garder": 0.81476913155632,
+  "garder": 0.8070421324161654,
   "frais": 0.5857299656939339,
   "changements": 2,
   "decisions": [
@@ -874,6 +926,20 @@
      0
     ],
     "change": false
+   },
+   {
+    "date": "2026-11-02 00:00:00",
+    "fin": "2026-11-02 04:00:00",
+    "initial": false,
+    "signal": "DEHORS",
+    "ancien": "DEHORS",
+    "prix": 0.963,
+    "votes": [
+     0,
+     0,
+     0
+    ],
+    "change": false
    }
   ],
   "votes": [
@@ -885,11 +951,11 @@
   "signal_depuis": "2026-10-25 00:00:00"
  },
  "achat_seul:AVAXUSDT": {
-  "dernier_traite": "2026-11-01 04:00:00",
-  "derniere_decision": "2026-11-01 00:00:00",
+  "dernier_traite": "2026-11-02 08:00:00",
+  "derniere_decision": "2026-11-02 00:00:00",
   "position": 0,
   "robot": 1.0,
-  "garder": 0.9159606266749138,
+  "garder": 0.8823067924139365,
   "frais": 0.0,
   "changements": 0,
   "decisions": [
@@ -1060,6 +1126,20 @@
      0
     ],
     "change": false
+   },
+   {
+    "date": "2026-11-02 00:00:00",
+    "fin": "2026-11-02 04:00:00",
+    "initial": false,
+    "signal": "DEHORS",
+    "ancien": "DEHORS",
+    "prix": 8.694,
+    "votes": [
+     0,
+     0,
+     0
+    ],
+    "change": false
    }
   ],
   "votes": [
@@ -1071,11 +1151,11 @@
   "signal_depuis": "2026-10-21 00:00:00"
  },
  "achat_vente:ETHUSDT": {
-  "dernier_traite": "2026-11-01 04:00:00",
-  "derniere_decision": "2026-11-01 00:00:00",
+  "dernier_traite": "2026-11-02 08:00:00",
+  "derniere_decision": "2026-11-02 00:00:00",
   "position": -1,
-  "robot": 1.018563112185277,
-  "garder": 0.9274207544082153,
+  "robot": 1.0112934521670562,
+  "garder": 0.9340874974430308,
   "frais": 0.5511431914592114,
   "changements": 2,
   "decisions": [
@@ -1246,6 +1326,20 @@
      -1
     ],
     "change": false
+   },
+   {
+    "date": "2026-11-02 00:00:00",
+    "fin": "2026-11-02 04:00:00",
+    "initial": false,
+    "signal": "VENDRE",
+    "ancien": "VENDRE",
+    "prix": 2309.25,
+    "votes": [
+     -1,
+     -1,
+     -1
+    ],
+    "change": false
    }
   ],
   "votes": [
@@ -1257,11 +1351,11 @@
   "signal_depuis": "2026-10-24 00:00:00"
  },
  "achat_vente:XRPUSDT": {
-  "dernier_traite": "2026-11-01 04:00:00",
-  "derniere_decision": "2026-11-01 00:00:00",
+  "dernier_traite": "2026-11-02 08:00:00",
+  "derniere_decision": "2026-11-02 00:00:00",
   "position": -1,
-  "robot": 1.0606724069201958,
-  "garder": 0.9399718928249771,
+  "robot": 1.063640390150306,
+  "garder": 0.9373489942960062,
   "frais": 0.18721875000000002,
   "changements": 1,
   "decisions": [
@@ -1432,6 +1526,20 @@
      -1
     ],
     "change": false
+   },
+   {
+    "date": "2026-11-02 00:00:00",
+    "fin": "2026-11-02 04:00:00",
+    "initial": false,
+    "signal": "VENDRE",
+    "ancien": "VENDRE",
+    "prix": 1.2616,
+    "votes": [
+     -1,
+     -1,
+     -1
+    ],
+    "change": false
    }
   ],
   "votes": [
@@ -1443,11 +1551,11 @@
   "signal_depuis": "2026-10-21 00:00:00"
  },
  "achat_vente:ADAUSDT": {
-  "dernier_traite": "2026-11-01 04:00:00",
-  "derniere_decision": "2026-11-01 00:00:00",
+  "dernier_traite": "2026-11-02 08:00:00",
+  "derniere_decision": "2026-11-02 00:00:00",
   "position": -1,
-  "robot": 1.1500534331440386,
-  "garder": 0.8669181981174351,
+  "robot": 1.1675332809224337,
+  "garder": 0.8539390407888824,
   "frais": 0.18721875000000002,
   "changements": 1,
   "decisions": [
@@ -1618,6 +1726,20 @@
      -1
     ],
     "change": false
+   },
+   {
+    "date": "2026-11-02 00:00:00",
+    "fin": "2026-11-02 04:00:00",
+    "initial": false,
+    "signal": "VENDRE",
+    "ancien": "VENDRE",
+    "prix": 0.1937,
+    "votes": [
+     -1,
+     -1,
+     -1
+    ],
+    "change": false
    }
   ],
   "votes": [
@@ -1629,11 +1751,11 @@
   "signal_depuis": "2026-10-21 00:00:00"
  },
  "achat_vente:DOGEUSDT": {
-  "dernier_traite": "2026-11-01 04:00:00",
-  "derniere_decision": "2026-11-01 00:00:00",
+  "dernier_traite": "2026-11-02 08:00:00",
+  "derniere_decision": "2026-11-02 00:00:00",
   "position": -1,
-  "robot": 1.0730286825794537,
-  "garder": 0.9291478095471846,
+  "robot": 1.079004972815276,
+  "garder": 0.9240015339305448,
   "frais": 0.18721875000000002,
   "changements": 1,
   "decisions": [
@@ -1804,6 +1926,20 @@
      -1
     ],
     "change": false
+   },
+   {
+    "date": "2026-11-02 00:00:00",
+    "fin": "2026-11-02 04:00:00",
+    "initial": false,
+    "signal": "VENDRE",
+    "ancien": "VENDRE",
+    "prix": 0.07619,
+    "votes": [
+     0,
+     -1,
+     -1
+    ],
+    "change": false
    }
   ],
   "votes": [
@@ -1815,11 +1951,11 @@
   "signal_depuis": "2026-10-21 00:00:00"
  },
  "achat_vente:SOLUSDT": {
-  "dernier_traite": "2026-11-01 04:00:00",
-  "derniere_decision": "2026-11-01 00:00:00",
+  "dernier_traite": "2026-11-02 08:00:00",
+  "derniere_decision": "2026-11-02 00:00:00",
   "position": -1,
-  "robot": 1.1056611924686206,
-  "garder": 0.9017249197052712,
+  "robot": 1.1234053565734945,
+  "garder": 0.8874821934630649,
   "frais": 0.18721875000000002,
   "changements": 1,
   "decisions": [
@@ -1990,6 +2126,20 @@
      -1
     ],
     "change": false
+   },
+   {
+    "date": "2026-11-02 00:00:00",
+    "fin": "2026-11-02 04:00:00",
+    "initial": false,
+    "signal": "VENDRE",
+    "ancien": "VENDRE",
+    "prix": 95.59,
+    "votes": [
+     -1,
+     -1,
+     -1
+    ],
+    "change": false
    }
   ],
   "votes": [
@@ -2001,11 +2151,11 @@
   "signal_depuis": "2026-10-21 00:00:00"
  },
  "achat_vente:LTCUSDT": {
-  "dernier_traite": "2026-11-01 04:00:00",
-  "derniere_decision": "2026-11-01 00:00:00",
+  "dernier_traite": "2026-11-02 08:00:00",
+  "derniere_decision": "2026-11-02 00:00:00",
   "position": -1,
-  "robot": 1.0903690941385427,
-  "garder": 0.9143713402732602,
+  "robot": 1.1185819970845474,
+  "garder": 0.8913090435914123,
   "frais": 0.18721875000000002,
   "changements": 1,
   "decisions": [
@@ -2176,6 +2326,20 @@
      -1
     ],
     "change": false
+   },
+   {
+    "date": "2026-11-02 00:00:00",
+    "fin": "2026-11-02 04:00:00",
+    "initial": false,
+    "signal": "VENDRE",
+    "ancien": "VENDRE",
+    "prix": 56.07,
+    "votes": [
+     -1,
+     -1,
+     -1
+    ],
+    "change": false
    }
   ],
   "votes": [
@@ -2187,11 +2351,11 @@
   "signal_depuis": "2026-10-21 00:00:00"
  },
  "achat_vente:DOTUSDT": {
-  "dernier_traite": "2026-11-01 04:00:00",
-  "derniere_decision": "2026-11-01 00:00:00",
+  "dernier_traite": "2026-11-02 08:00:00",
+  "derniere_decision": "2026-11-02 00:00:00",
   "position": -1,
-  "robot": 1.1135136787909752,
-  "garder": 0.81476913155632,
+  "robot": 1.1241749799708882,
+  "garder": 0.8070421324161654,
   "frais": 0.966931350284916,
   "changements": 3,
   "decisions": [
@@ -2362,6 +2526,20 @@
      -1
     ],
     "change": false
+   },
+   {
+    "date": "2026-11-02 00:00:00",
+    "fin": "2026-11-02 04:00:00",
+    "initial": false,
+    "signal": "VENDRE",
+    "ancien": "VENDRE",
+    "prix": 0.963,
+    "votes": [
+     -1,
+     -1,
+     -1
+    ],
+    "change": false
    }
   ],
   "votes": [
@@ -2373,11 +2551,11 @@
   "signal_depuis": "2026-10-25 00:00:00"
  },
  "achat_vente:AVAXUSDT": {
-  "dernier_traite": "2026-11-01 04:00:00",
-  "derniere_decision": "2026-11-01 00:00:00",
+  "dernier_traite": "2026-11-02 08:00:00",
+  "derniere_decision": "2026-11-02 00:00:00",
   "position": -1,
-  "robot": 1.0884771910112343,
-  "garder": 0.9159606266749138,
+  "robot": 1.1299949842528854,
+  "garder": 0.8823067924139365,
   "frais": 0.18721875000000002,
   "changements": 1,
   "decisions": [
@@ -2542,6 +2720,20 @@
     "signal": "VENDRE",
     "ancien": "VENDRE",
     "prix": 8.661,
+    "votes": [
+     -1,
+     -1,
+     -1
+    ],
+    "change": false
+   },
+   {
+    "date": "2026-11-02 00:00:00",
+    "fin": "2026-11-02 04:00:00",
+    "initial": false,
+    "signal": "VENDRE",
+    "ancien": "VENDRE",
+    "prix": 8.694,
     "votes": [
      -1,
      -1,
