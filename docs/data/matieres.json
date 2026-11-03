@@ -1,11 +1,11 @@
 {
- "genere_le": "2026-10-31 01:42 UTC",
- "donnees_jusqu_au": "2026-10-30 16:00:00",
+ "genere_le": "2026-11-03 03:33 UTC",
+ "donnees_jusqu_au": "2026-11-02 16:00:00",
  "test": {
   "debut": "2026-10-20",
   "fin": "2027-04-20",
   "capital": 1000.0,
-  "jours_ecoules": 10,
+  "jours_ecoules": 13,
   "jours_total": 182,
   "frais_aller_retour_pct": 0.05,
   "termine": false
@@ -21,38 +21,38 @@
     "garder": 9.6
    },
    "commence": true,
-   "signal": "DEHORS",
+   "signal": "ACHETER",
    "apercu": null,
    "votes": [
     1,
     0,
-    0
+    1
    ],
-   "signal_depuis": "2026-10-20 20:00:00",
-   "signal_depuis_fin": "2026-10-21 00:00:00",
-   "prix_reference": 57.925,
+   "signal_depuis": "2026-10-30 16:00:00",
+   "signal_depuis_fin": "2026-10-30 20:00:00",
+   "prix_reference": 49.39,
    "dernier_changement": {
-    "date": "2026-10-20 20:00:00",
-    "fin": "2026-10-21 00:00:00",
-    "initial": true,
-    "signal": "DEHORS",
-    "prix": 57.925,
+    "date": "2026-10-30 16:00:00",
+    "fin": "2026-10-30 20:00:00",
+    "initial": false,
+    "signal": "ACHETER",
+    "prix": 49.39,
     "votes": [
-     0,
-     0,
+     1,
+     1,
      0
     ],
     "change": true
    },
-   "prix_actuel": 49.32,
-   "bougie": "2026-10-30 16:00:00",
-   "prochaine_decision_jours": 0.2,
-   "valeur": 1000.0,
-   "rendement_pct": 0.0,
-   "garder_valeur": 851.23,
-   "garder_rendement_pct": -14.88,
-   "frais": 0.0,
-   "changements": 0,
+   "prix_actuel": 51.005,
+   "bougie": "2026-11-02 16:00:00",
+   "prochaine_decision_jours": 1.0,
+   "valeur": 1032.44,
+   "rendement_pct": 3.24,
+   "garder_valeur": 880.32,
+   "garder_rendement_pct": -11.97,
+   "frais": 0.25,
+   "changements": 1,
    "pire_baisse_pct": 0.0,
    "garder_pire_baisse_pct": -14.52,
    "sharpe": null,
@@ -97,6 +97,11 @@
      "d": "2026-10-31",
      "robot": 1000.0,
      "garder": 851.23
+    },
+    {
+     "d": "2026-11-03",
+     "robot": 1032.44,
+     "garder": 880.32
     }
    ],
    "decisions": [
@@ -109,6 +114,19 @@
      "votes": [
       0,
       0,
+      0
+     ],
+     "change": true
+    },
+    {
+     "date": "2026-10-30 16:00:00",
+     "fin": "2026-10-30 20:00:00",
+     "initial": false,
+     "signal": "ACHETER",
+     "prix": 49.39,
+     "votes": [
+      1,
+      1,
       0
      ],
      "change": true
@@ -148,13 +166,13 @@
     ],
     "change": true
    },
-   "prix_actuel": 220.8,
-   "bougie": "2026-10-30 16:00:00",
-   "prochaine_decision_jours": 2.0,
+   "prix_actuel": 221.4,
+   "bougie": "2026-11-02 16:00:00",
+   "prochaine_decision_jours": 1.0,
    "valeur": 1000.0,
    "rendement_pct": 0.0,
-   "garder_valeur": 952.1,
-   "garder_rendement_pct": -4.79,
+   "garder_valeur": 954.69,
+   "garder_rendement_pct": -4.53,
    "frais": 0.0,
    "changements": 0,
    "pire_baisse_pct": 0.0,
@@ -201,6 +219,11 @@
      "d": "2026-10-31",
      "robot": 1000.0,
      "garder": 952.1
+    },
+    {
+     "d": "2026-11-03",
+     "robot": 1000.0,
+     "garder": 954.69
     }
    ],
    "decisions": [
@@ -234,7 +257,7 @@
    "votes": [
     0,
     0,
-    1
+    0
    ],
    "signal_depuis": "2026-10-23 20:00:00",
    "signal_depuis_fin": "2026-10-24 00:00:00",
@@ -252,13 +275,13 @@
     ],
     "change": true
    },
-   "prix_actuel": 6.489,
-   "bougie": "2026-10-30 16:00:00",
-   "prochaine_decision_jours": 0.2,
+   "prix_actuel": 6.565,
+   "bougie": "2026-11-02 16:00:00",
+   "prochaine_decision_jours": 1.0,
    "valeur": 991.87,
    "rendement_pct": -0.81,
-   "garder_valeur": 981.37,
-   "garder_rendement_pct": -1.86,
+   "garder_valeur": 992.87,
+   "garder_rendement_pct": -0.71,
    "frais": 0.5,
    "changements": 2,
    "pire_baisse_pct": -2.2,
@@ -305,6 +328,11 @@
      "d": "2026-10-31",
      "robot": 991.87,
      "garder": 981.37
+    },
+    {
+     "d": "2026-11-03",
+     "robot": 991.87,
+     "garder": 992.87
     }
    ],
    "decisions": [
@@ -351,8 +379,8 @@
   }
  ],
  "total": {
-  "valeur": 2991.87,
-  "garder_valeur": 2784.7,
+  "valeur": 3024.31,
+  "garder_valeur": 2827.88,
   "capital": 3000.0
  },
  "verdict": {
@@ -367,7 +395,7 @@
     "ok": false
    },
    {
-    "nom": "Au moins 2 marchés sur 3 battent leur « garder » (3/3)",
+    "nom": "Au moins 2 marchés sur 3 battent leur « garder » (2/3)",
     "ok": true
    }
   ],
