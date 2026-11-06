@@ -1,0 +1,12 @@
+# Python 3.10 à 3.12
+torch>=2.2            # version CPU suffisante : pip install torch --index-url https://download.pytorch.org/whl/cpu
+stable-baselines3==2.9.0
+gymnasium==1.4.0
+numpy>=1.26,<3
+pandas>=2.2,<3
+requests>=2.31
+# seulement pour les matières premières :
+databento==0.87.0
+# seulement pour le serveur web (application non Python) :
+fastapi>=0.110
+uvicorn>=0.29
