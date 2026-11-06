@@ -1,12 +1,12 @@
 {
  "SI": {
-  "dernier_traite": "2026-11-04 12:00:00",
-  "derniere_decision": "2026-11-04 12:00:00",
-  "position": 1,
-  "robot": 1.0561238357967209,
-  "garder": 0.9005085239533885,
-  "frais": 0.2499375,
-  "changements": 1,
+  "dernier_traite": "2026-11-05 12:00:00",
+  "derniere_decision": "2026-11-05 12:00:00",
+  "position": 0,
+  "robot": 1.047562679394869,
+  "garder": 0.893432175226587,
+  "frais": 0.5118281698487173,
+  "changements": 2,
   "decisions": [
    {
     "date": "2026-10-20 20:00:00",
@@ -30,6 +30,19 @@
     "votes": [
      1,
      1,
+     0
+    ],
+    "change": true
+   },
+   {
+    "date": "2026-11-05 12:00:00",
+    "fin": "2026-11-05 16:00:00",
+    "initial": false,
+    "signal": "DEHORS",
+    "prix": 51.765,
+    "votes": [
+     1,
+     0,
      0
     ],
     "change": true
@@ -90,22 +103,27 @@
     "d": "2026-11-05",
     "robot": 1056.12,
     "garder": 900.51
+   },
+   {
+    "d": "2026-11-06",
+    "robot": 1047.56,
+    "garder": 893.43
    }
   ],
   "votes": [
    1,
    0,
-   1
+   0
   ],
-  "prix_reference": 49.39,
-  "signal_depuis": "2026-10-30 16:00:00"
+  "prix_reference": 51.765,
+  "signal_depuis": "2026-11-05 12:00:00"
  },
  "LE": {
-  "dernier_traite": "2026-11-04 12:00:00",
+  "dernier_traite": "2026-11-05 12:00:00",
   "derniere_decision": "2026-11-03 12:00:00",
   "position": 0,
   "robot": 1.0,
-  "garder": 0.9385188160448569,
+  "garder": 0.9290322945870179,
   "frais": 0.0,
   "changements": 0,
   "decisions": [
@@ -178,6 +196,11 @@
     "d": "2026-11-05",
     "robot": 1000.0,
     "garder": 938.52
+   },
+   {
+    "d": "2026-11-06",
+    "robot": 1000.0,
+    "garder": 929.03
    }
   ],
   "votes": [
@@ -189,11 +212,11 @@
   "signal_depuis": "2026-10-21 12:00:00"
  },
  "HG": {
-  "dernier_traite": "2026-11-04 12:00:00",
-  "derniere_decision": "2026-11-04 12:00:00",
+  "dernier_traite": "2026-11-05 12:00:00",
+  "derniere_decision": "2026-11-05 12:00:00",
   "position": 1,
-  "robot": 0.9902280983436218,
-  "garder": 0.9687464828681644,
+  "robot": 0.9711361976105901,
+  "garder": 0.9500687542545957,
   "frais": 0.7458091971849362,
   "changements": 3,
   "decisions": [
@@ -305,12 +328,17 @@
     "d": "2026-11-05",
     "robot": 990.23,
     "garder": 968.75
+   },
+   {
+    "d": "2026-11-06",
+    "robot": 971.14,
+    "garder": 950.07
    }
   ],
   "votes": [
    1,
    1,
-   0
+   1
   ],
   "prix_reference": 6.4145,
   "signal_depuis": "2026-11-03 12:00:00"
