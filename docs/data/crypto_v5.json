@@ -1,6 +1,6 @@
 {
- "genere_le": "2026-11-07 07:19 UTC",
- "donnees_jusqu_au": "2026-11-06",
+ "genere_le": "2026-11-08 07:30 UTC",
+ "donnees_jusqu_au": "2026-11-07",
  "test": {
   "debut": "2026-10-20",
   "fin": "2027-04-20",
@@ -9,15 +9,15 @@
   "slippage_pct": 0.05,
   "filtre_jours": 100,
   "modele_cutoff": "2026-10-17",
-  "jours_ecoules": 17,
+  "jours_ecoules": 18,
   "jours_total": 182
  },
  "commence": true,
  "signal": {
-  "date_calcul": "2026-11-06",
-  "applicable_le": "2026-11-07",
+  "date_calcul": "2026-11-07",
+  "applicable_le": "2026-11-08",
   "filtre": false,
-  "btc_vs_moy100": -1.6,
+  "btc_vs_moy100": -1.8,
   "poids": [],
   "actions": []
  },
@@ -31,7 +31,7 @@
  "v4_pire_baisse_pct": -5.94,
  "btc_pire_baisse_pct": -9.81,
  "v4_rendement_pct": -4.9,
- "btc_rendement_pct": -9.81,
+ "btc_rendement_pct": -9.78,
  "courbe": [
   [
    "2026-10-21",
@@ -99,6 +99,10 @@
   ],
   [
    "2026-11-06",
+   838.61
+  ],
+  [
+   "2026-11-07",
    838.61
   ]
  ],
@@ -170,6 +174,10 @@
   [
    "2026-11-06",
    950.95
+  ],
+  [
+   "2026-11-07",
+   950.95
   ]
  ],
  "btc_courbe": [
@@ -240,6 +248,10 @@
   [
    "2026-11-06",
    901.9
+  ],
+  [
+   "2026-11-07",
+   902.18
   ]
  ],
  "historique": [
@@ -597,6 +609,12 @@
   },
   {
    "date": "2026-11-05",
+   "filtre": false,
+   "poids": {},
+   "valeur": 838.61
+  },
+  {
+   "date": "2026-11-06",
    "filtre": false,
    "poids": {},
    "valeur": 838.61
