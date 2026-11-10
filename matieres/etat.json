@@ -1,10 +1,10 @@
 {
  "SI": {
-  "dernier_traite": "2026-11-06 12:00:00",
-  "derniere_decision": "2026-11-06 12:00:00",
+  "dernier_traite": "2026-11-09 16:00:00",
+  "derniere_decision": "2026-11-09 08:00:00",
   "position": 0,
   "robot": 1.047562679394869,
-  "garder": 0.89576219249029,
+  "garder": 0.9228594302978,
   "frais": 0.5118281698487173,
   "changements": 2,
   "decisions": [
@@ -113,6 +113,11 @@
     "d": "2026-11-07",
     "robot": 1047.56,
     "garder": 895.76
+   },
+   {
+    "d": "2026-11-10",
+    "robot": 1047.56,
+    "garder": 922.86
    }
   ],
   "votes": [
@@ -124,11 +129,11 @@
   "signal_depuis": "2026-11-05 12:00:00"
  },
  "LE": {
-  "dernier_traite": "2026-11-06 12:00:00",
+  "dernier_traite": "2026-11-09 16:00:00",
   "derniere_decision": "2026-11-06 12:00:00",
   "position": 0,
   "robot": 1.0,
-  "garder": 0.9125386834160023,
+  "garder": 0.932805342894113,
   "frais": 0.0,
   "changements": 0,
   "decisions": [
@@ -211,6 +216,11 @@
     "d": "2026-11-07",
     "robot": 1000.0,
     "garder": 912.54
+   },
+   {
+    "d": "2026-11-10",
+    "robot": 1000.0,
+    "garder": 932.81
    }
   ],
   "votes": [
@@ -222,11 +232,11 @@
   "signal_depuis": "2026-10-21 12:00:00"
  },
  "HG": {
-  "dernier_traite": "2026-11-06 12:00:00",
-  "derniere_decision": "2026-11-06 12:00:00",
+  "dernier_traite": "2026-11-09 16:00:00",
+  "derniere_decision": "2026-11-09 08:00:00",
   "position": 0,
   "robot": 0.9681114840094367,
-  "garder": 0.9473464942137519,
+  "garder": 0.964814329475835,
   "frais": 0.9878370681872954,
   "changements": 4,
   "decisions": [
@@ -361,6 +371,11 @@
     "d": "2026-11-07",
     "robot": 968.11,
     "garder": 947.35
+   },
+   {
+    "d": "2026-11-10",
+    "robot": 968.11,
+    "garder": 964.81
    }
   ],
   "votes": [
