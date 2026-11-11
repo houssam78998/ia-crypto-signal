@@ -44,23 +44,36 @@ MAX_COST_USD = float(os.environ.get("MATIERES_MAX_COST", "8"))
 
 
 # ---------------------------------------------------------------- données
+def _retry(f, *a, **k):
+    """Databento répond parfois 502/503/504 (serveur occupé) : on réessaie jusqu'à 5 fois avant d'abandonner."""
+    import time
+    for essai in range(5):
+        try:
+            return f(*a, **k)
+        except Exception as e:
+            if essai == 4 or not any(c in str(e) for c in ("502", "503", "504", "timed out", "Timeout", "Connection")):
+                raise
+            print(f"Databento indisponible ({e}), nouvel essai dans {30 * (essai + 1)} s")
+            time.sleep(30 * (essai + 1))
+
+
 def fetch(start, end):
     import databento as db
     key = os.environ.get("DATABENTO_API_KEY")
     if not key:
         raise RuntimeError("Secret DATABENTO_API_KEY absent : ajoute-le dans Settings → Secrets → Actions.")
     client = db.Historical(key)
-    avail = pd.Timestamp(client.metadata.get_dataset_range(dataset="GLBX.MDP3")["end"]).tz_convert(None)
+    avail = pd.Timestamp(_retry(client.metadata.get_dataset_range, dataset="GLBX.MDP3")["end"]).tz_convert(None)
     end = min(pd.Timestamp(end), avail.floor("h"))
     if pd.Timestamp(start) >= end:
         return pd.DataFrame(columns=["ts", "root", "instrument_id", "open", "high", "low", "close", "volume"])
     kw = dict(dataset="GLBX.MDP3", schema="ohlcv-1h", stype_in="continuous",
               symbols=[f"{r}.v.0" for r in MARKETS], start=pd.Timestamp(start).isoformat(), end=end.isoformat())
-    cost = float(client.metadata.get_cost(**kw))
+    cost = float(_retry(client.metadata.get_cost, **kw))
     print(f"Databento : {kw['start']} → {kw['end']}, coût estimé {cost:.4f} $")
     if cost > MAX_COST_USD:
         raise RuntimeError(f"Coût {cost:.2f} $ supérieur à la limite {MAX_COST_USD} $ : arrêt par sécurité.")
-    df = client.timeseries.get_range(**kw).to_df().reset_index().rename(columns={"ts_event": "ts"})
+    df = _retry(client.timeseries.get_range, **kw).to_df().reset_index().rename(columns={"ts_event": "ts"})
     if df.empty:
         return pd.DataFrame(columns=["ts", "root", "instrument_id", "open", "high", "low", "close", "volume"])
     df["root"] = df["symbol"].astype(str).str.split(".").str[0]
