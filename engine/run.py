@@ -133,9 +133,17 @@ def download_symbol(symbol):
 
 def recent_from_api(symbol, days=60):
     try:
-        r = requests.get("https://data-api.binance.vision/api/v3/klines",
-                         params={"symbol": symbol, "interval": "1d", "limit": days}, timeout=20)
-        if r.status_code != 200:
+        r = None
+        for essai in range(4):                                    # Binance répond parfois 429 / timeout : on réessaie
+            try:
+                r = requests.get("https://data-api.binance.vision/api/v3/klines",
+                                 params={"symbol": symbol, "interval": "1d", "limit": days}, timeout=20)
+                if r.status_code == 200:
+                    break
+            except Exception:
+                r = None
+            time.sleep(3 * (essai + 1))
+        if r is None or r.status_code != 200:
             return pd.DataFrame()
         df = pd.DataFrame(r.json(), columns=COLS)
         for c in ["open", "high", "low", "close", "volume", "quote_volume"]:
@@ -340,6 +348,10 @@ def rebalance(p, d, top, filt, btc_pct):
     pf = state[p]
     px = C.loc[d]
     qty = pd.Series(pf["qty"], dtype=float).reindex(C.columns).fillna(0.0)
+    manquants = [s for s in qty[qty > 0].index if pd.isna(px[s])]
+    if manquants:                                                 # ne jamais compter à 0 une crypto détenue
+        raise RuntimeError(f"Prix manquant le {d.date()} pour {manquants} (crypto détenue) : arrêt sans rien enregistrer, "
+                           "nouvel essai au prochain calcul.")
     cur = (qty * px).fillna(0.0)
     value = pf["cash"] + float(cur.sum())
     w = pd.Series(0.0, index=C.columns)

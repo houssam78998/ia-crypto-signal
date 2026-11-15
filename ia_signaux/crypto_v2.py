@@ -3,6 +3,8 @@
 Deux versions :
   - "achat_seul"  : XRP, XLM, SOL, DOT, AVAX — ACHETER ou DEHORS ;
   - "achat_vente" : ETH, XRP, ADA, DOGE, SOL, LTC, DOT, AVAX — ACHETER, DEHORS ou VENDRE (pari à la baisse).
+    Le signal est ACHETER si la somme des 3 votes est positive, VENDRE si elle est négative (un seul robot peut suffire
+    si les deux autres votent DEHORS).
 """
 import numpy as np
 import pandas as pd

@@ -1,12 +1,12 @@
 {
- "genere_le": "2026-11-14 11:37 UTC",
+ "genere_le": "2026-11-15 09:51 UTC",
  "donnees_jusqu_au": "2026-11-14 08:00:00",
- "prochaine_mise_a_jour": "2026-11-15 04:30:00",
+ "prochaine_mise_a_jour": "2026-11-16 04:30:00",
  "test": {
   "debut": "2026-10-21",
   "fin": "2027-04-21",
   "capital": 1000.0,
-  "jours_ecoules": 24,
+  "jours_ecoules": 25,
   "jours_total": 182,
   "frais_pct": 0.15,
   "termine": false
@@ -22,8 +22,8 @@
    "rendement_pct": -3.06,
    "garder_valeur": 745.64,
    "garder_rendement_pct": -25.44,
-   "sharpe": -9.18,
-   "garder_sharpe": -11.46,
+   "sharpe": -8.95,
+   "garder_sharpe": -11.15,
    "pire_baisse_pct": -3.06,
    "garder_pire_baisse_pct": -25.94,
    "frais": 2.66,
@@ -151,6 +151,11 @@
     },
     {
      "d": "2026-11-14",
+     "robot": 969.43,
+     "garder": 745.64
+    },
+    {
+     "d": "2026-11-15",
      "robot": 969.43,
      "garder": 745.64
     }
@@ -2172,140 +2177,145 @@
    "long_only": false,
    "commence": true,
    "capital": 1000.0,
-   "valeur": 1245.13,
-   "rendement_pct": 24.51,
+   "valeur": 1182.22,
+   "rendement_pct": 18.22,
    "garder_valeur": 749.68,
    "garder_rendement_pct": -25.03,
-   "sharpe": 10.04,
-   "garder_sharpe": -11.47,
-   "pire_baisse_pct": -3.55,
+   "sharpe": 9.1,
+   "garder_sharpe": -11.16,
+   "pire_baisse_pct": -3.08,
    "garder_pire_baisse_pct": -25.42,
-   "frais": 4.97,
+   "frais": 4.94,
    "changements": 18,
    "courbe": [
     {
      "d": "2026-10-21",
-     "robot": 993.06,
+     "robot": 993.01,
      "garder": 1005.21
     },
     {
      "d": "2026-10-22",
-     "robot": 1019.45,
+     "robot": 1018.72,
      "garder": 976.84
     },
     {
      "d": "2026-10-23",
-     "robot": 1013.35,
+     "robot": 1012.68,
      "garder": 979.96
     },
     {
      "d": "2026-10-24",
-     "robot": 1045.77,
+     "robot": 1042.4,
      "garder": 942.07
     },
     {
      "d": "2026-10-25",
-     "robot": 1048.75,
+     "robot": 1044.81,
      "garder": 934.14
     },
     {
      "d": "2026-10-26",
-     "robot": 1059.97,
+     "robot": 1055.04,
      "garder": 924.19
     },
     {
      "d": "2026-10-27",
-     "robot": 1058.19,
+     "robot": 1053.44,
      "garder": 925.96
     },
     {
      "d": "2026-10-28",
-     "robot": 1037.17,
+     "robot": 1034.37,
      "garder": 944.96
     },
     {
      "d": "2026-10-29",
-     "robot": 1068.77,
+     "robot": 1062.44,
      "garder": 917.31
     },
     {
      "d": "2026-10-30",
-     "robot": 1096.03,
+     "robot": 1085.76,
      "garder": 894.35
     },
     {
      "d": "2026-10-31",
-     "robot": 1100.95,
+     "robot": 1089.77,
      "garder": 890.15
     },
     {
      "d": "2026-11-01",
-     "robot": 1087.55,
+     "robot": 1078.8,
      "garder": 901.3
     },
     {
      "d": "2026-11-02",
-     "robot": 1102.21,
+     "robot": 1090.53,
      "garder": 889.69
     },
     {
      "d": "2026-11-03",
-     "robot": 1108.77,
+     "robot": 1095.75,
      "garder": 884.41
     },
     {
      "d": "2026-11-04",
-     "robot": 1092.13,
+     "robot": 1081.7,
      "garder": 898.23
     },
     {
      "d": "2026-11-05",
-     "robot": 1069.37,
+     "robot": 1061.95,
      "garder": 917.42
     },
     {
      "d": "2026-11-06",
-     "robot": 1112.84,
+     "robot": 1095.28,
      "garder": 864.59
     },
     {
      "d": "2026-11-07",
-     "robot": 1116.87,
+     "robot": 1097.26,
      "garder": 856.52
     },
     {
      "d": "2026-11-08",
-     "robot": 1128.52,
+     "robot": 1105.43,
      "garder": 846.6
     },
     {
      "d": "2026-11-09",
-     "robot": 1159.74,
+     "robot": 1127.64,
      "garder": 813.62
     },
     {
      "d": "2026-11-10",
-     "robot": 1154.8,
+     "robot": 1124.37,
      "garder": 816.81
     },
     {
      "d": "2026-11-11",
-     "robot": 1170.97,
+     "robot": 1136.35,
      "garder": 809.09
     },
     {
      "d": "2026-11-12",
-     "robot": 1188.87,
+     "robot": 1148.48,
      "garder": 794.04
     },
     {
      "d": "2026-11-13",
-     "robot": 1189.07,
+     "robot": 1145.13,
      "garder": 784.04
     },
     {
      "d": "2026-11-14",
-     "robot": 1245.13,
+     "robot": 1182.21,
+     "garder": 749.68
+    },
+    {
+     "d": "2026-11-15",
+     "robot": 1182.22,
      "garder": 749.68
     }
    ],
@@ -2341,8 +2351,8 @@
      "derniere_decision": "2026-11-14 00:00:00",
      "prix_actuel": 1898.25,
      "part": 125.0,
-     "valeur": 115.16,
-     "rendement_pct": -7.87,
+     "valeur": 113.92,
+     "rendement_pct": -8.86,
      "garder_valeur": 96.93,
      "garder_rendement_pct": -22.46,
      "frais": 1.22,
@@ -2739,11 +2749,11 @@
      "derniere_decision": "2026-11-14 00:00:00",
      "prix_actuel": 0.9827,
      "part": 125.0,
-     "valeur": 155.94,
-     "rendement_pct": 24.75,
+     "valeur": 150.85,
+     "rendement_pct": 20.68,
      "garder_valeur": 92.05,
      "garder_rendement_pct": -26.36,
-     "frais": 1.0,
+     "frais": 0.99,
      "changements": 4,
      "backtest": {
       "robot": 86.5,
@@ -3137,8 +3147,8 @@
      "derniere_decision": "2026-11-14 00:00:00",
      "prix_actuel": 0.1628,
      "part": 125.0,
-     "valeur": 171.04,
-     "rendement_pct": 36.83,
+     "valeur": 158.55,
+     "rendement_pct": 26.84,
      "garder_valeur": 91.08,
      "garder_rendement_pct": -27.14,
      "frais": 0.19,
@@ -3535,8 +3545,8 @@
      "derniere_decision": "2026-11-14 00:00:00",
      "prix_actuel": 0.06261,
      "part": 125.0,
-     "valeur": 162.45,
-     "rendement_pct": 29.96,
+     "valeur": 153.73,
+     "rendement_pct": 22.98,
      "garder_valeur": 95.9,
      "garder_rendement_pct": -23.28,
      "frais": 0.19,
@@ -3933,8 +3943,8 @@
      "derniere_decision": "2026-11-14 00:00:00",
      "prix_actuel": 75.26,
      "part": 125.0,
-     "valeur": 175.56,
-     "rendement_pct": 40.45,
+     "valeur": 160.89,
+     "rendement_pct": 28.71,
      "garder_valeur": 88.73,
      "garder_rendement_pct": -29.01,
      "frais": 0.19,
@@ -4331,8 +4341,8 @@
      "derniere_decision": "2026-11-14 00:00:00",
      "prix_actuel": 48.25,
      "part": 125.0,
-     "valeur": 159.04,
-     "rendement_pct": 27.23,
+     "valeur": 151.67,
+     "rendement_pct": 21.34,
      "garder_valeur": 97.95,
      "garder_rendement_pct": -21.64,
      "frais": 0.19,
@@ -4729,11 +4739,11 @@
      "derniere_decision": "2026-11-14 00:00:00",
      "prix_actuel": 0.783,
      "part": 125.0,
-     "valeur": 168.7,
-     "rendement_pct": 34.96,
+     "valeur": 157.68,
+     "rendement_pct": 26.14,
      "garder_valeur": 84.03,
      "garder_rendement_pct": -32.78,
-     "frais": 0.97,
+     "frais": 0.96,
      "changements": 3,
      "backtest": {
       "robot": 215.4,
@@ -5127,11 +5137,11 @@
      "derniere_decision": "2026-11-14 00:00:00",
      "prix_actuel": 8.007,
      "part": 125.0,
-     "valeur": 137.24,
-     "rendement_pct": 9.79,
+     "valeur": 134.93,
+     "rendement_pct": 7.94,
      "garder_valeur": 103.01,
      "garder_rendement_pct": -17.59,
-     "frais": 1.02,
+     "frais": 1.01,
      "changements": 3,
      "backtest": {
       "robot": 125.3,

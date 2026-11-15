@@ -308,6 +308,8 @@ th{font-size:12px;color:var(--muted);font-weight:600;border-top:0}
         '<p><b>Chaque jour à 04:00 UTC</b>, ils votent. La majorité décide. Le calcul est publié vers 04:30 UTC.</p>' +
         '<p><b>Achat seulement</b> (5 cryptos) : <b>ACHETER</b> ou <b>DEHORS</b> (en USDT). Faisable sur Binance normal.</p>' +
         '<p><b>Achat et vente</b> (8 cryptos) : en plus, <b>VENDRE</b> = parier à la baisse (vente à découvert). <b>Impossible sur Binance normal</b> : il faut les contrats à terme (futures), très risqués. Ici c\'est seulement fictif, pour voir si ça marche.</p>' +
+        '<p><b>Correction du 15 nov. 2026 :</b> le gain des paris à la baisse était surévalué (une baisse de 29 % était comptée +40 % au lieu de +29 %). Tout l\'historique « Achat et vente » a été recalculé. Les chiffres du test historique 2024–2026 de cette version sont surévalués de la même façon.</p>' +
+        '<p>En « Achat et vente », le signal suit la somme des 3 votes : un seul robot peut suffire si les deux autres votent DEHORS.</p>' +
         '<p>Chaque crypto a une <b>part fixe</b> du portefeuille (1 000 $ ÷ 5 = 200 $, ou ÷ 8 = 125 $). Tu agis seulement quand un signal <b>change</b>. Le gain devient réel quand tu sors de la position.</p>'
   };
   function howCard(k){ return '<div class="card how"><details><summary style="font-size:15px;color:var(--ink);font-weight:700">ℹ️ Comment fonctionne le signal ?</summary>' + HOW[k] + '</details></div>'; }

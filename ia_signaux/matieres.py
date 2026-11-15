@@ -40,7 +40,7 @@ def signal_matiere(marche, position=None, bougies_horaires=None, rejouer_depuis=
     if marche not in MARCHES:
         raise ValueError("marche doit être SI, LE ou HG")
     debut = pd.Timestamp(rejouer_depuis) if position is None else pd.Timestamp.now(tz="UTC").tz_localize(None) - pd.Timedelta(days=5)
-    h = bougies_horaires if bougies_horaires is not None else bougies_databento(marche, debut - pd.Timedelta(days=120), cle=cle_databento)
+    h = bougies_horaires if bougies_horaires is not None else bougies_databento(marche, debut - pd.Timedelta(days=400), cle=cle_databento)
     info, OBS = observations(bougies_4h(h, instrument=True), MODELES / "matieres" / marche)
     if marche not in _CACHE:
         _CACHE[marche] = charger_robots(MODELES / "matieres" / marche, "robot_{}.zip")

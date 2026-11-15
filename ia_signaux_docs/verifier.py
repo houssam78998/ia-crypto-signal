@@ -8,7 +8,9 @@ SITE = "https://houssam78998.github.io/ia-crypto-signal/data/"
 ok = True
 app = requests.get(SITE + "app.json", timeout=30).json()
 s = signal_v4()
-cl_app = [c[0] for c in app["classement"]["scores"][:3]]
+sc = app["classement"]["scores"]
+sc = sorted(sc.items(), key=lambda x: -x[1]) if isinstance(sc, dict) else [(c[0], c[1]) for c in sc]
+cl_app = [c[0].replace("USDT", "") for c in sc[:3]]
 cl_moi = [c["symbole"].replace("USDT", "") for c in s["classement"][:3]]
 print(f"v4  : classement application {cl_app} ({app['classement']['date']}) | paquet {cl_moi} ({s['date_des_donnees']})")
 ok &= cl_app == cl_moi

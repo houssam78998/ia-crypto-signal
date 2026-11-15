@@ -238,6 +238,18 @@ def is_decision(ts, last_dec):
     return last_dec is not None and ts - pd.Timestamp(last_dec) >= pd.Timedelta(hours=28)   # rattrapage si une bougie manque
 
 
+def appliquer_bougie(robot, position, r, short_base, short_rel):
+    """Valeur de la part après une bougie de 4 h (r = rendement logarithmique du prix).
+    Achat : la part suit le prix. Vente à découvert : on a vendu une quantité fixe au prix d'entrée, donc le gain est
+    la baisse du prix (une baisse de 29 % rapporte 29 %, pas 40 %). Une part ne peut pas descendre sous 0."""
+    if position == 1:
+        return robot * math.exp(r), short_rel
+    if position == -1:
+        rel = short_rel * math.exp(r)
+        return max(0.0, robot - short_base * (rel - short_rel)), rel
+    return robot, short_rel
+
+
 def update_sleeve(S, info, OBS, agents, long_only, part):
     t = info["t"]
     start_i = int(np.searchsorted(t.values, np.datetime64(PAPER_START), side="left"))
@@ -249,7 +261,8 @@ def update_sleeve(S, info, OBS, agents, long_only, part):
         if ts > PAPER_END:
             break
         if S["dernier_traite"] is not None or i > start_i:
-            S["robot"] *= math.exp(S["position"] * info["r"].iloc[i]); S["garder"] *= math.exp(info["r"].iloc[i])
+            S["robot"], S["short_rel"] = appliquer_bougie(S["robot"], S["position"], info["r"].iloc[i], S.get("short_base"), S.get("short_rel"))
+            S["garder"] *= math.exp(info["r"].iloc[i])
         first = S["derniere_decision"] is None
         if (first and ts.hour == DECISION_HOUR) or (not first and is_decision(ts, S["derniere_decision"])):
             new, votes = vote(agents, np.append(OBS[i], float(S["position"])).astype(np.float32), long_only)
@@ -259,6 +272,7 @@ def update_sleeve(S, info, OBS, agents, long_only, part):
             if changed:
                 S["robot"] *= (1 - COST * abs(new - S["position"])); S["frais"] += part * S["robot"] * COST * abs(new - S["position"])
                 S["changements"] += 1
+                S["short_base"], S["short_rel"] = (S["robot"], 1.0) if new == -1 else (None, None)
             if changed or first:
                 S["signal_depuis"] = str(ts); S["prix_reference"] = float(info["prix"].iloc[i])
             S["decisions"].append({"date": str(ts), "fin": str(ts + pd.Timedelta(hours=4)), "initial": first,

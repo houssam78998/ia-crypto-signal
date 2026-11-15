@@ -163,6 +163,10 @@ def main():
         w = weights_at(D, pack, i)
         px = O.iloc[i + 1]
         qty = pd.Series(S["qty"], dtype=float).reindex(D["coins"]).fillna(0.0)
+        manquants = [s for s in qty[qty > 0].index if pd.isna(px[s])]
+        if manquants:                                             # ne jamais compter à 0 une crypto détenue
+            raise RuntimeError(f"Prix d'ouverture manquant le {idx[i + 1].date()} pour {manquants} (crypto détenue) : "
+                               "arrêt sans rien enregistrer, nouvel essai au prochain calcul.")
         pos = (qty * px).fillna(0.0); equity = S["cash"] + pos.sum()
         target = (w * equity).where(px.notna(), 0.0); delta = target - pos
         fees = delta.abs().sum() * cost; target = target * (1 - fees / equity) if equity > 0 else target
