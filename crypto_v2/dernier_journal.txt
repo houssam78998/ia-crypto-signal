@@ -36,24 +36,24 @@
   b = b[b.index + pd.Timedelta(hours=4) <= h["ts"].max() + pd.Timedelta(hours=1)]     # seulement les bougies terminées
 /home/runner/work/ia-crypto-signal/ia-crypto-signal/crypto_v2/run.py:238: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
   return last_dec is not None and ts - pd.Timestamp(last_dec) >= pd.Timedelta(hours=28)   # rattrapage si une bougie manque
-/home/runner/work/ia-crypto-signal/ia-crypto-signal/crypto_v2/run.py:264: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+/home/runner/work/ia-crypto-signal/ia-crypto-signal/crypto_v2/run.py:278: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
   S["decisions"].append({"date": str(ts), "fin": str(ts + pd.Timedelta(hours=4)), "initial": first,
-/home/runner/work/ia-crypto-signal/ia-crypto-signal/crypto_v2/run.py:321: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+/home/runner/work/ia-crypto-signal/ia-crypto-signal/crypto_v2/run.py:335: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
   "signal_depuis_fin": str(pd.Timestamp(S["signal_depuis"]) + pd.Timedelta(hours=4)) if S["signal_depuis"] else None,
-/home/runner/work/ia-crypto-signal/ia-crypto-signal/crypto_v2/run.py:367: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+/home/runner/work/ia-crypto-signal/ia-crypto-signal/crypto_v2/run.py:381: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
   nxt = (now.normalize() + pd.Timedelta(hours=4, minutes=30))
-/home/runner/work/ia-crypto-signal/ia-crypto-signal/crypto_v2/run.py:369: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+/home/runner/work/ia-crypto-signal/ia-crypto-signal/crypto_v2/run.py:383: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
   nxt += pd.Timedelta(days=1)
-/home/runner/work/ia-crypto-signal/ia-crypto-signal/crypto_v2/run.py:371: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+/home/runner/work/ia-crypto-signal/ia-crypto-signal/crypto_v2/run.py:385: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
   out = {"genere_le": now.strftime("%Y-%m-%d %H:%M UTC"), "donnees_jusqu_au": str(last_bar + pd.Timedelta(hours=4)),
-ADA : dernière bougie 2026-11-14 04:00:00 (terminée à +4 h), prix 0.1628
-AVAX : dernière bougie 2026-11-14 04:00:00 (terminée à +4 h), prix 8.007
-DOGE : dernière bougie 2026-11-14 04:00:00 (terminée à +4 h), prix 0.06261
-DOT : dernière bougie 2026-11-14 04:00:00 (terminée à +4 h), prix 0.783
-ETH : dernière bougie 2026-11-14 04:00:00 (terminée à +4 h), prix 1898.25
-LTC : dernière bougie 2026-11-14 04:00:00 (terminée à +4 h), prix 48.25
-SOL : dernière bougie 2026-11-14 04:00:00 (terminée à +4 h), prix 75.26
-XLM : dernière bougie 2026-11-14 04:00:00 (terminée à +4 h), prix 0.1428
-XRP : dernière bougie 2026-11-14 04:00:00 (terminée à +4 h), prix 0.9827
-Achat seulement : 969.43 $ (garder 745.64 $) | XRP DEHORS, XLM ACHETER, SOL DEHORS, DOT DEHORS, AVAX DEHORS
-Achat et vente : 1245.13 $ (garder 749.68 $) | ETH VENDRE, XRP VENDRE, ADA VENDRE, DOGE VENDRE, SOL VENDRE, LTC VENDRE, DOT VENDRE, AVAX VENDRE
+ADA : dernière bougie 2026-11-15 08:00:00 (terminée à +4 h), prix 0.1549
+AVAX : dernière bougie 2026-11-15 08:00:00 (terminée à +4 h), prix 7.21
+DOGE : dernière bougie 2026-11-15 08:00:00 (terminée à +4 h), prix 0.05905
+DOT : dernière bougie 2026-11-15 08:00:00 (terminée à +4 h), prix 0.734
+ETH : dernière bougie 2026-11-15 08:00:00 (terminée à +4 h), prix 1823.69
+LTC : dernière bougie 2026-11-15 08:00:00 (terminée à +4 h), prix 45.41
+SOL : dernière bougie 2026-11-15 08:00:00 (terminée à +4 h), prix 72.32
+XLM : dernière bougie 2026-11-15 08:00:00 (terminée à +4 h), prix 0.1392
+XRP : dernière bougie 2026-11-15 08:00:00 (terminée à +4 h), prix 0.963
+Achat seulement : 964.48 $ (garder 708.37 $) | XRP DEHORS, XLM ACHETER, SOL DEHORS, DOT DEHORS, AVAX DEHORS
+Achat et vente : 1226.35 $ (garder 709.41 $) | ETH VENDRE, XRP VENDRE, ADA VENDRE, DOGE VENDRE, SOL VENDRE, LTC VENDRE, DOT VENDRE, AVAX VENDRE
