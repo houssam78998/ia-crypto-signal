@@ -114,6 +114,16 @@ th{font-size:12px;color:var(--muted);font-weight:600;border-top:0}
     <button data-d="crypto" class="on">Crypto</button>
     <button data-d="v2">Crypto v2</button>
     <button data-d="matieres">Matières</button>
+    <button data-d="ind">Indices</button>
+  </div>
+  <div class="seg" id="iseg" style="display:none">
+    <button data-i="QQQ_achat_seul" class="on">Nasdaq achat</button>
+    <button data-i="QQQ_achat_vente">Nasdaq achat + vente</button>
+    <button data-i="SPY_achat_seul">S&amp;P 500 achat</button>
+  </div>
+  <div class="seg" id="ieq" style="display:none">
+    <button data-e="c2" class="on">Équipe de 3 robots</button>
+    <button data-e="c3">Équipe de 10 robots</button>
   </div>
   <div class="seg" id="v2seg" style="display:none">
     <button data-k="achat_seul" class="on">Achat seulement (5)</button>
@@ -140,13 +150,13 @@ th{font-size:12px;color:var(--muted);font-weight:600;border-top:0}
 <script>
 (function(){
   "use strict";
-  var DATA = null, P = "quotidien", TAB = "jour", MDATA = null, DOM = "crypto", MK = "SI", V5 = null, V2 = null, K2 = "achat_seul";
+  var DATA = null, P = "quotidien", TAB = "jour", MDATA = null, DOM = "crypto", MK = "SI", V5 = null, V2 = null, K2 = "achat_seul", IND = null, KI = "QQQ_achat_seul", KE = "c2";
   var store = {
     get: function(k){ try { return localStorage.getItem(k); } catch(e){ return null; } },
     set: function(k,v){ try { localStorage.setItem(k,v); } catch(e){} },
     del: function(k){ try { localStorage.removeItem(k); } catch(e){} }
   };
-  P = store.get("pf") || "quotidien"; TAB = store.get("tab") || "jour"; DOM = store.get("dom") || "crypto"; MK = store.get("mk") || "SI"; K2 = store.get("k2") || "achat_seul";
+  P = store.get("pf") || "quotidien"; TAB = store.get("tab") || "jour"; DOM = store.get("dom") || "crypto"; KI = store.get("ki") || "QQQ_achat_seul"; KE = store.get("ke") || "c2"; MK = store.get("mk") || "SI"; K2 = store.get("k2") || "achat_seul";
   var montant = function(){ var v = parseFloat(store.get("montant")); return v > 0 ? v : 1000; };
 
   var nf = function(x, d){ return x == null ? "—" : Number(x).toLocaleString("fr-FR", {minimumFractionDigits:d==null?2:d, maximumFractionDigits:d==null?2:d}); };
@@ -293,6 +303,12 @@ th{font-size:12px;color:var(--muted);font-weight:600;border-top:0}
 
   // ------------------------------------------------------------- « comment fonctionne le signal »
   var HOW = {
+    ind: '<p>Pour chaque indice, des <b>robots</b> (apprentissage par renforcement) regardent les 60 derniers jours de bourse, résumés par un autoencodeur, avec la tendance et l\'agitation du marché.</p>' +
+         '<p><b>Chaque soir de bourse</b>, après la clôture américaine, ils votent. Le calcul est publié dans la nuit.</p>' +
+         '<p><b>Deux équipes</b> sont comparées : les <b>3 robots</b> du notebook C2 (il faut au moins 2 d\'accord) et les <b>10 robots</b> du notebook C3 (il faut plus de la moitié d\'accord). Sans majorité, on reste <b>DEHORS</b> (en cash).</p>' +
+         '<p><b>Achat seulement</b> : ACHETER ou DEHORS. <b>Achat et vente</b> : en plus, VENDRE = parier à la baisse, impossible avec un compte d\'actions simple.</p>' +
+         '<p>On suit le Nasdaq avec le fonds <b>QQQ</b> et le S&amp;P 500 avec le fonds <b>SPY</b>. Les prix du test ne comptent pas les dividendes (petit écart, le même pour les robots et pour « garder »).</p>' +
+         '<p>⚠️ <b>C\'est une observation, pas un modèle validé</b> : avec 10 robots, le notebook C3 a jugé ces résultats « chance » ou « fragile ».</p>',
     v4: '<p><b>Chaque nuit</b> (vers 01 h UTC), l\'IA donne une note à 16 cryptos : celles qui devraient monter le plus dans les 7 prochains jours.</p>' +
         '<p><b>Filtre Bitcoin :</b> si Bitcoin est au-dessus de sa moyenne des 100 derniers jours, le portefeuille achète les <b>3 premières</b> (33 % chacune). Sinon tout reste en <b>USDT</b> (pas de risque).</p>' +
         '<p><b>Quotidien</b> = refait chaque jour. <b>Hebdomadaire</b> = seulement le dimanche.</p>' +
@@ -417,6 +433,114 @@ th{font-size:12px;color:var(--muted);font-weight:600;border-top:0}
     document.getElementById("main").innerHTML = h;
     var b = document.getElementById("v2done");
     if(b){ b.onclick = function(){ var k = v2DoneKey(v2pf()); if(store.get(k)) store.del(k); else store.set(k, new Date().toLocaleString("fr-FR", {day:"numeric", month:"short", hour:"2-digit", minute:"2-digit"})); renderV2(); }; }
+  }
+
+  // ------------------------------------------------------------- indices (robots des notebooks C2 et C3)
+  function loadInd(){
+    fetch("data/indices.json?t=" + Date.now(), {cache:"no-store"})
+      .then(function(r){ if(!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
+      .then(function(j){ IND = j; render(); }).catch(function(){ if(DOM === "ind" && !IND) render(); });
+  }
+  function indCas(){ var cs = IND.cas; for(var i = 0; i < cs.length; i++){ if(cs[i].code === KI) return cs[i]; } return cs[0]; }
+  function indEq(c){ for(var i = 0; i < c.equipes.length; i++){ if(c.equipes[i].code === KE) return c.equipes[i]; } return c.equipes[0]; }
+  function indTag(s){ return '<span class="s ' + (SIG[s] || "out") + '" style="font-size:12px;padding:4px 8px;border-radius:8px">' + esc(s || "—") + '</span>'; }
+  var IND_NB = {"validé": "validé", "à approfondir": "à approfondir", "fragile": "fragile", "chance": "chance"};
+
+  function indCompare(c){
+    var h = '<div class="card"><h2>' + esc(c.nom) + ' — les deux équipes</h2><table><tr><th>Équipe</th><th>Signal</th><th>Robots</th><th>Garder</th></tr>';
+    c.equipes.forEach(function(e){
+      var s = e.commence ? e.signal : (e.apercu || {}).signal;
+      h += '<tr><td><b>' + e.robots + ' robots</b><br><span class="small muted">notebook : ' + esc(e.notebook.verdict) + '</span></td><td>' + indTag(s) + (e.commence ? '' : '<br><span class="small muted">aperçu</span>') + '</td>' +
+        '<td class="' + cls(e.rendement_pct) + '">' + (e.commence ? pct(e.rendement_pct) : '—') + '</td><td class="' + cls(e.garder_rendement_pct) + '">' + (e.commence ? pct(e.garder_rendement_pct) : '—') + '</td></tr>';
+    });
+    return h + '</table><div class="small muted" style="margin-top:6px">Dernière clôture : ' + esc(dfr(c.derniere_cloture)) + ' à ' + nf(c.prix) + ' $ (' + esc(c.ticker) + '). Choisis l\'équipe à détailler avec les boutons du haut.</div></div>';
+  }
+
+  function indJour(){
+    var c = indCas(), e = indEq(c), t = IND.test, h = indCompare(c);
+    if(!e.commence){
+      var a = e.apercu || {};
+      h += '<div class="card"><h2>' + esc(e.nom) + '</h2><p class="small muted">Le test commence à la clôture du ' + esc(dfr(t.debut)) + '. Aperçu indicatif (non enregistré) :</p>' +
+        '<div class="sig ' + (SIG[a.signal] || "out") + '">' + esc(a.signal || "—") + '</div>' + votes2(a.votes) + '</div>';
+      h += calcCard([{nom: c.ticker, pct: 100, note: "tout le capital suit le signal"}], [], null, t.capital, t.debut);
+      return h + howCard("ind");
+    }
+    var ch = e.dernier_changement, frais = ch && ch.date === e.derniere_decision;
+    h += '<div class="card"><h2>' + esc(e.nom) + '</h2><div class="sig ' + SIG[e.signal] + '">' + esc(e.signal) + '</div>' + votes2(e.votes) +
+      '<div class="small muted" style="margin-top:6px">Signal depuis la clôture du ' + esc(dfr(e.signal_depuis)) + ' (prix ' + nf(e.prix_reference) + ' $). A = acheter · D = dehors · V = vendre.</div>';
+    h += '<div style="margin-top:10px"><b>À faire</b></div>';
+    if(!frais) h += '<div class="act"><span class="muted">Aucun changement : garder la position actuelle.</span></div>';
+    else {
+      var txt = ch.signal === "ACHETER" ? (ch.ancien === "VENDRE" ? "Fermer le pari à la baisse puis acheter " : "Acheter ") + c.ticker
+              : ch.signal === "VENDRE" ? (ch.ancien === "ACHETER" ? "Vendre " + c.ticker + " puis parier à la baisse" : "Parier à la baisse sur " + c.ticker)
+              : (ch.ancien === "VENDRE" ? "Fermer le pari à la baisse (rester en cash)" : (ch.initial ? "Rester en cash (départ)" : "Vendre " + c.ticker + " (rester en cash)"));
+      h += '<div class="act"><span><span class="tag ' + (ch.signal === "ACHETER" ? "buy" : "sell") + '">' + esc(ch.signal) + '</span>' + esc(txt) + '</span><span>' + nf(ch.prix) + ' $</span></div>';
+    }
+    h += '<div class="small muted" style="margin-top:6px">Décision prise à la clôture américaine du ' + esc(dfr(e.derniere_decision)) + '. Le portefeuille fictif utilise ce prix de clôture ; en vrai, on achèterait à l\'ouverture suivante.</div></div>';
+    var RW = wk(e.courbe, t.capital, t.debut);
+    h += '<div class="card"><h2>Portefeuille fictif (retrait chaque semaine)</h2>' + (RW ? wkKpis(RW, t.capital, "« Acheter et garder »", e.garder_rendement_pct) : '') +
+      '<div class="small muted" style="margin-top:4px">Sans aucun retrait : ' + nf(e.valeur) + ' $ (' + pct(e.rendement_pct) + ') · frais payés ' + nf(e.frais) + ' $</div></div>';
+    h += calcCard(e.signal === "DEHORS" ? [{nom: "Cash", pct: 100, note: "dehors"}] : [{nom: c.ticker, pct: 100, note: e.signal === "ACHETER" ? "acheté" : "pari à la baisse"}],
+      [{label: "Gain depuis le début du test", pct: e.rendement_pct}], e.courbe, t.capital, t.debut);
+    return h + howCard("ind");
+  }
+
+  function indPf(){
+    var c = indCas(), e = indEq(c), t = IND.test;
+    if(!e.commence) return indCompare(c) + '<div class="card">Les portefeuilles démarrent à la clôture du ' + esc(dfr(t.debut)) + '.</div>';
+    var RW = wk(e.courbe, t.capital, t.debut);
+    var h = '<div class="card"><h2>' + esc(c.nom) + ' · ' + e.robots + ' robots — 1 000 $ fictifs</h2>' + (RW ? bigWk(RW, t.capital, dshort(t.debut)) : '') +
+      '<div class="small muted">Sans retrait : ' + nf(e.valeur) + ' $ (' + pct(e.rendement_pct) + ')</div>';
+    if(e.courbe.length > 1){
+      var series = [{pts: e.courbe.map(function(x){ return [x.d, x.robot]; }), color: "var(--accent)", w: 2.6}, {pts: e.courbe.map(function(x){ return [x.d, x.garder]; }), color: "#f59e0b"}];
+      var autre = c.equipes.filter(function(x){ return x.code !== e.code && x.commence; })[0];
+      if(autre) series.push({pts: autre.courbe.map(function(x){ return [x.d, x.robot]; }), color: "#94a3b8", dash: "4 3"});
+      h += lineChart(series, {base: t.capital});
+      h += '<div class="legend"><span><i style="background:var(--accent)"></i>' + e.robots + ' robots</span><span><i style="background:#f59e0b"></i>Acheter et garder</span>' + (autre ? '<span><i style="background:#94a3b8"></i>' + autre.robots + ' robots</span>' : '') + '</div>';
+    } else h += '<div class="small muted" style="margin-top:8px">La courbe apparaîtra après quelques jours.</div>';
+    h += '</div>' + retraitCard(e.courbe, t.capital, t.debut) + '<div class="card"><h2>Statistiques</h2><div class="kpis">' +
+      '<div class="kpi"><div class="l">Pire baisse robots</div><div class="v neg">' + pct(e.pire_baisse_pct) + '</div></div>' +
+      '<div class="kpi"><div class="l">Pire baisse « garder »</div><div class="v neg">' + pct(e.garder_pire_baisse_pct) + '</div></div>' +
+      '<div class="kpi"><div class="l">Changements de signal</div><div class="v">' + e.changements + '</div></div>' +
+      '<div class="kpi"><div class="l">Frais payés</div><div class="v">' + nf(e.frais) + ' $</div></div></div></div>';
+    h += '<div class="card"><h2>Historique des changements</h2>';
+    var ds = e.decisions.filter(function(d){ return d.change; }).reverse();
+    if(!ds.length) h += '<div class="muted small">Aucun changement pour l\'instant.</div>';
+    ds.slice(0, 40).forEach(function(d){ h += '<div class="row small"><span>' + esc(dfr(d.date)) + '</span><span><span class="tag ' + (d.signal === "ACHETER" ? "buy" : "sell") + '">' + (d.initial ? "DÉPART " : "") + esc(d.signal) + '</span></span><span>' + nf(d.prix) + ' $</span></div>'; });
+    return h + '</div>';
+  }
+
+  function indVer(){
+    var t = IND.test, h = '<div class="card"><h2>Classement — qui fait le mieux ?</h2>';
+    h += '<div class="bar"><i style="width:' + Math.min(100, t.jours_ecoules / t.jours_total * 100) + '%"></i></div><div class="small muted">Jour ' + t.jours_ecoules + ' / ' + t.jours_total + ' · mis à jour ' + esc(IND.genere_le) + ' · fin le ' + esc(dfr(t.fin)) + '</div>';
+    h += '<table><tr><th>#</th><th>Portefeuille</th><th>Robots</th><th>Garder</th><th>Avance</th></tr>';
+    IND.classement.forEach(function(x, i){
+      h += '<tr><td>' + (i + 1) + '</td><td><b>' + esc(x.nom.replace(" — ", " · ")) + '</b><br><span class="small muted">' + x.robots + ' robots</span></td><td class="' + cls(x.rendement_pct) + '">' + (x.signal ? pct(x.rendement_pct) : '—') + '</td><td class="' + cls(x.garder_rendement_pct) + '">' + (x.signal ? pct(x.garder_rendement_pct) : '—') + '</td><td class="' + cls(x.avance_pct) + '"><b>' + (x.signal ? pct(x.avance_pct) : '—') + '</b></td></tr>';
+    });
+    h += '</table><div class="small muted" style="margin-top:6px">Avance = écart entre les robots et « acheter et garder » le même indice. C\'est elle qui dit si les robots servent à quelque chose.</div></div>';
+    IND.cas.forEach(function(c){ c.equipes.forEach(function(e){
+      var v = e.verdict, pc = v.statut === "validé" ? "ok" : (v.statut === "non validé" ? "ko" : "wait");
+      h += '<div class="card"><h2>' + esc(c.nom) + ' · ' + e.robots + ' robots</h2><span class="pill ' + pc + '">' + esc(v.statut.toUpperCase()) + '</span>';
+      (v.criteres || []).forEach(function(k){ h += '<div class="crit"><span>' + (k.ok ? "✅" : "❌") + '</span><span>' + esc(k.nom) + '</span></div>'; });
+      var RW = e.commence ? wk(e.courbe, t.capital, t.debut) : null;
+      if(RW) h += '<div class="small" style="margin-top:6px">Avec retrait chaque semaine : capital ' + nf(RW.capital) + ' $ + sorti ' + nf(RW.retire) + ' $ = <b>' + nf(RW.total) + ' $</b> (' + pct((RW.total / t.capital - 1) * 100) + ') contre « garder » ' + pct(e.garder_rendement_pct) + '.</div>';
+      h += '<p class="small">' + esc(v.texte) + '</p><div class="small muted">Dans le notebook (2019–2026) : Sharpe ' + nf(e.notebook.sharpe_vote) + ' contre ' + nf(e.notebook.sharpe_garder) + ' pour « garder » → « ' + esc(e.notebook.verdict) + ' ».</div></div>';
+    }); });
+    h += '<div class="card small"><h2>Les règles du test</h2>Du ' + esc(dfr(t.debut)) + ' au ' + esc(dfr(t.fin)) + ' · 1 000 $ fictifs par portefeuille · un vote chaque soir de bourse à la clôture américaine · équipe de 3 : au moins 2 robots d\'accord, sinon dehors ; équipe de 10 : plus de la moitié d\'accord, sinon dehors · frais ' + nf(t.frais_pct) + ' % par changement · comparé à « acheter et garder » le même indice.<br><br>3 critères sur 3 = VALIDÉ · 2 sur 3 = À PROLONGER · 0 ou 1 = NON VALIDÉ.<br><br>⚠️ <b>Observation, pas un modèle validé.</b> Le notebook C3 (10 robots) a classé « achat seulement » comme de la chance et « Nasdaq achat et vente » comme fragile. Ce test sert à voir, sur de nouvelles données, lequel avait raison.</div>';
+    return h;
+  }
+
+  function renderInd(){
+    document.getElementById("title").textContent = "Indices — robots";
+    document.querySelectorAll("#iseg button").forEach(function(b){ b.classList.toggle("on", b.dataset.i === KI); });
+    document.querySelectorAll("#ieq button").forEach(function(b){ b.classList.toggle("on", b.dataset.e === KE); });
+    document.getElementById("iseg").style.display = TAB === "ver" ? "none" : "flex";
+    document.getElementById("ieq").style.display = TAB === "ver" ? "none" : "flex";
+    if(!IND){ document.getElementById("updated").textContent = "Pas encore de données"; document.getElementById("main").innerHTML = '<div class="card">Les premiers signaux « Indices » apparaîtront après le premier calcul (chaque soir de bourse, après la clôture américaine).</div>' + howCard("ind"); return; }
+    document.getElementById("updated").textContent = "Clôture du " + dshort(IND.donnees_jusqu_au) + " · mis à jour " + IND.genere_le;
+    var h = TAB === "pf" ? indPf() : (TAB === "ver" ? indVer() : indJour());
+    h += '<div class="notice">Argent fictif — aucun ordre réel n\'est passé. Outil de recherche, pas un conseil financier.</div>';
+    document.getElementById("main").innerHTML = h;
   }
 
   // ------------------------------------------------------------- crypto v5 (répartition choisie par l'IA)
@@ -760,8 +884,15 @@ th{font-size:12px;color:var(--muted);font-weight:600;border-top:0}
 
   function render(){
     document.querySelectorAll("#dom button").forEach(function(b){ b.classList.toggle("on", b.dataset.d === DOM); });
-    document.getElementById("navsem").style.display = DOM === "matieres" || DOM === "v2" ? "none" : "";
+    document.getElementById("navsem").style.display = DOM === "matieres" || DOM === "v2" || DOM === "ind" ? "none" : "";
     if(DOM !== "v2") document.getElementById("v2seg").style.display = "none";
+    if(DOM !== "ind"){ document.getElementById("iseg").style.display = "none"; document.getElementById("ieq").style.display = "none"; }
+    if(DOM === "ind"){
+      if(TAB === "sem") TAB = "jour";
+      document.getElementById("seg").style.display = "none"; document.getElementById("mseg").style.display = "none";
+      document.querySelectorAll("#nav button").forEach(function(b){ b.classList.toggle("on", b.dataset.t === TAB); });
+      return renderInd();
+    }
     if(DOM === "v2"){
       if(TAB === "sem") TAB = "jour";
       document.getElementById("seg").style.display = "none"; document.getElementById("mseg").style.display = "none";
@@ -804,10 +935,12 @@ th{font-size:12px;color:var(--muted);font-weight:600;border-top:0}
   document.getElementById("dom").addEventListener("click", function(e){ var b = e.target.closest("button"); if(b){ DOM = b.dataset.d; store.set("dom", DOM); render(); window.scrollTo(0,0); } });
   document.getElementById("mseg").addEventListener("click", function(e){ var b = e.target.closest("button"); if(b){ MK = b.dataset.m; store.set("mk", MK); render(); window.scrollTo(0,0); } });
   document.getElementById("v2seg").addEventListener("click", function(e){ var b = e.target.closest("button"); if(b){ K2 = b.dataset.k; store.set("k2", K2); render(); window.scrollTo(0,0); } });
-  document.getElementById("refresh").addEventListener("click", function(){ load(); loadMat(); loadV5(); loadV2(); });
-  document.addEventListener("visibilitychange", function(){ if(document.visibilityState === "visible"){ load(); loadMat(); loadV5(); loadV2(); } });
+  document.getElementById("iseg").addEventListener("click", function(e){ var b = e.target.closest("button"); if(b){ KI = b.dataset.i; store.set("ki", KI); render(); window.scrollTo(0,0); } });
+  document.getElementById("ieq").addEventListener("click", function(e){ var b = e.target.closest("button"); if(b){ KE = b.dataset.e; store.set("ke", KE); render(); } });
+  document.getElementById("refresh").addEventListener("click", function(){ load(); loadMat(); loadV5(); loadV2(); loadInd(); });
+  document.addEventListener("visibilitychange", function(){ if(document.visibilityState === "visible"){ load(); loadMat(); loadV5(); loadV2(); loadInd(); } });
   if("serviceWorker" in navigator){ navigator.serviceWorker.register("sw.js").catch(function(){}); }
-  load(); loadMat(); loadV5(); loadV2(); render();
+  load(); loadMat(); loadV5(); loadV2(); loadInd(); render();
 })();
 </script>
 </body>

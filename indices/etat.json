@@ -1,0 +1,11 @@
+{
+ "verification": {
+  "QQQ_achat_seul:c2": 0.863,
+  "QQQ_achat_seul:c3": 0.727,
+  "QQQ_achat_vente:c2": 1.196,
+  "QQQ_achat_vente:c3": 1.099,
+  "SPY_achat_seul:c2": 0.971,
+  "SPY_achat_seul:c3": 0.596
+ },
+ "portefeuilles": {}
+}
