@@ -7,5 +7,90 @@
   "SPY_achat_seul:c2": 0.971,
   "SPY_achat_seul:c3": 0.596
  },
- "portefeuilles": {}
+ "portefeuilles": {
+  "QQQ_achat_seul:c2": {
+   "dernier_traite": null,
+   "commence": false,
+   "position": 0,
+   "robot": 1.0,
+   "garder": 1.0,
+   "frais": 0.0,
+   "changements": 0,
+   "votes": null,
+   "signal_depuis": null,
+   "prix_reference": null,
+   "decisions": [],
+   "courbe": []
+  },
+  "QQQ_achat_seul:c3": {
+   "dernier_traite": null,
+   "commence": false,
+   "position": 0,
+   "robot": 1.0,
+   "garder": 1.0,
+   "frais": 0.0,
+   "changements": 0,
+   "votes": null,
+   "signal_depuis": null,
+   "prix_reference": null,
+   "decisions": [],
+   "courbe": []
+  },
+  "QQQ_achat_vente:c2": {
+   "dernier_traite": null,
+   "commence": false,
+   "position": 0,
+   "robot": 1.0,
+   "garder": 1.0,
+   "frais": 0.0,
+   "changements": 0,
+   "votes": null,
+   "signal_depuis": null,
+   "prix_reference": null,
+   "decisions": [],
+   "courbe": []
+  },
+  "QQQ_achat_vente:c3": {
+   "dernier_traite": null,
+   "commence": false,
+   "position": 0,
+   "robot": 1.0,
+   "garder": 1.0,
+   "frais": 0.0,
+   "changements": 0,
+   "votes": null,
+   "signal_depuis": null,
+   "prix_reference": null,
+   "decisions": [],
+   "courbe": []
+  },
+  "SPY_achat_seul:c2": {
+   "dernier_traite": null,
+   "commence": false,
+   "position": 0,
+   "robot": 1.0,
+   "garder": 1.0,
+   "frais": 0.0,
+   "changements": 0,
+   "votes": null,
+   "signal_depuis": null,
+   "prix_reference": null,
+   "decisions": [],
+   "courbe": []
+  },
+  "SPY_achat_seul:c3": {
+   "dernier_traite": null,
+   "commence": false,
+   "position": 0,
+   "robot": 1.0,
+   "garder": 1.0,
+   "frais": 0.0,
+   "changements": 0,
+   "votes": null,
+   "signal_depuis": null,
+   "prix_reference": null,
+   "decisions": [],
+   "courbe": []
+  }
+ }
 }

@@ -1,0 +1,23 @@
+/home/runner/work/ia-crypto-signal/ia-crypto-signal/indices/run.py:97: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  debut = pd.Timestamp.now(tz="UTC").tz_localize(None).normalize() - pd.Timedelta(days=200)
+/home/runner/work/ia-crypto-signal/ia-crypto-signal/indices/run.py:112: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  nouveau = nouveau[(nouveau.index + pd.Timedelta(hours=22) <= maintenant) & (nouveau["Close"] > 0) & (nouveau["Low"] > 0)]
+/home/runner/work/ia-crypto-signal/ia-crypto-signal/indices/run.py:125: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([b, rec[rec.index > b.index[-1]]]).sort_index()
+/home/runner/work/ia-crypto-signal/ia-crypto-signal/indices/run.py:97: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  debut = pd.Timestamp.now(tz="UTC").tz_localize(None).normalize() - pd.Timedelta(days=200)
+/home/runner/work/ia-crypto-signal/ia-crypto-signal/indices/run.py:112: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  nouveau = nouveau[(nouveau.index + pd.Timedelta(hours=22) <= maintenant) & (nouveau["Close"] > 0) & (nouveau["Low"] > 0)]
+/home/runner/work/ia-crypto-signal/ia-crypto-signal/indices/run.py:125: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([b, rec[rec.index > b.index[-1]]]).sort_index()
+/home/runner/work/ia-crypto-signal/ia-crypto-signal/indices/run.py:309: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  "frais_pct": FRAIS * 100, "termine": bool(maintenant >= PAPER_END + pd.Timedelta(days=1))},
+  Databento DBEQ.BASIC QQQ : coût estimé 0.0017 $
+  QQQ : source Databento DBEQ.BASIC (coût 0.0017 $), écart de prix 0.14%, 0 jour(s) après le 2026-11-13
+QQQ : 6964 jours, dernière clôture 2026-11-13 à 679.89
+  Databento DBEQ.BASIC SPY : coût estimé 0.0017 $
+  SPY : source Databento DBEQ.BASIC (coût 0.0017 $), écart de prix 0.23%, 0 jour(s) après le 2026-11-13
+SPY : 5464 jours, dernière clôture 2026-11-13 à 754.37
+Nasdaq — achat seulement | c2 aperçu DEHORS 1000.00 $ (garder 1000.00 $) ; c3 aperçu ACHETER 1000.00 $ (garder 1000.00 $)
+Nasdaq — achat et vente | c2 aperçu ACHETER 1000.00 $ (garder 1000.00 $) ; c3 aperçu ACHETER 1000.00 $ (garder 1000.00 $)
+S&P 500 — achat seulement | c2 aperçu DEHORS 1000.00 $ (garder 1000.00 $) ; c3 aperçu ACHETER 1000.00 $ (garder 1000.00 $)

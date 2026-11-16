@@ -1,0 +1,402 @@
+{
+ "genere_le": "2026-11-16 23:34 UTC",
+ "donnees_jusqu_au": "2026-11-13",
+ "sources": {
+  "QQQ": "Databento DBEQ.BASIC (coût 0.0017 $)",
+  "SPY": "Databento DBEQ.BASIC (coût 0.0017 $)"
+ },
+ "test": {
+  "debut": "2026-11-17",
+  "fin": "2027-05-17",
+  "capital": 1000.0,
+  "jours_ecoules": 0,
+  "jours_total": 181,
+  "frais_pct": 0.05,
+  "termine": false
+ },
+ "cas": [
+  {
+   "code": "QQQ_achat_seul",
+   "ticker": "QQQ",
+   "marche": "Nasdaq",
+   "version": "achat_seul",
+   "nom": "Nasdaq — achat seulement",
+   "achat_vente": false,
+   "prix": 679.89,
+   "derniere_cloture": "2026-11-13",
+   "equipes": [
+    {
+     "code": "c2",
+     "nom": "Équipe de 3 robots (notebook C2)",
+     "robots": 3,
+     "commence": false,
+     "apercu": {
+      "signal": "DEHORS",
+      "votes": [
+       0,
+       0,
+       1
+      ]
+     },
+     "signal": null,
+     "votes": null,
+     "signal_depuis": null,
+     "prix_reference": null,
+     "derniere_decision": null,
+     "dernier_changement": null,
+     "valeur": 1000.0,
+     "rendement_pct": 0.0,
+     "garder_valeur": 1000.0,
+     "garder_rendement_pct": 0.0,
+     "sharpe": null,
+     "garder_sharpe": null,
+     "pire_baisse_pct": 0.0,
+     "garder_pire_baisse_pct": 0.0,
+     "frais": 0.0,
+     "changements": 0,
+     "courbe": [],
+     "decisions": [],
+     "notebook": {
+      "sharpe_vote": 0.863,
+      "sharpe_garder": 0.81,
+      "verdict": "à approfondir",
+      "sharpe_recalcule": 0.863
+     },
+     "verdict": {
+      "statut": "pas commencé",
+      "criteres": [],
+      "texte": "Première décision à la clôture du 17/11/2026."
+     }
+    },
+    {
+     "code": "c3",
+     "nom": "Équipe de 10 robots (notebook C3)",
+     "robots": 10,
+     "commence": false,
+     "apercu": {
+      "signal": "ACHETER",
+      "votes": [
+       0,
+       0,
+       1,
+       1,
+       1,
+       1,
+       1,
+       0,
+       1,
+       0
+      ]
+     },
+     "signal": null,
+     "votes": null,
+     "signal_depuis": null,
+     "prix_reference": null,
+     "derniere_decision": null,
+     "dernier_changement": null,
+     "valeur": 1000.0,
+     "rendement_pct": 0.0,
+     "garder_valeur": 1000.0,
+     "garder_rendement_pct": 0.0,
+     "sharpe": null,
+     "garder_sharpe": null,
+     "pire_baisse_pct": 0.0,
+     "garder_pire_baisse_pct": 0.0,
+     "frais": 0.0,
+     "changements": 0,
+     "courbe": [],
+     "decisions": [],
+     "notebook": {
+      "sharpe_vote": 0.727,
+      "sharpe_garder": 0.81,
+      "verdict": "chance",
+      "sharpe_recalcule": 0.727
+     },
+     "verdict": {
+      "statut": "pas commencé",
+      "criteres": [],
+      "texte": "Première décision à la clôture du 17/11/2026."
+     }
+    }
+   ]
+  },
+  {
+   "code": "QQQ_achat_vente",
+   "ticker": "QQQ",
+   "marche": "Nasdaq",
+   "version": "achat_vente",
+   "nom": "Nasdaq — achat et vente",
+   "achat_vente": true,
+   "prix": 679.89,
+   "derniere_cloture": "2026-11-13",
+   "equipes": [
+    {
+     "code": "c2",
+     "nom": "Équipe de 3 robots (notebook C2)",
+     "robots": 3,
+     "commence": false,
+     "apercu": {
+      "signal": "ACHETER",
+      "votes": [
+       1,
+       1,
+       0
+      ]
+     },
+     "signal": null,
+     "votes": null,
+     "signal_depuis": null,
+     "prix_reference": null,
+     "derniere_decision": null,
+     "dernier_changement": null,
+     "valeur": 1000.0,
+     "rendement_pct": 0.0,
+     "garder_valeur": 1000.0,
+     "garder_rendement_pct": 0.0,
+     "sharpe": null,
+     "garder_sharpe": null,
+     "pire_baisse_pct": 0.0,
+     "garder_pire_baisse_pct": 0.0,
+     "frais": 0.0,
+     "changements": 0,
+     "courbe": [],
+     "decisions": [],
+     "notebook": {
+      "sharpe_vote": 1.196,
+      "sharpe_garder": 0.81,
+      "verdict": "à approfondir",
+      "sharpe_recalcule": 1.196
+     },
+     "verdict": {
+      "statut": "pas commencé",
+      "criteres": [],
+      "texte": "Première décision à la clôture du 17/11/2026."
+     }
+    },
+    {
+     "code": "c3",
+     "nom": "Équipe de 10 robots (notebook C3)",
+     "robots": 10,
+     "commence": false,
+     "apercu": {
+      "signal": "ACHETER",
+      "votes": [
+       1,
+       1,
+       0,
+       1,
+       0,
+       0,
+       0,
+       1,
+       1,
+       1
+      ]
+     },
+     "signal": null,
+     "votes": null,
+     "signal_depuis": null,
+     "prix_reference": null,
+     "derniere_decision": null,
+     "dernier_changement": null,
+     "valeur": 1000.0,
+     "rendement_pct": 0.0,
+     "garder_valeur": 1000.0,
+     "garder_rendement_pct": 0.0,
+     "sharpe": null,
+     "garder_sharpe": null,
+     "pire_baisse_pct": 0.0,
+     "garder_pire_baisse_pct": 0.0,
+     "frais": 0.0,
+     "changements": 0,
+     "courbe": [],
+     "decisions": [],
+     "notebook": {
+      "sharpe_vote": 1.099,
+      "sharpe_garder": 0.81,
+      "verdict": "fragile",
+      "sharpe_recalcule": 1.099
+     },
+     "verdict": {
+      "statut": "pas commencé",
+      "criteres": [],
+      "texte": "Première décision à la clôture du 17/11/2026."
+     }
+    }
+   ]
+  },
+  {
+   "code": "SPY_achat_seul",
+   "ticker": "SPY",
+   "marche": "S&P 500",
+   "version": "achat_seul",
+   "nom": "S&P 500 — achat seulement",
+   "achat_vente": false,
+   "prix": 754.37,
+   "derniere_cloture": "2026-11-13",
+   "equipes": [
+    {
+     "code": "c2",
+     "nom": "Équipe de 3 robots (notebook C2)",
+     "robots": 3,
+     "commence": false,
+     "apercu": {
+      "signal": "DEHORS",
+      "votes": [
+       1,
+       0,
+       0
+      ]
+     },
+     "signal": null,
+     "votes": null,
+     "signal_depuis": null,
+     "prix_reference": null,
+     "derniere_decision": null,
+     "dernier_changement": null,
+     "valeur": 1000.0,
+     "rendement_pct": 0.0,
+     "garder_valeur": 1000.0,
+     "garder_rendement_pct": 0.0,
+     "sharpe": null,
+     "garder_sharpe": null,
+     "pire_baisse_pct": 0.0,
+     "garder_pire_baisse_pct": 0.0,
+     "frais": 0.0,
+     "changements": 0,
+     "courbe": [],
+     "decisions": [],
+     "notebook": {
+      "sharpe_vote": 0.971,
+      "sharpe_garder": 0.805,
+      "verdict": "validé",
+      "sharpe_recalcule": 0.971
+     },
+     "verdict": {
+      "statut": "pas commencé",
+      "criteres": [],
+      "texte": "Première décision à la clôture du 17/11/2026."
+     }
+    },
+    {
+     "code": "c3",
+     "nom": "Équipe de 10 robots (notebook C3)",
+     "robots": 10,
+     "commence": false,
+     "apercu": {
+      "signal": "ACHETER",
+      "votes": [
+       1,
+       0,
+       0,
+       1,
+       1,
+       1,
+       1,
+       1,
+       1,
+       1
+      ]
+     },
+     "signal": null,
+     "votes": null,
+     "signal_depuis": null,
+     "prix_reference": null,
+     "derniere_decision": null,
+     "dernier_changement": null,
+     "valeur": 1000.0,
+     "rendement_pct": 0.0,
+     "garder_valeur": 1000.0,
+     "garder_rendement_pct": 0.0,
+     "sharpe": null,
+     "garder_sharpe": null,
+     "pire_baisse_pct": 0.0,
+     "garder_pire_baisse_pct": 0.0,
+     "frais": 0.0,
+     "changements": 0,
+     "courbe": [],
+     "decisions": [],
+     "notebook": {
+      "sharpe_vote": 0.596,
+      "sharpe_garder": 0.805,
+      "verdict": "chance",
+      "sharpe_recalcule": 0.596
+     },
+     "verdict": {
+      "statut": "pas commencé",
+      "criteres": [],
+      "texte": "Première décision à la clôture du 17/11/2026."
+     }
+    }
+   ]
+  }
+ ],
+ "classement": [
+  {
+   "cas": "QQQ_achat_seul",
+   "nom": "Nasdaq — achat seulement",
+   "equipe": "c2",
+   "robots": 3,
+   "valeur": 1000.0,
+   "rendement_pct": 0.0,
+   "garder_rendement_pct": 0.0,
+   "avance_pct": 0.0,
+   "signal": null
+  },
+  {
+   "cas": "QQQ_achat_seul",
+   "nom": "Nasdaq — achat seulement",
+   "equipe": "c3",
+   "robots": 10,
+   "valeur": 1000.0,
+   "rendement_pct": 0.0,
+   "garder_rendement_pct": 0.0,
+   "avance_pct": 0.0,
+   "signal": null
+  },
+  {
+   "cas": "QQQ_achat_vente",
+   "nom": "Nasdaq — achat et vente",
+   "equipe": "c2",
+   "robots": 3,
+   "valeur": 1000.0,
+   "rendement_pct": 0.0,
+   "garder_rendement_pct": 0.0,
+   "avance_pct": 0.0,
+   "signal": null
+  },
+  {
+   "cas": "QQQ_achat_vente",
+   "nom": "Nasdaq — achat et vente",
+   "equipe": "c3",
+   "robots": 10,
+   "valeur": 1000.0,
+   "rendement_pct": 0.0,
+   "garder_rendement_pct": 0.0,
+   "avance_pct": 0.0,
+   "signal": null
+  },
+  {
+   "cas": "SPY_achat_seul",
+   "nom": "S&P 500 — achat seulement",
+   "equipe": "c2",
+   "robots": 3,
+   "valeur": 1000.0,
+   "rendement_pct": 0.0,
+   "garder_rendement_pct": 0.0,
+   "avance_pct": 0.0,
+   "signal": null
+  },
+  {
+   "cas": "SPY_achat_seul",
+   "nom": "S&P 500 — achat seulement",
+   "equipe": "c3",
+   "robots": 10,
+   "valeur": 1000.0,
+   "rendement_pct": 0.0,
+   "garder_rendement_pct": 0.0,
+   "avance_pct": 0.0,
+   "signal": null
+  }
+ ]
+}
