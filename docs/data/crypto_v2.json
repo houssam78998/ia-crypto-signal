@@ -1,12 +1,12 @@
 {
- "genere_le": "2026-11-16 12:57 UTC",
- "donnees_jusqu_au": "2026-11-16 12:00:00",
- "prochaine_mise_a_jour": "2026-11-17 04:30:00",
+ "genere_le": "2026-11-17 13:39 UTC",
+ "donnees_jusqu_au": "2026-11-17 12:00:00",
+ "prochaine_mise_a_jour": "2026-11-18 04:30:00",
  "test": {
   "debut": "2026-10-21",
   "fin": "2027-04-21",
   "capital": 1000.0,
-  "jours_ecoules": 26,
+  "jours_ecoules": 27,
   "jours_total": 182,
   "frais_pct": 0.15,
   "termine": false
@@ -18,16 +18,16 @@
    "long_only": true,
    "commence": true,
    "capital": 1000.0,
-   "valeur": 963.11,
-   "rendement_pct": -3.69,
-   "garder_valeur": 702.45,
-   "garder_rendement_pct": -29.75,
-   "sharpe": -10.27,
-   "garder_sharpe": -12.35,
+   "valeur": 964.47,
+   "rendement_pct": -3.55,
+   "garder_valeur": 714.19,
+   "garder_rendement_pct": -28.58,
+   "sharpe": -9.5,
+   "garder_sharpe": -11.15,
    "pire_baisse_pct": -3.69,
    "garder_pire_baisse_pct": -30.23,
-   "frais": 2.66,
-   "changements": 9,
+   "frais": 2.95,
+   "changements": 10,
    "courbe": [
     {
      "d": "2026-10-21",
@@ -163,6 +163,11 @@
      "d": "2026-11-16",
      "robot": 963.11,
      "garder": 702.45
+    },
+    {
+     "d": "2026-11-17",
+     "robot": 964.47,
+     "garder": 714.19
     }
    ],
    "marches": [
@@ -194,13 +199,13 @@
       ],
       "change": true
      },
-     "derniere_decision": "2026-11-16 00:00:00",
-     "prix_actuel": 0.956,
+     "derniere_decision": "2026-11-17 00:00:00",
+     "prix_actuel": 0.9712,
      "part": 200.0,
      "valeur": 191.83,
      "rendement_pct": -4.09,
-     "garder_valeur": 143.29,
-     "garder_rendement_pct": -28.36,
+     "garder_valeur": 145.56,
+     "garder_rendement_pct": -27.22,
      "frais": 0.59,
      "changements": 2,
      "backtest": {
@@ -589,6 +594,20 @@
         0
        ],
        "change": false
+      },
+      {
+       "date": "2026-11-17 00:00:00",
+       "fin": "2026-11-17 04:00:00",
+       "initial": false,
+       "signal": "DEHORS",
+       "ancien": "DEHORS",
+       "prix": 0.9676,
+       "votes": [
+        0,
+        1,
+        0
+       ],
+       "change": false
       }
      ]
     },
@@ -596,39 +615,39 @@
      "code": "XLMUSDT",
      "nom": "XLM",
      "commence": true,
-     "signal": "ACHETER",
+     "signal": "DEHORS",
      "apercu": null,
      "votes": [
-      1,
-      1,
+      0,
+      0,
       1
      ],
-     "signal_depuis": "2026-11-13 00:00:00",
-     "signal_depuis_fin": "2026-11-13 04:00:00",
-     "prix_reference": 0.1426,
+     "signal_depuis": "2026-11-17 00:00:00",
+     "signal_depuis_fin": "2026-11-17 04:00:00",
+     "prix_reference": 0.1394,
      "dernier_changement": {
-      "date": "2026-11-13 00:00:00",
-      "fin": "2026-11-13 04:00:00",
+      "date": "2026-11-17 00:00:00",
+      "fin": "2026-11-17 04:00:00",
       "initial": false,
-      "signal": "ACHETER",
-      "ancien": "DEHORS",
-      "prix": 0.1426,
+      "signal": "DEHORS",
+      "ancien": "ACHETER",
+      "prix": 0.1394,
       "votes": [
        0,
-       1,
+       0,
        1
       ],
       "change": true
      },
-     "derniere_decision": "2026-11-16 00:00:00",
-     "prix_actuel": 0.1382,
+     "derniere_decision": "2026-11-17 00:00:00",
+     "prix_actuel": 0.1402,
      "part": 200.0,
-     "valeur": 189.97,
-     "rendement_pct": -5.02,
-     "garder_valeur": 152.06,
-     "garder_rendement_pct": -23.97,
-     "frais": 0.89,
-     "changements": 3,
+     "valeur": 191.33,
+     "rendement_pct": -4.34,
+     "garder_valeur": 154.26,
+     "garder_rendement_pct": -22.87,
+     "frais": 1.18,
+     "changements": 4,
      "backtest": {
       "robot": 66.2,
       "garder": 12.6,
@@ -1015,6 +1034,20 @@
         1
        ],
        "change": false
+      },
+      {
+       "date": "2026-11-17 00:00:00",
+       "fin": "2026-11-17 04:00:00",
+       "initial": false,
+       "signal": "DEHORS",
+       "ancien": "ACHETER",
+       "prix": 0.1394,
+       "votes": [
+        0,
+        0,
+        1
+       ],
+       "change": true
       }
      ]
     },
@@ -1046,13 +1079,13 @@
       ],
       "change": true
      },
-     "derniere_decision": "2026-11-16 00:00:00",
-     "prix_actuel": 71.38,
+     "derniere_decision": "2026-11-17 00:00:00",
+     "prix_actuel": 73.5,
      "part": 200.0,
      "valeur": 200.0,
      "rendement_pct": 0.0,
-     "garder_valeur": 134.66,
-     "garder_rendement_pct": -32.67,
+     "garder_valeur": 138.65,
+     "garder_rendement_pct": -30.67,
      "frais": 0.0,
      "changements": 0,
      "backtest": {
@@ -1441,6 +1474,20 @@
         0
        ],
        "change": false
+      },
+      {
+       "date": "2026-11-17 00:00:00",
+       "fin": "2026-11-17 04:00:00",
+       "initial": false,
+       "signal": "DEHORS",
+       "ancien": "DEHORS",
+       "prix": 72.83,
+       "votes": [
+        0,
+        0,
+        0
+       ],
+       "change": false
       }
      ]
     },
@@ -1472,13 +1519,13 @@
       ],
       "change": true
      },
-     "derniere_decision": "2026-11-16 00:00:00",
-     "prix_actuel": 0.731,
+     "derniere_decision": "2026-11-17 00:00:00",
+     "prix_actuel": 0.737,
      "part": 200.0,
      "valeur": 190.79,
      "rendement_pct": -4.61,
-     "garder_valeur": 125.52,
-     "garder_rendement_pct": -37.24,
+     "garder_valeur": 126.55,
+     "garder_rendement_pct": -36.72,
      "frais": 0.59,
      "changements": 2,
      "backtest": {
@@ -1867,6 +1914,20 @@
         0
        ],
        "change": false
+      },
+      {
+       "date": "2026-11-17 00:00:00",
+       "fin": "2026-11-17 04:00:00",
+       "initial": false,
+       "signal": "DEHORS",
+       "ancien": "DEHORS",
+       "prix": 0.742,
+       "votes": [
+        0,
+        0,
+        0
+       ],
+       "change": false
       }
      ]
     },
@@ -1898,13 +1959,13 @@
       ],
       "change": true
      },
-     "derniere_decision": "2026-11-16 00:00:00",
-     "prix_actuel": 7.138,
+     "derniere_decision": "2026-11-17 00:00:00",
+     "prix_actuel": 7.247,
      "part": 200.0,
      "valeur": 190.52,
      "rendement_pct": -4.74,
-     "garder_valeur": 146.92,
-     "garder_rendement_pct": -26.54,
+     "garder_valeur": 149.17,
+     "garder_rendement_pct": -25.42,
      "frais": 0.59,
      "changements": 2,
      "backtest": {
@@ -2293,6 +2354,20 @@
         0
        ],
        "change": false
+      },
+      {
+       "date": "2026-11-17 00:00:00",
+       "fin": "2026-11-17 04:00:00",
+       "initial": false,
+       "signal": "DEHORS",
+       "ancien": "DEHORS",
+       "prix": 7.191,
+       "votes": [
+        0,
+        0,
+        0
+       ],
+       "change": false
       }
      ]
     }
@@ -2322,12 +2397,12 @@
    "long_only": false,
    "commence": true,
    "capital": 1000.0,
-   "valeur": 1234.16,
-   "rendement_pct": 23.42,
-   "garder_valeur": 702.01,
-   "garder_rendement_pct": -29.8,
-   "sharpe": 10.39,
-   "garder_sharpe": -12.42,
+   "valeur": 1223.26,
+   "rendement_pct": 22.33,
+   "garder_valeur": 712.17,
+   "garder_rendement_pct": -28.78,
+   "sharpe": 9.56,
+   "garder_sharpe": -11.34,
    "pire_baisse_pct": -3.08,
    "garder_pire_baisse_pct": -30.16,
    "frais": 4.94,
@@ -2467,6 +2542,11 @@
      "d": "2026-11-16",
      "robot": 1234.16,
      "garder": 702.01
+    },
+    {
+     "d": "2026-11-17",
+     "robot": 1223.26,
+     "garder": 712.17
     }
    ],
    "marches": [
@@ -2498,13 +2578,13 @@
       ],
       "change": true
      },
-     "derniere_decision": "2026-11-16 00:00:00",
-     "prix_actuel": 1806.14,
+     "derniere_decision": "2026-11-17 00:00:00",
+     "prix_actuel": 1822.29,
      "part": 125.0,
-     "valeur": 118.42,
-     "rendement_pct": -5.26,
-     "garder_valeur": 92.23,
-     "garder_rendement_pct": -26.22,
+     "valeur": 117.63,
+     "rendement_pct": -5.89,
+     "garder_valeur": 93.05,
+     "garder_rendement_pct": -25.56,
      "frais": 1.22,
      "changements": 4,
      "backtest": {
@@ -2893,6 +2973,20 @@
         -1
        ],
        "change": false
+      },
+      {
+       "date": "2026-11-17 00:00:00",
+       "fin": "2026-11-17 04:00:00",
+       "initial": false,
+       "signal": "VENDRE",
+       "ancien": "VENDRE",
+       "prix": 1832.77,
+       "votes": [
+        -1,
+        -1,
+        -1
+       ],
+       "change": false
       }
      ]
     },
@@ -2904,8 +2998,8 @@
      "apercu": null,
      "votes": [
       -1,
-      -1,
-      -1
+      0,
+      0
      ],
      "signal_depuis": "2026-11-08 00:00:00",
      "signal_depuis_fin": "2026-11-08 04:00:00",
@@ -2924,13 +3018,13 @@
       ],
       "change": true
      },
-     "derniere_decision": "2026-11-16 00:00:00",
-     "prix_actuel": 0.956,
+     "derniere_decision": "2026-11-17 00:00:00",
+     "prix_actuel": 0.9712,
      "part": 125.0,
-     "valeur": 153.85,
-     "rendement_pct": 23.08,
-     "garder_valeur": 89.55,
-     "garder_rendement_pct": -28.36,
+     "valeur": 152.14,
+     "rendement_pct": 21.71,
+     "garder_valeur": 90.98,
+     "garder_rendement_pct": -27.22,
      "frais": 0.99,
      "changements": 4,
      "backtest": {
@@ -3319,6 +3413,20 @@
         -1
        ],
        "change": false
+      },
+      {
+       "date": "2026-11-17 00:00:00",
+       "fin": "2026-11-17 04:00:00",
+       "initial": false,
+       "signal": "VENDRE",
+       "ancien": "VENDRE",
+       "prix": 0.9676,
+       "votes": [
+        -1,
+        0,
+        0
+       ],
+       "change": false
       }
      ]
     },
@@ -3350,13 +3458,13 @@
       ],
       "change": true
      },
-     "derniere_decision": "2026-11-16 00:00:00",
-     "prix_actuel": 0.1527,
+     "derniere_decision": "2026-11-17 00:00:00",
+     "prix_actuel": 0.1549,
      "part": 125.0,
-     "valeur": 164.2,
-     "rendement_pct": 31.36,
-     "garder_valeur": 85.43,
-     "garder_rendement_pct": -31.66,
+     "valeur": 162.97,
+     "rendement_pct": 30.37,
+     "garder_valeur": 86.66,
+     "garder_rendement_pct": -30.67,
      "frais": 0.19,
      "changements": 1,
      "backtest": {
@@ -3745,6 +3853,20 @@
         -1
        ],
        "change": false
+      },
+      {
+       "date": "2026-11-17 00:00:00",
+       "fin": "2026-11-17 04:00:00",
+       "initial": false,
+       "signal": "VENDRE",
+       "ancien": "VENDRE",
+       "prix": 0.1546,
+       "votes": [
+        -1,
+        -1,
+        -1
+       ],
+       "change": false
       }
      ]
     },
@@ -3776,13 +3898,13 @@
       ],
       "change": true
      },
-     "derniere_decision": "2026-11-16 00:00:00",
-     "prix_actuel": 0.05879,
+     "derniere_decision": "2026-11-17 00:00:00",
+     "prix_actuel": 0.05939,
      "part": 125.0,
-     "valeur": 159.58,
-     "rendement_pct": 27.66,
-     "garder_valeur": 90.04,
-     "garder_rendement_pct": -27.96,
+     "valeur": 158.66,
+     "rendement_pct": 26.93,
+     "garder_valeur": 90.96,
+     "garder_rendement_pct": -27.23,
      "frais": 0.19,
      "changements": 1,
      "backtest": {
@@ -4171,6 +4293,20 @@
         -1
        ],
        "change": false
+      },
+      {
+       "date": "2026-11-17 00:00:00",
+       "fin": "2026-11-17 04:00:00",
+       "initial": false,
+       "signal": "VENDRE",
+       "ancien": "VENDRE",
+       "prix": 0.05937,
+       "votes": [
+        0,
+        -1,
+        -1
+       ],
+       "change": false
       }
      ]
     },
@@ -4202,13 +4338,13 @@
       ],
       "change": true
      },
-     "derniere_decision": "2026-11-16 00:00:00",
-     "prix_actuel": 71.38,
+     "derniere_decision": "2026-11-17 00:00:00",
+     "prix_actuel": 73.5,
      "part": 125.0,
-     "valeur": 165.47,
-     "rendement_pct": 32.37,
-     "garder_valeur": 84.16,
-     "garder_rendement_pct": -32.67,
+     "valeur": 162.97,
+     "rendement_pct": 30.37,
+     "garder_valeur": 86.66,
+     "garder_rendement_pct": -30.67,
      "frais": 0.19,
      "changements": 1,
      "backtest": {
@@ -4597,6 +4733,20 @@
         -1
        ],
        "change": false
+      },
+      {
+       "date": "2026-11-17 00:00:00",
+       "fin": "2026-11-17 04:00:00",
+       "initial": false,
+       "signal": "VENDRE",
+       "ancien": "VENDRE",
+       "prix": 72.83,
+       "votes": [
+        -1,
+        -1,
+        -1
+       ],
+       "change": false
       }
      ]
     },
@@ -4628,13 +4778,13 @@
       ],
       "change": true
      },
-     "derniere_decision": "2026-11-16 00:00:00",
-     "prix_actuel": 44.49,
+     "derniere_decision": "2026-11-17 00:00:00",
+     "prix_actuel": 45.09,
      "part": 125.0,
-     "valeur": 159.3,
-     "rendement_pct": 27.44,
-     "garder_valeur": 90.32,
-     "garder_rendement_pct": -27.74,
+     "valeur": 158.09,
+     "rendement_pct": 26.47,
+     "garder_valeur": 91.54,
+     "garder_rendement_pct": -26.77,
      "frais": 0.19,
      "changements": 1,
      "backtest": {
@@ -5023,6 +5173,20 @@
         -1
        ],
        "change": false
+      },
+      {
+       "date": "2026-11-17 00:00:00",
+       "fin": "2026-11-17 04:00:00",
+       "initial": false,
+       "signal": "VENDRE",
+       "ancien": "VENDRE",
+       "prix": 44.98,
+       "votes": [
+        -1,
+        -1,
+        -1
+       ],
+       "change": false
       }
      ]
     },
@@ -5054,13 +5218,13 @@
       ],
       "change": true
      },
-     "derniere_decision": "2026-11-16 00:00:00",
-     "prix_actuel": 0.731,
+     "derniere_decision": "2026-11-17 00:00:00",
+     "prix_actuel": 0.737,
      "part": 125.0,
-     "valeur": 163.99,
-     "rendement_pct": 31.19,
-     "garder_valeur": 78.45,
-     "garder_rendement_pct": -37.24,
+     "valeur": 163.26,
+     "rendement_pct": 30.61,
+     "garder_valeur": 79.09,
+     "garder_rendement_pct": -36.72,
      "frais": 0.96,
      "changements": 3,
      "backtest": {
@@ -5449,6 +5613,20 @@
         -1
        ],
        "change": false
+      },
+      {
+       "date": "2026-11-17 00:00:00",
+       "fin": "2026-11-17 04:00:00",
+       "initial": false,
+       "signal": "VENDRE",
+       "ancien": "VENDRE",
+       "prix": 0.742,
+       "votes": [
+        -1,
+        -1,
+        -1
+       ],
+       "change": false
       }
      ]
     },
@@ -5480,13 +5658,13 @@
       ],
       "change": true
      },
-     "derniere_decision": "2026-11-16 00:00:00",
-     "prix_actuel": 7.138,
+     "derniere_decision": "2026-11-17 00:00:00",
+     "prix_actuel": 7.247,
      "part": 125.0,
-     "valeur": 149.35,
-     "rendement_pct": 19.48,
-     "garder_valeur": 91.83,
-     "garder_rendement_pct": -26.54,
+     "valeur": 147.54,
+     "rendement_pct": 18.03,
+     "garder_valeur": 93.23,
+     "garder_rendement_pct": -25.42,
      "frais": 1.01,
      "changements": 3,
      "backtest": {
@@ -5869,6 +6047,20 @@
        "signal": "VENDRE",
        "ancien": "VENDRE",
        "prix": 7.23,
+       "votes": [
+        -1,
+        -1,
+        -1
+       ],
+       "change": false
+      },
+      {
+       "date": "2026-11-17 00:00:00",
+       "fin": "2026-11-17 04:00:00",
+       "initial": false,
+       "signal": "VENDRE",
+       "ancien": "VENDRE",
+       "prix": 7.191,
        "votes": [
         -1,
         -1,
