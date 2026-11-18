@@ -1,15 +1,15 @@
 {
- "genere_le": "2026-11-16 23:34 UTC",
- "donnees_jusqu_au": "2026-11-13",
+ "genere_le": "2026-11-18 04:15 UTC",
+ "donnees_jusqu_au": "2026-11-17",
  "sources": {
-  "QQQ": "Databento DBEQ.BASIC (coût 0.0017 $)",
-  "SPY": "Databento DBEQ.BASIC (coût 0.0017 $)"
+  "QQQ": "Databento EQUS.MINI (coût 0.0002 $)",
+  "SPY": "Databento EQUS.MINI (coût 0.0002 $)"
  },
  "test": {
   "debut": "2026-11-17",
   "fin": "2027-05-17",
   "capital": 1000.0,
-  "jours_ecoules": 0,
+  "jours_ecoules": 1,
   "jours_total": 181,
   "frais_pct": 0.05,
   "termine": false
@@ -22,40 +22,69 @@
    "version": "achat_seul",
    "nom": "Nasdaq — achat seulement",
    "achat_vente": false,
-   "prix": 679.89,
-   "derniere_cloture": "2026-11-13",
+   "prix": 664.76,
+   "derniere_cloture": "2026-11-17",
    "equipes": [
     {
      "code": "c2",
      "nom": "Équipe de 3 robots (notebook C2)",
      "robots": 3,
-     "commence": false,
-     "apercu": {
+     "commence": true,
+     "apercu": null,
+     "signal": "DEHORS",
+     "votes": [
+      0,
+      0,
+      1
+     ],
+     "signal_depuis": "2026-11-17",
+     "prix_reference": 664.76,
+     "derniere_decision": "2026-11-17",
+     "dernier_changement": {
+      "date": "2026-11-17",
       "signal": "DEHORS",
+      "ancien": "DEHORS",
+      "prix": 664.76,
       "votes": [
        0,
        0,
        1
-      ]
+      ],
+      "change": true,
+      "initial": true
      },
-     "signal": null,
-     "votes": null,
-     "signal_depuis": null,
-     "prix_reference": null,
-     "derniere_decision": null,
-     "dernier_changement": null,
      "valeur": 1000.0,
      "rendement_pct": 0.0,
-     "garder_valeur": 1000.0,
-     "garder_rendement_pct": 0.0,
+     "garder_valeur": 999.5,
+     "garder_rendement_pct": -0.05,
      "sharpe": null,
      "garder_sharpe": null,
      "pire_baisse_pct": 0.0,
      "garder_pire_baisse_pct": 0.0,
      "frais": 0.0,
      "changements": 0,
-     "courbe": [],
-     "decisions": [],
+     "courbe": [
+      {
+       "d": "2026-11-17",
+       "robot": 1000.0,
+       "garder": 999.5
+      }
+     ],
+     "decisions": [
+      {
+       "date": "2026-11-17",
+       "signal": "DEHORS",
+       "ancien": "DEHORS",
+       "prix": 664.76,
+       "votes": [
+        0,
+        0,
+        1
+       ],
+       "change": true,
+       "initial": true
+      }
+     ],
      "notebook": {
       "sharpe_vote": 0.863,
       "sharpe_garder": 0.81,
@@ -63,49 +92,105 @@
       "sharpe_recalcule": 0.863
      },
      "verdict": {
-      "statut": "pas commencé",
-      "criteres": [],
-      "texte": "Première décision à la clôture du 17/11/2026."
+      "statut": "en cours",
+      "criteres": [
+       {
+        "nom": "Les robots finissent au-dessus de « acheter et garder »",
+        "ok": true
+       },
+       {
+        "nom": "Meilleur rapport gain / risque (Sharpe) que « garder »",
+        "ok": false
+       },
+       {
+        "nom": "Pire baisse plus petite que « garder »",
+        "ok": false
+       }
+      ],
+      "texte": "Verdict définitif le 17/05/2027. Les critères changent chaque jour."
      }
     },
     {
      "code": "c3",
      "nom": "Équipe de 10 robots (notebook C3)",
      "robots": 10,
-     "commence": false,
-     "apercu": {
+     "commence": true,
+     "apercu": null,
+     "signal": "ACHETER",
+     "votes": [
+      0,
+      0,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      1,
+      0
+     ],
+     "signal_depuis": "2026-11-17",
+     "prix_reference": 664.76,
+     "derniere_decision": "2026-11-17",
+     "dernier_changement": {
+      "date": "2026-11-17",
       "signal": "ACHETER",
+      "ancien": "DEHORS",
+      "prix": 664.76,
       "votes": [
        0,
        0,
        1,
        1,
-       1,
-       1,
-       1,
        0,
        1,
+       1,
+       1,
+       1,
        0
-      ]
+      ],
+      "change": true,
+      "initial": true
      },
-     "signal": null,
-     "votes": null,
-     "signal_depuis": null,
-     "prix_reference": null,
-     "derniere_decision": null,
-     "dernier_changement": null,
-     "valeur": 1000.0,
-     "rendement_pct": 0.0,
-     "garder_valeur": 1000.0,
-     "garder_rendement_pct": 0.0,
+     "valeur": 999.5,
+     "rendement_pct": -0.05,
+     "garder_valeur": 999.5,
+     "garder_rendement_pct": -0.05,
      "sharpe": null,
      "garder_sharpe": null,
      "pire_baisse_pct": 0.0,
      "garder_pire_baisse_pct": 0.0,
-     "frais": 0.0,
-     "changements": 0,
-     "courbe": [],
-     "decisions": [],
+     "frais": 0.5,
+     "changements": 1,
+     "courbe": [
+      {
+       "d": "2026-11-17",
+       "robot": 999.5,
+       "garder": 999.5
+      }
+     ],
+     "decisions": [
+      {
+       "date": "2026-11-17",
+       "signal": "ACHETER",
+       "ancien": "DEHORS",
+       "prix": 664.76,
+       "votes": [
+        0,
+        0,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0
+       ],
+       "change": true,
+       "initial": true
+      }
+     ],
      "notebook": {
       "sharpe_vote": 0.727,
       "sharpe_garder": 0.81,
@@ -113,9 +198,22 @@
       "sharpe_recalcule": 0.727
      },
      "verdict": {
-      "statut": "pas commencé",
-      "criteres": [],
-      "texte": "Première décision à la clôture du 17/11/2026."
+      "statut": "en cours",
+      "criteres": [
+       {
+        "nom": "Les robots finissent au-dessus de « acheter et garder »",
+        "ok": false
+       },
+       {
+        "nom": "Meilleur rapport gain / risque (Sharpe) que « garder »",
+        "ok": false
+       },
+       {
+        "nom": "Pire baisse plus petite que « garder »",
+        "ok": false
+       }
+      ],
+      "texte": "Verdict définitif le 17/05/2027. Les critères changent chaque jour."
      }
     }
    ]
@@ -127,40 +225,69 @@
    "version": "achat_vente",
    "nom": "Nasdaq — achat et vente",
    "achat_vente": true,
-   "prix": 679.89,
-   "derniere_cloture": "2026-11-13",
+   "prix": 664.76,
+   "derniere_cloture": "2026-11-17",
    "equipes": [
     {
      "code": "c2",
      "nom": "Équipe de 3 robots (notebook C2)",
      "robots": 3,
-     "commence": false,
-     "apercu": {
+     "commence": true,
+     "apercu": null,
+     "signal": "ACHETER",
+     "votes": [
+      1,
+      1,
+      0
+     ],
+     "signal_depuis": "2026-11-17",
+     "prix_reference": 664.76,
+     "derniere_decision": "2026-11-17",
+     "dernier_changement": {
+      "date": "2026-11-17",
       "signal": "ACHETER",
+      "ancien": "DEHORS",
+      "prix": 664.76,
       "votes": [
        1,
        1,
        0
-      ]
+      ],
+      "change": true,
+      "initial": true
      },
-     "signal": null,
-     "votes": null,
-     "signal_depuis": null,
-     "prix_reference": null,
-     "derniere_decision": null,
-     "dernier_changement": null,
-     "valeur": 1000.0,
-     "rendement_pct": 0.0,
-     "garder_valeur": 1000.0,
-     "garder_rendement_pct": 0.0,
+     "valeur": 999.5,
+     "rendement_pct": -0.05,
+     "garder_valeur": 999.5,
+     "garder_rendement_pct": -0.05,
      "sharpe": null,
      "garder_sharpe": null,
      "pire_baisse_pct": 0.0,
      "garder_pire_baisse_pct": 0.0,
-     "frais": 0.0,
-     "changements": 0,
-     "courbe": [],
-     "decisions": [],
+     "frais": 0.5,
+     "changements": 1,
+     "courbe": [
+      {
+       "d": "2026-11-17",
+       "robot": 999.5,
+       "garder": 999.5
+      }
+     ],
+     "decisions": [
+      {
+       "date": "2026-11-17",
+       "signal": "ACHETER",
+       "ancien": "DEHORS",
+       "prix": 664.76,
+       "votes": [
+        1,
+        1,
+        0
+       ],
+       "change": true,
+       "initial": true
+      }
+     ],
      "notebook": {
       "sharpe_vote": 1.196,
       "sharpe_garder": 0.81,
@@ -168,18 +295,51 @@
       "sharpe_recalcule": 1.196
      },
      "verdict": {
-      "statut": "pas commencé",
-      "criteres": [],
-      "texte": "Première décision à la clôture du 17/11/2026."
+      "statut": "en cours",
+      "criteres": [
+       {
+        "nom": "Les robots finissent au-dessus de « acheter et garder »",
+        "ok": false
+       },
+       {
+        "nom": "Meilleur rapport gain / risque (Sharpe) que « garder »",
+        "ok": false
+       },
+       {
+        "nom": "Pire baisse plus petite que « garder »",
+        "ok": false
+       }
+      ],
+      "texte": "Verdict définitif le 17/05/2027. Les critères changent chaque jour."
      }
     },
     {
      "code": "c3",
      "nom": "Équipe de 10 robots (notebook C3)",
      "robots": 10,
-     "commence": false,
-     "apercu": {
+     "commence": true,
+     "apercu": null,
+     "signal": "ACHETER",
+     "votes": [
+      1,
+      1,
+      0,
+      1,
+      0,
+      0,
+      1,
+      1,
+      1,
+      1
+     ],
+     "signal_depuis": "2026-11-17",
+     "prix_reference": 664.76,
+     "derniere_decision": "2026-11-17",
+     "dernier_changement": {
+      "date": "2026-11-17",
       "signal": "ACHETER",
+      "ancien": "DEHORS",
+      "prix": 664.76,
       "votes": [
        1,
        1,
@@ -187,30 +347,53 @@
        1,
        0,
        0,
-       0,
+       1,
        1,
        1,
        1
-      ]
+      ],
+      "change": true,
+      "initial": true
      },
-     "signal": null,
-     "votes": null,
-     "signal_depuis": null,
-     "prix_reference": null,
-     "derniere_decision": null,
-     "dernier_changement": null,
-     "valeur": 1000.0,
-     "rendement_pct": 0.0,
-     "garder_valeur": 1000.0,
-     "garder_rendement_pct": 0.0,
+     "valeur": 999.5,
+     "rendement_pct": -0.05,
+     "garder_valeur": 999.5,
+     "garder_rendement_pct": -0.05,
      "sharpe": null,
      "garder_sharpe": null,
      "pire_baisse_pct": 0.0,
      "garder_pire_baisse_pct": 0.0,
-     "frais": 0.0,
-     "changements": 0,
-     "courbe": [],
-     "decisions": [],
+     "frais": 0.5,
+     "changements": 1,
+     "courbe": [
+      {
+       "d": "2026-11-17",
+       "robot": 999.5,
+       "garder": 999.5
+      }
+     ],
+     "decisions": [
+      {
+       "date": "2026-11-17",
+       "signal": "ACHETER",
+       "ancien": "DEHORS",
+       "prix": 664.76,
+       "votes": [
+        1,
+        1,
+        0,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1
+       ],
+       "change": true,
+       "initial": true
+      }
+     ],
      "notebook": {
       "sharpe_vote": 1.099,
       "sharpe_garder": 0.81,
@@ -218,9 +401,22 @@
       "sharpe_recalcule": 1.099
      },
      "verdict": {
-      "statut": "pas commencé",
-      "criteres": [],
-      "texte": "Première décision à la clôture du 17/11/2026."
+      "statut": "en cours",
+      "criteres": [
+       {
+        "nom": "Les robots finissent au-dessus de « acheter et garder »",
+        "ok": false
+       },
+       {
+        "nom": "Meilleur rapport gain / risque (Sharpe) que « garder »",
+        "ok": false
+       },
+       {
+        "nom": "Pire baisse plus petite que « garder »",
+        "ok": false
+       }
+      ],
+      "texte": "Verdict définitif le 17/05/2027. Les critères changent chaque jour."
      }
     }
    ]
@@ -232,40 +428,69 @@
    "version": "achat_seul",
    "nom": "S&P 500 — achat seulement",
    "achat_vente": false,
-   "prix": 754.37,
-   "derniere_cloture": "2026-11-13",
+   "prix": 736.93,
+   "derniere_cloture": "2026-11-17",
    "equipes": [
     {
      "code": "c2",
      "nom": "Équipe de 3 robots (notebook C2)",
      "robots": 3,
-     "commence": false,
-     "apercu": {
-      "signal": "DEHORS",
+     "commence": true,
+     "apercu": null,
+     "signal": "ACHETER",
+     "votes": [
+      1,
+      1,
+      1
+     ],
+     "signal_depuis": "2026-11-17",
+     "prix_reference": 736.93,
+     "derniere_decision": "2026-11-17",
+     "dernier_changement": {
+      "date": "2026-11-17",
+      "signal": "ACHETER",
+      "ancien": "DEHORS",
+      "prix": 736.93,
       "votes": [
        1,
-       0,
-       0
-      ]
+       1,
+       1
+      ],
+      "change": true,
+      "initial": true
      },
-     "signal": null,
-     "votes": null,
-     "signal_depuis": null,
-     "prix_reference": null,
-     "derniere_decision": null,
-     "dernier_changement": null,
-     "valeur": 1000.0,
-     "rendement_pct": 0.0,
-     "garder_valeur": 1000.0,
-     "garder_rendement_pct": 0.0,
+     "valeur": 999.5,
+     "rendement_pct": -0.05,
+     "garder_valeur": 999.5,
+     "garder_rendement_pct": -0.05,
      "sharpe": null,
      "garder_sharpe": null,
      "pire_baisse_pct": 0.0,
      "garder_pire_baisse_pct": 0.0,
-     "frais": 0.0,
-     "changements": 0,
-     "courbe": [],
-     "decisions": [],
+     "frais": 0.5,
+     "changements": 1,
+     "courbe": [
+      {
+       "d": "2026-11-17",
+       "robot": 999.5,
+       "garder": 999.5
+      }
+     ],
+     "decisions": [
+      {
+       "date": "2026-11-17",
+       "signal": "ACHETER",
+       "ancien": "DEHORS",
+       "prix": 736.93,
+       "votes": [
+        1,
+        1,
+        1
+       ],
+       "change": true,
+       "initial": true
+      }
+     ],
      "notebook": {
       "sharpe_vote": 0.971,
       "sharpe_garder": 0.805,
@@ -273,22 +498,55 @@
       "sharpe_recalcule": 0.971
      },
      "verdict": {
-      "statut": "pas commencé",
-      "criteres": [],
-      "texte": "Première décision à la clôture du 17/11/2026."
+      "statut": "en cours",
+      "criteres": [
+       {
+        "nom": "Les robots finissent au-dessus de « acheter et garder »",
+        "ok": false
+       },
+       {
+        "nom": "Meilleur rapport gain / risque (Sharpe) que « garder »",
+        "ok": false
+       },
+       {
+        "nom": "Pire baisse plus petite que « garder »",
+        "ok": false
+       }
+      ],
+      "texte": "Verdict définitif le 17/05/2027. Les critères changent chaque jour."
      }
     },
     {
      "code": "c3",
      "nom": "Équipe de 10 robots (notebook C3)",
      "robots": 10,
-     "commence": false,
-     "apercu": {
+     "commence": true,
+     "apercu": null,
+     "signal": "ACHETER",
+     "votes": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "signal_depuis": "2026-11-17",
+     "prix_reference": 736.93,
+     "derniere_decision": "2026-11-17",
+     "dernier_changement": {
+      "date": "2026-11-17",
       "signal": "ACHETER",
+      "ancien": "DEHORS",
+      "prix": 736.93,
       "votes": [
        1,
-       0,
-       0,
+       1,
+       1,
        1,
        1,
        1,
@@ -296,26 +554,49 @@
        1,
        1,
        1
-      ]
+      ],
+      "change": true,
+      "initial": true
      },
-     "signal": null,
-     "votes": null,
-     "signal_depuis": null,
-     "prix_reference": null,
-     "derniere_decision": null,
-     "dernier_changement": null,
-     "valeur": 1000.0,
-     "rendement_pct": 0.0,
-     "garder_valeur": 1000.0,
-     "garder_rendement_pct": 0.0,
+     "valeur": 999.5,
+     "rendement_pct": -0.05,
+     "garder_valeur": 999.5,
+     "garder_rendement_pct": -0.05,
      "sharpe": null,
      "garder_sharpe": null,
      "pire_baisse_pct": 0.0,
      "garder_pire_baisse_pct": 0.0,
-     "frais": 0.0,
-     "changements": 0,
-     "courbe": [],
-     "decisions": [],
+     "frais": 0.5,
+     "changements": 1,
+     "courbe": [
+      {
+       "d": "2026-11-17",
+       "robot": 999.5,
+       "garder": 999.5
+      }
+     ],
+     "decisions": [
+      {
+       "date": "2026-11-17",
+       "signal": "ACHETER",
+       "ancien": "DEHORS",
+       "prix": 736.93,
+       "votes": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+       ],
+       "change": true,
+       "initial": true
+      }
+     ],
      "notebook": {
       "sharpe_vote": 0.596,
       "sharpe_garder": 0.805,
@@ -323,9 +604,22 @@
       "sharpe_recalcule": 0.596
      },
      "verdict": {
-      "statut": "pas commencé",
-      "criteres": [],
-      "texte": "Première décision à la clôture du 17/11/2026."
+      "statut": "en cours",
+      "criteres": [
+       {
+        "nom": "Les robots finissent au-dessus de « acheter et garder »",
+        "ok": false
+       },
+       {
+        "nom": "Meilleur rapport gain / risque (Sharpe) que « garder »",
+        "ok": false
+       },
+       {
+        "nom": "Pire baisse plus petite que « garder »",
+        "ok": false
+       }
+      ],
+      "texte": "Verdict définitif le 17/05/2027. Les critères changent chaque jour."
      }
     }
    ]
@@ -339,64 +633,64 @@
    "robots": 3,
    "valeur": 1000.0,
    "rendement_pct": 0.0,
-   "garder_rendement_pct": 0.0,
-   "avance_pct": 0.0,
-   "signal": null
+   "garder_rendement_pct": -0.05,
+   "avance_pct": 0.05,
+   "signal": "DEHORS"
   },
   {
    "cas": "QQQ_achat_seul",
    "nom": "Nasdaq — achat seulement",
    "equipe": "c3",
    "robots": 10,
-   "valeur": 1000.0,
-   "rendement_pct": 0.0,
-   "garder_rendement_pct": 0.0,
+   "valeur": 999.5,
+   "rendement_pct": -0.05,
+   "garder_rendement_pct": -0.05,
    "avance_pct": 0.0,
-   "signal": null
+   "signal": "ACHETER"
   },
   {
    "cas": "QQQ_achat_vente",
    "nom": "Nasdaq — achat et vente",
    "equipe": "c2",
    "robots": 3,
-   "valeur": 1000.0,
-   "rendement_pct": 0.0,
-   "garder_rendement_pct": 0.0,
+   "valeur": 999.5,
+   "rendement_pct": -0.05,
+   "garder_rendement_pct": -0.05,
    "avance_pct": 0.0,
-   "signal": null
+   "signal": "ACHETER"
   },
   {
    "cas": "QQQ_achat_vente",
    "nom": "Nasdaq — achat et vente",
    "equipe": "c3",
    "robots": 10,
-   "valeur": 1000.0,
-   "rendement_pct": 0.0,
-   "garder_rendement_pct": 0.0,
+   "valeur": 999.5,
+   "rendement_pct": -0.05,
+   "garder_rendement_pct": -0.05,
    "avance_pct": 0.0,
-   "signal": null
+   "signal": "ACHETER"
   },
   {
    "cas": "SPY_achat_seul",
    "nom": "S&P 500 — achat seulement",
    "equipe": "c2",
    "robots": 3,
-   "valeur": 1000.0,
-   "rendement_pct": 0.0,
-   "garder_rendement_pct": 0.0,
+   "valeur": 999.5,
+   "rendement_pct": -0.05,
+   "garder_rendement_pct": -0.05,
    "avance_pct": 0.0,
-   "signal": null
+   "signal": "ACHETER"
   },
   {
    "cas": "SPY_achat_seul",
    "nom": "S&P 500 — achat seulement",
    "equipe": "c3",
    "robots": 10,
-   "valeur": 1000.0,
-   "rendement_pct": 0.0,
-   "garder_rendement_pct": 0.0,
+   "valeur": 999.5,
+   "rendement_pct": -0.05,
+   "garder_rendement_pct": -0.05,
    "avance_pct": 0.0,
-   "signal": null
+   "signal": "ACHETER"
   }
  ]
 }
