@@ -1,6 +1,6 @@
 {
- "genere_le": "2026-11-18 04:15 UTC",
- "donnees_jusqu_au": "2026-11-17",
+ "genere_le": "2026-11-19 04:09 UTC",
+ "donnees_jusqu_au": "2026-11-18",
  "sources": {
   "QQQ": "Databento EQUS.MINI (coût 0.0002 $)",
   "SPY": "Databento EQUS.MINI (coût 0.0002 $)"
@@ -9,7 +9,7 @@
   "debut": "2026-11-17",
   "fin": "2027-05-17",
   "capital": 1000.0,
-  "jours_ecoules": 1,
+  "jours_ecoules": 2,
   "jours_total": 181,
   "frais_pct": 0.05,
   "termine": false
@@ -22,8 +22,8 @@
    "version": "achat_seul",
    "nom": "Nasdaq — achat seulement",
    "achat_vente": false,
-   "prix": 664.76,
-   "derniere_cloture": "2026-11-17",
+   "prix": 666.04,
+   "derniere_cloture": "2026-11-18",
    "equipes": [
     {
      "code": "c2",
@@ -39,7 +39,7 @@
      ],
      "signal_depuis": "2026-11-17",
      "prix_reference": 664.76,
-     "derniere_decision": "2026-11-17",
+     "derniere_decision": "2026-11-18",
      "dernier_changement": {
       "date": "2026-11-17",
       "signal": "DEHORS",
@@ -55,8 +55,8 @@
      },
      "valeur": 1000.0,
      "rendement_pct": 0.0,
-     "garder_valeur": 999.5,
-     "garder_rendement_pct": -0.05,
+     "garder_valeur": 1001.42,
+     "garder_rendement_pct": 0.14,
      "sharpe": null,
      "garder_sharpe": null,
      "pire_baisse_pct": 0.0,
@@ -68,6 +68,11 @@
        "d": "2026-11-17",
        "robot": 1000.0,
        "garder": 999.5
+      },
+      {
+       "d": "2026-11-18",
+       "robot": 1000.0,
+       "garder": 1001.42
       }
      ],
      "decisions": [
@@ -83,6 +88,19 @@
        ],
        "change": true,
        "initial": true
+      },
+      {
+       "date": "2026-11-18",
+       "signal": "DEHORS",
+       "ancien": "DEHORS",
+       "prix": 666.04,
+       "votes": [
+        0,
+        0,
+        1
+       ],
+       "change": false,
+       "initial": false
       }
      ],
      "notebook": {
@@ -96,7 +114,7 @@
       "criteres": [
        {
         "nom": "Les robots finissent au-dessus de « acheter et garder »",
-        "ok": true
+        "ok": false
        },
        {
         "nom": "Meilleur rapport gain / risque (Sharpe) que « garder »",
@@ -122,7 +140,7 @@
       0,
       1,
       1,
-      0,
+      1,
       1,
       1,
       1,
@@ -131,7 +149,7 @@
      ],
      "signal_depuis": "2026-11-17",
      "prix_reference": 664.76,
-     "derniere_decision": "2026-11-17",
+     "derniere_decision": "2026-11-18",
      "dernier_changement": {
       "date": "2026-11-17",
       "signal": "ACHETER",
@@ -152,10 +170,10 @@
       "change": true,
       "initial": true
      },
-     "valeur": 999.5,
-     "rendement_pct": -0.05,
-     "garder_valeur": 999.5,
-     "garder_rendement_pct": -0.05,
+     "valeur": 1001.42,
+     "rendement_pct": 0.14,
+     "garder_valeur": 1001.42,
+     "garder_rendement_pct": 0.14,
      "sharpe": null,
      "garder_sharpe": null,
      "pire_baisse_pct": 0.0,
@@ -167,6 +185,11 @@
        "d": "2026-11-17",
        "robot": 999.5,
        "garder": 999.5
+      },
+      {
+       "d": "2026-11-18",
+       "robot": 1001.42,
+       "garder": 1001.42
       }
      ],
      "decisions": [
@@ -189,6 +212,26 @@
        ],
        "change": true,
        "initial": true
+      },
+      {
+       "date": "2026-11-18",
+       "signal": "ACHETER",
+       "ancien": "ACHETER",
+       "prix": 666.04,
+       "votes": [
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0
+       ],
+       "change": false,
+       "initial": false
       }
      ],
      "notebook": {
@@ -225,8 +268,8 @@
    "version": "achat_vente",
    "nom": "Nasdaq — achat et vente",
    "achat_vente": true,
-   "prix": 664.76,
-   "derniere_cloture": "2026-11-17",
+   "prix": 666.04,
+   "derniere_cloture": "2026-11-18",
    "equipes": [
     {
      "code": "c2",
@@ -238,11 +281,11 @@
      "votes": [
       1,
       1,
-      0
+      1
      ],
      "signal_depuis": "2026-11-17",
      "prix_reference": 664.76,
-     "derniere_decision": "2026-11-17",
+     "derniere_decision": "2026-11-18",
      "dernier_changement": {
       "date": "2026-11-17",
       "signal": "ACHETER",
@@ -256,10 +299,10 @@
       "change": true,
       "initial": true
      },
-     "valeur": 999.5,
-     "rendement_pct": -0.05,
-     "garder_valeur": 999.5,
-     "garder_rendement_pct": -0.05,
+     "valeur": 1001.42,
+     "rendement_pct": 0.14,
+     "garder_valeur": 1001.42,
+     "garder_rendement_pct": 0.14,
      "sharpe": null,
      "garder_sharpe": null,
      "pire_baisse_pct": 0.0,
@@ -271,6 +314,11 @@
        "d": "2026-11-17",
        "robot": 999.5,
        "garder": 999.5
+      },
+      {
+       "d": "2026-11-18",
+       "robot": 1001.42,
+       "garder": 1001.42
       }
      ],
      "decisions": [
@@ -286,6 +334,19 @@
        ],
        "change": true,
        "initial": true
+      },
+      {
+       "date": "2026-11-18",
+       "signal": "ACHETER",
+       "ancien": "ACHETER",
+       "prix": 666.04,
+       "votes": [
+        1,
+        1,
+        1
+       ],
+       "change": false,
+       "initial": false
       }
      ],
      "notebook": {
@@ -323,7 +384,7 @@
      "votes": [
       1,
       1,
-      0,
+      1,
       1,
       0,
       0,
@@ -334,7 +395,7 @@
      ],
      "signal_depuis": "2026-11-17",
      "prix_reference": 664.76,
-     "derniere_decision": "2026-11-17",
+     "derniere_decision": "2026-11-18",
      "dernier_changement": {
       "date": "2026-11-17",
       "signal": "ACHETER",
@@ -355,10 +416,10 @@
       "change": true,
       "initial": true
      },
-     "valeur": 999.5,
-     "rendement_pct": -0.05,
-     "garder_valeur": 999.5,
-     "garder_rendement_pct": -0.05,
+     "valeur": 1001.42,
+     "rendement_pct": 0.14,
+     "garder_valeur": 1001.42,
+     "garder_rendement_pct": 0.14,
      "sharpe": null,
      "garder_sharpe": null,
      "pire_baisse_pct": 0.0,
@@ -370,6 +431,11 @@
        "d": "2026-11-17",
        "robot": 999.5,
        "garder": 999.5
+      },
+      {
+       "d": "2026-11-18",
+       "robot": 1001.42,
+       "garder": 1001.42
       }
      ],
      "decisions": [
@@ -392,6 +458,26 @@
        ],
        "change": true,
        "initial": true
+      },
+      {
+       "date": "2026-11-18",
+       "signal": "ACHETER",
+       "ancien": "ACHETER",
+       "prix": 666.04,
+       "votes": [
+        1,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1
+       ],
+       "change": false,
+       "initial": false
       }
      ],
      "notebook": {
@@ -428,8 +514,8 @@
    "version": "achat_seul",
    "nom": "S&P 500 — achat seulement",
    "achat_vente": false,
-   "prix": 736.93,
-   "derniere_cloture": "2026-11-17",
+   "prix": 732.91,
+   "derniere_cloture": "2026-11-18",
    "equipes": [
     {
      "code": "c2",
@@ -445,7 +531,7 @@
      ],
      "signal_depuis": "2026-11-17",
      "prix_reference": 736.93,
-     "derniere_decision": "2026-11-17",
+     "derniere_decision": "2026-11-18",
      "dernier_changement": {
       "date": "2026-11-17",
       "signal": "ACHETER",
@@ -459,14 +545,14 @@
       "change": true,
       "initial": true
      },
-     "valeur": 999.5,
-     "rendement_pct": -0.05,
-     "garder_valeur": 999.5,
-     "garder_rendement_pct": -0.05,
+     "valeur": 994.05,
+     "rendement_pct": -0.6,
+     "garder_valeur": 994.05,
+     "garder_rendement_pct": -0.6,
      "sharpe": null,
      "garder_sharpe": null,
-     "pire_baisse_pct": 0.0,
-     "garder_pire_baisse_pct": 0.0,
+     "pire_baisse_pct": -0.55,
+     "garder_pire_baisse_pct": -0.55,
      "frais": 0.5,
      "changements": 1,
      "courbe": [
@@ -474,6 +560,11 @@
        "d": "2026-11-17",
        "robot": 999.5,
        "garder": 999.5
+      },
+      {
+       "d": "2026-11-18",
+       "robot": 994.05,
+       "garder": 994.05
       }
      ],
      "decisions": [
@@ -489,6 +580,19 @@
        ],
        "change": true,
        "initial": true
+      },
+      {
+       "date": "2026-11-18",
+       "signal": "ACHETER",
+       "ancien": "ACHETER",
+       "prix": 732.91,
+       "votes": [
+        1,
+        1,
+        1
+       ],
+       "change": false,
+       "initial": false
       }
      ],
      "notebook": {
@@ -537,7 +641,7 @@
      ],
      "signal_depuis": "2026-11-17",
      "prix_reference": 736.93,
-     "derniere_decision": "2026-11-17",
+     "derniere_decision": "2026-11-18",
      "dernier_changement": {
       "date": "2026-11-17",
       "signal": "ACHETER",
@@ -558,14 +662,14 @@
       "change": true,
       "initial": true
      },
-     "valeur": 999.5,
-     "rendement_pct": -0.05,
-     "garder_valeur": 999.5,
-     "garder_rendement_pct": -0.05,
+     "valeur": 994.05,
+     "rendement_pct": -0.6,
+     "garder_valeur": 994.05,
+     "garder_rendement_pct": -0.6,
      "sharpe": null,
      "garder_sharpe": null,
-     "pire_baisse_pct": 0.0,
-     "garder_pire_baisse_pct": 0.0,
+     "pire_baisse_pct": -0.55,
+     "garder_pire_baisse_pct": -0.55,
      "frais": 0.5,
      "changements": 1,
      "courbe": [
@@ -573,6 +677,11 @@
        "d": "2026-11-17",
        "robot": 999.5,
        "garder": 999.5
+      },
+      {
+       "d": "2026-11-18",
+       "robot": 994.05,
+       "garder": 994.05
       }
      ],
      "decisions": [
@@ -595,6 +704,26 @@
        ],
        "change": true,
        "initial": true
+      },
+      {
+       "date": "2026-11-18",
+       "signal": "ACHETER",
+       "ancien": "ACHETER",
+       "prix": 732.91,
+       "votes": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+       ],
+       "change": false,
+       "initial": false
       }
      ],
      "notebook": {
@@ -629,68 +758,68 @@
   {
    "cas": "QQQ_achat_seul",
    "nom": "Nasdaq — achat seulement",
+   "equipe": "c3",
+   "robots": 10,
+   "valeur": 1001.42,
+   "rendement_pct": 0.14,
+   "garder_rendement_pct": 0.14,
+   "avance_pct": 0.0,
+   "signal": "ACHETER"
+  },
+  {
+   "cas": "QQQ_achat_vente",
+   "nom": "Nasdaq — achat et vente",
    "equipe": "c2",
    "robots": 3,
-   "valeur": 1000.0,
-   "rendement_pct": 0.0,
-   "garder_rendement_pct": -0.05,
-   "avance_pct": 0.05,
-   "signal": "DEHORS"
+   "valeur": 1001.42,
+   "rendement_pct": 0.14,
+   "garder_rendement_pct": 0.14,
+   "avance_pct": 0.0,
+   "signal": "ACHETER"
+  },
+  {
+   "cas": "QQQ_achat_vente",
+   "nom": "Nasdaq — achat et vente",
+   "equipe": "c3",
+   "robots": 10,
+   "valeur": 1001.42,
+   "rendement_pct": 0.14,
+   "garder_rendement_pct": 0.14,
+   "avance_pct": 0.0,
+   "signal": "ACHETER"
+  },
+  {
+   "cas": "SPY_achat_seul",
+   "nom": "S&P 500 — achat seulement",
+   "equipe": "c2",
+   "robots": 3,
+   "valeur": 994.05,
+   "rendement_pct": -0.6,
+   "garder_rendement_pct": -0.6,
+   "avance_pct": 0.0,
+   "signal": "ACHETER"
+  },
+  {
+   "cas": "SPY_achat_seul",
+   "nom": "S&P 500 — achat seulement",
+   "equipe": "c3",
+   "robots": 10,
+   "valeur": 994.05,
+   "rendement_pct": -0.6,
+   "garder_rendement_pct": -0.6,
+   "avance_pct": 0.0,
+   "signal": "ACHETER"
   },
   {
    "cas": "QQQ_achat_seul",
    "nom": "Nasdaq — achat seulement",
-   "equipe": "c3",
-   "robots": 10,
-   "valeur": 999.5,
-   "rendement_pct": -0.05,
-   "garder_rendement_pct": -0.05,
-   "avance_pct": 0.0,
-   "signal": "ACHETER"
-  },
-  {
-   "cas": "QQQ_achat_vente",
-   "nom": "Nasdaq — achat et vente",
    "equipe": "c2",
    "robots": 3,
-   "valeur": 999.5,
-   "rendement_pct": -0.05,
-   "garder_rendement_pct": -0.05,
-   "avance_pct": 0.0,
-   "signal": "ACHETER"
-  },
-  {
-   "cas": "QQQ_achat_vente",
-   "nom": "Nasdaq — achat et vente",
-   "equipe": "c3",
-   "robots": 10,
-   "valeur": 999.5,
-   "rendement_pct": -0.05,
-   "garder_rendement_pct": -0.05,
-   "avance_pct": 0.0,
-   "signal": "ACHETER"
-  },
-  {
-   "cas": "SPY_achat_seul",
-   "nom": "S&P 500 — achat seulement",
-   "equipe": "c2",
-   "robots": 3,
-   "valeur": 999.5,
-   "rendement_pct": -0.05,
-   "garder_rendement_pct": -0.05,
-   "avance_pct": 0.0,
-   "signal": "ACHETER"
-  },
-  {
-   "cas": "SPY_achat_seul",
-   "nom": "S&P 500 — achat seulement",
-   "equipe": "c3",
-   "robots": 10,
-   "valeur": 999.5,
-   "rendement_pct": -0.05,
-   "garder_rendement_pct": -0.05,
-   "avance_pct": 0.0,
-   "signal": "ACHETER"
+   "valeur": 1000.0,
+   "rendement_pct": 0.0,
+   "garder_rendement_pct": 0.14,
+   "avance_pct": -0.14,
+   "signal": "DEHORS"
   }
  ]
 }
