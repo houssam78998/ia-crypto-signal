@@ -1,11 +1,11 @@
 {
- "genere_le": "2026-11-18 03:46 UTC",
- "donnees_jusqu_au": "2026-11-17 16:00:00",
+ "genere_le": "2026-11-19 03:43 UTC",
+ "donnees_jusqu_au": "2026-11-18 16:00:00",
  "test": {
   "debut": "2026-10-20",
   "fin": "2027-04-20",
   "capital": 1000.0,
-  "jours_ecoules": 28,
+  "jours_ecoules": 29,
   "jours_total": 182,
   "frais_aller_retour_pct": 0.05,
   "termine": false
@@ -44,19 +44,19 @@
     ],
     "change": true
    },
-   "prix_actuel": 47.65,
-   "bougie": "2026-11-17 16:00:00",
+   "prix_actuel": 45.0,
+   "bougie": "2026-11-18 16:00:00",
    "prochaine_decision_jours": 0.6,
-   "valeur": 953.73,
-   "rendement_pct": -4.63,
-   "garder_valeur": 822.41,
-   "garder_rendement_pct": -17.76,
+   "valeur": 900.69,
+   "rendement_pct": -9.93,
+   "garder_valeur": 776.67,
+   "garder_rendement_pct": -22.33,
    "frais": 0.77,
    "changements": 3,
-   "pire_baisse_pct": -11.61,
-   "garder_pire_baisse_pct": -19.16,
-   "sharpe": -1.8423216351681762,
-   "garder_sharpe": -5.598603513738246,
+   "pire_baisse_pct": -14.72,
+   "garder_pire_baisse_pct": -22.0,
+   "sharpe": -3.4448955309187754,
+   "garder_sharpe": -6.650095947026419,
    "courbe": [
     {
      "d": "2026-10-22",
@@ -157,6 +157,11 @@
      "d": "2026-11-18",
      "robot": 953.73,
      "garder": 822.41
+    },
+    {
+     "d": "2026-11-19",
+     "robot": 900.69,
+     "garder": 776.67
     }
    ],
    "decisions": [
@@ -247,19 +252,19 @@
     ],
     "change": true
    },
-   "prix_actuel": 223.825,
-   "bougie": "2026-11-17 16:00:00",
-   "prochaine_decision_jours": 2.0,
-   "valeur": 1013.68,
-   "rendement_pct": 1.37,
-   "garder_valeur": 956.85,
-   "garder_rendement_pct": -4.32,
+   "prix_actuel": 223.1,
+   "bougie": "2026-11-18 16:00:00",
+   "prochaine_decision_jours": 1.0,
+   "valeur": 1010.4,
+   "rendement_pct": 1.04,
+   "garder_valeur": 953.75,
+   "garder_rendement_pct": -4.63,
    "frais": 0.25,
    "changements": 1,
-   "pire_baisse_pct": -0.02,
+   "pire_baisse_pct": -0.32,
    "garder_pire_baisse_pct": -8.72,
-   "sharpe": 5.875984053849836,
-   "garder_sharpe": -3.5741643167293957,
+   "sharpe": 3.9651883615177215,
+   "garder_sharpe": -3.740636936929174,
    "courbe": [
     {
      "d": "2026-10-22",
@@ -360,6 +365,11 @@
      "d": "2026-11-18",
      "robot": 1013.68,
      "garder": 956.85
+    },
+    {
+     "d": "2026-11-19",
+     "robot": 1010.4,
+     "garder": 953.75
     }
    ],
    "decisions": [
@@ -424,19 +434,19 @@
     ],
     "change": true
    },
-   "prix_actuel": 5.9855,
-   "bougie": "2026-11-17 16:00:00",
+   "prix_actuel": 5.644,
+   "bougie": "2026-11-18 16:00:00",
    "prochaine_decision_jours": 0.6,
-   "valeur": 918.97,
-   "rendement_pct": -8.1,
-   "garder_valeur": 905.23,
-   "garder_rendement_pct": -9.48,
+   "valeur": 866.54,
+   "rendement_pct": -13.35,
+   "garder_valeur": 853.58,
+   "garder_rendement_pct": -14.64,
    "frais": 1.23,
    "changements": 5,
-   "pire_baisse_pct": -8.1,
-   "garder_pire_baisse_pct": -9.98,
-   "sharpe": -7.765808668605241,
-   "garder_sharpe": -5.813727157672735,
+   "pire_baisse_pct": -13.35,
+   "garder_pire_baisse_pct": -15.11,
+   "sharpe": -7.690768315745799,
+   "garder_sharpe": -6.867561754262073,
    "courbe": [
     {
      "d": "2026-10-22",
@@ -537,6 +547,11 @@
      "d": "2026-11-18",
      "robot": 918.97,
      "garder": 905.23
+    },
+    {
+     "d": "2026-11-19",
+     "robot": 866.54,
+     "garder": 853.58
     }
    ],
    "decisions": [
@@ -622,8 +637,8 @@
   }
  ],
  "total": {
-  "valeur": 2886.38,
-  "garder_valeur": 2684.49,
+  "valeur": 2777.63,
+  "garder_valeur": 2584.0,
   "capital": 3000.0
  },
  "verdict": {
