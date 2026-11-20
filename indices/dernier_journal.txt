@@ -21,11 +21,11 @@
 /home/runner/work/ia-crypto-signal/ia-crypto-signal/indices/run.py:309: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
   "frais_pct": FRAIS * 100, "termine": bool(maintenant >= PAPER_END + pd.Timedelta(days=1))},
   Databento EQUS.MINI QQQ : coût estimé 0.0002 $
-  QQQ : source Databento EQUS.MINI (coût 0.0002 $), écart de prix 0.16%, 3 jour(s) après le 2026-11-13
-QQQ : 6967 jours, dernière clôture 2026-11-18 à 666.04
+  QQQ : source Databento EQUS.MINI (coût 0.0002 $), écart de prix 0.16%, 4 jour(s) après le 2026-11-13
+QQQ : 6968 jours, dernière clôture 2026-11-19 à 643.15
   Databento EQUS.MINI SPY : coût estimé 0.0002 $
-  SPY : source Databento EQUS.MINI (coût 0.0002 $), écart de prix 0.23%, 3 jour(s) après le 2026-11-13
-SPY : 5467 jours, dernière clôture 2026-11-18 à 732.91
-Nasdaq — achat seulement | c2 DEHORS 1000.00 $ (garder 1001.42 $) ; c3 ACHETER 1001.42 $ (garder 1001.42 $)
-Nasdaq — achat et vente | c2 ACHETER 1001.42 $ (garder 1001.42 $) ; c3 ACHETER 1001.42 $ (garder 1001.42 $)
-S&P 500 — achat seulement | c2 ACHETER 994.05 $ (garder 994.05 $) ; c3 ACHETER 994.05 $ (garder 994.05 $)
+  SPY : source Databento EQUS.MINI (coût 0.0002 $), écart de prix 0.23%, 4 jour(s) après le 2026-11-13
+SPY : 5468 jours, dernière clôture 2026-11-19 à 714.87
+Nasdaq — achat seulement | c2 DEHORS 1000.00 $ (garder 967.01 $) ; c3 ACHETER 967.01 $ (garder 967.01 $)
+Nasdaq — achat et vente | c2 ACHETER 967.01 $ (garder 967.01 $) ; c3 ACHETER 967.01 $ (garder 967.01 $)
+S&P 500 — achat seulement | c2 ACHETER 969.58 $ (garder 969.58 $) ; c3 ACHETER 969.58 $ (garder 969.58 $)
