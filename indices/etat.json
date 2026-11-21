@@ -9,11 +9,11 @@
  },
  "portefeuilles": {
   "QQQ_achat_seul:c2": {
-   "dernier_traite": "2026-11-19",
+   "dernier_traite": "2026-11-20",
    "commence": true,
    "position": 0,
    "robot": 1.0,
-   "garder": 0.9670082811841869,
+   "garder": 0.9274498766472112,
    "frais": 0.0,
    "changements": 0,
    "votes": [
@@ -62,6 +62,19 @@
      ],
      "change": false,
      "initial": false
+    },
+    {
+     "date": "2026-11-20",
+     "signal": "DEHORS",
+     "ancien": "DEHORS",
+     "prix": 616.84,
+     "votes": [
+      0,
+      0,
+      1
+     ],
+     "change": false,
+     "initial": false
     }
    ],
    "courbe": [
@@ -79,19 +92,24 @@
      "d": "2026-11-19",
      "robot": 1000.0,
      "garder": 967.01
+    },
+    {
+     "d": "2026-11-20",
+     "robot": 1000.0,
+     "garder": 927.45
     }
    ]
   },
   "QQQ_achat_seul:c3": {
-   "dernier_traite": "2026-11-19",
+   "dernier_traite": "2026-11-20",
    "commence": true,
    "position": 1,
-   "robot": 0.9670082811841869,
-   "garder": 0.9670082811841869,
+   "robot": 0.9274498766472112,
+   "garder": 0.9274498766472112,
    "frais": 0.49975,
    "changements": 1,
    "votes": [
-    0,
+    1,
     1,
     1,
     1,
@@ -164,6 +182,26 @@
      ],
      "change": false,
      "initial": false
+    },
+    {
+     "date": "2026-11-20",
+     "signal": "ACHETER",
+     "ancien": "ACHETER",
+     "prix": 616.84,
+     "votes": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      0
+     ],
+     "change": false,
+     "initial": false
     }
    ],
    "courbe": [
@@ -181,15 +219,20 @@
      "d": "2026-11-19",
      "robot": 967.01,
      "garder": 967.01
+    },
+    {
+     "d": "2026-11-20",
+     "robot": 927.45,
+     "garder": 927.45
     }
    ]
   },
   "QQQ_achat_vente:c2": {
-   "dernier_traite": "2026-11-19",
+   "dernier_traite": "2026-11-20",
    "commence": true,
    "position": 1,
-   "robot": 0.9670082811841869,
-   "garder": 0.9670082811841869,
+   "robot": 0.9274498766472112,
+   "garder": 0.9274498766472112,
    "frais": 0.49975,
    "changements": 1,
    "votes": [
@@ -238,6 +281,19 @@
      ],
      "change": false,
      "initial": false
+    },
+    {
+     "date": "2026-11-20",
+     "signal": "ACHETER",
+     "ancien": "ACHETER",
+     "prix": 616.84,
+     "votes": [
+      1,
+      1,
+      1
+     ],
+     "change": false,
+     "initial": false
     }
    ],
    "courbe": [
@@ -255,15 +311,20 @@
      "d": "2026-11-19",
      "robot": 967.01,
      "garder": 967.01
+    },
+    {
+     "d": "2026-11-20",
+     "robot": 927.45,
+     "garder": 927.45
     }
    ]
   },
   "QQQ_achat_vente:c3": {
-   "dernier_traite": "2026-11-19",
+   "dernier_traite": "2026-11-20",
    "commence": true,
    "position": 1,
-   "robot": 0.9670082811841869,
-   "garder": 0.9670082811841869,
+   "robot": 0.9274498766472112,
+   "garder": 0.9274498766472112,
    "frais": 0.49975,
    "changements": 1,
    "votes": [
@@ -340,6 +401,26 @@
      ],
      "change": false,
      "initial": false
+    },
+    {
+     "date": "2026-11-20",
+     "signal": "ACHETER",
+     "ancien": "ACHETER",
+     "prix": 616.84,
+     "votes": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "change": false,
+     "initial": false
     }
    ],
    "courbe": [
@@ -357,15 +438,20 @@
      "d": "2026-11-19",
      "robot": 967.01,
      "garder": 967.01
+    },
+    {
+     "d": "2026-11-20",
+     "robot": 927.45,
+     "garder": 927.45
     }
    ]
   },
   "SPY_achat_seul:c2": {
-   "dernier_traite": "2026-11-19",
+   "dernier_traite": "2026-11-20",
    "commence": true,
    "position": 1,
-   "robot": 0.9695799668896641,
-   "garder": 0.9695799668896641,
+   "robot": 0.9453428412467944,
+   "garder": 0.9453428412467944,
    "frais": 0.49975,
    "changements": 1,
    "votes": [
@@ -414,6 +500,19 @@
      ],
      "change": false,
      "initial": false
+    },
+    {
+     "date": "2026-11-20",
+     "signal": "ACHETER",
+     "ancien": "ACHETER",
+     "prix": 697.0,
+     "votes": [
+      1,
+      1,
+      1
+     ],
+     "change": false,
+     "initial": false
     }
    ],
    "courbe": [
@@ -431,15 +530,20 @@
      "d": "2026-11-19",
      "robot": 969.58,
      "garder": 969.58
+    },
+    {
+     "d": "2026-11-20",
+     "robot": 945.34,
+     "garder": 945.34
     }
    ]
   },
   "SPY_achat_seul:c3": {
-   "dernier_traite": "2026-11-19",
+   "dernier_traite": "2026-11-20",
    "commence": true,
    "position": 1,
-   "robot": 0.9695799668896641,
-   "garder": 0.9695799668896641,
+   "robot": 0.9453428412467944,
+   "garder": 0.9453428412467944,
    "frais": 0.49975,
    "changements": 1,
    "votes": [
@@ -516,6 +620,26 @@
      ],
      "change": false,
      "initial": false
+    },
+    {
+     "date": "2026-11-20",
+     "signal": "ACHETER",
+     "ancien": "ACHETER",
+     "prix": 697.0,
+     "votes": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "change": false,
+     "initial": false
     }
    ],
    "courbe": [
@@ -533,6 +657,11 @@
      "d": "2026-11-19",
      "robot": 969.58,
      "garder": 969.58
+    },
+    {
+     "d": "2026-11-20",
+     "robot": 945.34,
+     "garder": 945.34
     }
    ]
   }
