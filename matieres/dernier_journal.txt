@@ -32,7 +32,8 @@
   "signal_depuis_fin": str(pd.Timestamp(S["signal_depuis"]) + pd.Timedelta(hours=4)) if S["signal_depuis"] else None, "prix_reference": S["prix_reference"],
 /home/runner/work/ia-crypto-signal/ia-crypto-signal/matieres/run.py:246: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
   "dernier_changement": last, "prix_actuel": float(info["prix"].iloc[-1]), "bougie": str(info["t"].iloc[-1] + pd.Timedelta(hours=4)),
-Databento : 2026-11-16T18:00:00 → 2026-11-19T19:00:00, coût estimé 0.0016 $
-Argent: ACHETER | robot 889.28 $ | garder 766.83 $
-Bovins: ACHETER | robot 1017.65 $ | garder 960.59 $
-Cuivre: ACHETER | robot 865.62 $ | garder 852.67 $
+Databento : 2026-11-17T18:00:00 → 2026-11-20T19:00:00, coût estimé 0.0290 $
+Databento indisponible (504 The remote gateway timed out.), nouvel essai dans 30 s
+Argent: ACHETER | robot 832.04 $ | garder 717.47 $
+Bovins: ACHETER | robot 1031.91 $ | garder 974.05 $
+Cuivre: ACHETER | robot 843.51 $ | garder 830.89 $
