@@ -1,5 +1,7 @@
 /home/runner/work/ia-crypto-signal/ia-crypto-signal/matieres/run.py:93: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
   new = fetch(last - pd.Timedelta(days=2), now)             # 2 jours de recouvrement en cas de correction
+/home/runner/work/ia-crypto-signal/ia-crypto-signal/matieres/run.py:52: BentoWarning: The streaming request contained one or more days which have reduced quality: 2026-11-22 (degraded). See: https://databento.com/docs/api-reference-historical/metadata/metadata-get-dataset-condition
+  return f(*a, **k)
 /home/runner/work/ia-crypto-signal/ia-crypto-signal/matieres/run.py:96: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
   recent = recent[recent["ts"] >= base["ts"].max() + pd.Timedelta(hours=1)]
 /home/runner/work/ia-crypto-signal/ia-crypto-signal/matieres/run.py:129: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
@@ -32,8 +34,7 @@
   "signal_depuis_fin": str(pd.Timestamp(S["signal_depuis"]) + pd.Timedelta(hours=4)) if S["signal_depuis"] else None, "prix_reference": S["prix_reference"],
 /home/runner/work/ia-crypto-signal/ia-crypto-signal/matieres/run.py:246: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
   "dernier_changement": last, "prix_actuel": float(info["prix"].iloc[-1]), "bougie": str(info["t"].iloc[-1] + pd.Timedelta(hours=4)),
-Databento : 2026-11-17T18:00:00 → 2026-11-20T19:00:00, coût estimé 0.0290 $
-Databento indisponible (504 The remote gateway timed out.), nouvel essai dans 30 s
-Argent: ACHETER | robot 832.04 $ | garder 717.47 $
-Bovins: ACHETER | robot 1031.91 $ | garder 974.05 $
-Cuivre: ACHETER | robot 843.51 $ | garder 830.89 $
+Databento : 2026-11-18T18:00:00 → 2026-11-23T22:00:00, coût estimé 0.0016 $
+Argent: ACHETER | robot 859.76 $ | garder 741.38 $
+Bovins: ACHETER | robot 1036.1 $ | garder 978.01 $
+Cuivre: ACHETER | robot 863.08 $ | garder 850.18 $
