@@ -1,15 +1,15 @@
 {
- "genere_le": "2026-11-21 03:56 UTC",
+ "genere_le": "2026-11-24 06:56 UTC",
  "donnees_jusqu_au": "2026-11-20",
  "sources": {
-  "QQQ": "Databento EQUS.MINI (coût 0.0002 $)",
-  "SPY": "Databento EQUS.MINI (coût 0.0002 $)"
+  "QQQ": "Databento DBEQ.BASIC (coût 0.0017 $)",
+  "SPY": "Databento DBEQ.BASIC (coût 0.0017 $)"
  },
  "test": {
   "debut": "2026-11-17",
   "fin": "2027-05-17",
   "capital": 1000.0,
-  "jours_ecoules": 4,
+  "jours_ecoules": 7,
   "jours_total": 181,
   "frais_pct": 0.05,
   "termine": false
@@ -22,7 +22,7 @@
    "version": "achat_seul",
    "nom": "Nasdaq — achat seulement",
    "achat_vente": false,
-   "prix": 616.84,
+   "prix": 616.64,
    "derniere_cloture": "2026-11-20",
    "equipes": [
     {
@@ -354,7 +354,7 @@
    "version": "achat_vente",
    "nom": "Nasdaq — achat et vente",
    "achat_vente": true,
-   "prix": 616.84,
+   "prix": 616.64,
    "derniere_cloture": "2026-11-20",
    "equipes": [
     {
@@ -686,7 +686,7 @@
    "version": "achat_seul",
    "nom": "S&P 500 — achat seulement",
    "achat_vente": false,
-   "prix": 697.0,
+   "prix": 697.5,
    "derniere_cloture": "2026-11-20",
    "equipes": [
     {
