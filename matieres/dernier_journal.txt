@@ -8,6 +8,8 @@
   b = b[b.index + pd.Timedelta(hours=4) <= h["ts"].max() + pd.Timedelta(hours=1)]     # seulement les bougies terminées
 /home/runner/work/ia-crypto-signal/ia-crypto-signal/matieres/run.py:129: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
   b = b[b.index + pd.Timedelta(hours=4) <= h["ts"].max() + pd.Timedelta(hours=1)]     # seulement les bougies terminées
+/home/runner/work/ia-crypto-signal/ia-crypto-signal/matieres/run.py:192: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  S["decisions"].append({"date": str(t[i]), "fin": str(t[i] + pd.Timedelta(hours=4)), "initial": last_dec is None,
 /home/runner/work/ia-crypto-signal/ia-crypto-signal/matieres/run.py:233: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
   bars_per_day = len(info[info["t"] >= info["t"].iloc[-1] - pd.Timedelta(days=28)]) / 20.0
 /home/runner/work/ia-crypto-signal/ia-crypto-signal/matieres/run.py:245: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
@@ -34,7 +36,7 @@
   "signal_depuis_fin": str(pd.Timestamp(S["signal_depuis"]) + pd.Timedelta(hours=4)) if S["signal_depuis"] else None, "prix_reference": S["prix_reference"],
 /home/runner/work/ia-crypto-signal/ia-crypto-signal/matieres/run.py:246: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
   "dernier_changement": last, "prix_actuel": float(info["prix"].iloc[-1]), "bougie": str(info["t"].iloc[-1] + pd.Timedelta(hours=4)),
-Databento : 2026-11-18T18:00:00 → 2026-11-23T22:00:00, coût estimé 0.0016 $
-Argent: ACHETER | robot 859.76 $ | garder 741.38 $
-Bovins: ACHETER | robot 1036.1 $ | garder 978.01 $
-Cuivre: ACHETER | robot 863.08 $ | garder 850.18 $
+Databento : 2026-11-21T21:00:00 → 2026-11-24T20:00:00, coût estimé 0.0010 $
+Argent: DEHORS | robot 849.34 $ | garder 701.85 $
+Bovins: ACHETER | robot 1041.31 $ | garder 982.92 $
+Cuivre: ACHETER | robot 827.23 $ | garder 814.86 $
