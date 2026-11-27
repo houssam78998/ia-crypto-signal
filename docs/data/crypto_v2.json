@@ -1,12 +1,12 @@
 {
- "genere_le": "2026-11-26 14:02 UTC",
- "donnees_jusqu_au": "2026-11-26 12:00:00",
- "prochaine_mise_a_jour": "2026-11-27 04:30:00",
+ "genere_le": "2026-11-27 14:00 UTC",
+ "donnees_jusqu_au": "2026-11-27 12:00:00",
+ "prochaine_mise_a_jour": "2026-11-28 04:30:00",
  "test": {
   "debut": "2026-10-21",
   "fin": "2027-04-21",
   "capital": 1000.0,
-  "jours_ecoules": 36,
+  "jours_ecoules": 37,
   "jours_total": 182,
   "frais_pct": 0.15,
   "termine": false
@@ -18,12 +18,12 @@
    "long_only": true,
    "commence": true,
    "capital": 1000.0,
-   "valeur": 988.93,
-   "rendement_pct": -1.11,
-   "garder_valeur": 670.35,
-   "garder_rendement_pct": -32.97,
-   "sharpe": -1.61,
-   "garder_sharpe": -8.6,
+   "valeur": 993.93,
+   "rendement_pct": -0.61,
+   "garder_valeur": 685.14,
+   "garder_rendement_pct": -31.49,
+   "sharpe": -0.84,
+   "garder_sharpe": -7.85,
    "pire_baisse_pct": -3.69,
    "garder_pire_baisse_pct": -36.51,
    "frais": 5.03,
@@ -213,6 +213,11 @@
      "d": "2026-11-26",
      "robot": 988.93,
      "garder": 670.35
+    },
+    {
+     "d": "2026-11-27",
+     "robot": 993.93,
+     "garder": 685.14
     }
    ],
    "marches": [
@@ -225,7 +230,7 @@
      "votes": [
       1,
       1,
-      0
+      1
      ],
      "signal_depuis": "2026-11-26 00:00:00",
      "signal_depuis_fin": "2026-11-26 04:00:00",
@@ -244,13 +249,13 @@
       ],
       "change": true
      },
-     "derniere_decision": "2026-11-26 00:00:00",
-     "prix_actuel": 0.9524,
+     "derniere_decision": "2026-11-27 00:00:00",
+     "prix_actuel": 0.9761,
      "part": 200.0,
-     "valeur": 200.96,
-     "rendement_pct": 0.48,
-     "garder_valeur": 142.75,
-     "garder_rendement_pct": -28.63,
+     "valeur": 205.96,
+     "rendement_pct": 2.98,
+     "garder_valeur": 146.3,
+     "garder_rendement_pct": -26.85,
      "frais": 1.48,
      "changements": 5,
      "backtest": {
@@ -779,6 +784,20 @@
         0
        ],
        "change": true
+      },
+      {
+       "date": "2026-11-27 00:00:00",
+       "fin": "2026-11-27 04:00:00",
+       "initial": false,
+       "signal": "ACHETER",
+       "ancien": "ACHETER",
+       "prix": 0.9616,
+       "votes": [
+        1,
+        1,
+        1
+       ],
+       "change": false
       }
      ]
     },
@@ -810,13 +829,13 @@
       ],
       "change": true
      },
-     "derniere_decision": "2026-11-26 00:00:00",
-     "prix_actuel": 0.1278,
+     "derniere_decision": "2026-11-27 00:00:00",
+     "prix_actuel": 0.1299,
      "part": 200.0,
      "valeur": 206.66,
      "rendement_pct": 3.33,
-     "garder_valeur": 140.62,
-     "garder_rendement_pct": -29.69,
+     "garder_valeur": 142.93,
+     "garder_rendement_pct": -28.54,
      "frais": 2.37,
      "changements": 8,
      "backtest": {
@@ -1345,6 +1364,20 @@
         1
        ],
        "change": true
+      },
+      {
+       "date": "2026-11-27 00:00:00",
+       "fin": "2026-11-27 04:00:00",
+       "initial": false,
+       "signal": "DEHORS",
+       "ancien": "DEHORS",
+       "prix": 0.1282,
+       "votes": [
+        0,
+        0,
+        1
+       ],
+       "change": false
       }
      ]
     },
@@ -1376,13 +1409,13 @@
       ],
       "change": true
      },
-     "derniere_decision": "2026-11-26 00:00:00",
-     "prix_actuel": 70.88,
+     "derniere_decision": "2026-11-27 00:00:00",
+     "prix_actuel": 73.16,
      "part": 200.0,
      "valeur": 200.0,
      "rendement_pct": 0.0,
-     "garder_valeur": 133.71,
-     "garder_rendement_pct": -33.14,
+     "garder_valeur": 138.01,
+     "garder_rendement_pct": -30.99,
      "frais": 0.0,
      "changements": 0,
      "backtest": {
@@ -1911,6 +1944,20 @@
         0
        ],
        "change": false
+      },
+      {
+       "date": "2026-11-27 00:00:00",
+       "fin": "2026-11-27 04:00:00",
+       "initial": false,
+       "signal": "DEHORS",
+       "ancien": "DEHORS",
+       "prix": 72.75,
+       "votes": [
+        0,
+        0,
+        0
+       ],
+       "change": false
       }
      ]
     },
@@ -1942,13 +1989,13 @@
       ],
       "change": true
      },
-     "derniere_decision": "2026-11-26 00:00:00",
-     "prix_actuel": 0.677,
+     "derniere_decision": "2026-11-27 00:00:00",
+     "prix_actuel": 0.686,
      "part": 200.0,
      "valeur": 190.79,
      "rendement_pct": -4.61,
-     "garder_valeur": 116.25,
-     "garder_rendement_pct": -41.88,
+     "garder_valeur": 117.79,
+     "garder_rendement_pct": -41.1,
      "frais": 0.59,
      "changements": 2,
      "backtest": {
@@ -2477,6 +2524,20 @@
         0
        ],
        "change": false
+      },
+      {
+       "date": "2026-11-27 00:00:00",
+       "fin": "2026-11-27 04:00:00",
+       "initial": false,
+       "signal": "DEHORS",
+       "ancien": "DEHORS",
+       "prix": 0.688,
+       "votes": [
+        0,
+        0,
+        0
+       ],
+       "change": false
       }
      ]
     },
@@ -2508,13 +2569,13 @@
       ],
       "change": true
      },
-     "derniere_decision": "2026-11-26 00:00:00",
-     "prix_actuel": 6.657,
+     "derniere_decision": "2026-11-27 00:00:00",
+     "prix_actuel": 6.807,
      "part": 200.0,
      "valeur": 190.52,
      "rendement_pct": -4.74,
-     "garder_valeur": 137.02,
-     "garder_rendement_pct": -31.49,
+     "garder_valeur": 140.11,
+     "garder_rendement_pct": -29.94,
      "frais": 0.59,
      "changements": 2,
      "backtest": {
@@ -3043,6 +3104,20 @@
         0
        ],
        "change": false
+      },
+      {
+       "date": "2026-11-27 00:00:00",
+       "fin": "2026-11-27 04:00:00",
+       "initial": false,
+       "signal": "DEHORS",
+       "ancien": "DEHORS",
+       "prix": 6.731,
+       "votes": [
+        0,
+        0,
+        0
+       ],
+       "change": false
       }
      ]
     }
@@ -3072,13 +3147,13 @@
    "long_only": false,
    "commence": true,
    "capital": 1000.0,
-   "valeur": 1293.08,
-   "rendement_pct": 29.31,
-   "garder_valeur": 676.56,
-   "garder_rendement_pct": -32.34,
-   "sharpe": 8.59,
-   "garder_sharpe": -8.23,
-   "pire_baisse_pct": -3.08,
+   "valeur": 1278.78,
+   "rendement_pct": 27.88,
+   "garder_valeur": 693.48,
+   "garder_rendement_pct": -30.65,
+   "sharpe": 7.98,
+   "garder_sharpe": -7.42,
+   "pire_baisse_pct": -3.41,
    "garder_pire_baisse_pct": -36.21,
    "frais": 6.48,
    "changements": 21,
@@ -3267,6 +3342,11 @@
      "d": "2026-11-26",
      "robot": 1293.08,
      "garder": 676.56
+    },
+    {
+     "d": "2026-11-27",
+     "robot": 1278.78,
+     "garder": 693.48
     }
    ],
    "marches": [
@@ -3279,7 +3359,7 @@
      "votes": [
       -1,
       -1,
-      1
+      -1
      ],
      "signal_depuis": "2026-11-10 00:00:00",
      "signal_depuis_fin": "2026-11-10 04:00:00",
@@ -3298,13 +3378,13 @@
       ],
       "change": true
      },
-     "derniere_decision": "2026-11-26 00:00:00",
-     "prix_actuel": 1700.36,
+     "derniere_decision": "2026-11-27 00:00:00",
+     "prix_actuel": 1724.04,
      "part": 125.0,
-     "valeur": 123.59,
-     "rendement_pct": -1.13,
-     "garder_valeur": 86.82,
-     "garder_rendement_pct": -30.54,
+     "valeur": 122.43,
+     "rendement_pct": -2.05,
+     "garder_valeur": 88.03,
+     "garder_rendement_pct": -29.57,
      "frais": 1.22,
      "changements": 4,
      "backtest": {
@@ -3833,6 +3913,20 @@
         1
        ],
        "change": false
+      },
+      {
+       "date": "2026-11-27 00:00:00",
+       "fin": "2026-11-27 04:00:00",
+       "initial": false,
+       "signal": "VENDRE",
+       "ancien": "VENDRE",
+       "prix": 1728.64,
+       "votes": [
+        -1,
+        -1,
+        -1
+       ],
+       "change": false
       }
      ]
     },
@@ -3864,13 +3958,13 @@
       ],
       "change": true
      },
-     "derniere_decision": "2026-11-26 00:00:00",
-     "prix_actuel": 0.9524,
+     "derniere_decision": "2026-11-27 00:00:00",
+     "prix_actuel": 0.9761,
      "part": 125.0,
-     "valeur": 174.75,
-     "rendement_pct": 39.8,
-     "garder_valeur": 89.22,
-     "garder_rendement_pct": -28.63,
+     "valeur": 179.1,
+     "rendement_pct": 43.28,
+     "garder_valeur": 91.44,
+     "garder_rendement_pct": -26.85,
      "frais": 1.47,
      "changements": 5,
      "backtest": {
@@ -4399,6 +4493,20 @@
         1
        ],
        "change": false
+      },
+      {
+       "date": "2026-11-27 00:00:00",
+       "fin": "2026-11-27 04:00:00",
+       "initial": false,
+       "signal": "ACHETER",
+       "ancien": "ACHETER",
+       "prix": 0.9616,
+       "votes": [
+        1,
+        1,
+        1
+       ],
+       "change": false
       }
      ]
     },
@@ -4430,13 +4538,13 @@
       ],
       "change": true
      },
-     "derniere_decision": "2026-11-26 00:00:00",
-     "prix_actuel": 0.1486,
+     "derniere_decision": "2026-11-27 00:00:00",
+     "prix_actuel": 0.1533,
      "part": 125.0,
-     "valeur": 177.08,
-     "rendement_pct": 41.66,
-     "garder_valeur": 83.13,
-     "garder_rendement_pct": -33.49,
+     "valeur": 171.14,
+     "rendement_pct": 36.91,
+     "garder_valeur": 85.76,
+     "garder_rendement_pct": -31.39,
      "frais": 1.25,
      "changements": 3,
      "backtest": {
@@ -4965,6 +5073,20 @@
         -1
        ],
        "change": false
+      },
+      {
+       "date": "2026-11-27 00:00:00",
+       "fin": "2026-11-27 04:00:00",
+       "initial": false,
+       "signal": "VENDRE",
+       "ancien": "VENDRE",
+       "prix": 0.1514,
+       "votes": [
+        -1,
+        -1,
+        -1
+       ],
+       "change": false
       }
      ]
     },
@@ -4996,13 +5118,13 @@
       ],
       "change": true
      },
-     "derniere_decision": "2026-11-26 00:00:00",
-     "prix_actuel": 0.05686,
+     "derniere_decision": "2026-11-27 00:00:00",
+     "prix_actuel": 0.05889,
      "part": 125.0,
-     "valeur": 162.54,
-     "rendement_pct": 30.03,
-     "garder_valeur": 87.09,
-     "garder_rendement_pct": -30.33,
+     "valeur": 159.43,
+     "rendement_pct": 27.54,
+     "garder_valeur": 90.2,
+     "garder_rendement_pct": -27.84,
      "frais": 0.19,
      "changements": 1,
      "backtest": {
@@ -5531,6 +5653,20 @@
         -1
        ],
        "change": false
+      },
+      {
+       "date": "2026-11-27 00:00:00",
+       "fin": "2026-11-27 04:00:00",
+       "initial": false,
+       "signal": "VENDRE",
+       "ancien": "VENDRE",
+       "prix": 0.05773,
+       "votes": [
+        0,
+        -1,
+        -1
+       ],
+       "change": false
       }
      ]
     },
@@ -5562,13 +5698,13 @@
       ],
       "change": true
      },
-     "derniere_decision": "2026-11-26 00:00:00",
-     "prix_actuel": 70.88,
+     "derniere_decision": "2026-11-27 00:00:00",
+     "prix_actuel": 73.16,
      "part": 125.0,
-     "valeur": 166.06,
-     "rendement_pct": 32.84,
-     "garder_valeur": 83.57,
-     "garder_rendement_pct": -33.14,
+     "valeur": 163.37,
+     "rendement_pct": 30.69,
+     "garder_valeur": 86.26,
+     "garder_rendement_pct": -30.99,
      "frais": 0.19,
      "changements": 1,
      "backtest": {
@@ -6097,6 +6233,20 @@
         -1
        ],
        "change": false
+      },
+      {
+       "date": "2026-11-27 00:00:00",
+       "fin": "2026-11-27 04:00:00",
+       "initial": false,
+       "signal": "VENDRE",
+       "ancien": "VENDRE",
+       "prix": 72.75,
+       "votes": [
+        -1,
+        -1,
+        -1
+       ],
+       "change": false
       }
      ]
     },
@@ -6128,13 +6278,13 @@
       ],
       "change": true
      },
-     "derniere_decision": "2026-11-26 00:00:00",
-     "prix_actuel": 43.56,
+     "derniere_decision": "2026-11-27 00:00:00",
+     "prix_actuel": 44.63,
      "part": 125.0,
-     "valeur": 161.19,
-     "rendement_pct": 28.95,
-     "garder_valeur": 88.43,
-     "garder_rendement_pct": -29.25,
+     "valeur": 159.02,
+     "rendement_pct": 27.22,
+     "garder_valeur": 90.6,
+     "garder_rendement_pct": -27.52,
      "frais": 0.19,
      "changements": 1,
      "backtest": {
@@ -6663,6 +6813,20 @@
         -1
        ],
        "change": false
+      },
+      {
+       "date": "2026-11-27 00:00:00",
+       "fin": "2026-11-27 04:00:00",
+       "initial": false,
+       "signal": "VENDRE",
+       "ancien": "VENDRE",
+       "prix": 44.46,
+       "votes": [
+        -1,
+        -1,
+        -1
+       ],
+       "change": false
       }
      ]
     },
@@ -6694,13 +6858,13 @@
       ],
       "change": true
      },
-     "derniere_decision": "2026-11-26 00:00:00",
-     "prix_actuel": 0.677,
+     "derniere_decision": "2026-11-27 00:00:00",
+     "prix_actuel": 0.686,
      "part": 125.0,
-     "valeur": 170.54,
-     "rendement_pct": 36.44,
-     "garder_valeur": 72.66,
-     "garder_rendement_pct": -41.88,
+     "valeur": 169.45,
+     "rendement_pct": 35.56,
+     "garder_valeur": 73.62,
+     "garder_rendement_pct": -41.1,
      "frais": 0.96,
      "changements": 3,
      "backtest": {
@@ -7229,6 +7393,20 @@
         -1
        ],
        "change": false
+      },
+      {
+       "date": "2026-11-27 00:00:00",
+       "fin": "2026-11-27 04:00:00",
+       "initial": false,
+       "signal": "VENDRE",
+       "ancien": "VENDRE",
+       "prix": 0.688,
+       "votes": [
+        -1,
+        -1,
+        -1
+       ],
+       "change": false
       }
      ]
     },
@@ -7260,13 +7438,13 @@
       ],
       "change": true
      },
-     "derniere_decision": "2026-11-26 00:00:00",
-     "prix_actuel": 6.657,
+     "derniere_decision": "2026-11-27 00:00:00",
+     "prix_actuel": 6.807,
      "part": 125.0,
-     "valeur": 157.33,
-     "rendement_pct": 25.86,
-     "garder_valeur": 85.64,
-     "garder_rendement_pct": -31.49,
+     "valeur": 154.84,
+     "rendement_pct": 23.87,
+     "garder_valeur": 87.57,
+     "garder_rendement_pct": -29.94,
      "frais": 1.01,
      "changements": 3,
      "backtest": {
@@ -7789,6 +7967,20 @@
        "signal": "VENDRE",
        "ancien": "VENDRE",
        "prix": 6.679,
+       "votes": [
+        -1,
+        -1,
+        -1
+       ],
+       "change": false
+      },
+      {
+       "date": "2026-11-27 00:00:00",
+       "fin": "2026-11-27 04:00:00",
+       "initial": false,
+       "signal": "VENDRE",
+       "ancien": "VENDRE",
+       "prix": 6.731,
        "votes": [
         -1,
         -1,
