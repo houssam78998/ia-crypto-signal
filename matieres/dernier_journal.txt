@@ -1,7 +1,5 @@
 /home/runner/work/ia-crypto-signal/ia-crypto-signal/matieres/run.py:93: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
   new = fetch(last - pd.Timedelta(days=2), now)             # 2 jours de recouvrement en cas de correction
-/home/runner/work/ia-crypto-signal/ia-crypto-signal/matieres/run.py:52: BentoWarning: The streaming request contained one or more days which have reduced quality: 2026-11-22 (degraded). See: https://databento.com/docs/api-reference-historical/metadata/metadata-get-dataset-condition
-  return f(*a, **k)
 /home/runner/work/ia-crypto-signal/ia-crypto-signal/matieres/run.py:96: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
   recent = recent[recent["ts"] >= base["ts"].max() + pd.Timedelta(hours=1)]
 /home/runner/work/ia-crypto-signal/ia-crypto-signal/matieres/run.py:129: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
@@ -34,7 +32,7 @@
   "signal_depuis_fin": str(pd.Timestamp(S["signal_depuis"]) + pd.Timedelta(hours=4)) if S["signal_depuis"] else None, "prix_reference": S["prix_reference"],
 /home/runner/work/ia-crypto-signal/ia-crypto-signal/matieres/run.py:246: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
   "dernier_changement": last, "prix_actuel": float(info["prix"].iloc[-1]), "bougie": str(info["t"].iloc[-1] + pd.Timedelta(hours=4)),
-Databento : 2026-11-22T19:00:00 → 2026-11-25T20:00:00, coût estimé 0.0015 $
-Argent: DEHORS | robot 849.34 $ | garder 700.39 $
+Databento : 2026-11-23T19:00:00 → 2026-11-26T20:00:00, coût estimé 0.0147 $
+Argent: DEHORS | robot 849.34 $ | garder 711.69 $
 Bovins: ACHETER | robot 1028.52 $ | garder 970.85 $
-Cuivre: ACHETER | robot 827.23 $ | garder 814.86 $
+Cuivre: ACHETER | robot 820.85 $ | garder 808.57 $
