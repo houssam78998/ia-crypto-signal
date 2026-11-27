@@ -1,5 +1,5 @@
 {
- "genere_le": "2026-11-26 04:59 UTC",
+ "genere_le": "2026-11-27 04:59 UTC",
  "donnees_jusqu_au": "2026-11-25",
  "sources": {
   "QQQ": "Databento EQUS.MINI (coût 0.0002 $)",
@@ -9,7 +9,7 @@
   "debut": "2026-11-17",
   "fin": "2027-05-17",
   "capital": 1000.0,
-  "jours_ecoules": 9,
+  "jours_ecoules": 10,
   "jours_total": 181,
   "frais_pct": 0.05,
   "termine": false
