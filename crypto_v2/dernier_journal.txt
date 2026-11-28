@@ -46,14 +46,14 @@
   nxt += pd.Timedelta(days=1)
 /home/runner/work/ia-crypto-signal/ia-crypto-signal/crypto_v2/run.py:385: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
   out = {"genere_le": now.strftime("%Y-%m-%d %H:%M UTC"), "donnees_jusqu_au": str(last_bar + pd.Timedelta(hours=4)),
-ADA : dernière bougie 2026-11-27 08:00:00 (terminée à +4 h), prix 0.1533
-AVAX : dernière bougie 2026-11-27 08:00:00 (terminée à +4 h), prix 6.807
-DOGE : dernière bougie 2026-11-27 08:00:00 (terminée à +4 h), prix 0.05889
-DOT : dernière bougie 2026-11-27 08:00:00 (terminée à +4 h), prix 0.686
-ETH : dernière bougie 2026-11-27 08:00:00 (terminée à +4 h), prix 1724.04
-LTC : dernière bougie 2026-11-27 08:00:00 (terminée à +4 h), prix 44.63
-SOL : dernière bougie 2026-11-27 08:00:00 (terminée à +4 h), prix 73.16
-XLM : dernière bougie 2026-11-27 08:00:00 (terminée à +4 h), prix 0.1299
-XRP : dernière bougie 2026-11-27 08:00:00 (terminée à +4 h), prix 0.9761
-Achat seulement : 993.93 $ (garder 685.14 $) | XRP ACHETER, XLM DEHORS, SOL DEHORS, DOT DEHORS, AVAX DEHORS
-Achat et vente : 1278.78 $ (garder 693.48 $) | ETH VENDRE, XRP ACHETER, ADA VENDRE, DOGE VENDRE, SOL VENDRE, LTC VENDRE, DOT VENDRE, AVAX VENDRE
+ADA : dernière bougie 2026-11-28 08:00:00 (terminée à +4 h), prix 0.1463
+AVAX : dernière bougie 2026-11-28 08:00:00 (terminée à +4 h), prix 6.496
+DOGE : dernière bougie 2026-11-28 08:00:00 (terminée à +4 h), prix 0.05674
+DOT : dernière bougie 2026-11-28 08:00:00 (terminée à +4 h), prix 0.649
+ETH : dernière bougie 2026-11-28 08:00:00 (terminée à +4 h), prix 1648.54
+LTC : dernière bougie 2026-11-28 08:00:00 (terminée à +4 h), prix 44.09
+SOL : dernière bougie 2026-11-28 08:00:00 (terminée à +4 h), prix 70.95
+XLM : dernière bougie 2026-11-28 08:00:00 (terminée à +4 h), prix 0.1239
+XRP : dernière bougie 2026-11-28 08:00:00 (terminée à +4 h), prix 0.9398
+Achat seulement : 986.27 $ (garder 656.17 $) | XRP ACHETER, XLM DEHORS, SOL DEHORS, DOT DEHORS, AVAX DEHORS
+Achat et vente : 1298.76 $ (garder 667.35 $) | ETH ACHETER, XRP ACHETER, ADA VENDRE, DOGE VENDRE, SOL VENDRE, LTC VENDRE, DOT VENDRE, AVAX VENDRE
